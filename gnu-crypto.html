@@ -19,16 +19,24 @@
 
 <body text="#000000" link="#1f00ff" vlink="#9900dd" bgcolor="#ffffff">
 
+<table width="100" border="1" cellpadding="5" cellspacing="1">
+  <tbody>
+    <tr align="center">
+      <td>insert<br>logo<br>here!</td>
+    </tr>
+  </tbody>
+</table>
 <h2>The GNU Crypto project</h2>
 
 <p align="center">
 <a href="#introduction">Introduction</a> | <a href="#helpwanted">Help wanted</a> |
 <a href="#status">Project status</a> | <a href="#documentation">Documentation</a> |<br>
 <a href="#primality">Note on primality testing</a> | 
-<a href="#configuration">Configuration parameters</a> | 
-<a href="#Tools%7Coutline">Tools</a> |<br>
+<a href="#configuration">Configuration parameters</a> |<br>
+<a href="#gcj-friendly">Building a GCJ-friendly version of GNU Crypto</a> |<br>
+<a href="#Tools%7Coutline">Tools</a> |
 <a href="#lists">Mailing lists</a> | <a href="#downloading">Downloads</a> | 
-<a href="#bug">Report a bug</a>| <a href="#coding">Coding styles</a>
+<a href="#bug">Report a bug</a> | <a href="#coding">Coding styles</a>
 </p>
 
 <h3><a name="introduction">Introduction</a></h3>
@@ -66,15 +74,10 @@ general discussion mailing list if you're interested in helping.</p>
 <ol>
 	<li>Algorithms:
 		<ul>
-			<li>DES,</li>
-			<li>DES-EDE,</li>
 			<li>CAST,</li>
-			<li>ARC4,</li>
 			<li>HAVAL,</li>
 			<li>TIGER,</li>
 			<li>SHA-2 (256, 384, 512),</li>
-			<li>CBC,</li>
-			<li>CFB,</li>
 			<li>NESSIE (phase-2) algorithms,</li>
 			<li>IEEE P1363 algorithms.</li>
 		</ul>
@@ -91,15 +94,14 @@ general discussion mailing list if you're interested in helping.</p>
 
 	<li>Testing:
 		<ul>
-			<li>more JUnit test cases.</li>
-			<li>porting unit testing to Mauve.</li>
+			<li>more Mauve test cases.</li>
 		</ul>
 	</li><br>
 
 	<li>Performance:
 		<ul>
 			<li>evaluate performance of algorithms on different platforms/environments.</li>
-			<li>optimised versions of algorithms.</li>
+			<li>more optimised versions of algorithms.</li>
 		</ul>
 	</li><br>
 
@@ -289,8 +291,39 @@ in terms of cryptographic algorithms:</p>
 			any length up to 448 bits. Although there is a complex initialisation phase required
 			before any encryption can take place, the actual encryption of data is very efficient
 			on large microprocessors.</p>
-			
+
 			<p>Blowfish is unpatented and license-free, and is available free for all uses.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="36%" valign="top">
+			<p><a href="http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf">DES</a></p>
+		</td>
+		<td width="64%">
+			<p>The Data Encryption Standard. DES is a 64-bit block cipher with a 56-bit key,
+			developed by IBM in the 1970's for the standardization process begun by the National
+			Bureau of Standards (now NIST).</p>
+
+			<p>New applications <b>should not use</b> DES, except for compatibility.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="36%" valign="top">
+			<p><a href="http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf">TripleDES</a></p>
+		</td>
+		<td width="64%">
+			<p>Triple-DES, 3DES, or DESede is a <i>combined cipher</i> that uses three iterations
+			of the Data Encryption Standard (DES) cipher to improve the security (at the cost of
+			speed) of plain DES.</p>
+
+			<p>Triple-DES runs the DES algorithm three times with three independent 56 bit keys.</p>
+
+			<p>To encrypt: <i>C<sub>i</sub> = E<sub>k3</sub> ( E<sub>k2</sub><sup>-1</sup>
+			( E<sub>k1</sub> ( P<sub>i</sub> ) ) )</i><br>
+			And to decrypt: <i>P<sub>i</sub> = E<sub>k1</sub><sup>-1</sup> ( E<sub>k2</sub>
+			( E<sub>k3</sub><sup>-1</sup> ( C<sub>i</sub> ) ) )</i></blockquote></p>
+
+			<p><i>The "ede" comes from the encryption operation, which runs Encrypt-Decrypt-Encrypt</i>.</p>
 		</td>
 	</tr>
 	<tr>
@@ -321,9 +354,9 @@ in terms of cryptographic algorithms:</p>
 			follows:</p>
 
 			<p>Encryption: C<i><sub>j</sub> </i>= <i>CIPH<sub>K</sub></i>(<i>P<sub>j</sub></i>)
-			for <i>j </i>= 1.<i>n</i>.<br>
+			for <i>j </i>= 1..<i>n</i><br>
 			Decryption: <i>P<sub>j</sub> </i>= <i>CIPH<sup>-1</sup><sub>K</sub></i>(<i>C<sub>j</sub></i>)
-			for <i>j</i> = 1.<i>n</i>.</p>
+			for <i>j</i> = 1..<i>n</i></p>
 
 			<p>In ECB encryption, the forward cipher function is applied directly, and
 			independently, to each block of the plaintext. The resulting sequence of output
@@ -359,6 +392,56 @@ in terms of cryptographic algorithms:</p>
 			that are exclusive-ORed with the plaintext to produce the ciphertext, and vice
 			versa. The OFB mode requires that the IV is a nonce, i.e., the IV must be unique
 			for each execution of the mode under the given key.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="36%" valign="top">
+			<p><a href="http://csrc.nist.gov/encryption/modes/Recommendation/Modes01.pdf">
+			CFB</a></p>
+		</td>
+		<td width="64%">
+			<p>The Cipher Feedback Mode (CFB) is a stream mode that operates on <i>s</i> bit
+			blocks, where 1 &lt;= <i>s</i> &lt;= <i>b</i>, if <i>b</i> is the underlying
+			cipher's block size. Encryption is:</p>
+
+			<blockquote>
+			   <i>I<sub>1</sub></i> = <i>IV</i><br>
+				<i>I<sub>j</sub></i> = LSB( b - s, <i>I<sub>j-1</sub></i> ) | <i>C<sub>j-1</sub></i>; for <i>j</i> = 2..n<br>
+				<i>O<sub>j</sub></i> = CIPH( <i>K</i>, <i>I<sub>j</sub></i> ); for <i>j</i> = 1, 2..n<br>
+				<i>C<sub>j</sub></i> = <i>P<sub>j</sub></i> ^ MSB( s, <i>O<sub>j</sub></i> ); for <i>j</i> = 1, 2..n
+			</blockquote>
+
+			<p>And decryption is:</p>
+
+			<blockquote>
+			   <i>I<sub>1</sub></i> = <i>IV</i><br>
+				<i>I<sub>j</sub></i> = LSB( b - s, <i>I<sub>j-1</sub></i> ) | <i>C<sub>j-1</sub></i>; for <i>j</i> = 2..n<br>
+				<i>O<sub>j</sub></i> = CIPH( <i>K</i>, <i>I<sub>j</sub></i> ); for <i>j</i> = 1, 2..n<br>
+				<i>P<sub>j</sub></i> = <i>C<sub>j</sub></i>  ^ MSB( s, <i>O<sub>j</sub></i> ); for <i>j</i> = 1, 2..n
+			</blockquote>
+
+			<p>CFB mode requires an initialization vector (IV), which needs not be kept secret.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="36%" valign="top">
+			<p><a href="http://csrc.nist.gov/encryption/modes/Recommendation/Modes01.pdf">
+			CBC</a></p>
+		</td>
+		<td width="64%">
+			<p>The Cipher Block Chaining (CBC) mode introduces feedback into the cipher by XORing
+			the previous ciphertext block with the plaintext block before encipherment. That is,
+			encrypting looks like this:</p>
+
+			<blockquote>
+				<i>C<sub>i</sub></i> = <i>E<sub>K</sub></i>( <i>P<sub>i</sub></i> ^ <i>C<sub>i-1</sub></i> )
+			</blockquote>
+
+			<p>Similarly, decrypting is:</p>
+
+			<blockquote>
+				<i>P<sub>i</sub></i> = <i>C<sub>i-1</sub></i> ^ <i>D<sub>K</sub></i>( <i>C<sub>i</sub></i> )
+			</blockquote>
 		</td>
 	</tr>
 	<tr>
@@ -614,6 +697,24 @@ in terms of cryptographic algorithms:</p>
 			Encryption Standard (AES) is used in output-feedback mode to produce the required bits."</p>
 		</td>
 	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<p><a href="http://www.mozilla.org/projects/security/pki/nss/draft-kaukonen-cipher-arcfour-03.txt">
+			ARCFour</a></p>
+		</td>
+		<td width="64%">
+			<p>RC4 is a stream cipher developed by <i>Ron Rivest</i>. Until 1994, RC4 was a trade
+			secret of RSA Data Security, Inc., when it was released anonymously to a mailing list.
+			This version is a descendent of that code, and since there is no proof that the leaked
+			version was in fact RC4 and because "RC4" is a trademark, it is called "ARCFOUR", short
+			for <i>Allegedly RC4</i>.</p>
+
+			<p>To use this implementation as a stream cipher, one would do (for both encryption,
+			and decryption):</p>
+
+			<pre>    out = in ^ arcfour.nextByte();</pre>
+		</td>
+	</tr>
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
 			<p><i><b>Digital signature scheme</b></i></p>
@@ -730,6 +831,11 @@ in this library are available for viewing/downloading. Here is the list:</p>
 		Algorithm.</li>
 	<li>The <a href="http://www.counterpane.com/blowfish.html">Blowfish</a> Encryption
 		Algorithm.</li>
+	<li>Data Encryption Standard <a href="http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf">
+		DES</a>.</li>
+	<li>A Stream Cipher Encryption Algorithm
+		<a href="http://www.mozilla.org/projects/security/pki/nss/draft-kaukonen-cipher-arcfour-03.txt">
+		ArcFour</a>.</li>
 </ul>
 
 <p>Test vectors, when not included in the reference documents, are made available by the
@@ -1036,17 +1142,52 @@ regenerate the binaries (jars) --if using ANT, by invoking:</p>
 <p>Doing so, causes a <code>SEED</code> value, based on the system current time
 in milliseconds, to be injected into the initial input.</p>
 
+
+<h3><a name="gcj-friendly">Building a GCJ-friendly version of GNU Crypto</a></h3>
+
+<p>This library can be built using one of three different methods:</p>
+<ul>
+	<li>With Apache ANT, yielding a <code>gnu-crypto.jar</code> with optionally a
+	<code>javax-crypto.jar</code> (which includes an implementation of the 
+	<code>javax.crypto</code> extension).  Implementations of the Algorithms in
+	this build are best suited for a JIT-like runtime interpreter.</li>
+
+	<li>Similar to the above, but using the GNU toolchain.  This version/process
+	is referred to as <i>non-GCJ-friendly</i> build, and finally</li>
+
+	<li>With the GNU toolchain, but yielding, in addition to standard jar files,
+	the <code>lib-gnu-crypto.so</code> and optionally a <code>lib-javax-crypto.so</code>
+	shared reloadable native libraries.  Implementations of the Algorithms that
+	get included and/or generated in this build, are optimised for the gcj (GNU
+	Compiler for Java), part of <a href="http://gcc.gnu.org">GCC (GNU Compiler
+	Collection)</a>.  If you decide to build with GCJ, you will version 3.1 or later.</li>
+</ul>
+
+<p>The details of how to build the desired deliverable(s) are part of the
+<code>INSTALL</code> document included in the distribution.</p>
+
+<p>In the next section, we include performance figures showing the added advantage
+(in term of speed) gained by using the latter build process.  The figures should be
+considered as an indication only of the capabilities offered by a tool such as the
+GCJ.  This is beacuse deciding on what options to pass to the <code>configure</code>
+task, depends on the target platform architecture as well as the version of the GCJ
+installed/used at the time.  Nevertheless, it should be obvious how much gain can be
+achieved by using <i>standard</i> algorithms (such as the RIPEMD, SHA-1 and MD5 message
+digests) generated by the <i>GCJ-friendly</i> build.</p>
+
+
 <h3><a name="Tools|outline">Tools</a></h3>
 
 <p>This library comes with many tools. This section describes the output of
 some of them.</p>
 
-
 <h4>CipherSpeed<a href="#testenv">*</a></h4>
 
 <p>A tool to measure the performance of the symmetric key block cipher
 implementations. The following is the result of processing 1,000,000 blocks
-with the algorithms of this library as of November 2002:</p>
+with the algorithms of this library as of January 2003. The first row of figures,
+for each algorithm, was obtained with Sun's JDK 1.4.1_01, while the second one was
+with gcj (GCC) 3.4 20030102 (experimental):</p>
 
 <table width="80%" align="center" border="1" cellpadding="4" cellspacing="0">
 	<tr>
@@ -1064,96 +1205,173 @@ with the algorithms of this library as of November 2002:</p>
 	</tr>
 
 	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Null cipher</b></i></p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">0.257</p></td>
-		<td width="15%"><p align="right">60,797.664</p></td>
-		<td width="15%"><p align="right">0.246</p></td>
-		<td width="16%"><p align="right">63,516.258</p></td>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Null cipher</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">0.258</p></td>
+		<td width="15%"><p align="right">60,562</p></td>
+		<td width="15%"><p align="right">0.249</p></td>
+		<td width="16%"><p align="right">62,751</p></td>
 	</tr>
 	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Rijndael</b></i></p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right"><b>0.973</b></p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right"><b>16,058.582</b></p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right"><b>1.007</b></p></td>
-		<td width="16%" bgcolor="#ffffcc"><p align="right"><b>15,516.386</b></p></td>
-	</tr>
-	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Square</b></i></p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">1.028</p></td>
-		<td width="15%"><p align="right">15,199.416</p></td>
-		<td width="15%"><p align="right">1.016</p></td>
-		<td width="16%"><p align="right">15,378.937</p></td>
-	</tr>
-	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Anubis</b></i></p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">1.154</p></td>
-		<td width="15%"><p align="right">13,539.860</p></td>
-		<td width="15%"><p align="right">1.144</p></td>
-		<td width="16%"><p align="right">13,658.216</p></td>
-	</tr>
-	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Serpent</b></i></p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">2.552</p></td>
-		<td width="15%"><p align="right">6,122.649</p></td>
-		<td width="15%"><p align="right">2.382</p></td>
-		<td width="16%"><p align="right">6,559.614</p></td>
-	</tr>
-	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Serpent (bit-slice)<sup>**</sup></b></i></p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">57.018</p></td>
-		<td width="15%"><p align="right">274.037</p></td>
-		<td width="15%"><p align="right">58.293</p></td>
-		<td width="16%"><p align="right">268.043</p></td>
-	</tr>
-	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Twofish</b></i></p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">6.216</p></td>
-		<td width="15%"><p align="right">2,513.675</p></td>
-		<td width="15%"><p align="right">6.220</p></td>
-		<td width="16%"><p align="right">2,512.058</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">0.195</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">80,128</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">0.203</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">76,970</p></td>
 	</tr>
 
 	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Khazad</b></i></p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">0.692</p></td>
-		<td width="15%"><p align="right">11,289.740</p></td>
-		<td width="15%"><p align="right">0.687</p></td>
-		<td width="16%"><p align="right">11,371.907</p></td>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Rijndael</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">1.108</p></td>
+		<td width="15%"><p align="right">14,102</p></td>
+		<td width="15%"><p align="right">1.096</p></td>
+		<td width="16%"><p align="right">14,256</p></td>
 	</tr>
 	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Blowfish</b></i></p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
-		<td width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
-		<td width="15%"><p align="right">0.517</p></td>
-		<td width="15%"><p align="right">15,111.218</p></td>
-		<td width="15%"><p align="right">0.491</p></td>
-		<td width="16%"><p align="right">15,911.405</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.090</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">14,335</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.159</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">13,481</p></td>
 	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Square</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.893</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">17,497</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.877</p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right">17,816</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">1.061</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">14,727</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">1.058</p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right">14,768</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Anubis</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">1.255</p></td>
+		<td width="15%"><p align="right">12,450</p></td>
+		<td width="15%"><p align="right">1.253</p></td>
+		<td width="16%"><p align="right">12,470</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.453</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">10,754</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.471</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">10,622</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Serpent</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">2.732</p></td>
+		<td width="15%"><p align="right">5,719</p></td>
+		<td width="15%"><p align="right">2.570</p></td>
+		<td width="16%"><p align="right">6,080</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.493</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">10,466</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.337</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">11,687</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Twofish</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">3.248</p></td>
+		<td width="15%"><p align="right">4,811</p></td>
+		<td width="15%"><p align="right">3.252</p></td>
+		<td width="16%"><p align="right">4,805</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.128</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">4,995</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.022</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">5,170</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Khazad</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">0.740</p></td>
+		<td width="15%"><p align="right">10,557</p></td>
+		<td width="15%"><p align="right">0.742</p></td>
+		<td width="16%"><p align="right">10,529</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.049</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">7,448</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.044</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">7,483</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Blowfish</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.534</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">14,630</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.526</p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right">14,853</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.647</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">12,075</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.633</p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right">12,342</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>DES</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td width="15%"><p align="right">0.909</p></td>
+		<td width="15%"><p align="right">8,595</p></td>
+		<td width="15%"><p align="right">0.908</p></td>
+		<td width="16%"><p align="right">8,604</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.083</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">7,214</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.085</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">7,200</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>TripleDES</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">192</p></td>
+		<td width="15%"><p align="right">2.675</p></td>
+		<td width="15%"><p align="right">2,921</p></td>
+		<td width="15%"><p align="right">2.644</p></td>
+		<td width="16%"><p align="right">2,955</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.390</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">2,305</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.407</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">2,293</p></td>
+	</tr>
+
 </table>
 
 <h4><b>HashSpeed<a href="#testenv">*</a></b></h4>
 
 <p>A tool to measure the performance of the message digest algorithm
 implementations. The following is the result of processing 100,000 blocks
-of 500 bytes each:</p>
+of 500 bytes each. Again, the first row is for figures obtained with Sun's JDK
+1.4.1_01, while the second is with GCJ 3.4 20030102 (experimental):</p>
 
 <table width="60%" align="center" border="1" cellpadding="4" cellspacing="0">
 	<tr>
@@ -1165,171 +1383,96 @@ of 500 bytes each:</p>
 	</tr>
 
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="20%" bgcolor="#ffffcc"><p align="right"><b>0.982</b></p></td>
-		<td width="20%" bgcolor="#ffffcc"><p align="right"><b>49,723.140</b></p></td>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%" bgcolor="#ffffcc"><p align="right">0.602</p></td>
+		<td width="20%" bgcolor="#ffffcc"><p align="right">81,110</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="20%"><p align="right">1.452</p></td>
-		<td width="20%"><p align="right">32,628.184</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.387</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">126,171</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%"><p align="right">0.817</p></td>
+		<td width="20%"><p align="right">59,765</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">160</p></td>
-		<td width="20%"><p align="right">2.018</p></td>
-		<td width="20%"><p align="right">24,196.297</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.674</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">72,445</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">160</p></td>
+		<td width="20%"><p align="right">2.282</p></td>
+		<td width="20%"><p align="right">21,397</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD128</b></i></p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="20%"><p align="right">2.265</p></td>
-		<td width="20%"><p align="right">21,557.670</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">1.225</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">39,860</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD128</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%"><p align="right">2.375</p></td>
+		<td width="20%"><p align="right">20,560</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">160</p></td>
-		<td width="20%"><p align="right">2.929</p></td>
-		<td width="20%"><p align="right">16,670.580</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.562</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">86,883</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">160</p></td>
+		<td width="20%"><p align="right">3.167</p></td>
+		<td width="20%"><p align="right">15,418</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
-		<td width="20%"><p align="right">10.786</p></td>
-		<td width="20%"><p align="right">4,526.991</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.858</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">56,909</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td width="20%"><p align="right">10.824</p></td>
+		<td width="20%"><p align="right">4,511</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="20%"><p align="right">35.898</p></td>
-		<td width="20%"><p align="right">1,360.191</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">9.515</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">5,132</p></td>
 	</tr>
+
+	<tr>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%"><p align="right">28.753</p></td>
+		<td width="20%"><p align="right">1,698</p></td>
+	</tr>
+	<tr>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">45.952</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">1,063</p></td>
+	</tr>
+
 </table>
 <br>
 
-<p><i><a name="testenv">*</a> The above results were obtained using a Java 2
-bytecode compiler and interpreter (build 1.3.1_06-b01), on an AMD Athlon<sup><font size="-2">
-<small>TM</small></font></sup> XP1700+ processor with 261,600KB physical RAM.</i></p>
-
-<p><i>** This library can be built as a shared reloadable library using GCJ (version 3.1
-or later) and the GNU make tools --see the <code>INSTALL</code> file in the <code>gcj</code>
-folder in the distribution for detailed instructions</i>.  Using these tools with:
-
-<ul>
-	<li>gcj (GCC) 3.3 20021101 (experimental),</li>
-	<li>same hardware as described above,</li>
-	<li>configuration generated with:
-		<p><code>GCJFLAGS="-march=athlon-xp -O3" ; .../configure</code>
-	</li>
-</ul>
-
-the following performance figures were obtained:
-</p>
-
-<p>&nbsp;</p>
-
-<table width="60%" align="center" border="1" cellpadding="4" cellspacing="0">
-	<tr>
-		<td width="32%" bgcolor="#ccccff"><p align="center"><i><b>Algorithm</b></i></p></td>
-		<td width="34%" bgcolor="#ccccff"><p align="center"><i><b>Encryption (KB/s)</b></i></p></td>
-		<td width="34%" bgcolor="#ccccff"><p align="center"><i><b>Decryption (KB/s)</b></i></p></td>
-	</tr>
-
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Null cipher</b></i></p></td>
-		<td width="34%"><p align="right">81,806.280</p></td>
-		<td width="34%"><p align="right">81,806.280</p></td>
-	</tr>
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Rijndael</b></i></p></td>
-		<td width="34%"><p align="right">11,446.887</p></td>
-		<td width="34%"><p align="right">11,539.882</p></td>
-	</tr>
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Square</b></i></p></td>
-		<td width="34%"><p align="right">8,249.735</p></td>
-		<td width="34%"><p align="right">8,267.196</p></td>
-	</tr>
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Anubis</b></i></p></td>
-		<td width="34%"><p align="right">10,843.165</p></td>
-		<td width="34%"><p align="right">10,941.877</p></td>
-	</tr>
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Serpent</b></i></p></td>
-		<td width="34%"><p align="right">8,680.556</p></td>
-		<td width="34%"><p align="right">7,197.144</p></td>
-	</tr>
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Serpent (bit-slice)</b></i></p></td>
-		<td width="34%"><p align="right">13,042.571</p></td>
-		<td width="34%"><p align="right">10,003.201</p></td>
-	</tr>
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Twofish</b></i></p></td>
-		<td width="34%"><p align="right">5,276.934</p></td>
-		<td width="34%"><p align="right">5,273.372</p></td>
-	</tr>
-
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Khazad</b></i></p></td>
-		<td width="34%"><p align="right">6,398.445</p></td>
-		<td width="34%"><p align="right">6,419.474</p></td>
-	</tr>
-	<tr>
-		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Blowfish</b></i></p></td>
-		<td width="34%"><p align="right">8,037.552</p></td>
-		<td width="34%"><p align="right">8,029.291</p></td>
-	</tr>
-</table>
-
-<p>and</p>
-
-<table width="60%" align="center" border="1" cellpadding="4" cellspacing="0">
-	<tr>
-		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Algorithm</b></i></p></td>
-		<td width="50%" bgcolor="#ccccff"><p align="center"><i><b>Speed (KB/s)</b></i></p></td>
-	</tr>
-
-	<tr>
-		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
-		<td width="50%"><p align="right">87,037.660</p></td>
-	</tr>
-	<tr>
-		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
-		<td width="50%"><p align="right">32,400.880</p></td>
-	</tr>
-	<tr>
-		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
-		<td width="50%"><p align="right">25,143.215</p></td>
-	</tr>
-	<tr>
-		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD128</b></i></p></td>
-		<td width="50%"><p align="right">19,664.970</p></td>
-	</tr>
-	<tr>
-		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
-		<td width="50%"><p align="right">14,774.017</p></td>
-	</tr>
-	<tr>
-		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
-		<td width="50%"><p align="right">4,945.622</p></td>
-	</tr>
-	<tr>
-		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
-		<td width="50%"><p align="right">1,707.576</p></td>
-	</tr>
-</table>
-
+<p><i><a name="testenv">*</a> The above results were obtained on an AMD Athlon<sup><font size="-2">
+<small>TM</small></font></sup> XP1700+ processor with 512MB physical RAM.
+<code>GCJFLAGS="-march=athlon-xp -O2"</code> was specified with <code>./autogen.sh</code> when
+building a GCJ-friendly version of this library.</i></p>
 
 <h4><b>Ent</b></h4>
 
@@ -1361,10 +1504,10 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD128</b></i></p></td>
-		<td width="11%"><p align="right">771</p></td>
+		<td width="11%"><p align="right">677</p></td>
 		<td width="11%"><p align="right">0.500051</p></td>
 		<td width="11%"><p align="right">0.010133</p></td>
-		<td width="11%"><p align="right">0.086130</p></td>
+		<td width="11%"><p align="right">0.086129</p></td>
 		<td width="11%"><p align="right">50</p></td>
 		<td width="11%"><p align="right">3.138669</p></td>
 		<td width="11%"><p align="right">0.09</p></td>
@@ -1372,7 +1515,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 	</tr>
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
-		<td width="11%"><p align="right">961</p></td>
+		<td width="11%"><p align="right">862</p></td>
 		<td width="11%"><p align="right">0.500287</p></td>
 		<td width="11%"><p align="right">0.057387</p></td>
 		<td width="11%"><p align="right">2.762627</p></td>
@@ -1381,31 +1524,34 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 		<td width="11%"><p align="right">0.09</p></td>
 		<td width="11%"><p align="right">0.000057</p></td>
 	</tr>
+
 	<tr valign="bottom">
 		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
-		<td width="11%"><p align="right">2,957</p></td>
+		<td width="11%"><p align="right">3,466</p></td>
 		<td width="11%"><p align="right">0.499731</p></td>
 		<td width="11%"><p align="right">0.053787</p></td>
-		<td width="11%"><p align="right">2.426880</p></td>
+		<td width="11%"><p align="right">2.426879</p></td>
 		<td width="11%"><p align="right">25</p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>3.141392</b></p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.01</b></p></td>
 		<td width="11%"><p align="right">-0.000196</p></td>
 	</tr>
+
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
-		<td width="11%"><p align="right">631</p></td>
+		<td width="11%"><p align="right">657</p></td>
 		<td width="11%"><p align="right">0.499954</p></td>
 		<td width="11%"><p align="right">0.009155</p></td>
-		<td width="11%"><p align="right">0.070314</p></td>
+		<td width="11%"><p align="right">0.070313</p></td>
 		<td width="11%"><p align="right">50</p></td>
 		<td width="11%"><p align="right">3.143475</p></td>
 		<td width="11%"><p align="right">0.06</p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>-0.000017</b></p></td>
 	</tr>
+
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
-		<td width="11%"><p align="right">701</p></td>
+		<td width="11%"><p align="right">694</p></td>
 		<td width="11%"><p align="right">0.500023</p></td>
 		<td width="11%"><p align="right">0.004578</p></td>
 		<td width="11%"><p align="right">0.017578</p></td>
@@ -1414,31 +1560,34 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 		<td width="11%"><p align="right">0.18</p></td>
 		<td width="11%"><p align="right">-0.000059</p></td>
 	</tr>
+
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
-		<td width="11%"><p align="right">781</p></td>
+		<td width="11%"><p align="right">654</p></td>
 		<td width="11%"><p align="right">0.499949</p></td>
 		<td width="11%"><p align="right">0.010252</p></td>
 		<td width="11%"><p align="right">0.088167</p></td>
 		<td width="11%"><p align="right">50</p></td>
-		<td width="11%"><p align="right">3.143315</p></td>
+		<td width="11%"><p align="right">3.143314</p></td>
 		<td width="11%"><p align="right">0.05</p></td>
 		<td width="11%"><p align="right">-0.000085</p></td>
 	</tr>
+
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>UMAC-KDF</b></i></p></td>
-		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>411</b></p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>476</b></p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.500000</b></p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.000024</b></p></td>
-		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.000001</b></p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.000000</b></p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>75</b></p></td>
 		<td width="11%"><p align="right">3.136586</p></td>
 		<td width="11%"><p align="right">0.16</p></td>
 		<td width="11%"><p align="right">-0.000141</p></td>
 	</tr>
+
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>ICM</b></i></p></td>
-		<td width="11%"><p align="right">1,102</p></td>
+		<td width="11%"><p align="right">1,067</p></td>
 		<td width="11%"><p align="right">0.499945</p></td>
 		<td width="11%"><p align="right">0.010967</p></td>
 		<td width="11%"><p align="right">0.100900</p></td>
@@ -1447,16 +1596,29 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 		<td width="11%"><p align="right">0.07</p></td>
 		<td width="11%"><p align="right">-0.000349</p></td>
 	</tr>
+
 	<tr valign="bottom">
 		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
-		<td width="11%"><p align="right">731</p></td>
+		<td width="11%"><p align="right">742</p></td>
 		<td width="11%"><p align="right">0.499861</p></td>
 		<td width="11%"><p align="right">0.027847</p></td>
-		<td width="11%"><p align="right">0.650514</p></td>
+		<td width="11%"><p align="right">0.650513</p></td>
 		<td width="11%"><p align="right">50</p></td>
 		<td width="11%"><p align="right">3.139264</p></td>
 		<td width="11%"><p align="right">0.07</p></td>
 		<td width="11%"><p align="right">-0.000449</p></td>
+	</tr>
+
+	<tr valign="bottom">
+		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>ARCFour</b></i></p></td>
+		<td width="11%"><p align="right">435</p></td>
+		<td width="11%"><p align="right">0.499868</p></td>
+		<td width="11%"><p align="right">0.026417</p></td>
+		<td width="11%"><p align="right">0.585396</p></td>
+		<td width="11%"><p align="right">50</p></td>
+		<td width="11%"><p align="right">3.142903</p></td>
+		<td width="11%"><p align="right">0.04</p></td>
+		<td width="11%"><p align="right">0.000552</p></td>
 	</tr>
 </table>
 
@@ -1510,9 +1672,9 @@ exhibit serial correlation coefficients approaching <code>1</code>.</p>
 &lt;gnu-crypto-discuss@gnu.org&gt;</a>, and is used to discuss all aspects of
 GNU Crypto project.</p>
 
-<p>Announcements about GNU Crypto and other classpathx software are made on
-the low-volume <a href="mailto:gnu-crypto-announce@gnu.org">
-&lt;gnu-crypto-announce@gnu.org&gt;</a> mailing list.</p>
+<p>Announcements about GNU Crypto are made on the low-volume <a 
+href="mailto:gnu-crypto-announce@gnu.org">&lt;gnu-crypto-announce@gnu.org&gt;</a> 
+mailing list.</p>
 
 <p>For subscription information, see the mailing list info from the <a
 href="http://savannah.gnu.org/mail/?group_id=2998">project page</a>.</p>
@@ -1668,7 +1830,7 @@ the FSF.</p>
 href="mailto:webmasters@gnu.org">webmasters@gnu.org</a></em>, send other
 questions to <em><a href="mailto:gnu@gnu.org">gnu@gnu.org</a></em>.</p>
 
-<p>Copyright (C) 2001, 2002 Free Software Foundation, Inc., 59 Temple Place
+<p>Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc., 59 Temple Place
 - Suite 330, Boston, MA 02111, USA.</p>
 
 <p>Verbatim copying and distribution of this entire article is permitted in
@@ -1676,7 +1838,7 @@ any medium, provided this notice is preserved.</p>
 
 <hr>
 
-<p>Last Modified: <i>$Date: 2002/11/02 07:32:09 $</i></p>
+<p>Last Modified: <i>$Date: 2003/01/04 02:36:09 $</i></p>
 
 <p><br></p>
 
