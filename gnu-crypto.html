@@ -251,6 +251,8 @@ in terms of cryptographic algorithms:</p>
 			<p><b>Abstract</b></p>
 		</td>
 	</tr>
+
+	<!-- Symmetric-key block cipher algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
 			<p><b><i>Symmetric key block cipher</i></b></p>
@@ -413,6 +415,8 @@ in terms of cryptographic algorithms:</p>
 			to <code>128</code> bits, in 8-bit increments.</p>
 		</td>
 	</tr>
+
+	<!-- Modes of Operations algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
 			<p><b><i>Mode of operation</i></b></p>
@@ -559,6 +563,8 @@ in terms of cryptographic algorithms:</p>
 			few bits are added as are necessary to meet the formatting size requirement.</p>
 		</td>
 	</tr>
+
+	<!-- Hash algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
 			<p><b><i>Message digest (hash)</i></b></p>
@@ -676,6 +682,8 @@ in terms of cryptographic algorithms:</p>
 			<b>update applications away from MD2 whenever it is practical</b>.</p>
 		</td>
 	</tr>
+
+	<!-- MAC algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
 			<p><i><b>Message authentication code (MAC)</b></i></p>
@@ -773,6 +781,8 @@ in terms of cryptographic algorithms:</p>
 			described in Section 5 of its draft document.</p>
 		</td>
 	</tr>
+
+	<!-- PRNG algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
 			<p><i><b>Pseudo-random number generator (PRNG)</b></i></p>
@@ -871,6 +881,65 @@ in terms of cryptographic algorithms:</p>
 			IEEE P1363a) to facilitate implementation and integration into existing protocols.</p>
 		</td>
 	</tr>
+
+	<!-- SASL algorithms -->
+	<tr>
+		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
+			<p><i><b>Simple Authentication and Security Layer (SASL)</b></i></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<p><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2595.txt">PLAIN</a></p>
+		</td>
+		<td width="64%">
+			<p>Clear-text passwords are simple, interoperate with almost all existing
+			operating system authentication databases, and are useful for a smooth
+			transition to a more secure password-based authentication mechanism. The
+			drawback is that they are unacceptable for use over an unencrypted network
+			connection.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<p><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2245.txt">ANONYMOUS</a></p>
+		</td>
+		<td width="64%">
+			<p>The mechanism consists of a single message from the client to the server.
+			The client sends optional trace information in the form of a human readable
+			string. The trace information should take one of three forms: an Internet
+			email address, an opaque string which does not contain the <code>@</code>
+			character and can be interpreted by the system administrator of the client's
+			domain, or nothing.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<p><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2195.txt">CRAM-MD5</a></p>
+		</td>
+		<td width="64%">
+			<p>This mechanism has the advantage over some possible alternatives of not
+			requiring that the server maintain information about email <i>logins</i>
+			on a per-login basis. While mechanisms that do require such per-login
+			history records may offer enhanced security, protocols which may have
+			several connections between a given client and server open more or less
+			simultaneous, may make their implementation particularly challenging.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<p><a href="http://www.ietf.org/internet-drafts/draft-burdis-cat-srp-sasl-08.txt">SRP</a></p>
+		</td>
+		<td width="64%">
+			<p>The Secure Remote Password (SRP) is a password-based, zero-knowledge,
+			authentication and key-exchange protocol developed by <i>Thomas Wu</i>. It
+			has good performance, is not plaintext-equivalent and maintains perfect
+			forward secrecy. It provides authentication (optionally mutual authentication)
+			and the negotiation of a shared context key.</p>
+		</td>
+	</tr>
+
+	<!-- Experimental algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
 			<p><i><b>Experimental implementations</b></i></p>
@@ -961,12 +1030,22 @@ in this library are available for viewing/downloading. Here is the list:</p>
 	<li>A Stream Cipher Encryption Algorithm
 		<a href="http://www.mozilla.org/projects/security/pki/nss/draft-kaukonen-cipher-arcfour-03.txt">
 		ArcFour</a>.</li>
-	<li><a href="http://www.calyptix.com/files/haval-paper.pdf">HAVAL</a>: A One-Way
-		Hashing Algorithm with Variable Length of Output (Extended Abstract).</li>
 	<li><a href="http://www.cs.technion.ac.il/~biham/Reports/Tiger/">Tiger</a>: A Fast New
 		Cryptographic Hash Function.</li>
+
+	<li><a href="http://www.calyptix.com/files/haval-paper.pdf">HAVAL</a>: A One-Way
+		Hashing Algorithm with Variable Length of Output (Extended Abstract).</li>
 	<li><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2144.txt">RFC-2144</a>: The CAST-128
 		Encryption Algorithm.</li>
+
+	<li><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2144.txt">RFC-2595</a>:
+		Using TLS with IMAP, POP3 and ACAP.</li>
+	<li><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2144.txt">RFC-2245</a>:
+		Anonymous SASL Mechanism</li>
+	<li><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2144.txt">RFC-2195</a>:
+		IMAP/POP AUTHorize Extension for Simple Challenge/Response.</li>
+	<li><a href="http://www.ietf.org/internet-drafts/draft-burdis-cat-srp-sasl-08.txt">
+		SRP Authentication Mechanism</a></li>
 </ul>
 
 <p>Test vectors, when not included in the reference documents, are made available by the
@@ -2046,7 +2125,7 @@ any medium, provided this notice is preserved.</p>
 
 <hr>
 
-<p>Last Modified: <i>$Date: 2003/06/21 11:21:48 $</i></p>
+<p>Last Modified: <i>$Date: 2003/06/22 02:41:23 $</i></p>
 
 <p>
 <a href="http://validator.w3.org/check/referer">
