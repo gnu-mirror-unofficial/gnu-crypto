@@ -1,0 +1,1214 @@
+From nferrier@tapsellferrier.co.uk  Mon Dec  3 11:49:17 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Mon, 3 Dec 2001 11:49:17 -0000
+Subject: [Classpathx-crypto] Re: gnu.crypto web page
+References: <5.0.0.25.1.20011203223737.00a4d800@mail.syd.fl.net.au>
+Message-ID: <008701c17bf0$8a7cd990$0e07a8c0@internal.mondus.com>
+
+> i would appreciate it if you can have a look at the gnu.crypto web page
+> (with almost all related links) to check if it's conformant with GNU and
+> Classpathx norms.
+
+It's really well designed, I like it.
+
+Normally, GNU prefer to use just the HTML 2.0 standard. This ensures that
+pages can be read even on text mode browsers like lynx.
+
+I notice you've used DIVs and so on... any chance you could convert these to
+something a bit more HTML 2.0?
+
+If you can't I suggest you do this:
+
+- create a directory for crypto on the classpathX website (follow the
+example of JAXP).
+- subdivide the webpage into separate sections.
+- ensure the main crypto index page is HTML 2.0 compliant.
+
+
+> i didnt check in the javadoc api yet, nor the release.  the javadoc stuff,
+> will go in the api/ folder.  i'm not quite sure yet where the release will
+> go or if a copy should be also checked-in with this page.
+
+The release will go on the ftp server. If you let me know about when you're
+ready to release then I will check out your code and build it (as a final
+sanity check) and put it up on the ftp server.
+
+That's why you need a target to produce the tar file (see the gnu coding
+standards for info).
+
+
+
+> finally what probably is missing is a link from the classpathx main page
+to
+> this one.  should i be doing this or should i leave it to you?
+
+Leave it to me.. when we've resolved this HTML version issue I'll put the
+link in.
+
+
+This is all coming together really well! Well done!
+
+
+Nic
+
+
+
+
+From nferrier@tapsellferrier.co.uk  Mon Dec  3 13:05:52 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Mon, 3 Dec 2001 13:05:52 -0000
+Subject: [Classpathx-crypto] Re: gnu.crypto web page
+References: <5.0.0.25.1.20011203223737.00a4d800@mail.syd.fl.net.au> <5.0.0.25.1.20011203234544.00a59eb0@mail.syd.fl.net.au>
+Message-ID: <009601c17bfb$4c8532d0$0e07a8c0@internal.mondus.com>
+
+> i got rid of the divs and other artifices i think are not html2.0 
+> friendly.  have a look at it now.
+
+Excellent. I'll put the link in from the main page tonight.
+
+
+Nic
+
+
+
+
+From nferrier@tf1.tapsellferrier.co.uk  Mon Dec  3 23:31:36 2001
+From: nferrier@tf1.tapsellferrier.co.uk (Nic Ferrier)
+Date: Mon, 03 Dec 2001 23:31:36 +0000
+Subject: [Classpathx-crypto] pdf files
+Message-ID: <E16B2Yi-000178-00@tf1.tapsellferrier.co.uk>
+
+You guys have a few pdf files on your site.
+
+Are there free software tools for reading pdfs?
+
+Are there alternatives to pdf files? postscript would be better
+because there are free software tools for displaying them.
+
+Of course, info/TeX would be best.
+
+
+Nic
+
+
+From david-b@pacbell.net  Tue Dec  4 04:42:44 2001
+From: david-b@pacbell.net (David Brownell)
+Date: Mon, 03 Dec 2001 20:42:44 -0800
+Subject: [Classpathx-crypto] quick comments on gnu.crypto code
+Message-ID: <077501c17c7e$1e444a40$6800000a@brownell.org>
+
+Hi,
+
+I recently grabbed a copy of the code.  No comments yet on
+the real guts -- though from the look of it I won't have many
+complaints, clean and regular crypto code is usually a very
+good sign!  So here's a random set of questions and comments
+that came to mind as I skimmed what CVS told me.
+
+Some peripheral points first leaped out at me:
+
+    - Coding style ... three space indents?  No tabs?  And
+      Hungarian "IamAnInterface" notation?  Yoiks!  I don't
+      like even one of those, sorry.
+
+    - PDFs in the docs.  DocBook XML where possible,
+      please.  Though since these are original specs, I suspect
+      that's not a real option.  Does CVS need to have those?
+      (I hate TexInfo equally ... DocBook at least turns into
+      good HTML, though the MathML output may be a
+      bit lacking just now.)
+
+    - javadoc.  The links to the PDFs were all broken, and
+      there were no "package.html" files to describe why each
+      package is there and how to use it.
+
+    - License ... LGPL, not "GPL + library exception".  Maybe
+      not an immediate issue, but static linking will increasingly
+      matter.
+
+OK, non-peripheral points:  functionality.  Seems to be a strange
+selection in this first code drop.
+
+    - Seems that widely used hashes (MD5, SHA1; maybe MD2)
+      aren't there.
+
+    - Block ciphers.  Again, common ones are not there yet.
+      DES, 3DES-EDE; likely Blowfish; maybe CAST128.
+
+    - And of less immediate concern (to me), stream ciphers.
+      ARCFOUR, maybe AES in stream modes, and so on.
+
+    - Looks like the factory always runs selftests on whatever
+      it returns. (gnu.crypto.cipher.CipherFactory).  That should
+      be conditionalized on a "if doing development" static final
+      boolean flag, so it normally doesn't happen.
+
+    - No public key crypto support (RSA, D-H, etc) or digital
+      signature support.  Again, why?  The PKCS7 doc there
+      strongly suggests it'll be added, along with lots of BER/DER
+      style utilities for cert and public/private key management ...
+
+That's just first reactions from a look at the code.  Of course
+I like the fact that ciphers are interfaces and there's none of
+that silly overhead of a java security layer to slow down calls
+past abstract method overhead, so from that perspective the
+API framework starts out immediately on the right foot.  And
+since secure key storage is a quick hack [NOT!] I can easily
+understand adding it later, after some hardware hooks have
+been reasonably prototyped.
+
+A lot of that is just wondering what the direction for this code
+is expected to be.  I'll assume that what's there is a good start,
+but since it doesn't do what I'd first need to be done ... :)
+
+Not having support for today's most widely used cryptographic
+algorithms seems to me like it'll be an adoption problem, and I
+hope the plan is to make sure that several of those algorithms
+get added before the first (beta?) release.
+
+- Dave
+
+p.s. I'm not currently subscribed to the list, so please cc me
+    on any responses.
+
+
+
+
+
+From raif@fl.net.au  Tue Dec  4 08:03:28 2001
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Tue, 04 Dec 2001 19:03:28 +1100
+Subject: [Classpathx-crypto] pdf files
+In-Reply-To: <E16B2Yi-000178-00@tf1.tapsellferrier.co.uk>
+Message-ID: <5.0.0.25.1.20011204190014.00a586c0@mail.syd.fl.net.au>
+
+At 11:31 PM 12/3/01 +0000, Nic Ferrier wrote:
+
+>You guys have a few pdf files on your site.
+>
+>Are there free software tools for reading pdfs?
+
+the acrobat reader to my knowledge is free (see 
+<http://www.adobe.com/products/acrobat/readstep.html>).
+
+
+>Are there alternatives to pdf files? postscript would be better
+>because there are free software tools for displaying them.
+
+these are, to my recollection, files published by the designers of the 
+algorithm, not us.
+
+
+>Of course, info/TeX would be best.
+
+of course.
+
+today we're using/publishing in html.  is that ok?
+
+
+cheers;
+rsn
+
+
+
+From raif@fl.net.au  Tue Dec  4 08:37:04 2001
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Tue, 04 Dec 2001 19:37:04 +1100
+Subject: [Classpathx-crypto] quick comments on gnu.crypto code
+In-Reply-To: <077501c17c7e$1e444a40$6800000a@brownell.org>
+Message-ID: <5.0.0.25.1.20011204191021.00a37d30@mail.syd.fl.net.au>
+
+At 08:42 PM 12/3/01 -0800, David Brownell wrote:
+>Hi,
+>
+>I recently grabbed a copy of the code.  No comments yet on
+>the real guts -- though from the look of it I won't have many
+>complaints, clean and regular crypto code is usually a very
+>good sign!  So here's a random set of questions and comments
+>that came to mind as I skimmed what CVS told me.
+>
+>Some peripheral points first leaped out at me:
+>
+>     - Coding style ... three space indents?  No tabs?  And
+>       Hungarian "IamAnInterface" notation?  Yoiks!  I don't
+>       like even one of those, sorry.
+
+
+
+>    - PDFs in the docs.  DocBook XML where possible,
+>       please.  Though since these are original specs, I suspect
+>       that's not a real option.  Does CVS need to have those?
+>       (I hate TexInfo equally ... DocBook at least turns into
+>       good HTML, though the MathML output may be a
+>       bit lacking just now.)
+
+as i mentioned in an earlier message, those documents are published by the 
+designers not us.
+
+
+>    - javadoc.  The links to the PDFs were all broken, and
+>       there were no "package.html" files to describe why each
+>       package is there and how to use it.
+
+these are in the process of being fixed.  before the existence of a web 
+page, the idea was to bundle and include them in the release.  i'm not 
+doing this anymore;  instead they will be pointing to the web page.  this 
+has the added advantage of making the release smaller in size.
+
+
+>    - License ... LGPL, not "GPL + library exception".  Maybe
+>       not an immediate issue, but static linking will increasingly
+>       matter.
+
+again.  this is being changed 'as-we-speak'.
+
+
+>OK, non-peripheral points:  functionality.  Seems to be a strange
+>selection in this first code drop.
+>
+>     - Seems that widely used hashes (MD5, SHA1; maybe MD2)
+>       aren't there.
+
+well;  if you have implementations of them that you'd like to contribute 
+then pls ;-)
+
+
+>    - Block ciphers.  Again, common ones are not there yet.
+>       DES, 3DES-EDE; likely Blowfish; maybe CAST128.
+
+same thing.
+
+
+>    - And of less immediate concern (to me), stream ciphers.
+>       ARCFOUR, maybe AES in stream modes, and so on.
+
+same thing for arc4.  i'm expecting, with the first release to start 
+receiving these common algorithms.
+
+unfortunately the implementations i've already done for these are under a 
+different license and hence i cannot include them here.  somebody else will 
+have to step forward.
+
+
+>    - Looks like the factory always runs selftests on whatever
+>       it returns. (gnu.crypto.cipher.CipherFactory).  That should
+>       be conditionalized on a "if doing development" static final
+>       boolean flag, so it normally doesn't happen.
+
+noted.  i'd like to open a discussion thread on 'how we can ensure a degree 
+of trust in the code'.  the self-test approach is far from being optimal 
+and hence i'm looking forward to a fruitful brain-storming exchange.
+
+
+>    - No public key crypto support (RSA, D-H, etc) or digital
+>       signature support.  Again, why?  The PKCS7 doc there
+>       strongly suggests it'll be added, along with lots of BER/DER
+>       style utilities for cert and public/private key management ...
+
+re. PK algos, the same as above.
+
+re. ASN.1 stuff, i'm already the maintainer/sole-programmer of a 
+sourceforge project (cryptix-asn1) that addresses that and is under a 
+BSD-like license (see <http://sourceforge.net/projects/cryptix-asn1>).  why 
+did i mention this?  because all DER related stuff, in gnu.crypto can 
+extend/use classes generated by the cryptix-asn1 library.
+
+
+>That's just first reactions from a look at the code.  Of course
+>I like the fact that ciphers are interfaces and there's none of
+>that silly overhead of a java security layer to slow down calls
+>past abstract method overhead, so from that perspective the
+>API framework starts out immediately on the right foot.
+
+good to hear :-)
+
+
+>   And
+>since secure key storage is a quick hack [NOT!] I can easily
+>understand adding it later, after some hardware hooks have
+>been reasonably prototyped.
+
+i've done in the past (JNI hooks) to plug native implementations of 
+algorithms with the first jce beta with an open-source project, but that 
+code never got published.  the justification at the time was that pure java 
+code was as fast, and in some instances faster, than using the native 
+code.  while this is true if you have a choice between the two, i take your 
+point that sometimes you dont.  i will add that to the TODO list.
+
+
+>A lot of that is just wondering what the direction for this code
+>is expected to be.  I'll assume that what's there is a good start,
+>but since it doesn't do what I'd first need to be done ... :)
+
+i hoped the README explained where we're going.  this is the start.  the 
+next step is to build the adapters that will allow this library to _also_ 
+work the jca/jce way hence offering programmers a _choice_.
+
+i'm confident that people/developers will join in, contributing 
+implementations of the "every-day" algorithms soon.  in the meantime if you 
+and/or others know of the existence of java implementations out there of 
+those algorithms with a licence that would allow to re-work them under the 
+XGPL i'm happy to do that myself.
+
+
+>Not having support for today's most widely used cryptographic
+>algorithms seems to me like it'll be an adoption problem, and I
+>hope the plan is to make sure that several of those algorithms
+>get added before the first (beta?) release.
+
+my hope is that contributors will come forward _when_ it is released.  i'm 
+counting on the "snowball" effect :-)
+
+
+cheers;
+rsn
+
+
+>- Dave
+>
+>p.s. I'm not currently subscribed to the list, so please cc me
+>     on any responses.
+
+
+
+From olivier@zipworld.com.au  Tue Dec  4 11:23:40 2001
+From: olivier@zipworld.com.au (Olivier LF)
+Date: Tue, 4 Dec 2001 22:23:40 +1100
+Subject: [Classpathx-crypto] pdf files
+In-Reply-To: <E16B2Yi-000178-00@tf1.tapsellferrier.co.uk>
+References: <E16B2Yi-000178-00@tf1.tapsellferrier.co.uk>
+Message-ID: <20011204222340.C1151@zipworld.com.au>
+
+On Mon, Dec 03, 2001 at 11:31:36PM +0000, Nic Ferrier wrote:
+> 
+> You guys have a few pdf files on your site.
+> 
+> Are there free software tools for reading pdfs?
+> 
+> Are there alternatives to pdf files? postscript would be better
+> because there are free software tools for displaying them.
+> 
+
+Ghostscript can read both ps and pdf files. All GNU/Linux system seams
+to have it with a handfull of front ends, "gnome-gv" to cite only one.
+pdf are a lot smaller that ps, that's at least an advantage also
+gzipped postscripts are about the same size as pdf.
+
+> Of course, info/TeX would be best.
+
+I'd like to look at docbook. I've used LaTeX for years but I'd rather
+investigate docbook. Do you have any experience with it?
+I am quite sure I read somewhere that gcj as some tools to convert
+javadoc to texinfo, have you heard of that?
+
+Olivier
+
+-- 
+----------------------------------------------------------------------
+Olivier Louchart-Fletcher
+Email: olivier@zipworld.com.au
+
+
+From nferrier@tapsellferrier.co.uk  Tue Dec  4 11:36:01 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Tue, 4 Dec 2001 11:36:01 -0000
+Subject: [Classpathx-crypto] pdf files
+References: <5.0.0.25.1.20011204190014.00a586c0@mail.syd.fl.net.au>
+Message-ID: <002e01c17cb7$da22fcf0$0e07a8c0@internal.mondus.com>
+
+> >You guys have a few pdf files on your site.
+> >Are there free software tools for reading pdfs?
+>
+> the acrobat reader to my knowledge is free (see
+> <http://www.adobe.com/products/acrobat/readstep.html>).
+
+No. The acrobat reader is free as in beer. I meant free-software.
+
+
+> >Are there alternatives to pdf files? postscript would be better
+> >because there are free software tools for displaying them.
+>
+> these are, to my recollection, files published by the designers of the
+> algorithm, not us.
+
+What are the redistribution terms? You may not be able to keep these on the
+site, linking to them elsewhere might be ok though.
+
+
+Nic
+
+
+
+From nferrier@tapsellferrier.co.uk  Tue Dec  4 11:40:37 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Tue, 4 Dec 2001 11:40:37 -0000
+Subject: [Classpathx-crypto] pdf files
+References: <E16B2Yi-000178-00@tf1.tapsellferrier.co.uk> <20011204222340.C1151@zipworld.com.au>
+Message-ID: <003501c17cb8$7e579420$0e07a8c0@internal.mondus.com>
+
+> > Of course, info/TeX would be best.
+>
+> I'd like to look at docbook. I've used LaTeX for years but I'd rather
+> investigate docbook. Do you have any experience with it?
+> I am quite sure I read somewhere that gcj as some tools to convert
+> javadoc to texinfo, have you heard of that?
+
+I have used Docbook, and it is really good.
+
+However, docbook doesn't yet have an info maker and info is still the chosen
+doc platform for GNU. There's good reason for that, docbook may be the new
+and sexy thing but it still doesn't have the widespread support of info. And
+in many ways info is superior (it's lighter for one thing).
+
+The GNU project is working on a javadoc -> info tool. That is being done by
+the Classpath Tools project, which is part of Classpath.
+
+Hopefully we will eventually have docbook -> info too, I'm sure someone is
+working on it somewhere.
+
+
+Nic
+
+
+
+From raif@fl.net.au  Tue Dec  4 11:52:59 2001
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Tue, 04 Dec 2001 22:52:59 +1100
+Subject: [Classpathx-crypto] pdf files
+In-Reply-To: <002e01c17cb7$da22fcf0$0e07a8c0@internal.mondus.com>
+References: <5.0.0.25.1.20011204190014.00a586c0@mail.syd.fl.net.au>
+Message-ID: <5.0.0.25.1.20011204225002.00a90cf0@mail.syd.fl.net.au>
+
+At 11:36 AM 12/4/01 +0000, Nic Ferrier wrote:
+> > >You guys have a few pdf files on your site.
+> > >Are there free software tools for reading pdfs?
+> >
+> > the acrobat reader to my knowledge is free (see
+> > <http://www.adobe.com/products/acrobat/readstep.html>).
+>
+>No. The acrobat reader is free as in beer. I meant free-software.
+
+Olivier answered this one already.
+
+
+> > >Are there alternatives to pdf files? postscript would be better
+> > >because there are free software tools for displaying them.
+> >
+> > these are, to my recollection, files published by the designers of the
+> > algorithm, not us.
+>
+>What are the redistribution terms? You may not be able to keep these on the
+>site, linking to them elsewhere might be ok though.
+
+dont know.  i'll have to ask.  if i get the authors' permission i guess i 
+can keep them where they are. ok?
+
+the rationale for this is that these things tend to disappear after a time 
+from the net and links become forever broken.  they are included here so 
+the alert/curious reader/user can verify the code against the designer's 
+specifications.
+
+
+cheers;
+rsn
+
+
+
+From nferrier@tapsellferrier.co.uk  Tue Dec  4 11:56:09 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Tue, 4 Dec 2001 11:56:09 -0000
+Subject: [Classpathx-crypto] quick comments on gnu.crypto code
+References: <077501c17c7e$1e444a40$6800000a@brownell.org>
+Message-ID: <006701c17cba$aa233580$0e07a8c0@internal.mondus.com>
+
+>     - Coding style ... three space indents?  No tabs?  And
+>       Hungarian "IamAnInterface" notation?  Yoiks!  I don't
+>       like even one of those, sorry.
+
+I agree with Dave, but the coding standard is relaxed here at ClasspathX. We
+don't force people to use the GNU style (though I might in the future do a
+batch update of the CVS with a style enforcer I will do it only with
+people's agreement).
+
+I hate hungarian for java code. It just seems dumb to me... but I'm not
+prepared to force you guys to change it.
+
+>
+>     - PDFs in the docs.  DocBook XML where possible,
+>       please.  Though since these are original specs, I suspect
+>       that's not a real option.  Does CVS need to have those?
+>       (I hate TexInfo equally ... DocBook at least turns into
+>       good HTML, though the MathML output may be a
+>       bit lacking just now.)
+
+Actually Dave, it's:  "info where possible please".
+
+When there is an info generator for docbook I'll be happy for people to have
+their documentation in docbook, until then I meerly tolerate it   /8->
+
+I don't think the PDFs are generated by the project. If they are we must use
+something else. We might still have to ditch them and link to them elsewhere
+(which seems sensible anyway, if they're someone else's files).
+
+
+>     - javadoc.  The links to the PDFs were all broken, and
+>       there were no "package.html" files to describe why each
+>       package is there and how to use it.
+
+We'll have to think about the "links to PDFs" in light of my comments above.
+
+
+>     - License ... LGPL, not "GPL + library exception".  Maybe
+>       not an immediate issue, but static linking will increasingly
+>       matter.
+
+All code should be GPL + library exception.
+
+
+Nic
+
+
+
+From nferrier@tapsellferrier.co.uk  Tue Dec  4 12:02:11 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Tue, 4 Dec 2001 12:02:11 -0000
+Subject: [Classpathx-crypto] quick comments on gnu.crypto code
+References: <5.0.0.25.1.20011204191021.00a37d30@mail.syd.fl.net.au>
+Message-ID: <006e01c17cbb$81c478f0$0e07a8c0@internal.mondus.com>
+
+> my hope is that contributors will come forward _when_ it is released.  i'm
+> counting on the "snowball" effect :-)
+
+Absolutely... release early and often...
+
+Having said that the most popular ciphers are the ones that will encourage
+the most use.
+
+
+Nic
+
+
+
+From nferrier@tapsellferrier.co.uk  Tue Dec  4 12:06:00 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Tue, 4 Dec 2001 12:06:00 -0000
+Subject: [Classpathx-crypto] pdf files
+References: <5.0.0.25.1.20011204190014.00a586c0@mail.syd.fl.net.au> <5.0.0.25.1.20011204225002.00a90cf0@mail.syd.fl.net.au>
+Message-ID: <008f01c17cbc$0a4e6410$0e07a8c0@internal.mondus.com>
+
+> >What are the redistribution terms? You may not be able to keep these on
+the
+> >site, linking to them elsewhere might be ok though.
+>
+> dont know.  i'll have to ask.  if i get the authors' permission i guess i
+> can keep them where they are. ok?
+>
+> the rationale for this is that these things tend to disappear after a time
+> from the net and links become forever broken.  they are included here so
+> the alert/curious reader/user can verify the code against the designer's
+> specifications.
+
+
+I understand your reasons... I'm just nervous of distributing PDF files (a
+proprietary format) from non-GNU sources.
+
+I hope you understand.
+
+If you can get the author's permission I will _consider_ allowing their
+hosting on the GNU site. If not, we will have to manage the movement of the
+files (perhaps by meerly quoting them).
+
+
+Nic
+
+
+
+From raif@fl.net.au  Tue Dec  4 12:22:07 2001
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Tue, 04 Dec 2001 23:22:07 +1100
+Subject: [Classpathx-crypto] pdf files
+In-Reply-To: <008f01c17cbc$0a4e6410$0e07a8c0@internal.mondus.com>
+References: <5.0.0.25.1.20011204190014.00a586c0@mail.syd.fl.net.au>
+ <5.0.0.25.1.20011204225002.00a90cf0@mail.syd.fl.net.au>
+Message-ID: <5.0.0.25.1.20011204231055.00a9baa0@mail.syd.fl.net.au>
+
+At 12:06 PM 12/4/01 +0000, Nic Ferrier wrote:
+> > >What are the redistribution terms? You may not be able to keep these on
+>the
+> > >site, linking to them elsewhere might be ok though.
+> >
+> > dont know.  i'll have to ask.  if i get the authors' permission i guess i
+> > can keep them where they are. ok?
+> >
+> > the rationale for this is that these things tend to disappear after a time
+> > from the net and links become forever broken.  they are included here so
+> > the alert/curious reader/user can verify the code against the designer's
+> > specifications.
+>
+>
+>I understand your reasons... I'm just nervous of distributing PDF files (a
+>proprietary format) from non-GNU sources.
+>
+>I hope you understand...
+
+no problems.  i'll remove those files and replace them with links to their 
+current site.
+
+
+cheers;
+rsn
+
+
+
+From nferrier@tapsellferrier.co.uk  Tue Dec  4 12:29:34 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Tue, 4 Dec 2001 12:29:34 -0000
+Subject: [Classpathx-crypto] pdf files
+References: <5.0.0.25.1.20011204190014.00a586c0@mail.syd.fl.net.au> <5.0.0.25.1.20011204225002.00a90cf0@mail.syd.fl.net.au> <5.0.0.25.1.20011204231055.00a9baa0@mail.syd.fl.net.au>
+Message-ID: <00a801c17cbf$54d49420$0e07a8c0@internal.mondus.com>
+
+> no problems.  i'll remove those files and replace them with links to their
+> current site.
+
+If you're happy to do that it seems to be the best solution.
+
+
+Nic
+
+
+
+From david-b@pacbell.net  Tue Dec  4 18:38:56 2001
+From: david-b@pacbell.net (David Brownell)
+Date: Tue, 04 Dec 2001 10:38:56 -0800
+Subject: [Classpathx-crypto] quick comments on gnu.crypto code
+References: <077501c17c7e$1e444a40$6800000a@brownell.org>
+ <006701c17cba$aa233580$0e07a8c0@internal.mondus.com>
+Message-ID: <081d01c17cf2$ef269ea0$6800000a@brownell.org>
+
+> >     - PDFs in the docs.  DocBook XML where possible,
+> >       please.  Though since these are original specs, I suspect
+> >       that's not a real option.  Does CVS need to have those?
+> >       (I hate TexInfo equally ... DocBook at least turns into
+> >       good HTML, though the MathML output may be a
+> >       bit lacking just now.)
+> 
+> Actually Dave, it's:  "info where possible please".
+
+OK, so I'm a heretic who things "info" should go away in favor
+of a much more widely adopted standard, "HTML" ... :)
+
+I guess I'm content to have the PDFs just survive as links
+on the web page.  Does that mean they'll move out of the
+project CVS?
+
+- Dave
+
+
+
+
+From olivier@zipworld.com.au  Thu Dec  6 11:14:40 2001
+From: olivier@zipworld.com.au (Olivier LF)
+Date: Thu, 6 Dec 2001 22:14:40 +1100
+Subject: [Classpathx-crypto] quick comments on gnu.crypto code
+In-Reply-To: <077501c17c7e$1e444a40$6800000a@brownell.org>
+References: <077501c17c7e$1e444a40$6800000a@brownell.org>
+Message-ID: <20011206221440.A1292@zipworld.com.au>
+
+On Mon, Dec 03, 2001 at 08:42:44PM -0800, David Brownell wrote:
+>     - Coding style ... three space indents?  No tabs?
+
+3 spaces is not so unusual, it does save some precious space if you want
+to keep your code within the common 80 columns range. 
+
+As for tabs, space is the lowest common denominator between editors.
+The brain dead ones display 8 spaces for TAB!!! and the good ones can 
+always be configured to emulate tabs with spaces.
+Many projects require "space only" for that reason actually (Apache projects). 
+It ensures you'll be able to work on the source no matter how modest 
+your system and editor is. Back 6 years ago I used to edit files from 
+home with a Minitel (A very cheap text terminal you get with the phone 
+in France). It only supported line editing with "ed", those where the days...
+
+Olivier
+
+-- 
+----------------------------------------------------------------------
+Olivier Louchart-Fletcher
+Email: olivier@zipworld.com.au
+
+
+From david-b@pacbell.net  Thu Dec  6 21:19:08 2001
+From: david-b@pacbell.net (David Brownell)
+Date: Thu, 06 Dec 2001 13:19:08 -0800
+Subject: [Classpathx-crypto] quick comments on gnu.crypto code
+References: <077501c17c7e$1e444a40$6800000a@brownell.org>
+ <20011206221440.A1292@zipworld.com.au>
+Message-ID: <0d3001c17e9b$a506c700$6800000a@brownell.org>
+
+> >     - Coding style ... three space indents?  No tabs?
+> 
+> 3 spaces is not so unusual, it does save some precious space if you want
+> to keep your code within the common 80 columns range. 
+
+And the counter-argument is that "four spaces" is much more common,
+doesn't fight against standard 8-space tabstops, and is still "nicer" than
+"indent == tab" for cases where nested code constructs "must" be used.
+
+And I'll note that Linux coding style certainly says "indent == tab", and
+notes that when that's awkward, the algorithm is the problem, not the
+coding standard.  That tends to be very true, in my observation.  Kernel
+code, like crypto code, is a domain where "simple is better" normally wins
+against the more "deadline oriented" application domains where "done
+now is better" wins ... it's "done now" that argues against restructuring
+code to get rid of excessive nesting/indentation, and argues for narrow
+indents.  (80/4 = max 20 levels/line, 80/3 = 26, either is too complex...)
+
+Not that I want to start such style flamewars ... on the other hand
+I think it's completely reasonable to say "three spaces" or "no tabs"
+are guidelines that I've never subscribed to.  And I'll criticize them
+every time it comes up, particularly when they're added as exceptions
+to guidelines that are otherwise largely reasonable, since such style
+guidelines do add up to 
+
+
+> As for tabs, space is the lowest common denominator between editors.
+> The brain dead ones display 8 spaces for TAB!!! and the good ones can 
+> always be configured to emulate tabs with spaces.
+
+Displaying 8 spaces for tabstops is not the same as storing them
+that way.  Some editors will silently correct spelling "mistakes"
+for you too, and store the results.  I don't like either behavior.  In
+both cases using a Real Text Editor is a reasonable requirement.
+
+Think of tabs as an 8-to-1 compression scheme built in to the
+standard text file format.
+
+
+> Many projects require "space only" for that reason actually (Apache projects). 
+
+The original motivation I heard for that was that a number of
+early contributors didn't want to switch from Win32 editors which,
+to this day, are often unable to handle tabbing correctly.
+(MSFT discourages widespread use of monospaced fonts
+and "ASCII art" tools.  Never mind that interop with other
+operating systems gets worse that way.)
+
+Many non-Apache projects still expect that Real Text Editors
+will be used ... which know how to handle tabs! :)
+
+- Dave
+
+
+
+
+From J.Frazur@finnexpo.fi  Fri Dec 14 14:21:18 2001
+From: J.Frazur@finnexpo.fi (J.Frazur@finnexpo.fi)
+Date: Fri, 14 Dec 2001 09:21:18 -0500
+Subject: [Classpathx-crypto] Reduce Travel Costs
+Message-ID: <1008361117.0452675782@mail.finnexpo.fi>
+
+<HTML><HEAD><TITLE>Take Control Of Your Conference Calls</TITLE>
+<META http-equiv=3DContent-Type content=3D=22text/html; charset=3Dwindows-1=
+252=22>
+<META content=3D=22MSHTML 5.50.4134.600=22 name=3DGENERATOR></HEAD>
+<BODY vLink=3D=23c0c0c0 link=3D=23c0c0c0 bgColor=3D=23000000 leftMargin=3D0><F=
+ONT 
+face=3Darial,helvetica>
+<P>
+<CENTER>
+<TABLE width=3D600 border=3D0>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle><B><FONT color=3D=23999999 size=3D6>Long Distance 
+      Conferencing<BR>Only <U>18 Cents</U> Per 
+Minute</B></FONT></TD></TR></TBODY></TABLE>
+<P><FONT color=3D=23ff0000 size=3D5><B>Connects Up To 100 Participants=21</=
+B></FONT> 
+<P>
+<TABLE width=3D350 border=3D0>
+  <TBODY>
+  <TR>
+    <TD><FONT color=3D=23999999 size=3D3><B>
+      <LI>No setup fees 
+      <LI>No contracts or monthly fees 
+      <LI>Call anytime, from anywhere, to anywhere 
+      <LI>International Dial In 18 cents per minute 
+      <LI>Simplicity in set up and administration 
+      <LI>Operator Help available 24/7 </B></FONT></LI></TD></TR></TBOD=
+Y></TABLE>
+<P>
+<TABLE width=3D500 border=3D0>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle><FONT color=3D=23ff0000 size=3D60><B><FONT size=3D5>G=
+et the best 
+      quality, the easiest to use, and lowest rate in the 
+      industry.</B></FONT></FONT></TD></TR></TBODY></TABLE>
+<P>
+<TABLE width=3D400 border=3D0>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle><FONT color=3D=23999999 size=3D4>If you like saving =
+money, fill 
+      out the form below and one of our consultants will contact 
+  you.</FONT></TD></TR></TBODY></TABLE>
+<P><FONT color=3D=23999999 size=3D2>Required Input Field<FONT color=3D=23ff0=
+000 
+size=3D2>*</FONT></FONT> 
+<P>
+<TABLE cellSpacing=3D0 borderColorDark=3D=23333300 cellPadding=3D3 width=3D6=
+00 
+borderColorLight=3D=23ffffcc>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle>
+      <FORM action=3Dmailto:inbocks1=40yahoo.com?subject=3DConference_Inqu=
+iry 
+      method=3Dpost encType=3Dtext/plain>
+      <TABLE width=3D=22100%=22>
+        <TBODY>
+        <TR>
+          <TD align=3Dright width=3D=2250%=22><FONT 
+            face=3D=22Arial, Helvetica, sans-serif=22 color=3D=23ff0000 
+          size=3D2>Name*</FONT></TD>
+          <TD><INPUT name=3DNAME></TD></TR>
+        <TR>
+          <TD align=3Dright width=3D=2250%=22><FONT 
+            face=3D=22Arial, Helvetica, sans-serif=22 color=3D=23ff0000 size=
+=3D2>Web 
+            Address*</FONT></TD>
+          <TD><INPUT value=3Dhttp:// name=3DURL></TD></TR>
+        <TR>
+          <TD align=3Dright width=3D=2250%=22><FONT 
+            face=3D=22Arial, Helvetica, sans-serif=22 color=3D=23ff0000 size=
+=3D2>Company 
+            Name*</FONT></TD>
+          <TD><INPUT name=3DCOMPANY_NAME></TD></TR>
+        <TR>
+          <TD align=3Dright width=3D=2250%=22><FONT 
+            face=3D=22Arial, Helvetica, sans-serif=22 color=3D=23ff0000 size=
+=3D2>
+            State*</FONT></TD>
+          <TD><INPUT size=3D2 name=3DSTATE></TD></TR>
+        <TR>
+          <TD align=3Dright width=3D=2250%=22><FONT 
+            face=3D=22Arial, Helvetica, sans-serif=22 color=3D=23ff0000 size=
+=3D2>Business 
+            Phone*</FONT></TD>
+          <TD><INPUT name=3DBUS_PHONE></TD></TR>
+        <TR>
+          <TD align=3Dright width=3D=2250%=22><FONT 
+            face=3D=22Arial, Helvetica, sans-serif=22 color=3D=23ff0000 size=
+=3D2>Home 
+            Phone</FONT></TD>
+          <TD><INPUT name=3DHOME_PHONE></TD></TR>
+        <TR>
+          <TD align=3Dright width=3D=2250%=22><FONT 
+            face=3D=22Arial, Helvetica, sans-serif=22 color=3D=23ff0000 size=
+=3D2>Email 
+            Address*</FONT></TD>
+          <TD><INPUT name=3DEMAIL></TD></TR>
+        <TR>
+          <TD align=3Dright width=3D=2250%=22><FONT 
+            face=3D=22Arial, Helvetica, sans-serif=22 color=3D=23ff0000 size=
+=3D2>Type of 
+            Business</FONT></TD>
+          <TD><INPUT name=3DTYPE_OF_BUSINESS></TD></TR></TBODY></TABLE>
+      <P><INPUT type=3Dsubmit value=3D=22Submit Information=22 name=3Dsubmit=
+> 
+    </FORM></P></TD></TR></TBODY></TABLE>
+<BR><BR>
+<TABLE width=3D500>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle><FONT face=3D=22Arial, Helvetica, sans-serif=22 colo=
+r=3D=23999999 
+      size=3D1>This ad is being sent in compliance with Senate Bill 1618=
+, Title 3, Section 301.
+      You have recently visited our web site, referral or affiliate sit=
+es which indicated you were 
+      interested in communication services.  If this email is reaching =
+you in error and you feel that you have not contacted 
+      us, <FONT color=3D=23666666><A href=3D=22mailto:delete1_5=40yahoo.com?=
+subject=3DRemove_Conferencing=22>Click 
+      here</A></FONT>. We sincerely apologize, and assure you will be r=
+emoved from our distribution list.
+</FONT></TD></TR></TBODY></TABLE></P></CENTER></BODY></HTML>
+
+
+From nferrier@tf1.tapsellferrier.co.uk  Sun Dec 16 23:41:13 2001
+From: nferrier@tf1.tapsellferrier.co.uk (Nic Ferrier)
+Date: Sun, 16 Dec 2001 23:41:13 +0000
+Subject: [Classpathx-crypto] Makefile
+Message-ID: <E16Fku9-0005tD-00@tf1.tapsellferrier.co.uk>
+
+Just to let you know: I am working on this issue. I've been busy with
+work (last week at my old contract, new contract this week!) and I
+haven't had much time.
+
+However, I did solve the central portability problem of my original
+makefile: the path separator used (I had hard coded ':').
+
+I've solved it by using a functional system (the GNU Make @(call)
+construct allows a certain amount of functionalism).
+
+It strikes me that if I solve the $(wildcard) problem then I won't
+have to use the shell script trick and that might mean that a native
+windows make might work.
+
+I'm still working on it... I'll try and get it done this week... I'm
+really sorry for the delay.
+
+
+If you guys want to go ahead with an ANT based release then let me
+know.
+
+
+Nic
+
+
+From raif@fl.net.au  Mon Dec 17 07:54:40 2001
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Mon, 17 Dec 2001 18:54:40 +1100
+Subject: [Classpathx-crypto] Makefile
+In-Reply-To: <E16Fku9-0005tD-00@tf1.tapsellferrier.co.uk>
+Message-ID: <5.0.0.25.1.20011217184639.00a4b4e0@mail.syd.fl.net.au>
+
+At 11:41 PM 12/16/01 +0000, Nic Ferrier wrote:
+
+>Just to let you know: I am working on this issue. I've been busy with
+>work (last week at my old contract, new contract this week!) and I
+>haven't had much time.
+
+no worries. it's xmas anyway :-)
+
+
+>However, I did solve the central portability problem of my original
+>makefile: the path separator used (I had hard coded ':').
+>
+>I've solved it by using a functional system (the GNU Make @(call)
+>construct allows a certain amount of functionalism).
+
+we use a trick (see the Makefile.in), where we do:
+
+(line #119):
+
+# a workaround to allow using the same Makefile under both Unix and NT
+ifeq (${OS},Windows_NT)
+         PS:=;
+else
+         PS:=:
+endif
+
+and then use ${PS} everywhere we need to separate path-elements.
+
+
+>It strikes me that if I solve the $(wildcard) problem then I won't
+>have to use the shell script trick and that might mean that a native
+>windows make might work.
+>
+>I'm still working on it... I'll try and get it done this week... I'm
+>really sorry for the delay.
+>
+>
+>If you guys want to go ahead with an ANT based release then let me
+>know.
+
+i'd suggest we do a release with ANT if we're going to standardise on ANT 
+in classpathx projects.  if not, i'd rather wait and have a common 'way' 
+for building; ie. make with ANT as an alternative.
+
+if any other project/team-leader is willing to adopt ANT, i'm happy to help 
+so we can harmonise the use of ANT across multiple projects.
+
+
+>Nic
+
+
+cheers;
+rsn
+
+
+
+From nferrier@tapsellferrier.co.uk  Mon Dec 17 11:15:02 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Mon, 17 Dec 2001 11:15:02 -0000
+Subject: [Classpathx-crypto] Makefile
+References: <5.0.0.25.1.20011217184639.00a4b4e0@mail.syd.fl.net.au>
+Message-ID: <000001c186f2$3c3fb420$d4643dc0@gee.co.uk>
+
+> we use a trick (see the Makefile.in), where we do:
+>
+> (line #119):
+>
+> # a workaround to allow using the same Makefile under both Unix and NT
+> ifeq (${OS},Windows_NT)
+>          PS:=;
+> else
+>          PS:=:
+> endif
+>
+> and then use ${PS} everywhere we need to separate path-elements.
+
+Yes. I've fixed that by using this functional system.
+
+
+> >If you guys want to go ahead with an ANT based release then let me
+> >know.
+>
+> i'd suggest we do a release with ANT if we're going to standardise on ANT
+> in classpathx projects.  if not, i'd rather wait and have a common 'way'
+> for building; ie. make with ANT as an alternative.
+
+I'd rather not dictate the use ANT across the board... if we move to that
+gradually that would be fine. I still prefer Autoconf/Make because that is
+the GNU standard and because it handles native code better... given the
+importance of GCJ in the "strategy" native code may become important.
+
+Having said that I think ANT will become important as it matures and more
+java programmers come to GNU from other environments.
+
+> if any other project/team-leader is willing to adopt ANT, i'm happy to
+help
+> so we can harmonise the use of ANT across multiple projects.
+
+Thanks Raif.
+
+
+Nic
+
+
+
+From olivier@zipworld.com.au  Mon Dec 17 12:16:31 2001
+From: olivier@zipworld.com.au (Olivier LF)
+Date: Mon, 17 Dec 2001 23:16:31 +1100
+Subject: [Classpathx-crypto] Makefile
+In-Reply-To: <5.0.0.25.1.20011217184639.00a4b4e0@mail.syd.fl.net.au>
+References: <E16Fku9-0005tD-00@tf1.tapsellferrier.co.uk> <5.0.0.25.1.20011217184639.00a4b4e0@mail.syd.fl.net.au>
+Message-ID: <20011217231631.B26474@zipworld.com.au>
+
+On Mon, Dec 17, 2001 at 06:54:40PM +1100, Raif S. Naffah wrote:
+> At 11:41 PM 12/16/01 +0000, Nic Ferrier wrote:
+> 
+> >However, I did solve the central portability problem of my original
+> >makefile: the path separator used (I had hard coded ':').
+> >
+> >I've solved it by using a functional system (the GNU Make @(call)
+> >construct allows a certain amount of functionalism).
+> 
+> # a workaround to allow using the same Makefile under both Unix and NT
+> ifeq (${OS},Windows_NT)
+>         PS:=;
+> else
+>         PS:=:
+> endif
+> 
+
+Autoconf seems to take care of that. This is the code generated in the 
+configure script:
+
+# Rewrite early, but we need PATH_SEPARATOR.
+# The user is always right.
+if test "${PATH_SEPARATOR+set}" != set; then
+  echo "#! $SHELL" >conftest.sh
+  echo  "exit 0"   >>conftest.sh
+  chmod +x conftest.sh
+  if (PATH=".;."; conftest.sh) >/dev/null 2>&1; then
+    PATH_SEPARATOR=';'
+  else
+    PATH_SEPARATOR=:
+  fi
+  rm -f conftest.sh
+fi
+
+
+I rely on this in my autoconf/automake example for gnu-crypto.
+However...
+apparantly it doesn't work on cygwin. I suspect it is because I also
+have to add double quotes all over the place, something like:
+
+   jikes -classpath "pkg1@PS@pkg2" ...
+
+to prevent the shell from resolving the semicolon as the "end of
+command" character. It used to work on cygwin but I haven't try it for
+few weeks.
+
+
+However going back to the earlier Makefile discussion, I've cut and paste 
+portions of the make process generated by automake/autoconf scripts for 
+GCJ compilation and shared libraries. As you can see, it is not exactly 
+trivial or intuitive. 
+Do you really want to reinvent all of that while automake, a GNU tool 
+Copyrighted by the FSF, is out there?
+
+Olivier
+
+
+
+Making all in source
+make[1]: Entering directory `/home/olivier/tmp/crypt/source'
+gcj -C --encoding=UTF-8 -fCLASSPATH=/home/olivier/program/cvs/classpathx/crypto/source -d . /home/olivier/program/cvs/classpathx/crypto/source/gnu/crypto/cipher/Anubis.java
+...
+...
+make  all-am
+make[2]: Entering directory `/home/olivier/tmp/crypt/source'
+source='gnu/crypto/cipher/Anubis.java' object='gnu/crypto/cipher/Anubis.lo' libtool=yes \
+depfile='.deps/gnu/crypto/cipher/Anubis.Plo' tmpdepfile='.deps/gnu/crypto/cipher/Anubis.TPlo' \
+depmode=gcc3 /bin/sh /home/olivier/program/cvs/classpathx/crypto/depcomp \
+/bin/sh ../libtool --mode=compile gcj --encoding=UTF-8 -fassume-compiled -fCLASSPATH=/home/olivier/program/cvs/classpathx/crypto/source -g -O2 -c -o gnu/crypto/cipher/Anubis.lo `test -f gnu/crypto/cipher/Anubis.java || echo '/home/olivier/program/cvs/classpathx/crypto/source/'`gnu/crypto/cipher/Anubis.java
+rm -f gnu/crypto/cipher/.libs/Anubis.lo
+gcj --encoding=UTF-8 -fassume-compiled -fCLASSPATH=/home/olivier/program/cvs/classpathx/crypto/source -g -O2 -c /home/olivier/program/cvs/classpathx/crypto/source/gnu/crypto/cipher/Anubis.java -MT gnu/crypto/cipher/Anubis.lo -MD -MP -MF .deps/gnu/crypto/cipher/Anubis.TPlo  -fPIC  -o gnu/crypto/cipher/Anubis.o
+mv -f gnu/crypto/cipher/Anubis.o gnu/crypto/cipher/.libs/Anubis.lo
+gcj --encoding=UTF-8 -fassume-compiled -fCLASSPATH=/home/olivier/program/cvs/classpathx/crypto/source -g -O2 -c /home/olivier/program/cvs/classpathx/crypto/source/gnu/crypto/cipher/Anubis.java -MT gnu/crypto/cipher/Anubis.lo -MD -MP -MF .deps/gnu/crypto/cipher/Anubis.TPlo -o gnu/crypto/cipher/Anubis.o >/dev/null 2>&1
+mv -f gnu/crypto/cipher/.libs/Anubis.lo gnu/crypto/cipher/Anubis.lo
+...
+...
+/bin/sh ../libtool --mode=link gcj --encoding=UTF-8 -fassume-compiled -fCLASSPATH=/home/olivier/program/cvs/classpathx/crypto/source -g -O2   -o lib-gnu-crypto.la -rpath /home/olivier/tmp/ooo/lib -version-info 1:0 gnu/crypto/cipher/Anubis.lo gnu/crypto/cipher/BaseCipher.lo gnu/crypto/cipher/CipherFactory.lo gnu/crypto/cipher/IBlockCipher.lo ... ... ... ...
+mkdir .libs
+rm -fr .libs/lib-gnu-crypto.la .libs/lib-gnu-crypto.* .libs/lib-gnu-crypto.*
+gcc -shared  gnu/crypto/cipher/Anubis.lo gnu/crypto/cipher/BaseCipher.lo gnu/crypto/cipher/CipherFactory.lo ... ... ... ...  -lc  -Wl,-soname -Wl,lib-gnu-crypto.so.1 -o .libs/lib-gnu-crypto.so.1.0.0
+(cd .libs && rm -f lib-gnu-crypto.so.1 && ln -s lib-gnu-crypto.so.1.0.0 lib-gnu-crypto.so.1)
+(cd .libs && rm -f lib-gnu-crypto.so && ln -s lib-gnu-crypto.so.1.0.0 lib-gnu-crypto.so)
+ar cru .libs/lib-gnu-crypto.a  gnu/crypto/cipher/Anubis.o gnu/crypto/cipher/BaseCipher.o ... ... ... ...
+ranlib .libs/lib-gnu-crypto.a
+creating lib-gnu-crypto.la
+(cd .libs && rm -f lib-gnu-crypto.la && ln -s ../lib-gnu-crypto.la lib-gnu-crypto.la)
+
+
+-- 
+----------------------------------------------------------------------
+Olivier Louchart-Fletcher
+Email: olivier@zipworld.com.au
+
+
+From nferrier@tapsellferrier.co.uk  Mon Dec 17 12:35:38 2001
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: Mon, 17 Dec 2001 12:35:38 -0000
+Subject: [Classpathx-crypto] Makefile
+References: <E16Fku9-0005tD-00@tf1.tapsellferrier.co.uk> <5.0.0.25.1.20011217184639.00a4b4e0@mail.syd.fl.net.au> <20011217231631.B26474@zipworld.com.au>
+Message-ID: <003101c186f7$676c9d20$d4643dc0@gee.co.uk>
+
+> However going back to the earlier Makefile discussion, I've cut and
+paste
+> portions of the make process generated by automake/autoconf scripts for
+> GCJ compilation and shared libraries. As you can see, it is not exactly
+> trivial or intuitive.
+> Do you really want to reinvent all of that while automake, a GNU tool
+> Copyrighted by the FSF, is out there?
+
+The trouble is automake (the version that widely installed) has some
+issues... my bodged makefile is not actually that much work and therefore
+I don't mind maintaining it until automake becomes a realistic option.
+
+I wouldn't object to any project using automake as long as they maintain
+it themselves.
+
+But on the other hand my bodge makefile does the job (or can do the job)
+quite well.
+
+
+Nic
+
+
+
+

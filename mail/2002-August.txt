@@ -1,0 +1,1012 @@
+From raif@fl.net.au  Thu Aug  1 21:15:18 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Fri, 02 Aug 2002 06:15:18 +1000
+Subject: [Classpathx-crypto] export issues
+References: <20020731083811.GB27005@dog.net.uk> <uznw8ntxj.fsf@tapsellferrier.co.uk>
+Message-ID: <3D4996D6.9040504@fl.net.au>
+
+it was brought to my attention that there may be some export issues 
+regarding the distribution of gnu.crypto code.
+
+the concern is related to the fact that: although most of the developers 
+reside outside the USA, the gnu.crypto project is officially distributed 
+(a) by the FSF (b) from the USA.  is anybody aware of any limitation or 
+legal issues that should be addressed before we release/distribute our 
+code?  should an FSF legal person be consulted on this?
+
+
+cheers;
+rsn
+
+
+
+From mark@klomp.org  Thu Aug  1 21:27:41 2002
+From: mark@klomp.org (Mark Wielaard)
+Date: 01 Aug 2002 22:27:41 +0200
+Subject: [Classpathx-crypto] Security provider in gcj (temporarily removed)
+Message-ID: <1028233661.31628.11.camel@elsschot>
+
+Hi,
+
+I noticed that a couple of people on this list try to get gnu.crypto
+working with gcj. I hope that I can help a bit and I had recently merged
+the GNU Classpath security provider classes with libgcj (GNU Classpath
+and libgcj are merging but it will take some time before everything is
+merged see http://gcc.gnu.org/java/libgcj-classpath-compare.html).
+Unfortunately the addition of those files broken the powerpc build in
+some mysterious way so I had to remove them again. Since this does not
+seem to impact any other platform you might want to wait updating your
+libgcj tree again if you depend on those files being present. Below is
+the ChangeLog entry. I hope that I can figure out this weekend what
+exactly broke and add these files again to libgcj.
+
+2002-08-01  Mark Wielaard  <mark@klomp.org>
+
+    Revert patch that breaks libgcj shared library on powerpc:
+    * gnu/java/security/provider/Gnu.java: Reverse referencing all
+    implementation classes by using Class.getName(). Uses Strings again.
+    * gnu/java/security/der/DEREncodingException.java,
+    gnu/java/security/provider/DERReader.java,
+    gnu/java/security/provider/DERWriter.java,
+    gnu/java/security/provider/DSAKeyPairGenerator.java,
+    gnu/java/security/provider/DSAParameterGenerator.java,
+    gnu/java/security/provider/DSAParameters.java,
+    gnu/java/security/provider/DSASignature.java,
+    gnu/java/security/provider/GnuDSAPrivateKey.java,
+    gnu/java/security/provider/GnuDSAPublicKey.java,
+    gnu/java/security/provider/MD5.java,
+    gnu/java/security/util/Prime.java: Removed.
+    * Makefile.am (ordinary_java_source_files): Remove above files.
+    * Makefile.in: Regenerate.
+    * gnu/java/security/provider/DefaultPolicy.java
+    (getPermissions): Revert to maintaining static class variable of
+    Permissions.
+    * gnu/java/security/provider/SHA.java 
+    (engineUpdate): Revert algorithm change.
+    (engineDigest): Revert algorithm change.
+
+For more info on the breakage see
+<http://gcc.gnu.org/ml/java/2002-07/msg00158.html>.
+Sorry for the inconvenience.
+
+Cheers,
+
+Mark
+
+
+From nferrier@tapsellferrier.co.uk  Thu Aug  1 22:26:42 2002
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: 01 Aug 2002 22:26:42 +0100
+Subject: [Classpathx-crypto] Re: export issues
+In-Reply-To: <3D4996D6.9040504@fl.net.au>
+References: <20020731083811.GB27005@dog.net.uk>
+ <uznw8ntxj.fsf@tapsellferrier.co.uk> <3D4996D6.9040504@fl.net.au>
+Message-ID: <87r8hinuct.fsf@pooh-sticks-bridge.tapsellferrier.co.uk>
+
+"Raif S. Naffah" <raif@fl.net.au> writes:
+
+> it was brought to my attention that there may be some export issues  
+> regarding the distribution of gnu.crypto code. 
+>  
+> the concern is related to the fact that: although most of the developers  
+> reside outside the USA, the gnu.crypto project is officially distributed  
+> (a) by the FSF (b) from the USA.  is anybody aware of any limitation or  
+> legal issues that should be addressed before we release/distribute our  
+> code?  should an FSF legal person be consulted on this? 
+
+I don't think there are any issues anymore.
+
+Can you tell me (privately please) who the developers for the project
+are (in the past as well as now) and where they reside?
+
+I will consult the relevant people for you.
+
+
+Nic
+
+
+
+From Casey Marshall <rsdio@metastatic.org>  Thu Aug  1 23:23:00 2002
+From: Casey Marshall <rsdio@metastatic.org> (Casey Marshall)
+Date: Thu, 1 Aug 2002 15:23:00 -0700 (PDT)
+Subject: [Classpathx-crypto] export issues
+In-Reply-To: <3D4996D6.9040504@fl.net.au>
+Message-ID: <Pine.LNX.4.44L0.0208011459400.18836-100000@gradius.dreamhost.com>
+
+On Fri, 2 Aug 2002, Raif S. Naffah wrote:
+
+> it was brought to my attention that there may be some export issues
+> regarding the distribution of gnu.crypto code.
+>
+> the concern is related to the fact that: although most of the developers
+> reside outside the USA, the gnu.crypto project is officially distributed
+> (a) by the FSF (b) from the USA.  is anybody aware of any limitation or
+> legal issues that should be addressed before we release/distribute our
+> code?  should an FSF legal person be consulted on this?
+>
+
+(Caveat: IANAL)
+
+I think, according to Export Administrations Regulations section 740.13(e),
+open-source encryption software can be exported without regulation, as
+long as (1) it is not made available for download to Cuba, Iran, Iraq,
+Libya, North Korea, Sudan or Syria and (2) you notify the Bureau of
+Industry and Security at <crypt@bis.doc.gov> before it is made publicly
+available.
+
+Want to sift through United States export regulations? Look at
+
+	http://w3.access.gpo.gov/bis/ear/ear_data.html
+
+Part 740, which appears to be the relevant one, is at:
+
+	http://w3.access.gpo.gov/bis/ear/{pdf,txt}/740.{pdf,txt}
+
+-- 
+Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+
+
+
+From Casey Marshall <rsdio@metastatic.org>  Fri Aug  2 02:30:29 2002
+From: Casey Marshall <rsdio@metastatic.org> (Casey Marshall)
+Date: Thu, 1 Aug 2002 18:30:29 -0700 (PDT)
+Subject: [Classpathx-crypto] latest checkins
+In-Reply-To: <3D43BEFA.2060605@fl.net.au>
+Message-ID: <Pine.LNX.4.44L0.0208011722370.1250-100000@gradius.dreamhost.com>
+
+On Sun, 28 Jul 2002, Raif S. Naffah wrote:
+
+> Olivier LF wrote:
+> > On Sat, Jul 27, 2002 at 12:37:49PM +1000, Raif S. Naffah wrote:
+>
+> > Both crypto library and JUnit test suite build successfully however
+> > Anubis still does not pass its self test!
+>
+> Anubis does not have anything specially different than the other ciphers
+> --in terms of the java language constructs and invocations.  does any
+> other cipher pass its self-test?
+>
+
+I think this is an optimization bug in GCJ. I inspected the selfTest()
+method, and using good old print-out-the-state debugging found out that
+selfTest() actually passes all of its tests -- ie it gets past the two
+nested for loops -- but for some reason returns false. I re-made the
+GCJ build after removing the -O2 flag and every cipher test succeeds.
+It also works with just -O.
+
+As for the other two build methods, Ant works for me, yet the top-level
+make seems to want either the NIST test vectors to be in the tree, or
+wants to try to build them (and there is no target for them). I'm guessing
+that the test vectors will be included in the distribution, or that the
+Makefile will not include these files and there will be a pointer in
+the documentation to download and test these files.
+
+I did some profiling of the libraries and discovered that because Serpent
+creates a new integer array for every block it processes, a LOT of objects
+are allocated during execution. This could be a problem in low-memory
+devices, where a lot of time will be taken up with garbage collection.
+
+Making the integer array 'x' on lines 597 and 686 a private instance
+variable will correct this, but breaks thread-safety (if that's an issue).
+
+-- 
+Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+
+
+
+From raif@fl.net.au  Sat Aug  3 10:22:54 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sat, 03 Aug 2002 19:22:54 +1000
+Subject: [Classpathx-crypto] latest checkins
+References: <Pine.LNX.4.44L0.0208011722370.1250-100000@gradius.dreamhost.com>
+Message-ID: <3D4BA0EE.7000806@fl.net.au>
+
+hello Casey,
+
+Casey Marshall wrote:
+> On Sun, 28 Jul 2002, Raif S. Naffah wrote:
+> 
+> 
+>>Olivier LF wrote:
+>>
+>>>On Sat, Jul 27, 2002 at 12:37:49PM +1000, Raif S. Naffah wrote:
+>>
+>>>Both crypto library and JUnit test suite build successfully however
+>>>Anubis still does not pass its self test!
+>>
+>>Anubis does not have anything specially different than the other ciphers
+>>--in terms of the java language constructs and invocations.  does any
+>>other cipher pass its self-test?
+> 
+> I think this is an optimization bug in GCJ. I inspected the selfTest()
+> method, and using good old print-out-the-state debugging found out that
+> selfTest() actually passes all of its tests -- ie it gets past the two
+> nested for loops -- but for some reason returns false. I re-made the
+> GCJ build after removing the -O2 flag and every cipher test succeeds.
+> It also works with just -O.
+
+excellent detective work!  are the gcj people aware of this?  would it 
+help'em if you submit a bug-report with sample code?
+
+
+> As for the other two build methods, Ant works for me, yet the top-level
+> make seems to want either the NIST test vectors to be in the tree, or
+> wants to try to build them (and there is no target for them). I'm guessing
+> that the test vectors will be included in the distribution, or that the
+> Makefile will not include these files and there will be a pointer in
+> the documentation to download and test these files.
+
+i'm spending this weekend looking at this.  i'm more or less convinced 
+that the test-vectors (a) can be generated by a special target in the 
+make/ant files, that can be invoked on its own, and (b) should be jarred 
+and made available for download.  unless somebody convinces me otherwise 
+this is how i shall be proceeding.
+
+
+> I did some profiling of the libraries...
+
+care to elaborate?!
+
+
+ >... and discovered that because Serpent
+> creates a new integer array for every block it processes, a LOT of objects
+> are allocated during execution. This could be a problem in low-memory
+> devices, where a lot of time will be taken up with garbage collection.
+> 
+> Making the integer array 'x' on lines 597 and 686 a private instance
+> variable will correct this, but breaks thread-safety (if that's an issue).
+
+we can always use the "lock" object in the BaseCipher to protect those 
+code blocks.
+
+the other 2 alternatives are:
+
+* in-line the transform() (and its inverse) in the encrypt() and 
+decrypt() methods, and use 4 ints rather than the int[].
+
+* re-write the code to eliminate the need for this array. (i'll send you 
+  in private an implementation i did for the Serpent's authors for their 
+AES submission that may give you an idea about what i'm talking about).
+
+
+i guess we have to add to our checklist of TODO list before the release 
+the thread-safety issue you raise.  when we identify such a case the 
+documentation has to make it clear that it is an issue the user has to 
+be aware of; e.g. something in the class javadoc like:
+
+<p><b>Implementation issue:</b> This implementation is not 
+thread-safe... </p>
+
+or something like that.
+
+
+cheers;
+rsn
+
+
+
+From Casey Marshall <rsdio@metastatic.org>  Sun Aug  4 00:23:05 2002
+From: Casey Marshall <rsdio@metastatic.org> (Casey Marshall)
+Date: Sat, 3 Aug 2002 16:23:05 -0700 (PDT)
+Subject: [Classpathx-crypto] latest checkins
+In-Reply-To: <3D4BA0EE.7000806@fl.net.au>
+Message-ID: <Pine.LNX.4.44L0.0208031553580.8182-100000@gradius.dreamhost.com>
+
+On Sat, 3 Aug 2002, Raif S. Naffah wrote:
+
+> hello Casey,
+>
+> Casey Marshall wrote:
+> > On Sun, 28 Jul 2002, Raif S. Naffah wrote:
+> >
+> >>Anubis does not have anything specially different than the other ciphers
+> >>--in terms of the java language constructs and invocations.  does any
+> >>other cipher pass its self-test?
+> >
+> > I think this is an optimization bug in GCJ. I inspected the selfTest()
+> > method, and using good old print-out-the-state debugging found out that
+> > selfTest() actually passes all of its tests -- ie it gets past the two
+> > nested for loops -- but for some reason returns false. I re-made the
+> > GCJ build after removing the -O2 flag and every cipher test succeeds.
+> > It also works with just -O.
+>
+> excellent detective work!  are the gcj people aware of this?  would it
+> help'em if you submit a bug-report with sample code?
+>
+
+I'll look at their list archives to see if this has come up before; if
+not I'll post a message.
+
+> [...]
+>
+> > I did some profiling of the libraries...
+>
+> care to elaborate?!
+>
+
+I was testing out an evaluation version of a Java profiler (I think it
+was JProfiler -- which isn't worth it; proprietary and too expensive)
+and put it through its paces by running the gnu-crypto test suite (plus
+testing the full NIST vectors).
+
+I was rather shocked/amused to see the number of int arrays climb to
+25,000, then fall back to zero while Serpent was running.
+
+> >... and discovered that because Serpent
+> > creates a new integer array for every block it processes, a LOT of objects
+> > are allocated during execution. This could be a problem in low-memory
+> > devices, where a lot of time will be taken up with garbage collection.
+> >
+> > Making the integer array 'x' on lines 597 and 686 a private instance
+> > variable will correct this, but breaks thread-safety (if that's an issue).
+>
+> we can always use the "lock" object in the BaseCipher to protect those
+> code blocks.
+>
+> the other 2 alternatives are:
+>
+> * in-line the transform() (and its inverse) in the encrypt() and
+> decrypt() methods, and use 4 ints rather than the int[].
+>
+
+Won't work. The S-Box functions would also need to be in-lined, and this
+would make the code much less readable.
+
+(It's situations like this that make me want a Java preprocessor.)
+
+> * re-write the code to eliminate the need for this array. (i'll send you
+>   in private an implementation i did for the Serpent's authors for their
+> AES submission that may give you an idea about what i'm talking about).
+>
+
+I'll look into this.
+
+> i guess we have to add to our checklist of TODO list before the release
+> the thread-safety issue you raise.  when we identify such a case the
+> documentation has to make it clear that it is an issue the user has to
+> be aware of; e.g. something in the class javadoc like:
+>
+> <p><b>Implementation issue:</b> This implementation is not
+> thread-safe... </p>
+>
+> or something like that.
+>
+
+Or mention generally that the library is not necessarily thread-safe, if
+thread safety is not a big issue for this library.
+
+-- 
+Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+
+
+
+From raif@fl.net.au  Wed Aug  7 12:03:39 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Wed, 07 Aug 2002 21:03:39 +1000
+Subject: [Classpathx-crypto] latest checkins (long)
+Message-ID: <3D50FE8B.6060505@fl.net.au>
+
+hi guys,
+
+i just checked in some bug-fixes, few additions and one new tool: Ent 
+--a java port of John Walker's ENT program (see 
+http://www.fourmilab.ch/).  its purpose is to compute some statistical 
+indices for a given stream to assess its degree of randomness.
+
+here is the output of:  ant ent
+
+ent:
+
+      [java] Total execution time (ms): 631
+      [java] Computed indices for MD4PRNG:
+      [java]                   Total bit count: 8388608
+      [java]            Mean value of set bits: 0.4999542236328125
+      [java]                  Mean % deviation: 0.0091552734375
+      [java]           Chi-square distribution: 0.0703125
+      [java]   Chi-square excess % probability: 50.0
+      [java]                       Computed PI: 3.143475126171593
+      [java]           Computed PI % deviation: 0.05992096332568889
+      [java]    Serial Correlation Coefficient: -1.6697682580239272E-5
+
+      [java] Total execution time (ms): 771
+      [java] Computed indices for RIPEMD128PRNG:
+      [java]                   Total bit count: 8388608
+      [java]            Mean value of set bits: 0.5000506639480591
+      [java]                  Mean % deviation: 0.010132789611816406
+      [java]           Chi-square distribution: 0.08612871170043945
+      [java]   Chi-square excess % probability: 50.0
+      [java]                       Computed PI: 3.138668589281423
+      [java]           Computed PI % deviation: 0.09307585771914455
+      [java]    Serial Correlation Coefficient: 7.295505921987954E-4
+
+      [java] Total execution time (ms): 1102
+      [java] Computed indices for ICM:
+      [java]                   Total bit count: 8388608
+      [java]            Mean value of set bits: 0.49994516372680664
+      [java]                  Mean % deviation: 0.010967254638671875
+      [java]           Chi-square distribution: 0.10089874267578125
+      [java]   Chi-square excess % probability: 50.0
+      [java]                       Computed PI: 3.1437726736933658
+      [java]           Computed PI % deviation: 0.06939219510465874
+      [java]    Serial Correlation Coefficient: -3.490568320705976E-4
+
+      [java] Total execution time (ms): 701
+      [java] Computed indices for MD5PRNG:
+      [java]                   Total bit count: 8388608
+      [java]            Mean value of set bits: 0.5000228881835938
+      [java]                  Mean % deviation: 0.00457763671875
+      [java]           Chi-square distribution: 0.017578125
+      [java]   Chi-square excess % probability: 75.0
+      [java]                       Computed PI: 3.135807555418226
+      [java]           Computed PI % deviation: 0.18414539405536265
+      [java]    Serial Correlation Coefficient: -5.865306605768334E-5
+
+      [java] Total execution time (ms): 961
+      [java] Computed indices for WHIRLPOOLPRNG:
+      [java]                   Total bit count: 8388608
+      [java]            Mean value of set bits: 0.5002869367599487
+      [java]                  Mean % deviation: 0.057387351989746094
+      [java]           Chi-square distribution: 2.762627124786377
+      [java]   Chi-square excess % probability: 10.0
+      [java]                       Computed PI: 3.138668589281423
+      [java]           Computed PI % deviation: 0.09307585771914455
+      [java]    Serial Correlation Coefficient: 5.689114690354338E-5
+
+      [java] Total execution time (ms): 781
+      [java] Computed indices for RIPEMD160PRNG:
+      [java]                   Total bit count: 8388608
+      [java]            Mean value of set bits: 0.49994874000549316
+      [java]                  Mean % deviation: 0.010251998901367188
+      [java]           Chi-square distribution: 0.08816719055175781
+      [java]   Chi-square excess % probability: 50.0
+      [java]                       Computed PI: 3.1433149082752543
+      [java]           Computed PI % deviation: 0.054821069290864416
+      [java]    Serial Correlation Coefficient: -8.488752540050106E-5
+
+      [java] Total execution time (ms): 731
+      [java] Computed indices for SHA-160PRNG:
+      [java]                   Total bit count: 8388608
+      [java]            Mean value of set bits: 0.4998607635498047
+      [java]                  Mean % deviation: 0.0278472900390625
+      [java]           Chi-square distribution: 0.6505126953125
+      [java]   Chi-square excess % probability: 50.0
+      [java]                       Computed PI: 3.1392636843249675
+      [java]           Computed PI % deviation: 0.07413339416121897
+      [java]    Serial Correlation Coefficient: -4.4878134782710987E-4
+
+      [java] Total execution time (ms): 411
+      [java] Computed indices for UMAC-KDF:
+      [java]                   Total bit count: 8388608
+      [java]            Mean value of set bits: 0.5000001192092896
+      [java]                  Mean % deviation: 2.384185791015625E-5
+      [java]           Chi-square distribution: 4.76837158203125E-7
+      [java]   Chi-square excess % probability: 75.0
+      [java]                       Computed PI: 3.1365857566290156
+      [java]           Computed PI % deviation: 0.15937448017190523
+      [java]    Serial Correlation Coefficient: -1.4114379888497644E-4
+
+BUILD SUCCESSFUL
+Total time: 13 seconds
+
+
+sorting the indices by:
+
+* time: shows that UMacGenerator is the fastest, and ICMGenerator is the 
+slowest;
+* mean % deviation: shows that UMacGenerator is the closest to 0.5 and 
+Whirlpool is the farthest;
+* scc: shows that MD4-based PRNG is closest to 0.0, and RIPEMD-160-based 
+PRNG is the farthest;
+
+it would be nice, if someone goes through the code and make sure i didnt 
+code the formulae incorrectly and, may be in the future, add more 
+indices and/or a gui face to the tool.
+
+
+i'll continue working on the build and make files for now.
+
+cheers;
+rsn
+
+
+
+From mark@klomp.org  Sun Aug 11 13:29:19 2002
+From: mark@klomp.org (Mark Wielaard)
+Date: 11 Aug 2002 14:29:19 +0200
+Subject: [Classpathx-crypto] Security provider in gcj (temporarily
+ removed)
+In-Reply-To: <1028233661.31628.11.camel@elsschot>
+References: <1028233661.31628.11.camel@elsschot>
+Message-ID: <1029068959.6555.79.camel@elsschot>
+
+Hi,
+
+On Thu, 2002-08-01 at 22:27, Mark Wielaard wrote:
+> Unfortunately the addition of those files broken the powerpc build in
+> some mysterious way so I had to remove them again. Since this does not
+> seem to impact any other platform you might want to wait updating your
+> libgcj tree again if you depend on those files being present. Below is
+> the ChangeLog entry. I hope that I can figure out this weekend what
+> exactly broke and add these files again to libgcj.
+
+Finally figured out what the real problem was.
+<http://gcc.gnu.org/ml/java/2002-08/msg00025.html>
+The patch has been reverted. Please make sure you are using binutils
+version 2.12.90.0.15 or higher when working with a recent CVS checkout
+of libgcj.
+
+Cheers,
+
+Mark
+
+
+
+From raif@fl.net.au  Thu Aug 15 14:13:06 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Thu, 15 Aug 2002 23:13:06 +1000
+Subject: [Classpathx-crypto] gnu.crypto 1.0.0
+Message-ID: <3D5BA8E2.1010607@fl.net.au>
+
+hi guys,
+
+i've checked in recently some mods to the build.xml, Makefile.in 
+(toplevel) and Makefile.am (gcj/source).
+
+except for the latter, i tested both the ant build process as well as 
+the gnu make one (toplevel again).
+
+i would appreciate it if somebody can double-check by, at least, doing:
+
+* ant release
+
+and/or
+
+$ ./configure
+$ RELEASE=1.0.0 make -e release
+
+and, for each:
+
+$ md5sum --check gnu-crypto-1.0.0.md5
+
+i've also tagged the module with ver_1_0_0 in preparation of the release.
+
+i'm now going through the javadoc.
+
+a few days ago, i added some tables to the home page showing the results 
+of the library's tools.  again, a critical eye would be helpful.
+
+
+cheers;
+rsn
+
+
+
+
+From nferrier@tapsellferrier.co.uk  Thu Aug 15 16:11:28 2002
+From: nferrier@tapsellferrier.co.uk (nferrier@tapsellferrier.co.uk)
+Date: 15 Aug 2002 16:11:28 +0100
+Subject: [Classpathx-crypto] gnu.crypto 1.0.0
+In-Reply-To: <3D5BA8E2.1010607@fl.net.au>
+References: <3D5BA8E2.1010607@fl.net.au>
+Message-ID: <ur8h0qhr3.fsf@tapsellferrier.co.uk>
+
+well done.
+
+
+Nic
+
+
+
+
+From harmeet@kodemuse.com  Thu Aug 22 02:18:06 2002
+From: harmeet@kodemuse.com (Harmeet Bedi)
+Date: Wed, 21 Aug 2002 18:18:06 -0700
+Subject: [Classpathx-crypto] (no subject)
+Message-ID: <7481705.1030054059347.JavaMail.harmeet@kodemuse.com>
+
+
+
+
+
+From john@enterprise.com  Sun Aug 25 07:21:43 2002
+From: john@enterprise.com (John T. Kirk)
+Date: Sun, 25 Aug 2002 16:21:43 +1000
+Subject: [Classpathx-crypto] release 1.0.0 remaining todos
+Message-ID: <3D687777.8090405@enterprise.com>
+
+hello there,
+
+i went though the generated javadocs, and after fixing some minor html
+tags in few classes that were causing emission of javadoc warnings, i
+believe the library is ready for its birthday release.
+
+unless somebody else notes otherwise, we are ready for the release.
+
+since i also started using jdk 1.4 (j2sdk1.4.0_01 and j2sdk1.4.1) i
+noticed that more javadoc warnings are emitted unless a "-breakiterator"
+option is included in the command line of the javadoc tool (thru ANT 1.5
+but this is secondary).  i refactored the "docs" ant task and added some
+testes to invoke the javadoc tool with appropriate options depending on
+the jdk used to run the ant tool.
+
+i also tagged both the sources and the web pages in the cvs trees with
+tha tag "ver_1_0_0".
+
+the 3 remaining questions/tasks before the release are:
+
+1. draft the announcement text and decide where to publish it,
+2. move the deliverables to a download location,
+3. decide on an incantation to cover export control sensitivities.
+
+re. #1, i'll send later a draft of the announcement text for comments.
+
+re. #2, the home page refers to <ftp://ftp.gnu.org/pub/gnu/classpathx>
+where there's already a crypto-build-demo.tar.gz that i believe Nic put
+there while working on the Makefile process.  2 questions:
+
+q1. should we use this location or a "crypto" subdirectory underneath to
+mirror the web pages organisation?
+q2. how can i upload files to the agreed location?
+
+re. #3, i propose replacing:
+
+"You can download..."
+
+which is the first paragraph of the "Downloads" section, to
+
+"Provided you are legally allowed, you can download..."
+
+comments?
+
+
+cheers;
+rsn
+
+
+
+
+From raif@fl.net.au  Sun Aug 25 07:36:18 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 25 Aug 2002 16:36:18 +1000
+Subject: [Classpathx-crypto] release 1.0.0 remaining todos
+References: <3D687777.8090405@enterprise.com>
+Message-ID: <3D687AE2.7060102@fl.net.au>
+
+apologies for the fake from address but that was me experimenting with 
+mozilla.
+
+John T. Kirk wrote...
+
+cheers;
+rsn
+
+
+
+
+From raif@fl.net.au  Sun Aug 25 09:17:02 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 25 Aug 2002 18:17:02 +1000
+Subject: [Classpathx-crypto] GNU Crypto release 1.0.0
+Message-ID: <3D68927E.606@fl.net.au>
+
+hi there,
+
+here is the proposed announcement text.  the list of recepients is given 
+at the end.  i also intend on forwarding a copy to the included 
+algorithms' author(s).
+
+-----
+
+The GNU Crypto team is proud to anounce the release of the first version 
+of the gnu.crypto library.
+
+GNU Crypto is a 100% Java implementation of cryptographic algorithms and 
+tools, and includes a Java Cryptographic Provider implementation to 
+allow its use through the Java JCA framework and APIs.
+
+GNU Crypto includes, in addition to the now standard cryptographic 
+primitives (MD5, SHA-1, AES, etc.), implementations of new and 
+experimental cryptographic primitives and transforms such as Universal 
+Hash Algorithms (UMAC32, TMMH-16 v1), the Universal Security Transform 
+(UST), and others.
+
+More details on the rationale, and contents of the library can be found 
+on the project's home page at: 
+<http://www.gnu.org/software/classpathx/crypto/crypto.html>. 
+Deliverables are available from: <xxx>
+
+GNU Crypto is licensed under the terms of the GNU General Public 
+License, with the "library exception."
+
+
+Java is a registered trademark of Sun Microsystems, Inc.  All other 
+trademarks and registered trademarks are the property of their 
+respective owners.
+
+-----
+
+cc: prc@privacyrights.org
+     webmasters@gnu.org
+     info-gnu@gnu.org
+     alt.security.announce
+     comp.lang.java.announce
+     comp.lang.java.security
+
+
+
+
+From raif@fl.net.au  Mon Aug 26 22:05:42 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Tue, 27 Aug 2002 07:05:42 +1000
+Subject: [Classpathx-crypto] GNU Crypto release 1.0.0
+Message-ID: <3D6A9826.6040800@fl.net.au>
+
+hi there,
+
+here is a revised version.  i added the reference to NESSIE, and 
+clarified that the project is under the aegis of GNU.
+
+-----
+
+The GNU Crypto team is proud to anounce the release of the first version
+of the gnu.crypto library.
+
+GNU Crypto, part of the GNU project, released under the aegis of GNU, is 
+a 100% Java implementation of cryptographic algorithms and
+tools, and includes a Java Cryptographic Provider implementation to
+allow its use through the Java JCA framework and APIs.
+
+GNU Crypto includes, in addition to the now standard cryptographic
+primitives (MD5, SHA-1, AES, etc.), implementations of new and
+experimental cryptographic primitives and transforms such as Universal
+Hash Algorithms (UMAC32, TMMH-16 v1), the Universal Security Transform
+(UST), and others.  GNU Crypto also includes implementations of some of 
+the accepted (2nd round) NESSIE (New European Schemes for Signatures, 
+Integrity, and Encryption) project such as Anubis, Khazad, Whirlpool, etc.
+
+More details on the rationale, and contents of the library can be found
+on the project's home page at:
+<http://www.gnu.org/software/classpathx/crypto/crypto.html>.
+Deliverables are available from: <xxx>
+
+GNU Crypto is licensed under the terms of the GNU General Public
+License, with the "library exception."
+
+
+(Java is a registered trademark of Sun Microsystems, Inc.  All other
+trademarks and registered trademarks are the property of their
+respective owners.)
+
+-----
+
+cc: prc@privacyrights.org
+      webmasters@gnu.org
+      info-gnu@gnu.org
+      info@cryptonessie.org
+      alt.security.announce
+      comp.lang.java.announce
+      comp.lang.java.security
+
+
+
+_______________________________________________
+Classpathx-crypto mailing list
+Classpathx-crypto@gnu.org
+http://mail.gnu.org/mailman/listinfo/classpathx-crypto
+
+.
+
+
+
+
+
+From nferrier@tapsellferrier.co.uk  Tue Aug 27 08:43:38 2002
+From: nferrier@tapsellferrier.co.uk (nferrier@tapsellferrier.co.uk)
+Date: 27 Aug 2002 08:43:38 +0100
+Subject: [Classpathx-crypto] GNU Crypto release 1.0.0
+In-Reply-To: <3D6A9826.6040800@fl.net.au>
+References: <3D6A9826.6040800@fl.net.au>
+Message-ID: <uofbou4ph.fsf@tapsellferrier.co.uk>
+
+"Raif S. Naffah" <raif@fl.net.au> writes:
+
+> hi there,
+> 
+> here is a revised version.  i added the reference to NESSIE, and
+> clarified that the project is under the aegis of GNU.
+> 
+> -----
+> 
+> The GNU Crypto team is proud to anounce the release of the first version
+> of the gnu.crypto library.
+> 
+> GNU Crypto, part of the GNU project, released under the aegis of GNU, is
+> a 100% Java implementation of cryptographic algorithms and
+> tools, and includes a Java Cryptographic Provider implementation to
+> allow its use through the Java JCA framework and APIs.
+> 
+> GNU Crypto includes, in addition to the now standard cryptographic
+> primitives (MD5, SHA-1, AES, etc.), implementations of new and
+> experimental cryptographic primitives and transforms such as Universal
+> Hash Algorithms (UMAC32, TMMH-16 v1), the Universal Security Transform
+> (UST), and others.  GNU Crypto also includes implementations of some of
+> the accepted (2nd round) NESSIE (New European Schemes for Signatures,
+> Integrity, and Encryption) project such as Anubis, Khazad, Whirlpool, etc.
+> 
+> More details on the rationale, and contents of the library can be found
+> on the project's home page at:
+> <http://www.gnu.org/software/classpathx/crypto/crypto.html>.
+> Deliverables are available from: <xxx>
+> 
+> GNU Crypto is licensed under the terms of the GNU General Public
+> License, with the "library exception."
+> 
+> 
+> (Java is a registered trademark of Sun Microsystems, Inc.  All other
+> trademarks and registered trademarks are the property of their
+> respective owners.)
+> 
+> -----
+
+It's food.
+
+I'd prefer if you said "part of the GNU ClasspathX project".
+
+I'd also prefer if you waited till we had some text about crypto
+export. However, the maintainers support forum are usually quite slow
+to respond... the question is do we put the FSF at risk by offering
+this for download without the text?
+
+I guess one of the things we can do is offer it for download from
+a European country. However, the CVS is in the states and there's not
+much we can do about that.
+
+
+Nic
+
+
+
+
+From nferrier@tapsellferrier.co.uk  Tue Aug 27 08:44:33 2002
+From: nferrier@tapsellferrier.co.uk (nferrier@tapsellferrier.co.uk)
+Date: 27 Aug 2002 08:44:33 +0100
+Subject: [Classpathx-crypto] GNU Crypto release 1.0.0
+In-Reply-To: <3D6A9826.6040800@fl.net.au>
+References: <3D6A9826.6040800@fl.net.au>
+Message-ID: <ulm6su4ny.fsf@tapsellferrier.co.uk>
+
+WHen I said "it's food" what I meant to say was: "it's good".
+
+
+Nic
+
+
+
+
+From raif@fl.net.au  Thu Aug 29 13:01:02 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Thu, 29 Aug 2002 22:01:02 +1000
+Subject: [Classpathx-crypto] 1.0.0 release
+Message-ID: <3D6E0CFE.1050609@fl.net.au>
+
+hello guys,
+
+below is, hopefully, the final draft of the announcement.  shortly i'll 
+update the main home page to reflect the new download urls.
+
+i'd like to take this opportunity to publicly thank Werner Koch, the 
+maintainer of GNU Privacy Guard, for his help in ironing the 
+export-related issue, and for allowing his ftp site to be gnu.crypto's 
+main download site.
+
+-----
+
+Subject: [ANN] GNU Crypto 1.0.0
+
+The GNU Crypto team is proud to anounce the release of the first public 
+version of the gnu.crypto library.
+
+GNU Crypto, part of the GNU ClasspathX project, released under the aegis 
+of GNU, is a 100% Java implementation of cryptographic algorithms and 
+tools, and includes a Java Cryptographic Provider implementation to 
+allow its use through the Java JCA framework and APIs.
+
+GNU Crypto includes, in addition to the now standard cryptographic 
+primitives (MD5, SHA-1, AES, etc.), implementations of new and 
+experimental cryptographic primitives and transforms such as Universal 
+Hash Algorithms (UMAC32, TMMH-16 v1), the Universal Security Transform 
+(UST), and others.  GNU Crypto also includes implementations of some of 
+the accepted (2nd round) NESSIE (New European Schemes for Signatures, 
+Integrity, and Encryption) project such as Anubis, Khazad, Whirlpool, etc.
+
+More details on the rationale, and contents of the library can be found 
+on the project's home page at: 
+<http://www.gnu.org/software/classpathx/crypto/crypto.html>.  The main 
+download site for the deliverables is: ftp.gnupg.org/gcrypt/gnu-crypto/
+
+
+GNU Crypto is licensed under the terms of the GNU General Public 
+License, with the "library exception."
+
+(Java is a registered trademark of Sun Microsystems, Inc.  All other
+trademarks and registered trademarks are the property of their
+respective owners.)
+
+-----
+
+cc: prc@privacyrights.org
+     webmasters@gnu.org
+     info-gnu@gnu.org
+     info@cryptonessie.org
+     alt.security.announce
+     comp.lang.java.announce
+     comp.lang.java.security
+
+
+cheers;
+rsn
+
+
+
+
+From nferrier@tapsellferrier.co.uk  Thu Aug 29 13:00:48 2002
+From: nferrier@tapsellferrier.co.uk (nferrier@tapsellferrier.co.uk)
+Date: 29 Aug 2002 13:00:48 +0100
+Subject: [Classpathx-crypto] 1.0.0 release
+In-Reply-To: <3D6E0CFE.1050609@fl.net.au>
+References: <3D6E0CFE.1050609@fl.net.au>
+Message-ID: <uu1ldx4b3.fsf@tapsellferrier.co.uk>
+
+"Raif S. Naffah" <raif@fl.net.au> writes:
+
+> hello guys,
+> 
+> below is, hopefully, the final draft of the announcement.  shortly i'll
+> update the main home page to reflect the new download urls.
+> 
+> i'd like to take this opportunity to publicly thank Werner Koch, the
+> maintainer of GNU Privacy Guard, for his help in ironing the
+> export-related issue, and for allowing his ftp site to be gnu.crypto's
+> main download site.
+> 
+> -----
+> 
+> Subject: [ANN] GNU Crypto 1.0.0
+> 
+> The GNU Crypto team is proud to anounce the release of the first public
+> version of the gnu.crypto library.
+> 
+> GNU Crypto, part of the GNU ClasspathX project, released under the aegis
+> of GNU, is a 100% Java implementation of cryptographic algorithms and
+> tools, and includes a Java Cryptographic Provider implementation to
+> allow its use through the Java JCA framework and APIs.
+> 
+> GNU Crypto includes, in addition to the now standard cryptographic
+> primitives (MD5, SHA-1, AES, etc.), implementations of new and
+> experimental cryptographic primitives and transforms such as Universal
+> Hash Algorithms (UMAC32, TMMH-16 v1), the Universal Security Transform
+> (UST), and others.  GNU Crypto also includes implementations of some of
+> the accepted (2nd round) NESSIE (New European Schemes for Signatures,
+> Integrity, and Encryption) project such as Anubis, Khazad, Whirlpool, etc.
+> 
+> More details on the rationale, and contents of the library can be found
+> on the project's home page at:
+> <http://www.gnu.org/software/classpathx/crypto/crypto.html>.  The main
+> download site for the deliverables is: ftp.gnupg.org/gcrypt/gnu-crypto/
+> 
+> 
+> GNU Crypto is licensed under the terms of the GNU General Public
+> License, with the "library exception."
+> 
+> (Java is a registered trademark of Sun Microsystems, Inc.  All other
+> trademarks and registered trademarks are the property of their
+> respective owners.)
+
+Looks good to me.
+
+
+Nic
+
+
+
+

@@ -1,0 +1,779 @@
+From raif@fl.net.au  Mon Jul  1 09:52:32 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Mon, 01 Jul 2002 18:52:32 +1000
+Subject: [Classpathx-crypto] on testing - today and tomorrow
+References: <3D15797F.4020203@fl.net.au> <3D1DC271.4060605@fl.net.au>	<87n0tdiwk9.fsf@pooh-sticks-bridge.tapsellferrier.co.uk>	<3D1E810D.4030306@fl.net.au> <87k7ohi3iz.fsf@pooh-sticks-bridge.tapsellferrier.co.uk>
+Message-ID: <3D201850.6020101@fl.net.au>
+
+
+Nic Ferrier wrote:
+> "Raif S. Naffah" <raif@fl.net.au> writes:
+> 
+> 
+>>>I would help with the GCJ issues but my GCJ is broken right now /8-<
+>>
+>>is there a particular person you'd recommend to talk to about
+>>integrating gnu.crypto with the GNU java classes (java.security.* packages)?
+> 
+> 
+> You should just pitch on the Classpath list.
+
+ok.
+
+
+> Do you guys have a JCA/JCE implementation?
+
+no we dont; but we have implementations of MD5, SHA, DSA implementatios 
+and adapters to hook them into a standard JDK --or compliant in the 
+sense of what GNU classpath is developing; i.e. the java.* packages.
+
+code is also available for including ASN.1 DER classes for x.509 
+certificates and the like.
+
+we also plan on providing adapters for use by JCE/JCA implementations 
+from Sun (jdk1.4) or cleanroom ones (bouncycastle, cryptix, etc...) for 
+pre jdk1.4 --the javax.security.* packages.
+
+
+cheers;
+rsn
+
+
+
+From olivier@zipworld.com.au  Mon Jul  1 14:37:02 2002
+From: olivier@zipworld.com.au (Olivier LF)
+Date: Mon, 1 Jul 2002 23:37:02 +1000
+Subject: [Classpathx-crypto] GCJ JUnit result.
+Message-ID: <20020701133702.GA22896@zipworld.com.au>
+
+--2oS5YaxWCcQjTEyO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+> 3. can we get the library integrated with the gcj release --from
+> Olivier's tests it sounded like our JCE adapters fill a missing niche in
+> their distribution?
+
+Sorry for the delay! I am stuck with another home project for the moment
+and don't seem to get anything going!
+
+Anyway, this is the output I get from the JUnit test suite under GCJ
+version: gcc (GCC) 3.2 20020518.
+
+ From this result, it looks very broken but I don't think it is. All the
+basic tests from the crypto.tools directory are running just fine. I
+think that gnu-crypto is essentially working with GCJ. 
+The JUnit test suite is more likely to be badly broken because of
+missing security classes in GCJ than compilation problems or 
+compiler/runtime bugs.
+
+Oli
+
+This is only a snippets of the output, I attach the full file as well.
+
+
+.........................................
+.................................>>> dss: SEED: d38e1e61cc37f5ffcabfe5da132298286e085b19
+>>> dss: counter: 2
+>>> dss: q: de09f1902cf484f232fee5d27262372d1c6072d7
+>>> dss: p: be6189c7df2a7cdf657a81faa2c809f5c5c9ce4d47ed4021fdb8fd55afc140e6ebc8b1df5defadeb422b9f4964eb6d2958940ee84ed8032ce50ac5b611841f87
+>>> dss: g: 6444111a41ad5e86dccb6fbb63a0bc6a1b85b7af338a269a14056cbd8afb9458ba1c6016b14f5331ec6400f2ebd83f0f17cdd54a510050648dd8f5aa3d35ffc
+.>>> dss: SEED: bd86a3974bc22bd3f08c342361075249ef516797
+>>> dss: counter: 56
+>>> dss: q: 96460a696d1e361b4840d641c696955314b5d061
+>>> dss: p: e4e862371e938d890bb7838bb2d50dd079a384406f28e1d1a719f4d886f7e08b9d4c76fc15976f6793fffe98c9356c93b64eae43551561a0a8446f2c80e66cff
+>>> dss: g: c1d24777284832cf120427c854866ff270c349aa091834161fea360801f76ed432d7f615732fdaf6df2a4d274a86db58061e48ff1ec39e88385333d9638ed69
+F.>>> dss: SEED: d78931c08e94cf508a9121d194823300dcfe900f
+>>> dss: counter: 417
+>>> dss: q: aeefc632ffed90b4103202b8b3c9311eb23009e7
+>>> dss: p: 9cab4e49c636313f8bd548aa2bbf79b5049ceedcdd7f130d41b9ab8533f81ca93366fbe619bc0a63a338b49925c44752ea4c35b8840164889cdb21fc54ceeead
+>>> dss: g: 2a651864ab3b9a2f0a05bb24a1ad72578abecc8160391a9964b6d42a126ae0dd1deb678063e2ddc190d80afbe10ba64225c605735207b16358ab640f88424974
+F.>>> dss: SEED: b411c7108639999a028fd5766ba8482a130fbfcb
+>>> dss: counter: 181
+>>> dss: q: bb593e212739720fb3a98fa06818448ce03e5965
+>>> dss: p: 886b602f67146f295cf4357e249d70750c86381cb5e2bc8eb195d654bb8869e5595172e967c9d9efd621d2806ad391b15583f01903ded7dc8d84491c68f6ffeb
+>>> dss: g: 3642955454bc0d9c9b20f6420bd7cfcd9fe6ceeb43212c083eb42cf16d8a44fddd8ecd56f062625a2ac05055ff2eebb86c60a56b62dcbbf53a3ccc9654d31a66
+F.E.E.E.E.
+E.E.E.E..UMAC test vector: 5FD764A6D3A9FD9D
+..java.security.NoSuchAlgorithmException: SHA
+   at 0x403eeee6: java.security.NoSuchAlgorithmException.NoSuchAlgorithmException(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403ee972: java.security.MessageDigest.getInstance(java.lang.String, java.lang.String, java.security.Provider) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403ee8ab: java.security.MessageDigest.getInstance(java.lang.String, java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x080585eb: test::jce::TestOfProvider::testSha() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfProvider.java:85)
+
+
+
+
+F.java.security.NoSuchAlgorithmException: Whirlpool
+   at 0x0805867b: test::jce::TestOfProvider::testWhirlpool() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfProvider.java:95)
+
+
+F...java.security.NoSuchAlgorithmException: ripemd128
+   at 0x08057fd2: test::jce::TestOfMessageDigest::testEquality() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfMessageDigest.java:114)
+
+
+F.E..E.E..E.E
+Time: 440.928
+There were 13 errors:
+1) testKeyPairGeneration(test.sig.rsa.TestOfRSAKeyGeneration)
+java.lang.ArithmeticException: not invertible
+   at 0x40308f56: java.lang.ArithmeticException.ArithmeticException(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403d53a9: java.math.BigInteger.modInverse(java.math.BigInteger) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x40075ccb: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x0805ee1f: test::sig::rsa::TestOfRSAKeyGeneration::testKeyPairGeneration() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSAKeyGeneration.java:101)
+
+2) testRSAParams(test.sig.rsa.TestOfRSAKeyGeneration)
+java.lang.ArithmeticException: not invertible
+   at 0x0805f05a: test::sig::rsa::TestOfRSAKeyGeneration::testRSAParams() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSAKeyGeneration.java:118)
+
+3) testRSAPrimitives(test.sig.rsa.TestOfRSAKeyGeneration)
+java.lang.ArithmeticException: not invertible
+   at 0x0805f63b: test::sig::rsa::TestOfRSAKeyGeneration::testRSAPrimitives() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSAKeyGeneration.java:168)
+
+4) testSigWithDefaults(test.sig.rsa.TestOfRSAPSSSignature)
+java.lang.ArithmeticException: not invertible
+   at 0x40075ccb: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x0805feb4: test::sig::rsa::TestOfRSAPSSSignature::setUp() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSAPSSSignature.java:153)
+
+5) testSigWithShaSalt16(test.sig.rsa.TestOfRSAPSSSignature)
+java.lang.ArithmeticException: not invertible
+   at 0x40075ccb: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x0805feb4: test::sig::rsa::TestOfRSAPSSSignature::setUp() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSAPSSSignature.java:153)
+
+6) testSigWithRipeMD160Salt8(test.sig.rsa.TestOfRSAPSSSignature)
+java.lang.ArithmeticException: not invertible
+   at 0x40075ccb: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x0805feb4: test::sig::rsa::TestOfRSAPSSSignature::setUp() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSAPSSSignature.java:153)
+
+7) testKeyPairRawCodec(test.sig.rsa.TestOfRSACodec)
+java.lang.ArithmeticException: not invertible
+   at 0x40075ccb: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x0805eb95: test::sig::rsa::TestOfRSACodec::setUp() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSACodec.java:148)
+
+8) testSignatureRawCodec(test.sig.rsa.TestOfRSACodec)
+   at 0x40075ccb: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x0805eb95: test::sig::rsa::TestOfRSACodec::setUp() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSACodec.java:148)
+
+9) testCloneability(test.jce.TestOfMessageDigest)
+java.security.NoSuchAlgorithmException: ripemd128
+   at 0x403ec266: java.security.GeneralSecurityException.GeneralSecurityException(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403eeee6: java.security.NoSuchAlgorithmException.NoSuchAlgorithmException(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403ee972: java.security.MessageDigest.getInstance(java.lang.String, java.lang.String, java.security.Provider) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403ee8ab: java.security.MessageDigest.getInstance(java.lang.String, java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x0805836f: test::jce::TestOfMessageDigest::testCloneability() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfMessageDigest.java:144)
+
+10) testDSAKeyPairGenerator(test.jce.TestOfKeyPairGenerator)
+java.lang.NullPointerException
+   at 0x40311cef: java.lang.NullPointerException.NullPointerException() (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x402f5b89: java.lang.Class.forName(java.lang.String, boolean, java.lang.ClassLoader) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x402f5bbf: java.lang.Class.forName(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403ed448: java.security.KeyPairGenerator.getInstance(java.lang.String, java.lang.String, java.security.Provider) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403ed3eb: java.security.KeyPairGenerator.getInstance(java.lang.String, java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x08057770: test::jce::TestOfKeyPairGenerator::testDSAKeyPairGenerator() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfKeyPairGenerator.java:95)
+
+11) testRSAKeyPairGenerator(test.jce.TestOfKeyPairGenerator)
+java.lang.NullPointerException
+   at 0x40075edd: gnu.crypto.sig.rsa.RSAKeyPairGenerator.nextRandomBytes(byte[]) (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x40075b12: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x40062ca0: gnu.crypto.jce.KeyPairGeneratorAdapter.generateKeyPair() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x403ebda4: java.security.DummyKeyPairGenerator.generateKeyPair() (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x08058aba: test::jce::TestOfSignature::testRSAPSSRawSignature() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfSignature.java:111)
+
+12) testDSSRawSignature(test.jce.TestOfSignature)
+java.lang.NullPointerException
+   at 0x40311cef: java.lang.NullPointerException.NullPointerException() (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x402f5b89: java.lang.Class.forName(java.lang.String, boolean, java.lang.ClassLoader) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x402f5bbf: java.lang.Class.forName(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403ed448: java.security.KeyPairGenerator.getInstance(java.lang.String, java.lang.String, java.security.Provider) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x403ed3eb: java.security.KeyPairGenerator.getInstance(java.lang.String, java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x08058991: test::jce::TestOfSignature::testDSSRawSignature() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfSignature.java:89)
+
+13) testRSAPSSRawSignature(test.jce.TestOfSignature)
+java.lang.NullPointerException
+   at 0x40075edd: gnu.crypto.sig.rsa.RSAKeyPairGenerator.nextRandomBytes(byte[]) (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x40075b12: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x40062ca0: gnu.crypto.jce.KeyPairGeneratorAdapter.generateKeyPair() (/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+   at 0x403ebda4: java.security.DummyKeyPairGenerator.generateKeyPair() (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x08058aba: test::jce::TestOfSignature::testRSAPSSRawSignature() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfSignature.java:111)
+
+There were 7 failures:
+1) testSignature(test.sig.dss.TestOfDSSSignature)junit.framework.AssertionFailedError: Verify own signature
+   at 0x0805e5de: test::sig::dss::TestOfDSSSignature::testSignature() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/dss/TestOfDSSSignature.java:110)
+
+2) testKeyPairRawCodec(test.sig.dss.TestOfDSSCodec)junit.framework.AssertionFailedError: DSS public key Raw encoder/decoder test
+   at 0x400a3136: junit.framework.AssertionFailedError.AssertionFailedError(java.lang.String) (/home/olivier/tmp/jjj/lib/lib-junit.so.1)
+   at 0x0805da15: test::sig::dss::TestOfDSSCodec::testKeyPairRawCodec() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/dss/TestOfDSSCodec.java:111)
+
+3) testSignatureRawCodec(test.sig.dss.TestOfDSSCodec)junit.framework.AssertionFailedError: Signature Raw encoder/decoder test
+   at 0x400a3136: junit.framework.AssertionFailedError.AssertionFailedError(java.lang.String) (/home/olivier/tmp/jjj/lib/lib-junit.so.1)
+   at 0x0805dc6f: test::sig::dss::TestOfDSSCodec::testSignatureRawCodec() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/dss/TestOfDSSCodec.java:139)
+
+4) testSha(test.jce.TestOfProvider)junit.framework.AssertionFailedError: testSha()
+   at 0x400a3136: junit.framework.AssertionFailedError.AssertionFailedError(java.lang.String) (/home/olivier/tmp/jjj/lib/lib-junit.so.1)
+   at 0x08058638: test::jce::TestOfProvider::testSha() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfProvider.java:88)
+
+5) testWhirlpool(test.jce.TestOfProvider)junit.framework.AssertionFailedError: testWhirlpool()
+   at 0x400a3136: junit.framework.AssertionFailedError.AssertionFailedError(java.lang.String) (/home/olivier/tmp/jjj/lib/lib-junit.so.1)
+   at 0x080586c8: test::jce::TestOfProvider::testWhirlpool() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfProvider.java:98)
+
+6) testShaPRNG(test.jce.TestOfProvider)junit.framework.AssertionFailedError: testShaPRNG()
+   at 0x400a3136: junit.framework.AssertionFailedError.AssertionFailedError(java.lang.String) (/home/olivier/tmp/jjj/lib/lib-junit.so.1)
+   at 0x08058758: test::jce::TestOfProvider::testShaPRNG() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfProvider.java:108)
+
+7) testEquality(test.jce.TestOfMessageDigest)junit.framework.AssertionFailedError: MessageDigest.getInstance(ripemd128): java.security.NoSuchAlgorithmException: ripemd128
+   at 0x400a3136: junit.framework.AssertionFailedError.AssertionFailedError(java.lang.String) (/home/olivier/tmp/jjj/lib/lib-junit.so.1)
+   at 0x08058244: test::jce::TestOfMessageDigest::testEquality() (/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfMessageDigest.java:118)
+
+FAILURES!!!
+Tests run: 101,  Failures: 7,  Errors: 13
+
+
+
+
+
+
+-- 
+----------------------------------------------------------------------
+Olivier Louchart-Fletcher
+Email: olivier@zipworld.com.au
+
+--2oS5YaxWCcQjTEyO
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="junit.txt.gz"
+Content-Transfer-Encoding: base64
+
+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
+owII7zE9Ovo/RCf9lcbIAAA=
+
+--2oS5YaxWCcQjTEyO--
+
+
+From raif@fl.net.au  Wed Jul  3 10:24:47 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Wed, 03 Jul 2002 19:24:47 +1000
+Subject: [Classpathx-crypto] GCJ JUnit result.
+References: <20020701133702.GA22896@zipworld.com.au>
+Message-ID: <3D22C2DF.5090507@fl.net.au>
+
+it does not look as bad is it might first seems ;-)
+
+
+Olivier LF wrote:
+ > ...
+ > Anyway, this is the output I get from the JUnit test suite under GCJ
+ > version: gcc (GCC) 3.2 20020518.
+ >
+ > ...
+ > ..java.security.NoSuchAlgorithmException: SHA
+ >    at 0x403eeee6: 
+java.security.NoSuchAlgorithmException.NoSuchAlgorithmException(java.lang.String) 
+(/usr/local/gcc/lib/libgcj.so.3)
+ >    at 0x403ee972: 
+java.security.MessageDigest.getInstance(java.lang.String, 
+java.lang.String, java.security.Provider) (/usr/local/gcc/lib/libgcj.so.3)
+ >    at 0x403ee8ab: 
+java.security.MessageDigest.getInstance(java.lang.String, 
+java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+ >    at 0x080585eb: test::jce::TestOfProvider::testSha() 
+(/home/olivier/program/cvsrsh/crypto/gcj/source/test/jce/TestOfProvider.java:85)
+
+i had a look at the classpath implementation of the
+MessageDigest.getInstance and i know why this is throwing the exception:
+the implemetation *does not* handle algorithm aliasing at all!
+
+a simple fix is to replace the following line in the above method (with
+2 arguments) with the following:
+
+- return getInstance(p.getProperty("MessageDigest." + algorithm),
+algorithm, p);
+
++ // try the name as is
++ String className = p.getProperty("MessageDigest." + algorithm);
++ if (className == null) { // try all uppercase
++    String upper = algorithm.toUpperCase();
++    className = p.getProperty("MessageDigest." + upper);
++    if (className == null) { // try if it's an alias
++       String alias = p.getProperty("Alg.Alias.MessageDigest." +
+algorithm);
++       if (alias == null) { // spit the dummy
++          throw new NoSuchAlgorithmException(algorithm);
++       }
++       className = p.getProperty("MessageDigest." + alias);
++       if (className == null) {
++          throw new NoSuchAlgorithmException(algorithm);
++       }
++    }
++ }
++ return getInstance(className, algorithm, p);
+
+
+ > F.java.security.NoSuchAlgorithmException: Whirlpool
+
+idem
+
+
+ > F...java.security.NoSuchAlgorithmException: ripemd128
+
+idem
+
+
+ > F.E..E.E..E.E
+ > Time: 440.928
+ > There were 13 errors:
+ > 1) testKeyPairGeneration(test.sig.rsa.TestOfRSAKeyGeneration)
+ > java.lang.ArithmeticException: not invertible
+ >    at 0x40308f56: 
+java.lang.ArithmeticException.ArithmeticException(java.lang.String) 
+(/usr/local/gcc/lib/libgcj.so.3)
+ >    at 0x403d53a9: 
+java.math.BigInteger.modInverse(java.math.BigInteger) 
+(/usr/local/gcc/lib/libgcj.so.3)
+ >    at 0x40075ccb: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() 
+(/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+ >    at 0x0805ee1f: 
+test::sig::rsa::TestOfRSAKeyGeneration::testKeyPairGeneration() 
+(/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSAKeyGeneration.java:101)
+
+looking at gnu.crypto.rsa.RSAKeyPairGenerator, and the classpath
+BigInteger implementation, the exception is thrown from line 205 (in the
+RSA keypair generator):
+
+d = e.modInverse(phi);
+
+the problem is that if we made it to that line, this exception should
+not be thrown, hence the cause may be in how modInverse is implemented 
+in the concrete BigInteger class.  i'll inspect the source later.
+
+
+ > 2) testRSAParams(test.sig.rsa.TestOfRSAKeyGeneration)
+ > java.lang.ArithmeticException: not invertible...
+ > 3) testRSAPrimitives(test.sig.rsa.TestOfRSAKeyGeneration)
+ > java.lang.ArithmeticException: not invertible...
+ > 4) testSigWithDefaults(test.sig.rsa.TestOfRSAPSSSignature)
+ > java.lang.ArithmeticException: not invertible...
+ > 5) testSigWithShaSalt16(test.sig.rsa.TestOfRSAPSSSignature)
+ > java.lang.ArithmeticException: not invertible...
+ > 6) testSigWithRipeMD160Salt8(test.sig.rsa.TestOfRSAPSSSignature)
+ > java.lang.ArithmeticException: not invertible...
+ > 7) testKeyPairRawCodec(test.sig.rsa.TestOfRSACodec)
+ > java.lang.ArithmeticException: not invertible...
+
+idem.
+
+
+ > 8) testSignatureRawCodec(test.sig.rsa.TestOfRSACodec)
+ >    at 0x40075ccb: gnu.crypto.sig.rsa.RSAKeyPairGenerator.generate() 
+(/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+ >    at 0x0805eb95: test::sig::rsa::TestOfRSACodec::setUp() 
+(/home/olivier/program/cvsrsh/crypto/gcj/source/test/sig/rsa/TestOfRSACodec.java:148)
+
+suspect (without knowing at which line it was thrown) that it's at the 
+same place as 2) - 7) above.
+
+
+ > 9) testCloneability(test.jce.TestOfMessageDigest)
+ > java.security.NoSuchAlgorithmException: ripemd128
+
+same as the Failures earlier.
+
+
+ > 10) testDSAKeyPairGenerator(test.jce.TestOfKeyPairGenerator)
+ > java.lang.NullPointerException...
+ > 11) testRSAKeyPairGenerator(test.jce.TestOfKeyPairGenerator)
+ > java.lang.NullPointerException...
+ > 12) testDSSRawSignature(test.jce.TestOfSignature)
+ > java.lang.NullPointerException...
+ > 13) testRSAPSSRawSignature(test.jce.TestOfSignature)
+ > java.lang.NullPointerException...
+
+similar problem (and similar work-around) to the MessageDigest.getInstance()
+
+
+cheers;
+rsn
+
+
+
+From olivier@zipworld.com.au  Wed Jul  3 14:38:28 2002
+From: olivier@zipworld.com.au (Olivier LF)
+Date: Wed, 3 Jul 2002 23:38:28 +1000
+Subject: [Classpathx-crypto] GCJ JUnit result.
+In-Reply-To: <3D22C2DF.5090507@fl.net.au>
+References: <20020701133702.GA22896@zipworld.com.au> <3D22C2DF.5090507@fl.net.au>
+Message-ID: <20020703133828.GA2810@zipworld.com.au>
+
+On Wed, Jul 03, 2002 at 07:24:47PM +1000, Raif S. Naffah wrote:
+> 
+> i had a look at the classpath implementation of the
+> MessageDigest.getInstance and i know why this is throwing the exception:
+> the implemetation *does not* handle algorithm aliasing at all!
+
+First of all be aware that "classpath" and "gcj" don't always share
+the same code. They are merging differences step by step. 
+In gcj the classes are under:
+
+   gcc/libjava/java
+
+> a simple fix is to replace the following line in the above method (with
+> 2 arguments) with the following:
+> 
+> - return getInstance(p.getProperty("MessageDigest." + algorithm),
+> algorithm, p);
+> 
+> + // try the name as is
+> + String className = p.getProperty("MessageDigest." + algorithm);
+> + if (className == null) { // try all uppercase
+> +    String upper = algorithm.toUpperCase();
+> +    className = p.getProperty("MessageDigest." + upper);
+> +    if (className == null) { // try if it's an alias
+> +       String alias = p.getProperty("Alg.Alias.MessageDigest." +
+> algorithm);
+> +       if (alias == null) { // spit the dummy
+> +          throw new NoSuchAlgorithmException(algorithm);
+> +       }
+> +       className = p.getProperty("MessageDigest." + alias);
+> +       if (className == null) {
+> +          throw new NoSuchAlgorithmException(algorithm);
+> +       }
+> +    }
+> + }
+> + return getInstance(className, algorithm, p);
+
+
+The gcj implementation of MessageDigest looks the same as classpath.
+I haven't tried your patch yet. I did try the naive approach of replacing:
+
+   MessageDigest md = MessageDigest.getInstance("SHA", GNU);
+   ...
+   ...
+   MessageDigest md = MessageDigest.getInstance("WHirlpool", GNU);
+
+with:
+
+   MessageDigest md = MessageDigest.getInstance("SHA-160", GNU);
+   ...
+   ...
+   MessageDigest md = MessageDigest.getInstance("WHIRLPOOL", GNU);
+
+In TestOfProvider.java, I now get:
+
+java.lang.ClassCastException: gnu.crypto.jce.Sha160Spi cannot be cast to
+java.security.MessageDigest
+...
+...
+java.lang.ClassCastException: gnu.crypto.jce.WhirlpoolSpi cannot be cast
+to java.security.MessageDigest
+
+???
+
+Oli
+
+-- 
+----------------------------------------------------------------------
+Olivier Louchart-Fletcher
+Email: olivier@zipworld.com.au
+
+
+From raif@fl.net.au  Wed Jul  3 17:31:55 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Thu, 04 Jul 2002 02:31:55 +1000
+Subject: [Classpathx-crypto] GCJ JUnit result.
+References: <20020701133702.GA22896@zipworld.com.au> <3D22C2DF.5090507@fl.net.au> <20020703133828.GA2810@zipworld.com.au>
+Message-ID: <3D2326FB.1090303@fl.net.au>
+
+
+Olivier LF wrote:
+> ...I did try the naive approach of replacing:
+> 
+>    MessageDigest md = MessageDigest.getInstance("SHA", GNU);
+>    ...
+>    ...
+>    MessageDigest md = MessageDigest.getInstance("WHirlpool", GNU);
+> 
+> with:
+> 
+>    MessageDigest md = MessageDigest.getInstance("SHA-160", GNU);
+>    ...
+>    ...
+>    MessageDigest md = MessageDigest.getInstance("WHIRLPOOL", GNU);
+> 
+> In TestOfProvider.java, I now get:
+> 
+> java.lang.ClassCastException: gnu.crypto.jce.Sha160Spi cannot be cast to
+> java.security.MessageDigest
+
+this is a 2nd bug in the MessageDigest implementation (method 
+getInstance with 3 args) caused by the line:
+
+
+MessageDigest m =
+       (MessageDigest) Class.forName(classname).newInstance();
+
+the fix is:
+
+1. to catch the ClassCastException,
+2. test if the newly instantiated class is an instance of 
+java.security.MessageDigestSpi,
+3. if it isnt throw the exception, otherwise
+4. wrap the newly instantiated class in a proxy class that channels the 
+MessageDigest calls to the wrapped Spi class.
+
+
+how about that!  we started testing our code, and ended up testing the 
+gcj/classpath.
+
+do you have enough info to file bug reports?
+
+
+cheers;
+rsn
+
+
+
+From raif@fl.net.au  Sun Jul  7 09:50:45 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 07 Jul 2002 18:50:45 +1000
+Subject: [Classpathx-crypto] latest checkin
+Message-ID: <3D2800E5.1060303@fl.net.au>
+
+i checked in this afternoon an implementation of David McGrew's TMMH/16 
+(version 1) -gnu.crypto.mac.TMMH16- as well as a test case for it 
+-test.mac.TestOfTMMH16.  this is in preparation for the implementation 
+of the UST (Universal Security Transform).
+
+the count of tests is now up to 93!  i.e. if you run:
+
+ant test
+
+you should see at the end:
+
+[junit] OK (93 tests)
+
+
+other classes were also amended to allow instantiation for this new 
+algorithm.
+
+i also implemented Cloneability for the PRNG implementations we already 
+have.
+
+
+cheers;
+rsn
+
+
+
+From olivier@zipworld.com.au  Sat Jul  6 09:04:28 2002
+From: olivier@zipworld.com.au (Olivier LF)
+Date: Sat, 6 Jul 2002 18:04:28 +1000
+Subject: [Classpathx-crypto] GCJ build now support JUnit.
+Message-ID: <20020706080428.GA6340@zipworld.com.au>
+
+I have updated the GCJ build to support JUnit testing.
+
+Basically configure supports an extra flag:
+
+  --with-junit-jar=/path/to/junit.jar
+
+If this flag is given, the generated makefiles will build the JUnit
+test suite.
+
+Note that you must have a native JUnit shared library build with GCJ as
+well. I have put together instructions on how to do that at:
+
+   http://www.zipworld.com.au/~olivier/gcj.html
+
+
+However since I updated to the latest crypto sources I get:
+
+tournesol:~/tmp/ccc$ source/junitTest 
+Exception in thread "main" java.lang.InternalError: anubis-128
+   at 0x40318a32: java.lang.Throwable.Throwable(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x40309866: java.lang.Error.Error(java.lang.String)
+      (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x40319286: java.lang.VirtualMachineError.VirtualMachineError(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)   
+   at 0x4030b436: java.lang.InternalError.InternalError(java.lang.String) (/usr/local/gcc/lib/libgcj.so.3)
+   at 0x4003b25a: gnu.crypto.cipher.CipherFactory.getInstance(java.lang.String)(/home/olivier/tmp/ccc/source/.libs/lib-gnu-crypto.so.1)
+
+It looks like Anubis cipher does not pass its selftest anymore? or is it
+a new feature?
+
+I'll investigate more.
+
+I also have to try your GCJ patches Raif.
+
+Oli
+
+
+-- 
+----------------------------------------------------------------------
+Olivier Louchart-Fletcher
+Email: olivier@zipworld.com.au
+Phone (home) (61 2) 9798 0596
+
+
+From raif@fl.net.au  Sat Jul 27 03:37:49 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sat, 27 Jul 2002 12:37:49 +1000
+Subject: [Classpathx-crypto] latest checkins
+Message-ID: <3D42077D.2080105@fl.net.au>
+
+hello guys,
+
+i've checked in more JCE Adapters to wrap all our secure PRNG 
+implementations, and added a small test to the TestOfProvider in 
+test.jce for that.
+
+earlier i checked in an implementation of David McGrew's UST algorithm. 
+  i'm still waiting for its review --which is why i didnt announce it 
+earlier.
+
+finally i updated the build.xml, Makefile.in (in toplevel) and 
+Makefile.am (in gcj/source).  i tested the two former ones but was 
+unable to try the gcj version because (a) dont have a working gcj and 
+(b) dont have autoconfigure2.50.
+
+i'd like to aim for the 30th of August as the date for the first public 
+release of the library.  so from now on it's concentrating on:
+
+a. the documentation: organisation, spelling, clarity, etc...
+b. the build process: ANT and the 2 makes --i/we probably would need 
+help with Nic's automakejar tool; any takers?
+c. sort out the test vector issue; and finally
+d. sort out signing the distribution issue.
+
+volunteers for above tasks, and ideas/suggestions about the still open 
+issues are welcome.
+
+
+cheers;
+rsn
+
+
+
+From olivier@zipworld.com.au  Sun Jul 28 07:12:29 2002
+From: olivier@zipworld.com.au (Olivier LF)
+Date: Sun, 28 Jul 2002 16:12:29 +1000
+Subject: [Classpathx-crypto] latest checkins
+In-Reply-To: <3D42077D.2080105@fl.net.au>
+References: <3D42077D.2080105@fl.net.au>
+Message-ID: <20020728061229.GA672@zipworld.com.au>
+
+On Sat, Jul 27, 2002 at 12:37:49PM +1000, Raif S. Naffah wrote:
+> ...
+> ...
+> finally i updated the build.xml, Makefile.in (in toplevel) and 
+> Makefile.am (in gcj/source).  i tested the two former ones but was 
+> unable to try the gcj version because (a) dont have a working gcj and 
+> (b) dont have autoconfigure2.50.
+ 
+I have updated the GCJ build accordingly.
+Both crypto library and JUnit test suite build successfully however
+Anubis still does not pass its self test!
+
+Making the GCJ build mostly useless for now... Anyway it is there.
+
+Oli
+
+----------------------------------------------------------------------
+Olivier Louchart-Fletcher
+olivier -at- zipworld com au
+
+
+From raif@fl.net.au  Sun Jul 28 10:52:58 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 28 Jul 2002 19:52:58 +1000
+Subject: [Classpathx-crypto] latest checkins
+References: <3D42077D.2080105@fl.net.au> <20020728061229.GA672@zipworld.com.au>
+Message-ID: <3D43BEFA.2060605@fl.net.au>
+
+Olivier LF wrote:
+> On Sat, Jul 27, 2002 at 12:37:49PM +1000, Raif S. Naffah wrote:
+> 
+>>...
+>>...
+>>finally i updated the build.xml, Makefile.in (in toplevel) and 
+>>Makefile.am (in gcj/source).  i tested the two former ones but was 
+>>unable to try the gcj version because (a) dont have a working gcj and 
+>>(b) dont have autoconfigure2.50.
+> 
+>  
+> I have updated the GCJ build accordingly.
+
+thanks a bunch!
+
+
+> Both crypto library and JUnit test suite build successfully however
+> Anubis still does not pass its self test!
+
+Anubis does not have anything specially different than the other ciphers 
+--in terms of the java language constructs and invocations.  does any 
+other cipher pass its self-test?
+
+
+cheers;
+rsn
+
+
+

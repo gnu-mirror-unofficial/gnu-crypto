@@ -1,0 +1,443 @@
+From raif@fl.net.au  Sat Jan  5 22:52:29 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 06 Jan 2002 09:52:29 +1100
+Subject: [Classpathx-crypto] NESSIE RSA-PSS submission
+Message-ID: <5.0.0.25.1.20020106094508.00a644f0@mail.syd.fl.net.au>
+
+Gentlemen,
+
+while implementing this scheme in Java, i found an inconsistency in the 
+specification of the EMSA-PSS-Decode(M, EM, emBits) primitive (document B 
+of your submission, page 11), at step #10.
+
+this should read "...or if the octet at position emLen -hLen -sLen -2 is 
+not equal to 01..." and not "...emLen -hLen -sLen -1."
+
+
+cheers;
+rsn
+
+
+
+From jjonsson@rsasecurity.com  Thu Jan 10 10:20:21 2002
+From: jjonsson@rsasecurity.com (Jakob Jonsson)
+Date: Thu, 10 Jan 2002 11:20:21 +0100
+Subject: [Classpathx-crypto] Re: NESSIE RSA-PSS submission
+References: <5.0.0.25.1.20020106094508.00a644f0@mail.syd.fl.net.au>
+Message-ID: <004c01c199c0$68ed0960$e30d10ac@jjonssonpc>
+
+Hi Raif,
+
+I think the inconsistency lies in how you define the leftmost position of an
+octet string; this could be either "position 0" (as in C and Java) or
+"position 1". We have adopted the second convention; the octet on position n
+is the nth leftmost octet rather than the (n+1)st leftmost octet. The length
+of the PS string preceding the 01 octet is emLen-hLen-sLen-2, so the 01
+octet is on position emLen-hLen-sLen-1.
+
+Yet, I admit that this convention should have been explicitly stated in the
+document.
+
+Best regards,
+Jakob Jonsson
+RSA Laboratories
+
+----- Original Message -----
+From: "Raif S. Naffah" <raif@fl.net.au>
+To: <jjonsson@rsasecurity.com>; <bkaliski@rsasecurity.com>
+Cc: "GNU Crypto Developers" <classpathx-crypto@gnu.org>; "Paulo S. L. M.
+Barreto" <paulo.barreto@terra.com.br>
+Sent: Saturday, January 05, 2002 11:52 PM
+Subject: NESSIE RSA-PSS submission
+
+
+> Gentlemen,
+>
+> while implementing this scheme in Java, i found an inconsistency in the
+> specification of the EMSA-PSS-Decode(M, EM, emBits) primitive (document B
+> of your submission, page 11), at step #10.
+>
+> this should read "...or if the octet at position emLen -hLen -sLen -2 is
+> not equal to 01..." and not "...emLen -hLen -sLen -1."
+>
+>
+> cheers;
+> rsn
+
+
+
+From raif@fl.net.au  Fri Jan 11 20:23:02 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sat, 12 Jan 2002 07:23:02 +1100
+Subject: [Classpathx-crypto] Re: NESSIE RSA-PSS submission
+In-Reply-To: <004c01c199c0$68ed0960$e30d10ac@jjonssonpc>
+References: <5.0.0.25.1.20020106094508.00a644f0@mail.syd.fl.net.au>
+Message-ID: <5.0.0.25.1.20020112071857.00a71050@mail.syd.fl.net.au>
+
+At 11:20 AM 1/10/02 +0100, Jakob Jonsson wrote:
+>Hi Raif,
+>
+>I think the inconsistency lies in how you define the leftmost position of an
+>octet string; this could be either "position 0" (as in C and Java) or
+>"position 1". We have adopted the second convention; the octet on position n
+>is the nth leftmost octet rather than the (n+1)st leftmost octet. The length
+>of the PS string preceding the 01 octet is emLen-hLen-sLen-2, so the 01
+>octet is on position emLen-hLen-sLen-1.
+
+yes. it definitely makes sense.  i was in "java mode" too deep to see 
+another explanation.
+
+
+>Yet, I admit that this convention should have been explicitly stated in the
+>document.
+
+thanks for taking the time to respond.
+
+FYI, the soon to be released GNU library will include a full implementation 
+of the RSA-PSS scheme with spport for both SHA and RIPEMD160 as underlying 
+hash functions for the MGF.
+
+
+cheers;
+rsn
+
+
+>Best regards,
+>Jakob Jonsson
+>RSA Laboratories
+>
+>----- Original Message -----
+>From: "Raif S. Naffah" <raif@fl.net.au>
+>To: <jjonsson@rsasecurity.com>; <bkaliski@rsasecurity.com>
+>Cc: "GNU Crypto Developers" <classpathx-crypto@gnu.org>; "Paulo S. L. M.
+>Barreto" <paulo.barreto@terra.com.br>
+>Sent: Saturday, January 05, 2002 11:52 PM
+>Subject: NESSIE RSA-PSS submission
+>
+>
+> > Gentlemen,
+> >
+> > while implementing this scheme in Java, i found an inconsistency in the
+> > specification of the EMSA-PSS-Decode(M, EM, emBits) primitive (document B
+> > of your submission, page 11), at step #10.
+> >
+> > this should read "...or if the octet at position emLen -hLen -sLen -2 is
+> > not equal to 01..." and not "...emLen -hLen -sLen -1."
+> >
+> >
+> > cheers;
+> > rsn
+>
+>
+>_______________________________________________
+>Classpathx-crypto mailing list
+>Classpathx-crypto@gnu.org
+>http://mail.gnu.org/mailman/listinfo/classpathx-crypto
+
+
+
+From raif@fl.net.au  Sun Jan 13 00:13:11 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 13 Jan 2002 11:13:11 +1100
+Subject: [Classpathx-crypto] latest GNU Crypto library
+Message-ID: <5.0.0.25.1.20020113110855.00a6fcc0@mail.syd.fl.net.au>
+
+hi guys,
+
+please have a look at <http://www.gnu.org/software/classpathx/crypto/> 
+which describes the cointents of the library as of yesterday and tell me 
+what you think.
+
+i'd like to have a release done before the next weekend, if possible, even 
+if this means doing it with ANT tool only.
+
+
+cheers;
+rsn
+
+
+
+From CreamTec News" <remove@creamtec.com  Fri Jan 18 21:41:50 2002
+From: CreamTec News" <remove@creamtec.com (CreamTec News)
+Date: Fri, 18 Jan 2002 16:41:50 -0500
+Subject: [Classpathx-crypto] New Java Swing web-enabling technology - you have to see it to believe it
+Message-ID: <200201212151.g0LLpOB21468@hot.useractive.com>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0229_01C1A03B.E786CB90
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_022A_01C1A03B.E786CB90"
+
+
+------=_NextPart_001_022A_01C1A03B.E786CB90
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+      Are you developing Java applications using Swing, AWT and =
+servlets/JSP?
+      Companies that develop Java applications today must choose between =
+making a GUI front end using AWT/Swing or HTML front end using servlets =
+and JSP. Either choice has advantages and disadvantages, but it is clear =
+that the ideal solution would support both. However, because these =
+technologies are very different in their nature, only one can be =
+typically implemented in a finished application. There is a large market =
+for GUI based Java applications but these are running into speed and =
+compatibility problems. Also, applets executed within browsers cannot =
+take advantage of the latest Swing controls and features. Taken =
+together, these issues prevent companies from developing GUI as they =
+should be able to do. WebCream solves these problems without programmers =
+having to learn any APIs and without any modification to existing forms. =
+
+    =20
+       =20
+
+      WebCream 4.0 is here and you have to see it to believe it!
+      WebCream is a unique tool for Java, that provides automated =
+web-enabling for GUI based Java applications and applets. WebCream =
+allows developers to implement a GUI front end using AWT and Swing, and =
+at the same time automatically get HTML access to the application. In a =
+way, WebCream can be thought of as a dynamic Java to HTML converter, =
+that converts Java frames and dialogs to HTML on the fly. It then =
+emulates web page actions as GUI events to retain application original =
+logic. WebCream is unique in that it requires no modifications to =
+existing forms and business logic, and does not require programmers to =
+learn any APIs. It is designed to publish existing applications and =
+applets, it's just a matter of setting up your web server and a property =
+file describing the application. The rest is handled by WebCream. To see =
+a demonstration of WebCream live, check out our Demos page.=20
+
+      Visit WebCream page at http://www.creamtec.com/webcream for =
+detailed information. =20
+
+      =20
+
+      Featured in
+       =20
+
+
+We apologize if you have received this email by mistake. This is a =
+one-time notification and you will not receive any email from CreamTec =
+unless you register on our website. If you are a registered customer of =
+CreamTec and wish to be removed from our list just reply to this email =
+or send an email to remove@creamtec.com.=20
+
+
+------=_NextPart_001_022A_01C1A03B.E786CB90
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 5.50.4807.2300" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY>
+<DIV><FONT face=3DArial size=3D2></FONT><FONT face=3DArial size=3D2>
+<TABLE cellSpacing=3D0 cellPadding=3D5 border=3D0>
+  <TBODY>
+  <TR bgColor=3D#f7f0e1>
+    <TD><STRONG><FONT color=3D#5b6880><SPAN class=3Dparttitle>Are you =
+developing=20
+      Java applications using Swing, AWT and=20
+      servlets/JSP?</SPAN><BR></FONT></STRONG><FONT size=3D2>Companies =
+that=20
+      develop Java applications today must choose between making a GUI =
+front end=20
+      using AWT/Swing or HTML front end using servlets and JSP. Either =
+choice=20
+      has advantages and disadvantages, but it is clear that the ideal =
+solution=20
+      would support both. However, because these technologies are very =
+different=20
+      in their nature, only one can be typically implemented in a =
+finished=20
+      application. There is a large market for GUI based Java =
+applications but=20
+      these are running into speed and compatibility problems. Also, =
+applets=20
+      executed within browsers cannot take advantage of the latest Swing =
+
+      controls and features. Taken together, these issues prevent =
+companies from=20
+      developing GUI as they should be able to do. WebCream solves these =
+
+      problems without programmers having to learn any APIs and without =
+any=20
+      modification to existing forms. <BR></FONT></TD>
+    <TD vAlign=3Dtop align=3Dmiddle><BR><IMG=20
+      src=3D"http://www.creamtec.com/images/logo.gif"> </TD></TR>
+  <TR bgColor=3D#f7f0e1>
+    <TD><BR><STRONG><FONT color=3D#5b6880><SPAN =
+class=3Dparttitle>WebCream 4.0 is=20
+      here and you have to see it to believe =
+it!</SPAN><BR></FONT></STRONG><FONT=20
+      size=3D2>WebCream is a unique tool for Java, that provides =
+automated=20
+      web-enabling for GUI based Java applications and applets.<B> =
+WebCream=20
+      allows developers to implement a GUI front end using AWT and =
+Swing, and at=20
+      the same time automatically get HTML access to the =
+application.</B> In a=20
+      way, WebCream can be thought of as a dynamic Java to HTML =
+converter, that=20
+      converts Java frames and dialogs to HTML on the fly.<B> </B>It =
+then=20
+      emulates web page actions as GUI events to retain application =
+original=20
+      logic. WebCream is unique in that it requires no modifications to =
+existing=20
+      forms and business logic, and does not require programmers to =
+learn any=20
+      APIs. It is designed to publish existing applications and applets, =
+it's=20
+      just a matter of setting up your web server and a property file =
+describing=20
+      the application. The rest is handled by WebCream. To see a =
+demonstration=20
+      of WebCream live, check out our </FONT><A=20
+      href=3D"http://www.creamtec.com/webcream/demos.html"><FONT=20
+      size=3D2>Demos</FONT></A><FONT size=3D2> page. <BR><BR>Visit =
+WebCream page at=20
+      </FONT><A href=3D"http://www.creamtec.com/webcream"><FONT=20
+      size=3D2>http://www.creamtec.com/webcream</FONT></A><FONT =
+size=3D2> for=20
+      detailed information.</FONT> </TD>
+    <TD vAlign=3Dtop align=3Dmiddle><BR><BR><IMG=20
+      src=3D"http://www.creamtec.com/webcream/images/jars.gif"> =
+<BR><BR><FONT=20
+      size=3D-1>Featured in</FONT><BR><IMG=20
+      src=3D"http://www.creamtec.com/webcream/images/javaworld.gif">=20
+</TD></TR></TBODY></TABLE>
+<P><BR><SPAN style=3D"FONT-SIZE: 11pt"><FONT size=3D2>We apologize if =
+you have=20
+received this email by mistake. This is a <B>one-time</B> notification =
+and you=20
+<B>will not receive</B> any email from CreamTec unless you register on =
+our=20
+website. If you are a registered customer of CreamTec and wish to be =
+removed=20
+from our list just reply to this email or send an email to </FONT><A=20
+href=3D"mailto:remove@creamtec.com"><FONT=20
+size=3D2>remove@creamtec.com</FONT></A>.</SPAN> =
+</P></FONT></DIV></BODY></HTML>
+
+------=_NextPart_001_022A_01C1A03B.E786CB90--
+
+------=_NextPart_000_0229_01C1A03B.E786CB90
+Content-Type: image/gif;
+	name="logo.gif"
+Content-Transfer-Encoding: base64
+Content-Location: http://www.creamtec.com/images/logo.gif
+
+R0lGODlhQAApAMQfAMfGw/Hq2evm2Z6PbU9eeLCjhIuSnkNTcVtogKqcfMa7oXN9j7u8u9/b0q+x
+tNPRyn+IlrywlOXdyuvj0d/WwqOnrNPJsqSWdc3Dq9nQurapjJecpWdzh5iJZTdJaffw4SH5BAEA
+AB8ALAAAAABAACkAAAX/4CeOZGmeaKqubOu+cCzPbaBodD5nQ1fowFqk0xkogkhUIEFUBEoAx8bA
+qXI82Kw2a+UsNhsHoJFbdhITkgBy8EAqAMAj1ogDwJDrZlboREwPHgYeBAYMZEkCAmIHLgp+KBwE
+CFscEGFjMg8ABm0EHC0SkCgPCwcLlhCoWx4HVV9gYKhWBFgIEFSEFS0FPyx3eR4IHFQGqnhdl7Ec
+YAYbCwiUrYgqFANpJwFPKHGyHNKshFbOYh8ArQgtEUcoGRcZKRMYOoOuYBVzKBfbJ49EvUywWSBC
+IgAFCi8GVfE0LB8JCX9SFOhBpKKIDEQuiAgwpAO7Fg8MjABgiQEBaiIo/3w0gcEJBoAdcASgeMQM
+kQQjMqxswcFBBQglFOwcIUoCiQj7PgwskgbDGQwUNH4IcAGHUiYJjIqwoACbCAYLBBAI6quEhAFl
+RQzQ2qfDvA8F2GHA+UED2g8diQzQxoTpCAGgPJSg0MFCCQwDrpGg8McGkYgfBog4+8MpD38X+tqt
+OOoD4A9jSUxoImGChbaGSWC40PaxUCZxB1wwEvPDTYQfzj6esETqBwYQwJpoXXFAahL+OrDmzJzw
+mScJEvBTWpio754IAJgIQDyC18VoDXOvmOCR8Q8J1oqIMH3qcRHsHCAwsCCFhIPtVxg8wXvGAwLQ
+CJAECZvYQUYDUjhkTuoYAqJQgTgNDihCG1k4MEgWIv2XxQERjnTFAXtIOEIDG9TCzIMemOQBKLUg
+4AAW2omA4BUEbNChiJ5hwcAHlHCIxQIMYFHBhSNUYQA+OJ4QpAcCNMCKhVgoOGGSKkCw4gcverCB
+HWIRYgIA6VCJQi27LICFAJQg4KQbD1RBxgMH7CgmIFF+0AYCAmARho6DjLVBnHOesIGXdoojjAAo
+ctDGHXgGegIVu/x2xS0CCmDKKWN4UMGNjs4gAANedEpCAyixIAAnBDgg6gigrkhMLLCCsRACC2y6
+qgmnAsBArBswEEeptwYr7LDEhgAAOw==
+
+------=_NextPart_000_0229_01C1A03B.E786CB90
+Content-Type: image/gif;
+	name="jars.gif"
+Content-Transfer-Encoding: base64
+Content-Location: http://www.creamtec.com/webcream/images/jars.gif
+
+R0lGODlhaAA4ANUAAMwAM5kAM8wzZmYAM5kzZsxmmWYAZjMAM2YzZplmmcyZzP/M/zMAZmYzmZlm
+zAAAMzMzZmZmmZmZzMzM/wAzZgAzM2aZmZnMzMz//wAzAGaZZpnMmcz/zJmZZszMmf//zMwAAJkA
+AGYAADMAAMwzM5kzM8xmZmYzM5lmZsyZmf/MzP///8zMzJmZmWZmZjMzMwAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAaAA4AAAG/0CKcEgsGo/IpHLJ
+bDo/GKh0xVlNq9OPdavtrrZgbfhLLpvP6LR6/RVGrW9sNA6HVjlzKYa6mvP9VVF3eoR5hoWIh4qI
+Qlp4jnVbcldwfWJVlWKaX5tgXGRibKJrXm4fd3x3h5xvUlp5fB96f1B/tHu4r5GTsa2+XXRTuCuN
+v62xVMLKW3SgnM+fn2Jvo2R7X9d9accfpquoqHHAdXu1qbWB6Np+fqGJkFnSXMFle43w5MBegb2a
+9NCdvHiq5WdUtmsIz1zDQowChjiL6GC5JImPRUW3aFliwWKgNHr4vOiLRuber3mU0u3hJ1CgszEw
+GyQoh20dmmz1ttWcUowQFf9Y+FrtuwWFBYOMKitFaRChI7KRtTphqmQJoBlvlAq5cMFCGIsEKyQk
+6MiiRQIFHRVEYBBhrBYVYiWoKBOXA1MWU3HW9IQzFBi90Hrm+/UCBowWdYxCaHtBgoG2EBp8YLHW
+RVMMRts2gEAWAoIEERA8djoUJs2/0KBhGtaNAhxePgvDCOABjgIGYzmO3VCWwYUVLRi04MiigQQP
+HBsg4JCgwXAWEtg67YvztLZP1/xabfhoV68VGgyHGPvFKG8OWqA3F77CKOL2DOLLb1A8wYUuDbiW
+JoNpWuoy5lCDhhBW2JFPLC4YFkALd7hHRnQRmMWeeVa418IGFw6HQFPabNj/EU4MoRHKampEVYYQ
+6aTiHQcnwBACCnN9cBtiVQg33FobrDCjNspdo4AEwDHQ0QcQkiaiRdq9pGROWhCInkTesWACAAzu
+cQEDOWoRXAMMIMCeXV1KhoGXykEw3AprKadcU9OMqBA2SSapBopfoALPMRywgJwjCiD2hgQttABo
+C2IEytsXgT7nVKJlnVmPnJ38d6QnDVlhJwZyVJJpVQw50pVGH0wwBRVGWjFBf1VpB8mb/0X6Ep39
+1DEqQ5hkKmB211nj5nUfcHWkgJMCWI2Td87Swgsu+InMsoJ4kAKSy6YWSmEnfFoVBiqwsNUL3Lqg
+gVPVzEmBOj5tkaBhn8Ky/5ELBxhmWAS68GeFBQzqMplhI5gwZHvHwvDCCAC7i66w4ZZEwSDI3HGH
+uyLsy4oK4Z1wQgAhDDCCv125YNEX+E4AxrkwELCovwSQAIAAJJQcgAiGDWBtwSe69opP/WEg2wD6
+qshCBSegAIAJKLSAggkEXGyYCXVybFgJTnEgm4sdJTgCACSkcAFvHG2QAAEihGACYAWjGEVWKsom
+AgoOtwDDCSd78NxkZbkbgJGyBZCCFi4gIHDQholQggQszGXGZASkAC7MbcjMKagrmK3vSmpPHfTL
+ZMj2Ij+ygdACBi68YEKL+Mo2Agq1rcER4jGfMrYxfNSNthVqz0bCcKy9cf/uAC3E2LhhVKpd8lci
+AGy0YWYeSinqZ7ih6VNYWD7cvTCIQOWn4/QRuwgmTFXY1C1kUAIAVreHAgklCGx+BsgyiHzy466u
+z0K7z4ZCFa57UA6uWniAb857bE8CtwBAwQYE156yBMx85tPY+gwGJXCIwXKG24C7pmcOEq3gAvgS
+2RYKI4IBwKAEAjgdpVRAAAAEgGIrs5jATrDAxOEjRDOTDZU4cK4RzG5f7oCdu0gArsJ48HstKF0a
+9JQCs6RgaOXbXwuxIhFhyBAx7YKBDX9jE3OwQGBzq0XowJcja3gEFGTRFr5CuMCewKJmWtgelT4g
+MBLUxiVaqkAKPBi996z/wF0gbMECJCWnMtyOh2UcVz+aQT8pzi5+MBiA/SxSBRZwa3w1zB4V8AW+
+dJnhAepTgxpftz4CQYkSuxsA0zDQAYHphwwtSJALUFbEDJJFPALYgF7E4K5koSFyAGDa4RCHonjA
+xmnRM0EX9SYwbhXmBScQwM9YcB+BPeuKMAgguLQDMsMgy1ude4HPSmC4JSruEe3wQ2ECgDYpoCB4
+whOBCAJANbQ5SmoBACQLQgAA46XBBQfE1wgGULKqAa6FDTGQL59RGM05TEoEEAAIhxYo5ICBAyWc
+HaFWoIJA8ZEMBSgZADZ6MhKYQAEXoFwnD1aRRNwxmrlLUZ44ghwRepGi/24Lo0sJVgbiYAhDxAFo
+zFQEG0tJsZ7OyA514qGN6MinS7vk0lEZ0AAyfIUBEACSGRIAgZG+cDB3FIEAaJQqmvDjTURiS6IS
+EJ/fiAEBZkqAWQLllM1IgEtS/YIEINAn5JnRJ9TQHzmtZS9efQJV7ekTuIpEBuXg5VTYaqRwUsAB
+BCynPAz4p11d88k3REECMDAoZlhwjIrYJA1TWQFZyfOFzezyCw5gzwpSS5bIOnSyTxqKKzCAArZN
+lAEK0AWwWgItMwQnQuBCa1vQQhfVRsBMK8BNTicriVWU4wUEIF1xoCqT9DQHAcoClFpkMp1LcEmt
+h7suBOITgTJ0aQJGOf8LBOzjpfgoAHXFgM3qHFk1jlwpQs8RawQ2M5ff9olLh4uOc+zp1Kxxqapf
+UMB4mbqBtTw1UFwK7bAc8r5ZOLIFTMOCcFhwqv3yZjK4wUBzgogppohhLQmw2h7ZsBY7LmCsCGCB
+WhCggD3ghpfty0IrCuOC+mIDN5hwDrha0BQigws0HWmxo0RBVjs6NbIdaUADqCgdmAmmO3OI3s8+
+bIUNayECHKoCdx0Q4y0IOb0SCG0oZroCLi1ZR7h9j4Ph8+ZRmCJhkgigo2pEnyjsaAJk5c1vEQXl
+3wKOOC5dSwSqsAAUU/ELE1jvfRLMFgUgwDk4hgQ4YrHn8iy4Dwomb1llVhua+BinNqldqqmnspaj
+grcMn5lpcJhaZzs7ZNPFSkbS9HShCjVqUbm5kAjL4rabsrWma90Acc0Q0jNk7bS2fmEwLOuql9QC
+yS3kwAIkrFNxdXuIy/62uNPghHKb+9zoTrcRggAAOw==
+
+------=_NextPart_000_0229_01C1A03B.E786CB90
+Content-Type: image/gif;
+	name="javaworld.gif"
+Content-Transfer-Encoding: base64
+Content-Location: http://www.creamtec.com/webcream/images/javaworld.gif
+
+R0lGODlhbgAkAPcAAP//////zP//mf//Zv//M///AP/M///MzP/Mmf/MZv/MM//MAP+Z//+ZzP+Z
+mf+ZZv+ZM/+ZAP9m//9mzP9mmf9mZv9mM/9mAP8z//8zzP8zmf8zZv8zM/8zAP8A//8AzP8Amf8A
+Zv8AM/8AAMz//8z/zMz/mcz/Zsz/M8z/AMzM/8zMzMzMmczMZszMM8zMAMyZ/8yZzMyZmcyZZsyZ
+M8yZAMxm/8xmzMxmmcxmZsxmM8xmAMwz/8wzzMwzmcwzZswzM8wzAMwA/8wAzMwAmcwAZswAM8wA
+AJn//5n/zJn/mZn/Zpn/M5n/AJnM/5nMzJnMmZnMZpnMM5nMAJmZ/5mZzJmZmZmZZpmZM5mZAJlm
+/5lmzJlmmZlmZplmM5lmAJkz/5kzzJkzmZkzZpkzM5kzAJkA/5kAzJkAmZkAZpkAM5kAAGb//2b/
+zGb/mWb/Zmb/M2b/AGbM/2bMzGbMmWbMZmbMM2bMAGaZ/2aZzGaZmWaZZmaZM2aZAGZm/2ZmzGZm
+mWZmZmZmM2ZmAGYz/2YzzGYzmWYzZmYzM2YzAGYA/2YAzGYAmWYAZmYAM2YAADP//zP/zDP/mTP/
+ZjP/MzP/ADPM/zPMzDPMmTPMZjPMMzPMADOZ/zOZzDOZmTOZZjOZMzOZADNm/zNmzDNmmTNmZjNm
+MzNmADMz/zMzzDMzmTMzZjMzMzMzADMA/zMAzDMAmTMAZjMAMzMAAAD//wD/zAD/mQD/ZgD/MwD/
+AADM/wDMzADMmQDMZgDMMwDMAACZ/wCZzACZmQCZZgCZMwCZAABm/wBmzABmmQBmZgBmMwBmAAAz
+/wAzzAAzmQAzZgAzMwAzAAAA/wAAzAAAmQAAZgAAMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAbgAkAEAI/wABCBxI
+sKDBgwgTKlzIsKFDh1auSZxIsaLFixgdqVETQ6CMjTIEHhijZoxAAyQ3qlzJciOOgSlXrhC4oqWj
+iTMNsrpWcGIgABErslrhU+DOa4FWHJ3IyqhGkwAOHABgIGdHAB+nYnUJMycOlS8Fjsn5UU3Omhtv
+SrRiUOnPgUpZBZpoJSjSpW+XXmNrN9DSoQBWyNLYsrDhw4ht4jyIsbHjx5Alvn1IubLlyw0jEk7M
+ubPnwo5mSWzaFincujkxH2SlMY1WLlA9qtGKg8tAGSEFfk19MiyAMbkDp0arsqjBiGx7Sg6sVzLR
+tXNNK7VIepZG3wBwuB54QGXw2xu9gv+FqcbAQbSir5EuiFy1e5qR48vH+HZFIL+T31uePr+//8jr
+6UeZUrN8ZmBLY0gVQ0zeSVUWS+nxhFB7Ak5YoBpdkKcVAF2okVsMJV0l0IIbXYXDSwb4RlJwMmhF
+XFp0JcRKgMZVCJQsIHn03QE4mLfCWLKpERZKZI0nllXh0bRSeoAdNBdvABRlxU4zHXXfaCvYVReV
+AFgJ1IUiArBgQSuKpMZ2Ypqlm5G/XTVSgkqqoZZp59GpHFLPXTNTdD/ZNVFgMUZHmhUXHjgGgwYi
+ulGECfnFm597CRQdUnwK5OdAk16pXk6EHuhpYnMmV5qoNg4YY6k28vffqhclheqrsCr/pCqrtPrX
+ZKyNXrPZp7x6yiiuCRG1a6/EchZqsM3VehFhhx66UbMxNeupii2dpdhyCLkFbCAX5oaWiCTZFlVK
+0K4kbUljUIsuSVe9uCiWjd4Kq2BPkUfQV1d9BGVgSRKUIkyxFeRuhPtiGqlR2NoYCGH5ZggXnAZ0
+4W2JI6rp0aEq5tSdxS8eO+HBAhln34xyBXafq0Ddx9bIM7q6woUOrwClt3BuJWRXa3J1ZJDWFpdw
+aflFudxRM9JFNKCSEb0UWwuXtGFg2GU3W5BDAim1zr8h+UjPajCp0IwGiVzXlM7hFBRpWd7n5cs5
+3hYwSjfTtCFJ4mGd7kAGbIjeYghxkXnnT8maxudRbAVO2iFPxbBCDCTKsHgMX4GlFY/eKR6tzCTW
+jIPjK3zksZN6EiSz0HvZxdxyeY4GlOpdss52sbDPGTRBFEoqlMz02b5Y6hQ1iTjsxTJZMKCzp20F
+b1mehbzMyB9P0+jwKSt96MxD32WAwGY7vbKiWuFXco5mHyzZm4qPWeDbzyev+ey3735CAQEAOw==
+
+------=_NextPart_000_0229_01C1A03B.E786CB90--
+
+

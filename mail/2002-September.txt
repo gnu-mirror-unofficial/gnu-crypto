@@ -1,0 +1,2913 @@
+From raif@fl.net.au  Sun Sep  1 09:35:17 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 01 Sep 2002 18:35:17 +1000
+Subject: [Classpathx-crypto] [ANN] GNU Crypto 1.0.0
+Message-ID: <3D71D145.30604@fl.net.au>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: RIPEMD160
+
+The GNU Crypto team is proud to announce the release of the first
+public version of the gnu.crypto library.
+
+GNU Crypto, part of the GNU ClasspathX project, released under
+the aegis of GNU, is a 100% Java implementation of cryptographic
+algorithms and tools, and includes a Java Cryptographic Provider
+implementation to allow its use through the Java JCA framework
+and APIs.
+
+GNU Crypto includes, in addition to the now standard cryptographic
+primitives (MD5, SHA-1, AES, etc.), implementations of new and
+experimental cryptographic primitives and transforms such as
+Universal Hash Algorithms (UMAC32, TMMH-16 v1), the Universal
+Security Transform (UST), and others.  GNU Crypto also includes
+implementations of some of the accepted algorithms from the (2nd
+round) NESSIE (New European Schemes for Signatures, Integrity,
+and Encryption) project, such as Anubis, Khazad, Whirlpool, etc.
+
+More details on the rationale, and contents of the library can be
+found on the project's home page at:
+<http://www.gnu.org/software/classpathx/crypto/index.html>.  The
+main download site for the deliverables is:
+<ftp://ftp.gnupg.org/gcrypt/gnu-crypto/>.  A list of mirros -most
+of which are synchronised daily- can be found at:
+<http://www.gnupg.org/mirrors.html>.
+
+
+GNU Crypto is licensed under the terms of the GNU General Public
+License, with the "library exception."
+
+(Java is a registered trademark of Sun Microsystems, Inc.  All
+other trademarks and registered trademarks are the property of
+their respective owners.)
+
+
+cheers;
+rsn
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.1.90 (MingW32)
+Comment: Que du magnifique
+
+iD8DBQE9cdEz+e1AKnsTRiERA35nAJ44DhQeK05bb5NashP2nJMdwd6ccwCbBPga
+jVsu6SjJ2n3qghh1eTpbscQ=
+=z6OZ
+-----END PGP SIGNATURE-----
+
+
+
+
+From rsdio@metastatic.org  Mon Sep  2 01:55:48 2002
+From: rsdio@metastatic.org (Casey Marshall)
+Date: Sun, 01 Sep 2002 17:55:48 -0700
+Subject: [Classpathx-crypto] [ANN] GNU Crypto 1.0.0
+References: <3D71D145.30604@fl.net.au>
+Message-ID: <3D72B714.1010108@metastatic.org>
+
+A couple of points about the web-site:
+
+1) The links at the top (most importantly the one that leads to the
+    downloads section--which is at the bottom of the page!) don't
+    lead to their "intended" targets! E.g. the downloads link is:
+
+       <a href="#downloading" name="downloading">Downloads</a>
+
+    which just scrolls the "Downloads" text to the top of the window
+    (at least in Mozilla 1). The fix is to just remove (or change) the
+    name="" attributes from the anchors at the top of the page.
+
+2) In the "Reference Documentation" section, there could be links for
+    Serpent and MD4. Similarly in the "Test Vectors" section for
+    Serpent.
+
+3) The cipherSpeed and hashSpeed tables should be qualified with how
+    the programs were run (what JVM, what architecture, &c.).
+
+Otherwise it looks good to me; nice work.
+
+Raif S. Naffah wrote:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: RIPEMD160
+> 
+> The GNU Crypto team is proud to announce the release of the first
+> public version of the gnu.crypto library.
+> 
+> GNU Crypto, part of the GNU ClasspathX project, released under
+> the aegis of GNU, is a 100% Java implementation of cryptographic
+> algorithms and tools, and includes a Java Cryptographic Provider
+> implementation to allow its use through the Java JCA framework
+> and APIs.
+> 
+> GNU Crypto includes, in addition to the now standard cryptographic
+> primitives (MD5, SHA-1, AES, etc.), implementations of new and
+> experimental cryptographic primitives and transforms such as
+> Universal Hash Algorithms (UMAC32, TMMH-16 v1), the Universal
+> Security Transform (UST), and others.  GNU Crypto also includes
+> implementations of some of the accepted algorithms from the (2nd
+> round) NESSIE (New European Schemes for Signatures, Integrity,
+> and Encryption) project, such as Anubis, Khazad, Whirlpool, etc.
+> 
+> More details on the rationale, and contents of the library can be
+> found on the project's home page at:
+> <http://www.gnu.org/software/classpathx/crypto/index.html>.  The
+> main download site for the deliverables is:
+> <ftp://ftp.gnupg.org/gcrypt/gnu-crypto/>.  A list of mirros -most
+> of which are synchronised daily- can be found at:
+> <http://www.gnupg.org/mirrors.html>.
+> 
+> 
+> GNU Crypto is licensed under the terms of the GNU General Public
+> License, with the "library exception."
+> 
+> (Java is a registered trademark of Sun Microsystems, Inc.  All
+> other trademarks and registered trademarks are the property of
+> their respective owners.)
+> 
+> 
+> cheers;
+> rsn
+> -----BEGIN PGP SIGNATURE-----
+> Version: GnuPG v1.1.90 (MingW32)
+> Comment: Que du magnifique
+> 
+> iD8DBQE9cdEz+e1AKnsTRiERA35nAJ44DhQeK05bb5NashP2nJMdwd6ccwCbBPga
+> jVsu6SjJ2n3qghh1eTpbscQ=
+> =z6OZ
+> -----END PGP SIGNATURE-----
+> 
+> 
+> 
+> _______________________________________________
+> Classpathx-crypto mailing list
+> Classpathx-crypto@gnu.org
+> http://mail.gnu.org/mailman/listinfo/classpathx-crypto
+
+-- 
+Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+
+
+
+
+From raif@fl.net.au  Mon Sep  2 11:58:33 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Mon, 02 Sep 2002 20:58:33 +1000
+Subject: [Classpathx-crypto] [ANN] GNU Crypto 1.0.0
+References: <3D71D145.30604@fl.net.au> <3D72B714.1010108@metastatic.org>
+Message-ID: <3D734459.9080109@fl.net.au>
+
+hello Casey,
+
+Casey Marshall wrote:
+> A couple of points about the web-site...
+
+done.  the updated version will be visible as soon as the page will get 
+synchronised (within the next 24-h).  you can alway inspect the CVS copy 
+  at 
+<http://savannah.gnu.org/cgi-bin/viewcvs/software/classpathx/crypto/crypto.html?rev=1.14&cvsroot=www.gnu.org&content-type=text/vnd.viewcvs-markup>
+
+
+cheers;
+rsn
+
+
+
+
+From rsdio@metastatic.org  Thu Sep  5 03:21:51 2002
+From: rsdio@metastatic.org (Casey Marshall)
+Date: Wed, 04 Sep 2002 19:21:51 -0700
+Subject: [Classpathx-crypto] [patch] Inlined Serpent
+Message-ID: <3D76BFBF.1040103@metastatic.org>
+
+This is a multi-part message in MIME format.
+--------------050306040501030603000509
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+(I'm CC'ing this to the crypto list, too)
+
+Attached is a patch to modify Serpent to use Dag Arne Osvik's inlined
+versions of the encryption and decryption methods. The key setup is
+still the same as before.
+
+The bad news is that it is NOT always faster than the current
+implementation. When run on Sun's HotSpot VMs (I've tried 1.3.1_04-b02,
+1.4.0-b92, and 1.4.1-rc-b19 on Linux) the JIT will refuse to compile the
+encrypt and decrypt methods, and all en/decrypting is done in
+interpreted mode. Thus it is not much faster than interpreted mode (my
+guess is that Sun is terminally too clever for their own good, and
+their JIT will not compile methods that are too big or take too long to
+compile).
+
+The good news is that with other VMs this implementation is MUCH faster.
+Kaffe (version 1.0.6, JIT v3) can get ~5.5 MB/s, and a native version
+produced by GCJ runs at ~8 MB/s (second fastest for encryption, behind
+Rijndael, and neck-and-neck with Anubis for decryption).
+
+If we can come up with a way to make this inlined version more
+digestible for certain JITs, I think this would be a good implementation
+for future releases.
+
+- --
+Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (GNU/Linux)
+Comment: Using GnuPG with Netscape - http://enigmail.mozdev.org
+
+iD8DBQE9dr+/gAuWMgRGsWsRAreRAJ9poU8hDRPjyuhHSB5uJDRMXbb+DACeOePj
+88OIle6lNPdlQGehIrsstFI=
+=Aw5o
+-----END PGP SIGNATURE-----
+
+--------------050306040501030603000509
+Content-Type: application/octet-stream;
+ name="serpent-inlined.bz2"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="serpent-inlined.bz2"
+
+QlpoOTFBWSZTWc7VUf0AYARfgH14cX///7ho3Au////vYCLvvppuPh3IAcAB6NABX32AW1El
+S+96tB0dCx2+R3eFu7Ax7Y5d3veQJ09pTbSlKkKC01A3D6+vW2W3tPnzrz4+Po5GTfQFFGiM
+JIBQjVPIjUGQ0bUeUaAaANAAAGgSnoUpEo1IaGmg0ZPSNBiGjQyDQ0MmmjQDU96lVSADCAA0
+YmgAAAGQYg00BJ6pKVMqAAAAAAAANAAAACIlSTJ6QeoAaGgAAAAAAAZAKik0IQ0m0ieoYpmk
+0PKMIGED0EMIMmnndHeHfdJACQT8h5gc65f0XFMs3Xn+hAhFEFBZZEloIcajFg92w9y+5Xon
+RigpvIqg9CJ0YhINkgWLYtiCJwvCw3u9kcbONJBNaa3WjWzWyG1SSSMVJik2ptdrI2sIjipG
+x5gCAPAdPsd3K9fSeOR5fHP9941SQAkHYwvEIihCQ95KLZJBIfOzV0kmUkiIUonpfPVstXbE
+xVstX9gfCM00OiE7Qn50irtm2beqlLlzMlOWZbkhYYJI0UMVS8ykYZIltS0JNEkkpZkdZS3p
+YURl1s6dJiSUYS2xU2bW2wIW1twxs6Ulkksv5vyRBNKJkCQ0wphKICEkNMRGBkpgzbZtqWUx
+EpFNKJTQbKlLLLNlmzU2WU2slkslkqfEI4+YwpVRRUVSlIG/wUKCG+KCFUKEUKiEVClVCiUg
+EIoUEICFKCFVhZKqGIhYhhiIYkYUVUMJCpCpCpDCcur2uvz+bnwPo9fvficwOmzyX4wNTvPG
+lSyWSpZKlkqfdwnhV4YY1kmsUopUpUpUxKGBmtD2zTcv+meq7ybilkqUWSiyYUMDWtDFbmNz
+WTUUslSiyUWTVmlphJJqaalZLS1oY0NZJrFKKVKVKVNWaWzzerG5ncuhaWtDGhubpZKLJUqW
+LJU1ZpbN98diSTgaxJoWlrBjC0tME/V/V/rP5f2Kuhw1tmd0stUphuok1u0sY3JEqRJVt6Sa
+cbbMuOCZqKLDJMSlnOvDiUb2kJi0t0nKR4unLG4rDDelZW0q2me3MqnGarRlMS11plFNGpiu
+WMF2CpaztIzdIQm4MxUqR2qk6WzOV0LhkctXLh7JHjSMJIsW8Z4wmhskNc5WwrcRmsnbaYc6
+K6cEdLMqNDQoqaipZB5/sgFDx3u7d3u5stxBo56IQcadMOExSknN6QqlRklLBq9YPWjbFhCl
+JuzbAr2XTmbCGxNaW4Mw1gnPdTqdjtxgMdjsdQBSVBQqSpKgCkqChUlQDw7vDxFJdR6OuksG
+vaRaQnTaSWwhXuoFOp2Ox2Ax24xykJCyk5hJFu5LbtSr1pO1tuclth/cO4MUgNGX/jCIZJDU
+QyiGxIfy7n2t53e8fX0FrWFaRGm4O6Z2tbUAu2WXkpeVZ1rMAcTpcMnMSlLaL3dNjNtsZ24O
+665IUpWElJO7rDapRau4O5pWMcwhSRb3dSXFGkvbg7pkaOo1ttsUIAUKGDd2A3cbuN3HiFMe
+Pwa/PMk9mW5s1muZpiolLCGKYgmIUpiWDqso2llwWXSy5u7FpS69b11tvZjo3aXaxpGx2rI2
+zaSN2m2lkubXaWMBOnde7d27uwYMGBIUx4gF7sB4BIU8eIBe7AeA90mTJkyZMyZkymZPF+B1
+mPIfDmg1fPP19iJAdZZ1tqteskUhWNhJfxaS4a5iyzTc20ba5XKly3Jzu4+dEeT3e8J1cd5n
+Z50vJqTpkbRIwnJVCFttYVFs16FqtqSCMhGwUYR60tlZJqYxj82xje62ltupc2kLVlxo0zbh
+0lxJSYs1KQx4JfGPHvZ8evsjC4uG587e8SFro32m8Psy2bMskl0111uW4xdJJTa62ayXXXXE
+m6mlwmlk10t1sRt0pLcNNGx2LqyW5ZcXVZ0jaMrCRpeiCtnk9Om849Lc9OOu913XQ3PVjbmz
+iw2vEl4LLpZxlNpy8cEKSUkpCWbdXVpXlIEiQtRpkVstmmVk12sS8oTS2NpiQqkLesqNaJYM
+ayxSWdbWjJY3qMlLUqNUbRsjYkl0TVkqRsaWXl5Urb0lrSS2KyljYNljmui6pVZFS6VLMlW3
+ZdCXQlsrI2st4u0XGyUl0gxeglekeliWV0at5YlJSEsBkRS2qUeqykKEYtIUUa20SzLqxV2l
+sqXbXXlmjQtREarYiSUsWFpY3pJbRkqtkpbS3jOhgmDc0saayWWlS1Gimm0vLluXbEJbTcRp
+U0WWIealhFbS0r1g2rEpWDCyqWNcpDDLK5kJZhZmW4UoZxNo0hsh1H9e9h9W3zfY4Haf75Ez
+/5q+M2NURPPBZRYqZUyplUyploDW218zQ39H318Ph0/R2fp+zuOpzA5wdsi/bVi18FX6/Ot5
+k8mPZ1xe3f/LyUxyVKSGi2kC6EXWWIDFSARHidQxNcBW2iq2Itt82vp4m+vLt8sooxaGSZN6
+D10Xm8ejrl5uedddy9qvllWzapVm2+2+l7a1fY1i0WtsbBZNtfLb7K+2mV874vq+dcuOmepG
+I17xDq8vWyLJXKlJCU4PcDwHJwSpWvr9b21X0WtsbY2INFtSVjY23y2fS+j6zu6870jg3R7d
+9i8l3G8MPnzzuryo+NfANENYWCVBRSN92hE2qLUjbai2oqMRbUhavlt30+kjhfPr8Pdu65u3
+t108J7vj5TGPMZPj3O2802r7NTVZapUrTbVX2KxotG1fVVyNjRbalsDESRu9A+QPQ+lVVFRV
+KHHdx+x+gFP0ef0RmZC1wvLslKGRSvTFszJp1bK2BObLaEnQhTaaWWDKyTltjO1LHo22SzJZ
+xm1uXC5CyGjIUuTMk0gB4AARQ/uyh8qokTvUiSLRFLPoVKqagwCcYTDCNtNtuH0cvizMzMzM
+zMzMzMzMzMNPZSS+VJJwAAW22222222ZmZmZmZmZmZmZm+/BPOI84TynQ9x9TrOqScpJzNE0
+jsksmYymU0MijJmTMmgyUyMjMmhmSyZMyZTRMpUymUzJoZFGDHY6nbue7Hbjd1DAIGDd2Op2
+hYugdA4q1aFVhTC0lIUpC0+MIZDJXq9b5TjPXXdfJMkkszSa9b23ynN666F18ilBoySa7b23
+ynEE3rfCyjZMY9t7b5The646+GSBJIEkIsJl3NPIVY6jUajklKUpSlIQ/zd3dbcv5Zdl2XZd
+l2XU7u74fUiFUCqiEqbMtX55PWp8VLY/H34kjf93/kkkkkkkkkqhA+j8H4/KN/SnUkgym2jd
+0kZM3FdDW2TTk0k0/S+j6ERERERE9j4/Lb9DsMduiPVm1uXYuhmGltrRJN1zi7QtjrUYTZWS
+pTSWjCumbuo5mdNGwxsDRutksNdtiTktNprswkJZpnFu798Dj98Dvr+oAMSYOJ958B7ptJJ5
+pBHL2Ofs5iSPa5/zevznXR8qvYngOokk/FRJJ8gNO6/vz4pmOjy+aB9b0/3B7n8jzHH8jlz9
+Jr5mhlBiwSAF5Qgjv9fSddCSUv9RdFu9VMEUVBVRHtrJLb4vjxb672tb71+/H939Tgh/bPFK
+MJyu0gTCojBwIPfQL6Nd+vq6+WeO/p9HPOeUQdgjahzpJLQtC2QgnaZSSaJJO3P258l7iWkt
+RqY5aMUxW9XePIAQ7qxVvV3ltt9bbb5XyvfOru6u5qxL0RMO6223s4EkjZQMslakHVugY037
+ujo6J06Njn0TsG4kGgwkCBdAagklrqa66tEebdHMGVMSSjbiQizXNkv1Q4VNrTrHAJIQhIQr
+YSCrqFWWSIYnpmGXcEuupJEufvOfXAMMFZIO5AunDq5dWd+vu7u7uzqfU5pDlUEkxUQjociN
+ZKUUUqbLLKVLNlKlm339XFFMaIUBBNIMpolSyFEoUkyKfO8h97V+1Wttdrqn4q/nfTU2VRaC
+KlLSUloxo2lm2TQYpKzZUkklmzUkbBqS1ZswVrEHegY7+/s789OHd39/eydiQ0qJEngpCGQo
+jvMDXfffLhTGmmc9uJNva2S5958Yk0nva+03rT2bfek9+f6osUWKK4gHUwqtF24b8eOd+fPn
+155HWdhhJJ3pJO/HSvELFGMWyblnXz58+c78+Wpz2BwDmHMHAu3LxyZiCYiCZJdDa7ZJMbVm
+2hTXTvr+kA8IDwgMQwRMVc1rvvvvNBG4bhAklzEktnXcAbiwOA3VydE8nEAcpicnj3M7nLlU
+gKmqqqRLiH5e3wllb73b0djW3xPd58zaUxE1LXQDBxZwGTsOAwpZsvMnTjx48Z8lSXwXEBjR
+k4DOy18zhTNvvvc78OG5wfo9Pz34TpjbG4PUWc6/Wqdap2KnBUBvpe25uuVbMQW08Yzt9A+7
+nuq7xClwTspBLMnlJM8zSSRowkzAqCxRYOKSwc7fOnE3NMTvkhnq9fkqR5ej5FFr83HiH5jz
+1L0+6KFNxJinupUpcyxTMxoWVozWMoUGDyM0w2MM2mXBSe2V+yk+/Xzr5D7X6c9N9STNq+KO
+8Nv0SXNnzu8FDI7w8lKY5mPsD6A8FurC5RRgAKLIB7dPY6uwCCBpUsqE4qHd7vF8vpT7xjbn
+a4v34sJ877wfO3yEsMc2lJjD9X6nxtvWT1+uv0OBrZUYOnlERDTUO704O2YqLKKMwqmqEz1P
+U9vL9MDVxuxkzM80jhZfhHJacRFClJ5poYd4JSeSdEsSoJmgu5FSxWODgClhJmAayFUlqEVC
+aoGT8B8HuInfHgSdgUnQTX7nVp9+afY3fGi8hfimN671rxtPr7ufE8Q+dujD68byI/D4b50n
+y/MW9cPy+8WxN1z9/PXtsetfrx72X0lZLO0aR/BKZ1+cYliU2WW0ORSTvJqBYFBFBVQiTFin
+EPnQNe4PIdy93D8MF6+KyenBXu4iHlTvMPGfw0k+YX6+y7mPwmEm7Mm6dPhh+T3Dk0MPz4e0
+b9ntfeL8v0XG3xKN1PEYkH0PmPnzfKdO75R9MhH5vr57rDMfReuSwl6XxHvnd4Dz56TvBKUS
+ToBgFBNBV4SFJ1ScjLh2u0xGwaWBaJcbXGNbhE2rRZGlakzWg5GLKBqehnYg0ZppWPcFEtdR
+BBTDkzQwzZpBLZjsiDGaMKqlKqph2UyOKTdYwhSXx6mMSciElPv5DWnrfuiiw0GGAYVWUgdn
+a7JnKqJoqR3iqja+k2d4LIKX3uU5nrj0PZniZtjdqOU8+3nPgnoVO0E6Me9fe94p7p1NJ70q
+pKX0PVnrBnop5H0Bk8PuPMQ3r6bw+Hr489b1YmEhvMV0iVl1noddZyPdsbby+nXJ62CbHnzi
+Vw5xYXQvoEa+0/5nAd3eAQVJJQe8qSCfMfUxlJJoELqsr7U19pe1tSvU21yOJXu3eXPNa8o1
+3rt7rqZWvPI8ZzXL3dto8ub3czWKlwnHXSceqvKpsrbXVYt49dcvLkJpeXcki45KXVNEcnKc
+mOTLp73jctulXpjzy3ddS90WCzMKLkmVZJEsxWOVLZkHFAJtYxt7y7lbzzcm90eV3dueWJSt
+AKIdJCtrDuiFYStFKkuuwbzXlGOc7vereTu1d3F5WYQqQchVAIo3JbAkVyGRpaWvDBsse7oo
+nWyPKEpArwS3vbV7rvXujwNvN5Fzdd0GuXmii7vXubZtnJ2uvLdtVICPBRglEr3dRAjwy2vQ
+Sic0tZMymRyJIrkblMJSS5MkXI1a71716bxztZ3Rt5ES9z3bWgPL8HtzQJwQhKqEJUITGnTz
+ADd3dzlABsa/pVardyiB1iQ/noM84KOwILESUgsJSCwUgsD4lET0GClT5QMjAj53xvO998I9
+08J6x2HYdZYFHaOBqW42HaYSKSSSSTByzU1NTY2MLNjUWg5BqfMKSZl3fxiCZkAAAAAAAAAA
+AAAAADoSQDFXFXFXLALZlrQksttrKTGccWawcpYpI4IttLTcnLFe50dcujnO7nZQ4e2y94nZ
+gVzOFJLu71V67A8EgpFR5YqyMv5t+f34L8+yX5vz7bbbbbbbbbbbbbfPz/f4/Lbbbbbbbbbb
+bbbb8fj8fj8bbbbbbbbbbbbbbff3+Pwt/C7Ls3Obc5tzm3Ob4wkSPUQP1/1j93sPBtokk+3/
+GzHs58cdn1/ifKnJ9IFPkJFPV+aTt6j88d2lrEU9dxdWa3nTT9PrdER4ju20Fb/dO8dW3LpK
+tYdQvtNwt0cPzNebcDh+CSEhe12sAB2N/SB2vWvNJJfb6nh7JnR4niveX0pJNSuxpTtOnTu3
+OwDG3k4eXaGyyf9OjQ16X2zh9fY4p2j6Y9BtmQcrLZbLZbLZbLZWMYxjGMYxjGMYxWjaNo2j
+aNqNorGqrfm3Hp7VcHsuKeGetJJc8G5iwGmGnzZ5KyuUklDCUnM1kk5pDTY7Y0Y7Tbi5butj
+h5IDXuOJ0Q/AVJ+IOIHa125JwD7Px8ghhV2bhqHf5cxJLjYfz2xPhNRJLNtkvQ/70hHT3Q6g
+AOK8Akl1OvFw9Twcdy84hqkuLaj8x4zKd1JgRryeATHldWXC8sRfEkk7ORlPV1hP75kk4R2u
+XB+WDq0cAaOkklBNtl+utX3cDIRrVvbbZWmxVASxZBEiQoAlEGqDISONii0zRRGxaiNoqLRG
+SjYtTURkxT5XW223FMppJKrb1bZWVXVqtzSWszXWrXVbdVsZKCqBlotZGWsVFFkmSUmtG2KZ
+jRWW2Ukk0vV2tqrpYyRM1q3q2wSA1AGwYwFSQIEWioUQe1rKWkxRQm1MjJpNIVRtFCUlrIlq
+lsMI2M9XbVquwyZNGtW8qsEilQBsGEBUhBgRaAN1q3a1iSxSUJaNagzNtmYNpKzEpNmRbKxS
+EWMvV21arpkskJkJoBUUmATFS1Ksi0kLTbq2rrVu1rJikrFgtjFphaKiykWZSVSW0aENaWjS
+GijL1dVQpP3bYBk+mBtJJgxA2kkwYgYkkwXAKkl0TDYDaSJE8aPAJkhIfmODB9ElCilkUsii
+Kf8XckU4UJDO1VH9
+--------------050306040501030603000509--
+
+
+
+
+From osvik@ii.uib.no  Thu Sep  5 11:29:45 2002
+From: osvik@ii.uib.no (Dag Arne Osvik)
+Date: Thu, 5 Sep 2002 12:29:45 +0200 (MEST)
+Subject: [Classpathx-crypto] Re: [patch] Inlined Serpent
+In-Reply-To: <3D76BFBF.1040103@metastatic.org>
+Message-ID: <Pine.SOL.4.44.0209051139200.7336-100000@apal.ii.uib.no>
+
+On Wed, 4 Sep 2002, Casey Marshall wrote:
+
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+>
+> (I'm CC'ing this to the crypto list, too)
+>
+> Attached is a patch to modify Serpent to use Dag Arne Osvik's inlined
+> versions of the encryption and decryption methods. The key setup is
+> still the same as before.
+>
+> The bad news is that it is NOT always faster than the current
+> implementation. When run on Sun's HotSpot VMs (I've tried 1.3.1_04-b02,
+> 1.4.0-b92, and 1.4.1-rc-b19 on Linux) the JIT will refuse to compile the
+> encrypt and decrypt methods, and all en/decrypting is done in
+> interpreted mode. Thus it is not much faster than interpreted mode (my
+> guess is that Sun is terminally too clever for their own good, and
+> their JIT will not compile methods that are too big or take too long to
+> compile).
+
+If you split the function in 2 or more chunks of code, their JIT will at
+some point become able to compile each chunk.
+
+>
+> The good news is that with other VMs this implementation is MUCH faster.
+> Kaffe (version 1.0.6, JIT v3) can get ~5.5 MB/s, and a native version
+> produced by GCJ runs at ~8 MB/s (second fastest for encryption, behind
+> Rijndael, and neck-and-neck with Anubis for decryption).
+
+On what kind of processor?
+
+I'm a bit curious about what kind of code GCJ produces.  Could you mail me
+the compiled code, or even better, assembly output (-S)?
+
+>
+> If we can come up with a way to make this inlined version more
+> digestible for certain JITs, I think this would be a good implementation
+> for future releases.
+>
+> - --
+> Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+>
+> -----BEGIN PGP SIGNATURE-----
+> Version: GnuPG v1.0.7 (GNU/Linux)
+> Comment: Using GnuPG with Netscape - http://enigmail.mozdev.org
+>
+> iD8DBQE9dr+/gAuWMgRGsWsRAreRAJ9poU8hDRPjyuhHSB5uJDRMXbb+DACeOePj
+> 88OIle6lNPdlQGehIrsstFI=
+> =Aw5o
+> -----END PGP SIGNATURE-----
+>
+
+
+------------------------------------------------------------------------
+Dag Arne Osvik                               http://www.ii.uib.no/~osvik
+
+
+
+
+From raif@fl.net.au  Thu Sep  5 12:20:03 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Thu, 05 Sep 2002 21:20:03 +1000
+Subject: [Classpathx-crypto] [patch] Inlined Serpent
+References: <3D76BFBF.1040103@metastatic.org>
+Message-ID: <3D773DE3.20004@fl.net.au>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: RIPEMD160
+
+hello Casey and Dag,
+
+Casey Marshall wrote:
+| (I'm CC'ing this to the crypto list, too)
+|
+| Attached is a patch to modify Serpent to use Dag Arne Osvik's inlined
+| versions of the encryption and decryption methods. The key setup is
+| still the same as before.
+
+this version:
+
+a. is _not_ thread-safe,
+b. generates a 54K class file (compared to 14K for the current impl.)
+- --with Sun's javac compiler.
+c. runs almost 20 times slower than the current one!
+
+$ java -version
+java version "1.3.1"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.3.1-b24)
+Java HotSpot(TM) Client VM (build 1.3.1-b24, mixed mode)
+$ ant speed
+~     ...
+~     [java] Exercising serpent...
+~     [java] Running 1000000 iterations:
+~     [java] Encryption: time = 70.982, speed = 220.12622 KB/s
+~     [java] Decryption: time = 69.901, speed = 223.53043 KB/s
+~     ...
+
+i'm not saying though that it's devoid of any benefits.
+
+| ...
+| The good news is that with other VMs this implementation is MUCH faster.
+| Kaffe (version 1.0.6, JIT v3) can get ~5.5 MB/s, and a native version
+| produced by GCJ runs at ~8 MB/s (second fastest for encryption, behind
+| Rijndael, and neck-and-neck with Anubis for decryption).
+
+i see some advantages in keeping the current implementation _and_ adding
+the new in-lined one as an alternative; say SerpentInLined? (naming
+suggestions are welcome)
+
+
+i'll start a new thread about discussing this alternative in general;
+i.e. how can we [re-]write the Factory methods to provide the _optimal_
+implementation.
+
+i'll also start another thread about collecting and publishing
+performance figures which, ultimately may allow us to tailor the
+heuristic for selecting one implementation among many, depending on the
+host environment.
+
+
+| If we can come up with a way to make this inlined version more
+| digestible for certain JITs, I think this would be a good implementation
+| for future releases.
+
+pointers to finding out more about JIT nuts and bolts, anybody?
+
+
+cheers;
+rsn
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.1.90 (MingW32)
+Comment: Que du magnifique
+
+iD8DBQE9dz3Y+e1AKnsTRiERA2VCAJ43zbmS7Ys5/jFHGYpxw1FvpEkR3ACeILtG
+3OnHVjsNW157F8Rbw8+Feww=
+=UiS0
+-----END PGP SIGNATURE-----
+
+
+
+
+From osvik@ii.uib.no  Thu Sep  5 21:27:05 2002
+From: osvik@ii.uib.no (Dag Arne Osvik)
+Date: Thu, 5 Sep 2002 22:27:05 +0200 (MEST)
+Subject: [Classpathx-crypto] [patch] Inlined Serpent
+In-Reply-To: <3D773DE3.20004@fl.net.au>
+Message-ID: <Pine.SOL.4.44.0209051826251.7336-100000@apal.ii.uib.no>
+
+On Thu, 5 Sep 2002, Raif S. Naffah wrote:
+
+> Casey Marshall wrote:
+> | (I'm CC'ing this to the crypto list, too)
+> |
+> | Attached is a patch to modify Serpent to use Dag Arne Osvik's inlined
+> | versions of the encryption and decryption methods. The key setup is
+> | still the same as before.
+>
+> this version:
+>
+> a. is _not_ thread-safe,
+
+Just a misplaced declaration.  Move the declaration of x0,...,x4 inside
+both encrypt() and decrypt().
+
+> b. generates a 54K class file (compared to 14K for the current impl.)
+> - --with Sun's javac compiler.
+
+As expected, and not very good.  Still, code size for fully inlined
+encryption & decryption for x86 is less than 6.3k bytes.  Key expansion
+is 3.7k.  Java byte code is probably not as compact as x86 code, but
+surely there is some overhead we could remove?
+
+> c. runs almost 20 times slower than the current one!
+
+This can be fixed too, as mentioned in my reply to Casey.  We just have
+to work around compiler limitations.  Nothing new here..
+
+>
+> $ java -version
+> java version "1.3.1"
+> Java(TM) 2 Runtime Environment, Standard Edition (build 1.3.1-b24)
+> Java HotSpot(TM) Client VM (build 1.3.1-b24, mixed mode)
+> $ ant speed
+> ~     ...
+> ~     [java] Exercising serpent...
+> ~     [java] Running 1000000 iterations:
+> ~     [java] Encryption: time = 70.982, speed = 220.12622 KB/s
+> ~     [java] Decryption: time = 69.901, speed = 223.53043 KB/s
+> ~     ...
+
+yuck.. ;)
+
+
+Regards,
+Dag Arne
+
+
+
+
+
+From rsdio@metastatic.org  Sat Sep  7 01:23:43 2002
+From: rsdio@metastatic.org (Casey Marshall)
+Date: Fri, 06 Sep 2002 17:23:43 -0700
+Subject: [Classpathx-crypto] Re: [patch] Inlined Serpent
+References: <Pine.SOL.4.44.0209051139200.7336-100000@apal.ii.uib.no>
+Message-ID: <3D79470F.4060000@metastatic.org>
+
+This is a multi-part message in MIME format.
+--------------090606020203080406010500
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Dag Arne Osvik wrote:
+| On Wed, 4 Sep 2002, Casey Marshall wrote:
+|
+|>The good news is that with other VMs this implementation is MUCH faster.
+|>Kaffe (version 1.0.6, JIT v3) can get ~5.5 MB/s, and a native version
+|>produced by GCJ runs at ~8 MB/s (second fastest for encryption, behind
+|>Rijndael, and neck-and-neck with Anubis for decryption).
+|
+|
+| On what kind of processor?
+|
+
+AMD Athlon MP 1200. It's a two-processor machine, but only one gets used
+(since it is running in a single thread).
+
+| I'm a bit curious about what kind of code GCJ produces.  Could you mail me
+| the compiled code, or even better, assembly output (-S)?
+|
+
+This code is attached, bzipped. It is the output of the patched version
+I posted earlier compiled with `-O -S'.
+
+Cheers,
+
+- --
+Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (GNU/Linux)
+Comment: Using GnuPG with Netscape - http://enigmail.mozdev.org
+
+iD8DBQE9eUcOgAuWMgRGsWsRAlE2AJ40btPPQQgA3HE4xqFQraDmlDJm7gCfX2KW
+xF9NN6TegxHPXkWrTamvZxo=
+=c8hj
+-----END PGP SIGNATURE-----
+
+--------------090606020203080406010500
+Content-Type: application/octet-stream;
+ name="Serpent.s.bz2"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Serpent.s.bz2"
+
+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
+NchyrajkYaNVpSYYxTDHyU6llONIxqaL9p2i2QcnybjGjFHGmEsfYmhjGjFg9FDXzaDHJxOa
+05mtqnlzcZ5eXj5dXUmNCNXtfax67vbzypPZFSe+uua1JUSxjiYnjy8Mqbv4jyyk5G8eeXl2
+eXh5d43ajMyJtNVQqpIzhKrgAAaAYyGJBZwCglksfYppUli6p9ZccNLBikxLFfPxdTxx+Xbr
+l13ly7yw96ej2NSy2242sfHxvJ8ej58mqV4suPd8SjUyVOAkal9hRwFhVGSUWUsjksLSxo2K
+MWyUxRSkwpPgmMcUwsmKh8mOji0U+5o44poa42hpLiVDCxPDjcY1ixSlRS/eTHhTqpUON51K
+ManBjgyuDVbFsrO/y8vJ5Ojo6dUuvl5bnuG01VaajGpZpjHw+MeB2l9thSoXHAgiAi8nXS1J
+YnmjbItJtka0lh8lOJ37gtQYw1XYOKjgyXW1U0aJiwb7FGicUxSqfYsaTGJhTFifX3v5D7b5
+qqtlqta01XXTNY2uuVd6D2+vvzu9ffy2sSSSSCQSSWM2tN9c3XEkkkkkkkkkkkkkkkkkkkkk
+kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklWn1rWta1rSSSSSSSSSSSSSSSSSSSSSSSS
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSWtTMyklM61MpTKUylMpTKUylMpTKUylMpTK
+UylMpTKUylMpTKUylMpTKUylMpTKUylMpTKUylMpTKUyl0w/MjYJBhwBa7hmuRwgFFJrGZKF
+tRGlGGpNSURaZIa2mpUqlUpVlKisVpNv1yuRRVvm0JwPMR3xk1thbLSWyWktREkoza5Vyg0s
+qoU22xIY1G00jaxtrfbyvt3en29+T3y/AfdMmLG2NirGtopmTFFUFirFUbWJmTFGsmxVFirR
+sYz7/nd9vb3WXb8zMWXb+MzFl2/fMxZdsd7xc7zdu91t7i7nd273W3uLud3bvdbe4u53du91
+thzi2s1Z0qjDqpi70pi7pCXdmdmcMLswznOLXeMvGMvF3hJ4u8JPMze17pJJJJJJJJJJJJJJ
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJRERjGMTKUylMpTKUylMpTKUyl
+MpTKUylMpTKUylMpTKUylMpTKUylMpTKUylMpTKUylMpTKUylMpWSm2ZvjGRmYgy1UF1yc5z
+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
+Ws9rWtuNX3feNrKKSSSWEnSSSX8OvCf2uPqZ8BV4fE/IPlBf0R/uX5o7v8v6EH71P69gV7cH
+r9vx+fZeK/ep8xeg8D873+9jocY8nxfd/Txp7gJ930bf9LpL/xn1l409r+T8XxvkAvo4m/BP
+oXtp/d4d3n8/+f8vsdH5vdzd+569nZdmP+WGyWiv9AycqXNo/7D+3HP5hi+KZhoi9Do4v1ml
+cad3e8PO/+en7JIEEgGiCQDRBIBogkA0ii6dSKZFMimRTIpISKZtZLbEWqfqdWASAWIJAMTM
+jOBSqdfoOuwSCCCQf8rh+wLoB6P4V87hX2L7V7ns6fj497+fmv01dOA7Om4CzLgrccG5grYL
+lD3/vf38/h/P/P+/+PMzMzN0aNGjRo0aN3d3d3d3d3d0aNGjRo0aN3d3d3d3d3d0aNGjRo0a
+P5d+B7BkssP+uR/ciNA+9gsCXE1eG4g6bptW7LtsyJ2bidpkyw/5vr96P9YCv3AAAD9UQTQY
+MGDEGDBgwYIwYMGDEGDBgwYIwYMGDEGAxttrcAfjAniPwn6I8X1/6/wXX7v6/dxy/3+z+Gas
+pGrSZbZTLbKatRq1GW2Uy1R2HoN6Ds7W8O/1FunsF+fIHzT+WP0/XX5+m+3j6SD0ovdwN3Dm
+r1r4dPvj0XPdVFR5rIf6l7hxBe32f7vd48ej9gw+r0/aSr+c0GmZqfOrawbHd+SvNdH7e99I
+9sfu/Ev+18ye66cB+mPlf+/WR/0C9fun3K6D/bw6+E/Z7XZdpS2/lXzX9HXMYxgxjGMaMYxg
+xjGMaMYxgxbW1vaX+LHrta1tfjg1xxOKvH8VVLg6cF5/t/JmZmbbbbzPrb9D64+gvSvNGXP7
+lm2/+x6YvXi7C/ivY5gj8L+5f5F+r5aufyF2UE+T83O43H0cc/t/Y+5/lHkv9Efy6Gm5/gTj
+qtlsE/1epJ648q5/J/JQB/r2q9q36632t9mKMYosYxksYtRjGMYxksYxjGMYxSWKKMYxijGT
+YxjGMYxjJYxjGMZMYxbfyL+Re93l7u3d2naNXVIloybWTaybWTaybWTaybWTayannqkeq6rv
+jTevJtZNrJtZNrJtZNrJtZNSPWjJtGTaMm0ZNoybWTaz21k1Hkz7121k2s9vXdyvD3Kue1dJ
++c78J1/V3AfgO/b3Af6/K/r/j+4/46KGK3XG5bcZxxx8anrp43p/t9mqlPOl1lX0vq/gp3In
+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
+--------------090606020203080406010500--
+
+
+
+
+From rsdio@metastatic.org  Sat Sep  7 02:05:56 2002
+From: rsdio@metastatic.org (Casey Marshall)
+Date: Fri, 06 Sep 2002 18:05:56 -0700
+Subject: [Classpathx-crypto] [patch] Inlined Serpent
+References: <3D76BFBF.1040103@metastatic.org> <3D773DE3.20004@fl.net.au>
+Message-ID: <3D7950F4.7090901@metastatic.org>
+
+This is a multi-part message in MIME format.
+--------------030803070808080300040402
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Raif S. Naffah wrote:
+| hello Casey and Dag,
+|
+| Casey Marshall wrote:
+| | (I'm CC'ing this to the crypto list, too)
+| |
+| | Attached is a patch to modify Serpent to use Dag Arne Osvik's inlined
+| | versions of the encryption and decryption methods. The key setup is
+| | still the same as before.
+|
+| this version:
+|
+| a. is _not_ thread-safe,
+
+The attached version should be; it still declares the five register
+variables (x0..x4) as global for the class, but declares the encrypt
+and decrypt methods to be explicitly synchronized. This doesn't appear
+to affect speed, unless you're encrypting and decrypting in parallel.
+
+| b. generates a 54K class file (compared to 14K for the current impl.)
+| --with Sun's javac compiler.
+
+Bigger classes will always result from such extensive unrolling; this
+version does a bit better (each S-Box is in its own method, and I
+removed the static sboxI* and transform methods, since they're no longer
+needed). Once this version has an inlined key setup the static methods
+can disappear completely.
+
+| c. runs almost 20 times slower than the current one!
+|
+
+Because of the JIT. Sun's HotSpot can handle this one better.
+
+I was aiming for the following with this version:
+
+1) Keep constant array indices.
+2) Keep methods short, so the JIT can handle them.
+3) Don't repeat too much code (e.g. there is a one function per S-Box).
+
+The results are a good compromise:
+
+~            Sun 1.4.0         GCJ (native)       Kaffe 1.0.6
+encrypt   4584.8003 KB/s     6262.5254 KB/s    4283.1689 KB/s
+decrypt   4861.5435 KB/s     6230.0640 KB/s    4662.7871 KB/s
+
+(all on an AMD MP 1200). Much better for Sun's VM, a little slower for
+GCJ and Kaffe, and better than the current version. By the way with this
+version GNU's Serpent will be faster than BouncyCastle's.
+
+| i see some advantages in keeping the current implementation _and_ adding
+| the new in-lined one as an alternative; say SerpentInLined? (naming
+| suggestions are welcome)
+|
+
+I wonder if a naming scheme following "SerpentSBoxImpl" or something
+similar is more appropriate, since what we're talking about here is a
+particular implementation of "bit-sliced" S-Boxes.
+
+|
+| i'll start a new thread about discussing this alternative in general;
+| i.e. how can we [re-]write the Factory methods to provide the _optimal_
+| implementation.
+|
+| i'll also start another thread about collecting and publishing
+| performance figures which, ultimately may allow us to tailor the
+| heuristic for selecting one implementation among many, depending on the
+| host environment.
+|
+|
+| | If we can come up with a way to make this inlined version more
+| | digestible for certain JITs, I think this would be a good implementation
+| | for future releases.
+|
+| pointers to finding out more about JIT nuts and bolts, anybody?
+|
+
+There's this: <http://java.sun.com/docs/hotspot/VMOptions.html> which
+says that HotSpot JITs can take the option -Xmaxjitcodesize<size>.
+Generated code size is obviously not the problem, since trying the fully
+inlined version with outrageously huge compiled code sizes results in
+equivalent performance. I can't find anything relating to time spent in
+the compiler.
+
+Sun has published some books on their JITs, none of which I've seen,
+though.
+
+Cheers,
+
+- --
+Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (GNU/Linux)
+Comment: Using GnuPG with Netscape - http://enigmail.mozdev.org
+
+iD8DBQE9eVD0gAuWMgRGsWsRAvxyAJ9TgIz0bAJSVyfK/vbJlv2DByfgzgCffhAQ
+UlJLYpmYWhvLjRnX4FrKPMw=
+=hgJf
+-----END PGP SIGNATURE-----
+
+--------------030803070808080300040402
+Content-Type: text/plain;
+ name="Serpent.java"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename="Serpent.java"
+
+package gnu.crypto.cipher;
+
+// ----------------------------------------------------------------------------
+// $Id: 2002-September.txt,v 1.1 2002/10/27 09:40:41 raif Exp $
+//
+// Copyright (C) 2002, Free Software Foundation, Inc.
+//
+// This program is free software; you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the Free
+// Software Foundation; either version 2 of the License or (at your option) any
+// later version.
+//
+// This program is distributed in the hope that it will be useful, but WITHOUT
+// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+// FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+// more details.
+//
+// You should have received a copy of the GNU General Public License along with
+// this program; see the file COPYING.  If not, write to the
+//
+//    Free Software Foundation Inc.,
+//    59 Temple Place - Suite 330,
+//    Boston, MA 02111-1307
+//    USA
+//
+// As a special exception, if you link this library with other files to produce
+// an executable, this library does not by itself cause the resulting
+// executable to be covered by the GNU General Public License.  This exception
+// does not however invalidate any other reasons why the executable file might
+// be covered by the GNU General Public License.
+// ----------------------------------------------------------------------------
+
+import gnu.crypto.Registry;
+import gnu.crypto.util.Util;
+
+import java.security.InvalidKeyException;
+import java.util.Collections;
+import java.util.Iterator;
+
+/**
+ * <p>Serpent is a 32-round substitution-permutation network block cipher,
+ * operating on 128-bit blocks and accepting keys of 128, 192, and 256 bits in
+ * length. At each round the plaintext is XORed with a 128 bit portion of the
+ * session key -- a 4224 bit key computed from the input key -- then one of
+ * eight S-boxes are applied, and finally a simple linear transformation is
+ * done. Decryption does the exact same thing in reverse order, and using the
+ * eight inverses of the S-boxes.</p>
+ *
+ * <p>Serpent was designed by Ross Anderson, Eli Biham, and Lars Knudsen as a
+ * proposed cipher for the Advanced Encryption Standard.</p>
+ *
+ * <p>Serpent can be sped up greatly by replacing S-box substitution with a
+ * sequence of binary operations, and the optimal implementation depends
+ * upon finding the fastest sequence of binary operations that reproduce this
+ * substitution. This implementation uses the S-boxes discovered by
+ * <a href="http://www.ii.uib.no/~osvik/">Dag Arne Osvik</a>, which are
+ * optimized for the Pentium family of processors.</p>
+ *
+ * <p>References:</p>
+ *
+ * <ol>
+ *    <li><a href="http://www.cl.cam.ac.uk/~rja14/serpent.html">Serpent: A
+ *    Candidate Block Cipher for the Advanced Encryption Standard.</a></li>
+ * </ol>
+ *
+ * @version $Revision: 1.1 $
+ */
+public class Serpent extends BaseCipher {
+
+   // Constants and variables
+   // -------------------------------------------------------------------------
+
+   private static final String NAME = "serpent";
+
+   private static final int DEFAULT_KEY_SIZE = 16;
+   private static final int DEFAULT_BLOCK_SIZE = 16;
+   private static final int ROUNDS = 32;
+
+   /** The fractional part of the golden ratio, (sqrt(5)+1)/2. */
+   private static final int PHI = 0x9e3779b9;
+
+   /**
+    * KAT vector (from ecb_vk):
+    * I=9
+    * KEY=008000000000000000000000000000000000000000000000
+    * CT=5587B5BCB9EE5A28BA2BACC418005240
+    */
+   private static final byte[] KAT_KEY =
+         Util.toBytesFromString("008000000000000000000000000000000000000000000000");
+   private static final byte[] KAT_CT =
+         Util.toBytesFromString("5587B5BCB9EE5A28BA2BACC418005240");
+
+   /** caches the result of the correctness test, once executed. */
+   private static Boolean valid;
+
+   private int x0, x1, x2, x3, x4;
+
+   // Constructor(s)
+   // -------------------------------------------------------------------------
+
+   /** Trivial zero-argument constructor. */
+   public Serpent() {
+      super(Registry.SERPENT_CIPHER, DEFAULT_BLOCK_SIZE, DEFAULT_KEY_SIZE);
+   }
+
+   // Class methods
+   // -------------------------------------------------------------------------
+
+   // Bit-flip madness methods
+   //
+   // The following S-Box functions were developed by Dag Arne Osvik, and are
+   // described in his paper, "Speeding up Serpent". They are optimized to
+   // perform on the Pentium chips, but work well here too.
+   //
+   // The methods below are Copyright (C) 2000 Dag Arne Osvik.
+
+   /** S-Box 0. */
+   private static final void
+         sbox0(int r0, int r1, int r2, int r3, int[] w, int off) {
+      int r4 = r1 ^ r2;
+      r3 ^= r0;
+      r1 = r1 & r3 ^ r0;
+      r0 = (r0 | r3) ^ r4;
+      r4 ^= r3;
+      r3 ^= r2;
+      r2 = (r2 | r1) ^ r4;
+      r4 = ~r4 | r1;
+      r1 ^= r3 ^ r4;
+      r3 |= r0;
+      w[off] = r1 ^ r3;
+      w[off + 1] = r4 ^ r3;
+      w[off + 2] = r2;
+      w[off + 3] = r0;
+   }
+
+   /** S-Box 1. */
+   private static final void
+         sbox1(int r0, int r1, int r2, int r3, int[] w, int off) {
+      r0 = ~r0;
+      int r4 = r0;
+      r2 = ~r2;
+      r0 &= r1;
+      r2 ^= r0;
+      r0 |= r3;
+      r3 ^= r2;
+      r1 ^= r0;
+      r0 ^= r4;
+      r4 |= r1;
+      r1 ^= r3;
+      r2 = (r2 | r0) & r4;
+      r0 ^= r1;
+      w[off] = r2;
+      w[off + 1] = r0 & r2 ^ r4;
+      w[off + 2] = r3;
+      w[off + 3] = r1 & r2 ^ r0;
+   }
+
+   /** S-Box 2. */
+   private static final void
+         sbox2(int r0, int r1, int r2, int r3, int[] w, int off) {
+      int r4 = r0;
+      r0 = r0 & r2 ^ r3;
+      r2 = r2 ^ r1 ^ r0;
+      r3 = (r3 | r4) ^ r1;
+      r4 ^= r2;
+      r1 = r3;
+      r3 = (r3 | r4) ^ r0;
+      r0 &= r1;
+      r4 ^= r0;
+      w[off] = r2;
+      w[off + 1] = r3;
+      w[off + 2] = r1 ^ r3 ^ r4;
+      w[off + 3] = ~r4;
+   }
+
+   /** S-Box 3. */
+   private static final void
+         sbox3(int r0, int r1, int r2, int r3, int[] w, int off) {
+      int r4 = r0;
+      r0 |= r3;
+      r3 ^= r1;
+      r1 &= r4;
+      r4 = r4 ^ r2 | r1;
+      r2 ^= r3;
+      r3 = r3 & r0 ^ r4;
+      r0 ^= r1;
+      r4 = r4 & r0 ^ r2;
+      r1 = (r1 ^ r3 | r0) ^ r2;
+      r0 ^= r3;
+      w[off] = (r1 | r3) ^ r0;
+      w[off + 1] = r1;
+      w[off + 2] = r3;
+      w[off + 3] = r4;
+   }
+
+   /** S-Box 4. */
+   private static final void
+         sbox4(int r0, int r1, int r2, int r3, int[] w, int off) {
+      r1 ^= r3;
+      int r4 = r1;
+      r3 = ~r3;
+      r2 ^= r3;
+      r3 ^= r0;
+      r1 = r1 & r3 ^ r2;
+      r4 ^= r3;
+      r0 ^= r4;
+      r2 = r2 & r4 ^ r0;
+      r0 &= r1;
+      r3 ^= r0;
+      r4 = (r4 | r1) ^ r0;
+      w[off] = r1;
+      w[off + 1] = r4 ^ (r2 & r3);
+      w[off + 2] = ~((r0 | r3) ^ r2);
+      w[off + 3] = r3;
+   }
+
+   /** S-Box 5. */
+   private static final void
+         sbox5(int r0, int r1, int r2, int r3, int[] w, int off) {
+      r0 ^= r1;
+      r1 ^= r3;
+      int r4 = r1;
+      r3 = ~r3;
+      r1 &= r0;
+      r2 ^= r3;
+      r1 ^= r2;
+      r2 |= r4;
+      r4 ^= r3;
+      r3 = r3 & r1 ^ r0;
+      r4 = r4 ^ r1 ^ r2;
+      w[off] = r1;
+      w[off + 1] = r3;
+      w[off + 2] = r0 & r3 ^ r4;
+      w[off + 3] = ~(r2 ^ r0) ^ (r4 | r3);
+   }
+
+   /** S-Box 6. */
+   private static final void
+         sbox6(int r0, int r1, int r2, int r3, int[] w, int off) {
+      int r4 = r3;
+      r2 = ~r2;
+      r3 = r3 & r0 ^ r2;
+      r0 ^= r4;
+      r2 = (r2 | r4) ^ r0;
+      r1 ^= r3;
+      r0 |= r1;
+      r2 ^= r1;
+      r4 ^= r0;
+      r0 = (r0 | r3) ^ r2;
+      r4 = r4 ^ r3 ^ r0;
+      w[off] = r0;
+      w[off + 1] = r1;
+      w[off + 2] = r4;
+      w[off + 3] = r2 & r4 ^ ~r3;
+   }
+
+   /** S-Box 7. */
+   private static final void
+         sbox7(int r0, int r1, int r2, int r3, int[] w, int off) {
+      int r4 = r1;
+      r1 = (r1 | r2) ^ r3;
+      r4 ^= r2;
+      r2 ^= r1;
+      r3 = (r3 | r4) & r0;
+      r4 ^= r2;
+      r3 ^= r1;
+      r1 = (r1 | r4) ^ r0;
+      r0 = (r0 | r4) ^ r2;
+      r1 ^= r4;
+      r2 ^= r1;
+      w[off] = r4 ^ (~r2 | r0);
+      w[off + 1] = r3;
+      w[off + 2] = r1 & r0 ^ r4;
+      w[off + 3] = r0;
+   }
+
+   // Instance methods
+   // -------------------------------------------------------------------------
+
+   // java.lang.Cloneable interface implementation ----------------------------
+
+   public Object clone() {
+      return new Serpent();
+   }
+
+   // IBlockCipherSpi interface implementation --------------------------------
+
+   public Iterator blockSizes() {
+      return Collections.singleton(new Integer(DEFAULT_BLOCK_SIZE)).iterator();
+   }
+
+   public Iterator keySizes() {
+      return new Iterator() {
+         int i = 0;
+         // Support 128, 192, and 256 bit keys.
+         Integer[] keySizes = {
+            new Integer(16), new Integer(24), new Integer(32)
+         };
+
+         public boolean hasNext() {
+            return i < keySizes.length;
+         }
+
+         public Object next() {
+            if (hasNext()) {
+               return keySizes[i++];
+            }
+            return null;
+         }
+
+         public void remove() {
+            throw new UnsupportedOperationException();
+         }
+      };
+   }
+
+   public Object makeKey(byte[] key, int blockSize) throws InvalidKeyException {
+      // Not strictly true, but here to conform with the AES proposal.
+      // This restriction can be removed if deemed necessary.
+      if (key.length != 16 && key.length != 24 && key.length != 32) {
+         throw new InvalidKeyException("Key length is not 16, 24, or 32 bytes");
+      }
+
+      // Here w is our "pre-key".
+      int[] w = new int[4 * (ROUNDS + 1)];
+      int i, j;
+      for (i = 0, j = key.length - 4; i < 8 && j >= 0; i++) {
+         w[i] = (key[j] & 0xff) << 24 | (key[j + 1] & 0xff) << 16 |
+               (key[j + 2] & 0xff) << 8 | (key[j + 3] & 0xff);
+         j -= 4;
+      }
+      // Pad key if < 256 bits.
+      if (i != 8) {
+         w[i] = 1;
+      }
+      // Transform using w_i-8 ... w_i-1
+      for (i = 8; i < 16; i++) {
+         int t = w[i - 8] ^ w[i - 5] ^ w[i - 3] ^ w[i - 1] ^ PHI ^ (i - 8);
+         w[i] = t << 11 | t >>> 21;
+      }
+      // Translate by 8.
+      for (i = 0; i < 8; i++) {
+         w[i] = w[i + 8];
+      }
+      // Transform the rest of the key.
+      for (i = 8; i < w.length; i++) {
+         int t = w[i - 8] ^ w[i - 5] ^ w[i - 3] ^ w[i - 1] ^ PHI ^ i;
+         w[i] = t << 11 | t >>> 21;
+      }
+
+      // After these s-boxes the pre-key (w, above) will become the
+      // session key (w, below).
+      sbox3(w[0], w[1], w[2], w[3], w, 0);
+      sbox2(w[4], w[5], w[6], w[7], w, 4);
+      sbox1(w[8], w[9], w[10], w[11], w, 8);
+      sbox0(w[12], w[13], w[14], w[15], w, 12);
+      sbox7(w[16], w[17], w[18], w[19], w, 16);
+      sbox6(w[20], w[21], w[22], w[23], w, 20);
+      sbox5(w[24], w[25], w[26], w[27], w, 24);
+      sbox4(w[28], w[29], w[30], w[31], w, 28);
+      sbox3(w[32], w[33], w[34], w[35], w, 32);
+      sbox2(w[36], w[37], w[38], w[39], w, 36);
+      sbox1(w[40], w[41], w[42], w[43], w, 40);
+      sbox0(w[44], w[45], w[46], w[47], w, 44);
+      sbox7(w[48], w[49], w[50], w[51], w, 48);
+      sbox6(w[52], w[53], w[54], w[55], w, 52);
+      sbox5(w[56], w[57], w[58], w[59], w, 56);
+      sbox4(w[60], w[61], w[62], w[63], w, 60);
+      sbox3(w[64], w[65], w[66], w[67], w, 64);
+      sbox2(w[68], w[69], w[70], w[71], w, 68);
+      sbox1(w[72], w[73], w[74], w[75], w, 72);
+      sbox0(w[76], w[77], w[78], w[79], w, 76);
+      sbox7(w[80], w[81], w[82], w[83], w, 80);
+      sbox6(w[84], w[85], w[86], w[87], w, 84);
+      sbox5(w[88], w[89], w[90], w[91], w, 88);
+      sbox4(w[92], w[93], w[94], w[95], w, 92);
+      sbox3(w[96], w[97], w[98], w[99], w, 96);
+      sbox2(w[100], w[101], w[102], w[103], w, 100);
+      sbox1(w[104], w[105], w[106], w[107], w, 104);
+      sbox0(w[108], w[109], w[110], w[111], w, 108);
+      sbox7(w[112], w[113], w[114], w[115], w, 112);
+      sbox6(w[116], w[117], w[118], w[119], w, 116);
+      sbox5(w[120], w[121], w[122], w[123], w, 120);
+      sbox4(w[124], w[125], w[126], w[127], w, 124);
+      sbox3(w[128], w[129], w[130], w[131], w, 128);
+
+      return w;
+   }
+
+   public synchronized void
+   encrypt(byte[] in, int i, byte[] out, int o, Object K, int bs) {
+      final int[] key = (int[]) K;
+
+      //int x0, x1, x2, x3, x4;
+      x3 = (in[i   ] & 0xff) << 24 | (in[i+ 1] & 0xff) << 16 |
+           (in[i+ 2] & 0xff) <<  8 | (in[i+ 3] & 0xff);
+      x2 = (in[i+ 4] & 0xff) << 24 | (in[i+ 5] & 0xff) << 16 |
+           (in[i+ 6] & 0xff) <<  8 | (in[i+ 7] & 0xff);
+      x1 = (in[i+ 8] & 0xff) << 24 | (in[i+ 9] & 0xff) << 16 |
+           (in[i+10] & 0xff) <<  8 | (in[i+11] & 0xff);
+      x0 = (in[i+12] & 0xff) << 24 | (in[i+13] & 0xff) << 16 |
+           (in[i+14] & 0xff) <<  8 | (in[i+15] & 0xff);
+
+      x0 ^= key[  0]; x1 ^= key[  1]; x2 ^= key[  2]; x3 ^= key[  3]; sbox0();
+      x1 ^= key[  4]; x4 ^= key[  5]; x2 ^= key[  6]; x0 ^= key[  7]; sbox1();
+      x0 ^= key[  8]; x4 ^= key[  9]; x2 ^= key[ 10]; x1 ^= key[ 11]; sbox2();
+      x2 ^= key[ 12]; x1 ^= key[ 13]; x4 ^= key[ 14]; x3 ^= key[ 15]; sbox3();
+      x1 ^= key[ 16]; x4 ^= key[ 17]; x3 ^= key[ 18]; x0 ^= key[ 19]; sbox4();
+      x4 ^= key[ 20]; x2 ^= key[ 21]; x1 ^= key[ 22]; x0 ^= key[ 23]; sbox5();
+      x2 ^= key[ 24]; x0 ^= key[ 25]; x4 ^= key[ 26]; x1 ^= key[ 27]; sbox6();
+      x2 ^= key[ 28]; x0 ^= key[ 29]; x3 ^= key[ 30]; x4 ^= key[ 31]; sbox7();
+      x0 = x3; x3 = x2; x2 = x4;
+
+      x0 ^= key[ 32]; x1 ^= key[ 33]; x2 ^= key[ 34]; x3 ^= key[ 35]; sbox0();
+      x1 ^= key[ 36]; x4 ^= key[ 37]; x2 ^= key[ 38]; x0 ^= key[ 39]; sbox1();
+      x0 ^= key[ 40]; x4 ^= key[ 41]; x2 ^= key[ 42]; x1 ^= key[ 43]; sbox2();
+      x2 ^= key[ 44]; x1 ^= key[ 45]; x4 ^= key[ 46]; x3 ^= key[ 47]; sbox3();
+      x1 ^= key[ 48]; x4 ^= key[ 49]; x3 ^= key[ 50]; x0 ^= key[ 51]; sbox4();
+      x4 ^= key[ 52]; x2 ^= key[ 53]; x1 ^= key[ 54]; x0 ^= key[ 55]; sbox5();
+      x2 ^= key[ 56]; x0 ^= key[ 57]; x4 ^= key[ 58]; x1 ^= key[ 59]; sbox6();
+      x2 ^= key[ 60]; x0 ^= key[ 61]; x3 ^= key[ 62]; x4 ^= key[ 63]; sbox7();
+      x0 = x3; x3 = x2; x2 = x4;
+
+      x0 ^= key[ 64]; x1 ^= key[ 65]; x2 ^= key[ 66]; x3 ^= key[ 67]; sbox0();
+      x1 ^= key[ 68]; x4 ^= key[ 69]; x2 ^= key[ 70]; x0 ^= key[ 71]; sbox1();
+      x0 ^= key[ 72]; x4 ^= key[ 73]; x2 ^= key[ 74]; x1 ^= key[ 75]; sbox2();
+      x2 ^= key[ 76]; x1 ^= key[ 77]; x4 ^= key[ 78]; x3 ^= key[ 79]; sbox3();
+      x1 ^= key[ 80]; x4 ^= key[ 81]; x3 ^= key[ 82]; x0 ^= key[ 83]; sbox4();
+      x4 ^= key[ 84]; x2 ^= key[ 85]; x1 ^= key[ 86]; x0 ^= key[ 87]; sbox5();
+      x2 ^= key[ 88]; x0 ^= key[ 89]; x4 ^= key[ 90]; x1 ^= key[ 91]; sbox6();
+      x2 ^= key[ 92]; x0 ^= key[ 93]; x3 ^= key[ 94]; x4 ^= key[ 95]; sbox7();
+      x0 = x3; x3 = x2; x2 = x4;
+
+      x0 ^= key[ 96]; x1 ^= key[ 97]; x2 ^= key[ 98]; x3 ^= key[ 99]; sbox0();
+      x1 ^= key[100]; x4 ^= key[101]; x2 ^= key[102]; x0 ^= key[103]; sbox1();
+      x0 ^= key[104]; x4 ^= key[105]; x2 ^= key[106]; x1 ^= key[107]; sbox2();
+      x2 ^= key[108]; x1 ^= key[109]; x4 ^= key[110]; x3 ^= key[111]; sbox3();
+      x1 ^= key[112]; x4 ^= key[113]; x3 ^= key[114]; x0 ^= key[115]; sbox4();
+      x4 ^= key[116]; x2 ^= key[117]; x1 ^= key[118]; x0 ^= key[119]; sbox5();
+      x2 ^= key[120]; x0 ^= key[121]; x4 ^= key[122]; x1 ^= key[123]; sbox6();
+      x2 ^= key[124]; x0 ^= key[125]; x3 ^= key[126]; x4 ^= key[127]; sbox7noLT();
+      x0 = x3; x3 = x2; x2 = x4;
+      x0 ^= key[128]; x1 ^= key[129]; x2 ^= key[130]; x3 ^= key[131];
+
+      out[o   ] = (byte)(x3 >>> 24);
+      out[o+ 1] = (byte)(x3 >>> 16);
+      out[o+ 2] = (byte)(x3 >>> 8);
+      out[o+ 3] = (byte) x3;
+      out[o+ 4] = (byte)(x2 >>> 24);
+      out[o+ 5] = (byte)(x2 >>> 16);
+      out[o+ 6] = (byte)(x2 >>> 8);
+      out[o+ 7] = (byte) x2;
+      out[o+ 8] = (byte)(x1 >>> 24);
+      out[o+ 9] = (byte)(x1 >>> 16);
+      out[o+10] = (byte)(x1 >>> 8);
+      out[o+11] = (byte) x1;
+      out[o+12] = (byte)(x0 >>> 24);
+      out[o+13] = (byte)(x0 >>> 16);
+      out[o+14] = (byte)(x0 >>> 8);
+      out[o+15] = (byte) x0;
+   }
+
+   public synchronized void
+   decrypt(byte[] in, int i, byte[] out, int o, Object K, int bs) {
+      final int[] key = (int[]) K;
+
+      x3 = (in[i   ] & 0xff) << 24 | (in[i+ 1] & 0xff) << 16 |
+           (in[i+ 2] & 0xff) <<  8 | (in[i+ 3] & 0xff);
+      x2 = (in[i+ 4] & 0xff) << 24 | (in[i+ 5] & 0xff) << 16 |
+           (in[i+ 6] & 0xff) <<  8 | (in[i+ 7] & 0xff);
+      x1 = (in[i+ 8] & 0xff) << 24 | (in[i+ 9] & 0xff) << 16 |
+           (in[i+10] & 0xff) <<  8 | (in[i+11] & 0xff);
+      x0 = (in[i+12] & 0xff) << 24 | (in[i+13] & 0xff) << 16 |
+           (in[i+14] & 0xff) <<  8 | (in[i+15] & 0xff);
+
+      x0 ^= key[128]; x1 ^= key[129]; x2 ^= key[130]; x3 ^= key[131]; sboxI7noLT();
+      x3 ^= key[124]; x0 ^= key[125]; x1 ^= key[126]; x4 ^= key[127]; sboxI6();
+      x0 ^= key[120]; x1 ^= key[121]; x2 ^= key[122]; x4 ^= key[123]; sboxI5();
+      x1 ^= key[116]; x3 ^= key[117]; x4 ^= key[118]; x2 ^= key[119]; sboxI4();
+      x1 ^= key[112]; x2 ^= key[113]; x4 ^= key[114]; x0 ^= key[115]; sboxI3();
+      x0 ^= key[108]; x1 ^= key[109]; x4 ^= key[110]; x2 ^= key[111]; sboxI2();
+      x1 ^= key[104]; x3 ^= key[105]; x4 ^= key[106]; x2 ^= key[107]; sboxI1();
+      x0 ^= key[100]; x1 ^= key[101]; x2 ^= key[102]; x4 ^= key[103]; sboxI0();
+      x0 ^= key[ 96]; x3 ^= key[ 97]; x1 ^= key[ 98]; x4 ^= key[ 99]; sboxI7();
+      x1 = x3; x3 = x4; x4 = x2;
+
+      x3 ^= key[ 92]; x0 ^= key[ 93]; x1 ^= key[ 94]; x4 ^= key[ 95]; sboxI6();
+      x0 ^= key[ 88]; x1 ^= key[ 89]; x2 ^= key[ 90]; x4 ^= key[ 91]; sboxI5();
+      x1 ^= key[ 84]; x3 ^= key[ 85]; x4 ^= key[ 86]; x2 ^= key[ 87]; sboxI4();
+      x1 ^= key[ 80]; x2 ^= key[ 81]; x4 ^= key[ 82]; x0 ^= key[ 83]; sboxI3();
+      x0 ^= key[ 76]; x1 ^= key[ 77]; x4 ^= key[ 78]; x2 ^= key[ 79]; sboxI2();
+      x1 ^= key[ 72]; x3 ^= key[ 73]; x4 ^= key[ 74]; x2 ^= key[ 75]; sboxI1();
+      x0 ^= key[ 68]; x1 ^= key[ 69]; x2 ^= key[ 70]; x4 ^= key[ 71]; sboxI0();
+      x0 ^= key[ 64]; x3 ^= key[ 65]; x1 ^= key[ 66]; x4 ^= key[ 67]; sboxI7();
+      x1 = x3; x3 = x4; x4 = x2;
+
+      x3 ^= key[ 60]; x0 ^= key[ 61]; x1 ^= key[ 62]; x4 ^= key[ 63]; sboxI6();
+      x0 ^= key[ 56]; x1 ^= key[ 57]; x2 ^= key[ 58]; x4 ^= key[ 59]; sboxI5();
+      x1 ^= key[ 52]; x3 ^= key[ 53]; x4 ^= key[ 54]; x2 ^= key[ 55]; sboxI4();
+      x1 ^= key[ 48]; x2 ^= key[ 49]; x4 ^= key[ 50]; x0 ^= key[ 51]; sboxI3();
+      x0 ^= key[ 44]; x1 ^= key[ 45]; x4 ^= key[ 46]; x2 ^= key[ 47]; sboxI2();
+      x1 ^= key[ 40]; x3 ^= key[ 41]; x4 ^= key[ 42]; x2 ^= key[ 43]; sboxI1();
+      x0 ^= key[ 36]; x1 ^= key[ 37]; x2 ^= key[ 38]; x4 ^= key[ 39]; sboxI0();
+      x0 ^= key[ 32]; x3 ^= key[ 33]; x1 ^= key[ 34]; x4 ^= key[ 35]; sboxI7();
+      x1 = x3; x3 = x4; x4 = x2;
+
+      x3 ^= key[ 28]; x0 ^= key[ 29]; x1 ^= key[ 30]; x4 ^= key[ 31]; sboxI6();
+      x0 ^= key[ 24]; x1 ^= key[ 25]; x2 ^= key[ 26]; x4 ^= key[ 27]; sboxI5();
+      x1 ^= key[ 20]; x3 ^= key[ 21]; x4 ^= key[ 22]; x2 ^= key[ 23]; sboxI4();
+      x1 ^= key[ 16]; x2 ^= key[ 17]; x4 ^= key[ 18]; x0 ^= key[ 19]; sboxI3();
+      x0 ^= key[ 12]; x1 ^= key[ 13]; x4 ^= key[ 14]; x2 ^= key[ 15]; sboxI2();
+      x1 ^= key[  8]; x3 ^= key[  9]; x4 ^= key[ 10]; x2 ^= key[ 11]; sboxI1();
+      x0 ^= key[  4]; x1 ^= key[  5]; x2 ^= key[  6]; x4 ^= key[  7]; sboxI0();
+      x2 = x1; x1 = x3; x3 = x4;
+
+      x0 ^= key[  0]; x1 ^= key[  1]; x2 ^= key[  2]; x3 ^= key[  3];
+
+      out[o   ] = (byte)(x3 >>> 24);
+      out[o+ 1] = (byte)(x3 >>> 16);
+      out[o+ 2] = (byte)(x3 >>> 8);
+      out[o+ 3] = (byte) x3;
+      out[o+ 4] = (byte)(x2 >>> 24);
+      out[o+ 5] = (byte)(x2 >>> 16);
+      out[o+ 6] = (byte)(x2 >>> 8);
+      out[o+ 7] = (byte) x2;
+      out[o+ 8] = (byte)(x1 >>> 24);
+      out[o+ 9] = (byte)(x1 >>> 16);
+      out[o+10] = (byte)(x1 >>> 8);
+      out[o+11] = (byte) x1;
+      out[o+12] = (byte)(x0 >>> 24);
+      out[o+13] = (byte)(x0 >>> 16);
+      out[o+14] = (byte)(x0 >>> 8);
+      out[o+15] = (byte) x0;
+   }
+
+   public boolean selfTest() {
+      if (valid == null) {
+         boolean result = super.selfTest(); // do symmetry tests
+         if (result) {
+            result = testKat(KAT_KEY, KAT_CT);
+         }
+         valid = new Boolean(result);
+      }
+      return valid.booleanValue();
+   }
+
+   // Own methods. ----------------------------------------------------------
+
+   private void sbox0() {
+      x3 ^= x0;
+      x4 = x1;
+      x1 &= x3;
+      x4 ^= x2;
+      x1 ^= x0;
+      x0 |= x3;
+      x0 ^= x4;
+      x4 ^= x3;
+      x3 ^= x2;
+      x2 |= x1;
+      x2 ^= x4;
+      x4 ^= -1;
+      x4 |= x1;
+      x1 ^= x3;
+      x1 ^= x4;
+      x3 |= x0;
+      x1 ^= x3;
+      x4 ^= x3;
+
+      x1 = (x1 << 13) | (x1 >>> 19);
+      x4 ^= x1;
+      x3 = x1 << 3;
+      x2 = (x2 <<  3) | (x2 >>> 29);
+      x4 ^= x2;
+      x0 ^= x2;
+      x4 = (x4 <<  1) | (x4 >>> 31);
+      x0 ^= x3;
+      x0 = (x0 <<  7) | (x0 >>> 25);
+      x3 = x4;
+      x1 ^= x4;
+      x3 <<= 7;
+      x1 ^= x0;
+      x2 ^= x0;
+      x2 ^= x3;
+      x1 = (x1 <<  5) | (x1 >>> 27);
+      x2 = (x2 << 22) | (x2 >>> 10);
+   }
+
+   private void sbox1() {
+      x4 = ~x4;
+      x3 = x1;
+      x1 ^= x4;
+      x3 |= x4;
+      x3 ^= x0;
+      x0 &= x1;
+      x2 ^= x3;
+      x0 ^= x4;
+      x0 |= x2;
+      x1 ^= x3;
+      x0 ^= x1;
+      x4 &= x2;
+      x1 |= x4;
+      x4 ^= x3;
+      x1 ^= x2;
+      x3 |= x0;
+      x1 ^= x3;
+      x3 = ~x3;
+      x4 ^= x0;
+      x3 &= x2;
+      x4 = ~x4;
+      x3 ^= x1;
+      x4 ^= x3;
+
+      x0 = (x0 << 13) | (x0 >>> 19);
+      x4 ^= x0;
+      x3 = x0 << 3;
+      x2 = (x2 <<  3) | (x2 >>> 29);
+      x4 ^= x2;
+      x1 ^= x2;
+      x4 = (x4 <<  1) | (x4 >>> 31);
+      x1 ^= x3;
+      x1 = (x1 <<  7) | (x1 >>> 25);
+      x3 = x4;
+      x0 ^= x4;
+      x3 <<= 7;
+      x0 ^= x1;
+      x2 ^= x1;
+      x2 ^= x3;
+      x0 = (x0 <<  5) | (x0 >>> 27);
+      x2 = (x2 << 22) | (x2 >>> 10);
+   }
+
+   private void sbox2() {
+      x3 = x0;
+      x0 = x0 & x2;
+      x0 = x0 ^ x1;
+      x2 = x2 ^ x4;
+      x2 = x2 ^ x0;
+      x1 = x1 | x3;
+      x1 = x1 ^ x4;
+      x3 = x3 ^ x2;
+      x4 = x1;
+      x1 = x1 | x3;
+      x1 = x1 ^ x0;
+      x0 = x0 & x4;
+      x3 = x3 ^ x0;
+      x4 = x4 ^ x1;
+      x4 = x4 ^ x3;
+      x3 = ~x3;
+
+      x2 = (x2 << 13) | (x2 >>> 19);
+      x1 ^= x2;
+      x0 = x2 << 3;
+      x4 = (x4 <<  3) | (x4 >>> 29);
+      x1 ^= x4;
+      x3 ^= x4;
+      x1 = (x1 <<  1) | (x1 >>> 31);
+      x3 ^= x0;
+      x3 = (x3 <<  7) | (x3 >>> 25);
+      x0 = x1;
+      x2 ^= x1;
+      x0 <<= 7;
+      x2 ^= x3;
+      x4 ^= x3;
+      x4 ^= x0;
+      x2 = (x2 <<  5) | (x2 >>> 27);
+      x4 = (x4 << 22) | (x4 >>> 10);
+   }
+
+   private void sbox3() {
+      x0 = x2;
+      x2 = x2 | x3;
+      x3 = x3 ^ x1;
+      x1 = x1 & x0;
+      x0 = x0 ^ x4;
+      x4 = x4 ^ x3;
+      x3 = x3 & x2;
+      x0 = x0 | x1;
+      x3 = x3 ^ x0;
+      x2 = x2 ^ x1;
+      x0 = x0 & x2;
+      x1 = x1 ^ x3;
+      x0 = x0 ^ x4;
+      x1 = x1 | x2;
+      x1 = x1 ^ x4;
+      x2 = x2 ^ x3;
+      x4 = x1;
+      x1 = x1 | x3;
+      x1 = x1 ^ x2;
+
+      x1 = (x1 << 13) | (x1 >>> 19);
+      x4 ^= x1;
+      x2 = x1 << 3;
+      x3 = (x3 <<  3) | (x3 >>> 29);
+      x4 ^= x3;
+      x0 ^= x3;
+      x4 = (x4 <<  1) | (x4 >>> 31);
+      x0 ^= x2;
+      x0 = (x0 <<  7) | (x0 >>> 25);
+      x2 = x4;
+      x1 ^= x4;
+      x2 <<= 7;
+      x1 ^= x0;
+      x3 ^= x0;
+      x3 ^= x2;
+      x1 = (x1 <<  5) | (x1 >>> 27);
+      x3 = (x3 << 22) | (x3 >>> 10);
+   }
+
+   private void sbox4() {
+      x4 = x4 ^ x0;
+      x0 = ~x0;
+      x3 = x3 ^ x0;
+      x0 = x0 ^ x1;
+      x2 = x4;
+      x4 = x4 & x0;
+      x4 = x4 ^ x3;
+      x2 = x2 ^ x0;
+      x1 = x1 ^ x2;
+      x3 = x3 & x2;
+      x3 = x3 ^ x1;
+      x1 = x1 & x4;
+      x0 = x0 ^ x1;
+      x2 = x2 | x4;
+      x2 = x2 ^ x1;
+      x1 = x1 | x0;
+      x1 = x1 ^ x3;
+      x3 = x3 & x0;
+      x1 = ~x1;
+      x2 = x2 ^ x3;
+
+      x4 = (x4 << 13) | (x4 >>> 19);
+      x2 ^= x4;
+      x3 = x4 << 3;
+      x1 = (x1 <<  3) | (x1 >>> 29);
+      x2 ^= x1;
+      x0 ^= x1;
+      x2 = (x2 <<  1) | (x2 >>> 31);
+      x0 ^= x3;
+      x0 = (x0 <<  7) | (x0 >>> 25);
+      x3 = x2;
+      x4 ^= x2;
+      x3 <<= 7;
+      x4 ^= x0;
+      x1 ^= x0;
+      x1 ^= x3;
+      x4 = (x4 <<  5) | (x4 >>> 27);
+      x1 = (x1 << 22) | (x1 >>> 10);
+   }
+
+   private void sbox5() {
+      x4 = x4 ^ x2;
+      x2 = x2 ^ x0;
+      x0 = ~x0;
+      x3 = x2;
+      x2 = x2 & x4;
+      x1 = x1 ^ x0;
+      x2 = x2 ^ x1;
+      x1 = x1 | x3;
+      x3 = x3 ^ x0;
+      x0 = x0 & x2;
+      x0 = x0 ^ x4;
+      x3 = x3 ^ x2;
+      x3 = x3 ^ x1;
+      x1 = x1 ^ x4;
+      x4 = x4 & x0;
+      x1 = ~x1;
+      x4 = x4 ^ x3;
+      x3 = x3 | x0;
+      x1 = x1 ^ x3;
+
+      x2 = (x2 << 13) | (x2 >>> 19);
+      x0 ^= x2;
+      x3 = x2 << 3;
+      x4 = (x4 <<  3) | (x4 >>> 29);
+      x0 ^= x4;
+      x1 ^= x4;
+      x0 = (x0 <<  1) | (x0 >>> 31);
+      x1 ^= x3;
+      x1 = (x1 <<  7) | (x1 >>> 25);
+      x3 = x0;
+      x2 ^= x0;
+      x3 <<= 7;
+      x2 ^= x1;
+      x4 ^= x1;
+      x4 ^= x3;
+      x2 = (x2 <<  5) | (x2 >>> 27);
+      x4 = (x4 << 22) | (x4 >>> 10);
+   }
+
+   private void sbox6() {
+      x4 = ~x4;
+      x3 = x1;
+      x1 = x1 & x2;
+      x2 = x2 ^ x3;
+      x1 = x1 ^ x4;
+      x4 = x4 | x3;
+      x0 = x0 ^ x1;
+      x4 = x4 ^ x2;
+      x2 = x2 | x0;
+      x4 = x4 ^ x0;
+      x3 = x3 ^ x2;
+      x2 = x2 | x1;
+      x2 = x2 ^ x4;
+      x3 = x3 ^ x1;
+      x3 = x3 ^ x2;
+      x1 = ~x1;
+      x4 = x4 & x3;
+      x4 = x4 ^ x1;
+      x2 = (x2 << 13) | (x2 >>> 19);
+      x0 ^= x2;
+      x1 = x2 << 3;
+      x3 = (x3 <<  3) | (x3 >>> 29);
+      x0 ^= x3;
+      x4 ^= x3;
+      x0 = (x0 <<  1) | (x0 >>> 31);
+      x4 ^= x1;
+      x4 = (x4 <<  7) | (x4 >>> 25);
+      x1 = x0;
+      x2 ^= x0;
+      x1 <<= 7;
+      x2 ^= x4;
+      x3 ^= x4;
+      x3 ^= x1;
+      x2 = (x2 <<  5) | (x2 >>> 27);
+      x3 = (x3 << 22) | (x3 >>> 10);
+   }
+
+   private void sbox7() {
+      x1 = x3;
+      x3 = x3 & x0;
+      x3 = x3 ^ x4;
+      x4 = x4 & x0;
+      x1 = x1 ^ x3;
+      x3 = x3 ^ x0;
+      x0 = x0 ^ x2;
+      x2 = x2 | x1;
+      x2 = x2 ^ x3;
+      x4 = x4 ^ x0;
+      x3 = x3 ^ x4;
+      x4 = x4 & x2;
+      x4 = x4 ^ x1;
+      x1 = x1 ^ x3;
+      x3 = x3 & x2;
+      x1 = ~x1;
+      x3 = x3 ^ x1;
+      x1 = x1 & x2;
+      x0 = x0 ^ x4;
+      x1 = x1 ^ x0;
+      x3 = (x3 << 13) | (x3 >>> 19);
+      x1 ^= x3;
+      x0 = x3 << 3;
+      x4 = (x4 <<  3) | (x4 >>> 29);
+      x1 ^= x4;
+      x2 ^= x4;
+      x1 = (x1 <<  1) | (x1 >>> 31);
+      x2 ^= x0;
+      x2 = (x2 <<  7) | (x2 >>> 25);
+      x0 = x1;
+      x3 ^= x1;
+      x0 <<= 7;
+      x3 ^= x2;
+      x4 ^= x2;
+      x4 ^= x0;
+      x3 = (x3 <<  5) | (x3 >>> 27);
+      x4 = (x4 << 22) | (x4 >>> 10);
+   }
+
+   /** The final S-box, with no transform. */
+   private void sbox7noLT() {
+      x1 = x3;
+      x3 = x3 & x0;
+      x3 = x3 ^ x4;
+      x4 = x4 & x0;
+      x1 = x1 ^ x3;
+      x3 = x3 ^ x0;
+      x0 = x0 ^ x2;
+      x2 = x2 | x1;
+      x2 = x2 ^ x3;
+      x4 = x4 ^ x0;
+      x3 = x3 ^ x4;
+      x4 = x4 & x2;
+      x4 = x4 ^ x1;
+      x1 = x1 ^ x3;
+      x3 = x3 & x2;
+      x1 = ~x1;
+      x3 = x3 ^ x1;
+      x1 = x1 & x2;
+      x0 = x0 ^ x4;
+      x1 = x1 ^ x0;
+   }
+
+   private void sboxI7noLT() {
+      x4 = x2;
+      x2 ^= x0;
+      x0 &= x3;
+      x2 = ~x2;
+      x4 |= x3;
+      x3 ^= x1;
+      x1 |= x0;
+      x0 ^= x2;
+      x2 &= x4;
+      x1 ^= x2;
+      x2 ^= x0;
+      x0 |= x2;
+      x3 &= x4;
+      x0 ^= x3;
+      x4 ^= x1;
+      x3 ^= x4;
+      x4 |= x0;
+      x3 ^= x2;
+      x4 ^= x2;
+   }
+
+   private void sboxI6() {
+      x1 = (x1 >>> 22) | (x1 << 10);
+      x3 = (x3 >>>  5) | (x3 << 27);
+      x2 = x0;
+      x1 ^= x4;
+      x2 <<= 7;
+      x3 ^= x4;
+      x1 ^= x2;
+      x3 ^= x0;
+      x4 = (x4 >>>  7) | (x4 << 25);
+      x0 = (x0 >>>  1) | (x0 << 31);
+      x0 ^= x3;
+      x2 = x3 << 3;
+      x4 ^= x2;
+      x3 = (x3 >>> 13) | (x3 << 19);
+      x0 ^= x1;
+      x4 ^= x1;
+      x1 = (x1 >>>  3) | (x1 << 29);
+      x3 ^= x1;
+      x2 = x1;
+      x1 &= x3;
+      x2 ^= x4;
+      x1 = ~x1;
+      x4 ^= x0;
+      x1 ^= x4;
+      x2 |= x3;
+      x3 ^= x1;
+      x4 ^= x2;
+      x2 ^= x0;
+      x0 &= x4;
+      x0 ^= x3;
+      x3 ^= x4;
+      x3 |= x1;
+      x4 ^= x0;
+      x2 ^= x3;
+   }
+
+   private void sboxI5() {
+      x2 = (x2 >>> 22) | (x2 << 10);
+      x0 = (x0 >>>  5) | (x0 << 27);
+      x3 = x1;
+      x2 ^= x4;
+      x3 <<= 7;
+      x0 ^= x4;
+      x2 ^= x3;
+      x0 ^= x1;
+      x4 = (x4 >>>  7) | (x4 << 25);
+      x1 = (x1 >>>  1) | (x1 << 31);
+      x1 ^= x0;
+      x3 = x0 << 3;
+      x4 ^= x3;
+      x0 = (x0 >>> 13) | (x0 << 19);
+      x1 ^= x2;
+      x4 ^= x2;
+      x2 = (x2 >>>  3) | (x2 << 29);
+      x1 = ~x1;
+      x3 = x4;
+      x2 ^= x1;
+      x4 |= x0;
+      x4 ^= x2;
+      x2 |= x1;
+      x2 &= x0;
+      x3 ^= x4;
+      x2 ^= x3;
+      x3 |= x0;
+      x3 ^= x1;
+      x1 &= x2;
+      x1 ^= x4;
+      x3 ^= x2;
+      x4 &= x3;
+      x3 ^= x1;
+      x4 ^= x0;
+      x4 ^= x3;
+      x3 = ~x3;
+   }
+
+   private void sboxI4() {
+      x4 = (x4 >>> 22) | (x4 << 10);
+      x1 = (x1 >>>  5) | (x1 << 27);
+      x0 = x3;
+      x4 ^= x2;
+      x0 <<= 7;
+      x1 ^= x2;
+      x4 ^= x0;
+      x1 ^= x3;
+      x2 = (x2 >>>  7) | (x2 << 25);
+      x3 = (x3 >>>  1) | (x3 << 31);
+      x3 ^= x1;
+      x0 = x1 << 3;
+      x2 ^= x0;
+      x1 = (x1 >>> 13) | (x1 << 19);
+      x3 ^= x4;
+      x2 ^= x4;
+      x4 = (x4 >>>  3) | (x4 << 29);
+      x0 = x4;
+      x4 &= x2;
+      x4 ^= x3;
+      x3 |= x2;
+      x3 &= x1;
+      x0 ^= x4;
+      x0 ^= x3;
+      x3 &= x4;
+      x1 = ~x1;
+      x2 ^= x0;
+      x3 ^= x2;
+      x2 &= x1;
+      x2 ^= x4;
+      x1 ^= x3;
+      x4 &= x1;
+      x2 ^= x1;
+      x4 ^= x0;
+      x4 |= x2;
+      x2 ^= x1;
+      x4 ^= x3;
+   }
+
+   private void sboxI3() {
+      x4 = (x4 >>> 22) | (x4 << 10);
+      x1 = (x1 >>>  5) | (x1 << 27);
+      x3 = x2;
+      x4 ^= x0;
+      x3 <<= 7;
+      x1 ^= x0;
+      x4 ^= x3;
+      x1 ^= x2;
+      x0 = (x0 >>>  7) | (x0 << 25);
+      x2 = (x2 >>>  1) | (x2 << 31);
+      x2 ^= x1;
+      x3 = x1 << 3;
+      x0 ^= x3;
+      x1 = (x1 >>> 13) | (x1 << 19);
+      x2 ^= x4;
+      x0 ^= x4;
+      x4 = (x4 >>>  3) | (x4 << 29);
+      x3 = x4;
+      x4 ^= x2;
+      x2 &= x4;
+      x2 ^= x1;
+      x1 &= x3;
+      x3 ^= x0;
+      x0 |= x2;
+      x0 ^= x4;
+      x1 ^= x3;
+      x4 ^= x1;
+      x1 |= x0;
+      x1 ^= x2;
+      x3 ^= x4;
+      x4 &= x0;
+      x2 |= x0;
+      x2 ^= x4;
+      x3 ^= x1;
+      x4 ^= x3;
+   }
+
+   private void sboxI2() {
+      x4 = (x4 >>> 22) | (x4 << 10);
+      x0 = (x0 >>>  5) | (x0 << 27);
+      x3 = x1;
+      x4 ^= x2;
+      x3 <<= 7;
+      x0 ^= x2;
+      x4 ^= x3;
+      x0 ^= x1;
+      x2 = (x2 >>>  7) | (x2 << 25);
+      x1 = (x1 >>>  1) | (x1 << 31);
+      x1 ^= x0;
+      x3 = x0 << 3;
+      x2 ^= x3;
+      x0 = (x0 >>> 13) | (x0 << 19);
+      x1 ^= x4;
+      x2 ^= x4;
+      x4 = (x4 >>>  3) | (x4 << 29);
+      x4 ^= x2;
+      x2 ^= x0;
+      x3 = x2;
+      x2 &= x4;
+      x2 ^= x1;
+      x1 |= x4;
+      x1 ^= x3;
+      x3 &= x2;
+      x4 ^= x2;
+      x3 &= x0;
+      x3 ^= x4;
+      x4 &= x1;
+      x4 |= x0;
+      x2 = ~x2;
+      x4 ^= x2;
+      x0 ^= x2;
+      x0 &= x1;
+      x2 ^= x3;
+      x2 ^= x0;
+   }
+
+   private void sboxI1() {
+      x4 = (x4 >>> 22) | (x4 << 10);
+      x1 = (x1 >>>  5) | (x1 << 27);
+      x0 = x3;
+      x4 ^= x2;
+      x0 <<= 7;
+      x1 ^= x2;
+      x4 ^= x0;
+      x1 ^= x3;
+      x2 = (x2 >>>  7) | (x2 << 25);
+      x3 = (x3 >>>  1) | (x3 << 31);
+      x3 ^= x1;
+      x0 = x1 << 3;
+      x2 ^= x0;
+      x1 = (x1 >>> 13) | (x1 << 19);
+      x3 ^= x4;
+      x2 ^= x4;
+      x4 = (x4 >>>  3) | (x4 << 29);
+      x0 = x3;
+      x3 ^= x2;
+      x2 &= x3;
+      x0 ^= x4;
+      x2 ^= x1;
+      x1 |= x3;
+      x4 ^= x2;
+      x1 ^= x0;
+      x1 |= x4;
+      x3 ^= x2;
+      x1 ^= x3;
+      x3 |= x2;
+      x3 ^= x1;
+      x0 = ~x0;
+      x0 ^= x3;
+      x3 |= x1;
+      x3 ^= x1;
+      x3 |= x0;
+      x2 ^= x3;
+   }
+
+   private void sboxI0() {
+      x2 = (x2 >>> 22) | (x2 << 10);
+      x0 = (x0 >>>  5) | (x0 << 27);
+      x3 = x1;
+      x2 ^= x4;
+      x3 <<= 7;
+      x0 ^= x4;
+      x2 ^= x3;
+      x0 ^= x1;
+      x4 = (x4 >>>  7) | (x4 << 25);
+      x1 = (x1 >>>  1) | (x1 << 31);
+      x1 ^= x0;
+      x3 = x0 << 3;
+      x4 ^= x3;
+      x0 = (x0 >>> 13) | (x0 << 19);
+      x1 ^= x2;
+      x4 ^= x2;
+      x2 = (x2 >>>  3) | (x2 << 29);
+      x2 = ~x2;
+      x3 = x1;
+      x1 |= x0;
+      x3 = ~x3;
+      x1 ^= x2;
+      x2 |= x3;
+      x1 ^= x4;
+      x0 ^= x3;
+      x2 ^= x0;
+      x0 &= x4;
+      x3 ^= x0;
+      x0 |= x1;
+      x0 ^= x2;
+      x4 ^= x3;
+      x2 ^= x1;
+      x4 ^= x0;
+      x4 ^= x1;
+      x2 &= x4;
+      x3 ^= x2;
+   }
+
+   private void sboxI7() {
+      x1 = (x1 >>> 22) | (x1 << 10);
+      x0 = (x0 >>>  5) | (x0 << 27);
+      x2 = x3;
+      x1 ^= x4;
+      x2 <<= 7;
+      x0 ^= x4;
+      x1 ^= x2;
+      x0 ^= x3;
+      x4 = (x4 >>>  7) | (x4 << 25);
+      x3 = (x3 >>>  1) | (x3 << 31);
+      x3 ^= x0;
+      x2 = x0 << 3;
+      x4 ^= x2;
+      x0 = (x0 >>> 13) | (x0 << 19);
+      x3 ^= x1;
+      x4 ^= x1;
+      x1 = (x1 >>>  3) | (x1 << 29);
+      x2 = x1;
+      x1 ^= x0;
+      x0 &= x4;
+      x1 = ~x1;
+      x2 |= x4;
+      x4 ^= x3;
+      x3 |= x0;
+      x0 ^= x1;
+      x1 &= x2;
+      x3 ^= x1;
+      x1 ^= x0;
+      x0 |= x1;
+      x4 &= x2;
+      x0 ^= x4;
+      x2 ^= x3;
+      x4 ^= x2;
+      x2 |= x0;
+      x4 ^= x1;
+      x2 ^= x1;
+   }
+}
+
+
+--------------030803070808080300040402--
+
+
+
+
+From raif@fl.net.au  Sat Sep  7 06:27:58 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sat, 07 Sep 2002 15:27:58 +1000
+Subject: [Classpathx-crypto] [patch] Inlined Serpent
+References: <3D76BFBF.1040103@metastatic.org> <3D773DE3.20004@fl.net.au> <3D7950F4.7090901@metastatic.org>
+Message-ID: <3D798E5E.5050500@fl.net.au>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: RIPEMD160
+
+hello Casey,
+
+Casey Marshall wrote:
+| Raif S. Naffah wrote:
+| | hello Casey and Dag,
+| |
+| | Casey Marshall wrote:
+| | | (I'm CC'ing this to the crypto list, too)
+| | |
+| | | Attached is a patch...
+| |
+| | this version:
+| | a. is _not_ thread-safe,
+|
+| The attached version should be; it still declares the five register
+| variables (x0..x4) as global for the class, but declares the encrypt
+| and decrypt methods to be explicitly synchronized. This doesn't appear
+| to affect speed, unless you're encrypting and decrypting in parallel.
+
+agreed.
+
+
+| | b. generates a 54K class file (compared to 14K for the current impl.)
+| | --with Sun's javac compiler.
+|
+| ...this version does a bit better...
+
+much better.  it is now at 25K (again with javac 1.3.1).
+
+
+| | c. runs almost 20 times slower than the current one!
+|
+| Because of the JIT. Sun's HotSpot can handle this one better.
+|
+| I was aiming for the following with this version:
+|
+| 1) Keep constant array indices.
+| 2) Keep methods short, so the JIT can handle them.
+| 3) Don't repeat too much code (e.g. there is a one function per S-Box).
+|
+| The results are a good compromise:
+|
+| ~            Sun 1.4.0         GCJ (native)       Kaffe 1.0.6
+| encrypt   4584.8003 KB/s     6262.5254 KB/s    4283.1689 KB/s
+| decrypt   4861.5435 KB/s     6230.0640 KB/s    4662.7871 KB/s
+
+on my athlon 1700+:
+
+~     [java] Exercising serpent...
+~     [java] Running 1000000 iterations:
+~     [java] Encryption: time = 2.594, speed = 6023.5156 KB/s
+~     [java] Decryption: time = 2.414, speed = 6472.659 KB/s
+
+very nice job mate :-)
+
+
+| ...By the way with this
+| version GNU's Serpent will be faster than BouncyCastle's.
+
+have you compared the performance of other algorithms?
+
+
+| | i see some advantages in keeping the current implementation _and_ adding
+| | the new in-lined one as an alternative; say SerpentInLined? (naming
+| | suggestions are welcome)
+| |
+|
+| I wonder if a naming scheme following "SerpentSBoxImpl" or something
+| similar is more appropriate, since what we're talking about here is a
+| particular implementation of "bit-sliced" S-Boxes.
+
+with the figures of the new implementation, do we still want to keep both?
+
+
+| | ...
+| | pointers to finding out more about JIT nuts and bolts, anybody?
+|
+| There's this: <http://java.sun.com/docs/hotspot/VMOptions.html> which
+| says that HotSpot JITs can take the option -Xmaxjitcodesize<size>.
+| Generated code size is obviously not the problem, since trying the fully
+| inlined version with outrageously huge compiled code sizes results in
+| equivalent performance. I can't find anything relating to time spent in
+| the compiler.
+|
+| Sun has published some books on their JITs, none of which I've seen,
+| though.
+
+thanks + cheers;
+rsn
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.1.90 (MingW32)
+Comment: Que du magnifique
+
+iD8DBQE9eY5Y+e1AKnsTRiERA0g1AJoDCXIZ23HBUZop0pHHkBonvQNqvgCgx6r3
+h9a3MYCDb/WYPW8tcAzveZw=
+=6B19
+-----END PGP SIGNATURE-----
+
+
+
+
+From raif@fl.net.au  Sat Sep  7 18:36:18 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 08 Sep 2002 03:36:18 +1000
+Subject: [Classpathx-crypto] 1 algorithm - many implementations (long)
+Message-ID: <3D7A3912.8030704@fl.net.au>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: RIPEMD160
+
+hello everyone,
+
+in the last few days, and thanks to Dag Arne Osvik contribution and
+Casey's work, the prospect of having more than one implementation of the
+same Algorithm is now real.
+
+practically speaking, we may have for some algorithms more than one
+implementation, each exhibiting different features, and may be in
+specific circumstances, better than the other(s).  the problem is then:
+
+1. should we handle this situation? and
+2. if yes, how?
+
+
+except for Mode and Padding, our algorithms can be instantiated with a
+public constructor.  this is enough for someone who already _knows_ (a)
+how many implementation(s) there are for a given algorithm, and (b) how
+they differ from each other (when there's more than one).
+
+but this is not good enough for the majority of users.  they know (or
+expected to know) the _environment_ in which the algorithm is supposed
+to operate, but not which is the _best_ implementation for that
+algorithm in that environment.  it is desirable, if the user can
+communicate the description of the operating environment and a set of
+preferences, and in return obtain the _right_ implementation for the job.
+
+observation #1: the name of the algorithm alone is not the best way of
+selecting one among many implementations of a designated algorithm.
+
+also, in some rare situations -i'll give an example later- a user may
+not be interested at all in a specific algorithm but rather in other
+criteria that the algorithm's _type_ is capable of providing.  an
+example would be to encrypt a username+password for a database user.
+the question such user would be asking is: what is the fastest available
+implementation of a block cipher that i have which can encrypt 16-byte
+at a time, using a 16-byte key?
+
+observation #2: which algorithm to use (the name) may not be the most
+important criterion when selecting an implementation.
+
+on the other hand, how can a provider of an algorithm's
+implementation(s), know _a priori_ what are the possible user's
+preference attributes, so he can accomodate them?  more importatnly, how
+can the _seamntics_ of those attributes be interpreted similarly by more
+than one provider?
+
+observation #3: there is no universal set of preferences/attributes that
+providers can share, or agree to interpret the same way.
+
+
+now we already have in place a Factory pattern that allows users to
+select the algorithm by name; e.g.:
+
+~   gnu.crypto.cipher.CipherFactory.getInstance(foo);
+
+furthermore, we have defined in our API, methods that forces the
+implementor to expose some intrinsic attributes of the type of algorithm
+being implemented; e.g.:
+
+~   Iterator i = gnu.crypto.cipher.IBlockCipher.blockSizes();
+~   Iterator j = gnu.crypto.cipher.IBlockCipher.keySizes();
+
+in addition, at the global level, we have Factory methods to return the
+names of all implemented algorithms; e.g.:
+
+~   Iterator i = gnu.crypto.cipher.CipherFactory.getNames();
+
+
+so what are we missing?
+
+* the name, and some intrinsic attributes related to the type of the
+algorithm --and these would change for each type-- are not enough.
+intuitively speed should be another factor;  size of the byte-code may
+be a factor.  what else?
+
+* the platform is a factor.  java runs everywhere but it does not run
+the same way.
+
+
+hence the questions we should answer (in addition to the initial ones) are:
+
+3. what are the possible criteria a user may specify for selecting an
+implementation?
+
+4. can we forsee all possible criteria or should we allow the solution
+to cater for criteria that may be added in the future?
+
+5. how are we going to compute/collect/set the values for the selected
+criteria in combination with possible environment --i.e. static,
+runtime, both?
+
+6. how are we going to let the users tell us what they want? (system
+properties, command line options, opaque object in Factory methods)
+
+
+comments? suggestions?
+
+
+cheers;
+rsn
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.1.90 (MingW32)
+Comment: Que du magnifique
+
+iD8DBQE9ejkN+e1AKnsTRiERA1Z2AKD+SrjOHTVhdrm7kzhgKu4GX65FNACg/Grj
+VGkGYC6LhvMcAll9VWQ/FW0=
+=zUh1
+-----END PGP SIGNATURE-----
+
+
+
+
+From rsdio@metastatic.org  Sun Sep  8 02:10:24 2002
+From: rsdio@metastatic.org (Casey Marshall)
+Date: Sat, 07 Sep 2002 18:10:24 -0700
+Subject: [Classpathx-crypto] [patch] Inlined Serpent
+References: <3D76BFBF.1040103@metastatic.org> <3D773DE3.20004@fl.net.au> <3D7950F4.7090901@metastatic.org> <3D798E5E.5050500@fl.net.au>
+Message-ID: <3D7AA380.7010805@metastatic.org>
+
+This is a multi-part message in MIME format.
+--------------050602010307090203030100
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Raif S. Naffah wrote:
+| hello Casey,
+|
+| [...]
+|
+| | ...By the way with this
+| | version GNU's Serpent will be faster than BouncyCastle's.
+|
+| have you compared the performance of other algorithms?
+|
+
+Where they intersect (the "cool" AES candidates Rijndael, Serpent, and
+Twofish) BC wins with Twofish, while GNU's Rijndael does better.
+
+Take, of course, these benchmarks with as large a grain of salt as you
+see fit 8-).
+
+|
+| | | i see some advantages in keeping the current implementation _and_
+| adding
+| | | the new in-lined one as an alternative; say SerpentInLined? (naming
+| | | suggestions are welcome)
+| | |
+| |
+| | I wonder if a naming scheme following "SerpentSBoxImpl" or something
+| | similar is more appropriate, since what we're talking about here is a
+| | particular implementation of "bit-sliced" S-Boxes.
+|
+| with the figures of the new implementation, do we still want to keep both?
+|
+
+I don't see any compelling reason to keep the old one. Plus I like the
+new version better -- passing arrays to the S-box and transform methods
+was clever, but probably not the best way to do it.
+
+As one more idea, attached is a version of Serpent that Dag sent me that
+replaces the int[] version of the session key with a new class,
+SerpentKey, which just has 132 integer fields k0..k131. This avoids
+bounds-checking, and I can get this version up to 15MB/s when compiled
+with GCJ.
+
+- --
+Casey Marshall < rsdio@metastatic.org > http://metastatic.org/
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (GNU/Linux)
+Comment: Using GnuPG with Netscape - http://enigmail.mozdev.org
+
+iD8DBQE9eqOAgAuWMgRGsWsRAsCPAJ47xFBGTu9jqjdWFRnMjIFkToi/GQCePPdC
+lw6pGQ7TB19LUI6uLkuye74=
+=IvJT
+-----END PGP SIGNATURE-----
+
+--------------050602010307090203030100
+Content-Type: application/gzip;
+ name="serpent-gcj.tar.gz"
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename="serpent-gcj.tar.gz"
+
+H4sICBuhej0AA3NlcnBlbnQtZ2NqLnRhcgDUXOtT28iy38/5K+aktii8AaP3I4TUBZbsUskm
+KSB1Tk4q2RK2AAVj+Ugyj3NZ/vbbMyNZ6pmWJbzkw/XWxtZIM93T8+vnjMjTeTaKt86n861R
+djcr0q1RMruIs63jOJvF02L4PbqOfvp7H8M0DM8xfjIMw/Rd8W2Yjie+DQv+M5yfDN+1Pdty
+Ld+F533LdX9ixt+k2+szz4soY+ynLB8n6ZLnuu7/P/3MotFldB4zAMBQAmAoAbD97NnWFtt8
+wg8f7+fD8UvWhNbGNTOHFgMMWFuGt2UFzLRfms5L+JFFyRk7uJ2xn6En77yfzu6y5PyiYOv7
+A9Flg73J4pgdp2fFTZTF7E06n46jIkmnG+xwOhqWHU8ukpzNsvQ8i64Y/DzjnfKy0za7S+ds
+FE1ZFo+TvMiS03kRs6Rg0XS8lWbsKh0nZ3fQwIeC8eOMFRcxK+LsKmfpmbj47f0n9ls8jbNo
+wj7OTyfJiL1LRvE0j1kEpHlLfhGP2emdeJxzzUcjGN9mcQKPZOw6znK4ZlZFoxoQWFqPCs51
+xtIZ7zMAVu/4eJOoqHu2zb6e5JglUzH0RTqDCV3AqDDtm2QyYacxm+fx2XyyweBJ9s/Dk98/
+fDrhw+2+/8z+uXt0tPv+5PM2PFxcpPBAfB3LoZKr2SSBkWFaWTQt7jj3fxwc7f8Oz+/uHb47
+PPkMM+ADvTk8eX9wfMzefDhiu+zj7tHJ4f6nd7tH7OOno48fjg+GDJASd4n3TA52lYIUx3ER
+JZO8mvhnWNccuJuM2UV0HcP6juLkGniL2Aig1GftJun0XMyRj1c0BLnN8pK3s2QSs/0PHz8f
+vv8NWD48Y9O02GA3WQIoKlL+TMkPfNrgKtC6UT7khuwkBjHG7OMkGsVskx3P+WC2bVSP7KV5
+wUH+xy4zLNM0N03b8Mt7n453S4K7OUw1n8WjBKYW347imVQN0CuO+UkyvZSTmiSnWZTdiZmy
+VMCPTyvn/MOEx/ORgCvoSHwbj+ZFdDqJN3DXcQqPw8w5xJMijydnoFMAISGjLM7nkyKZnvNR
+6iH48AC0UQqIrZWjfT1AvALMi6nw4RaEL9IbQGEGmL6OJgnINeZqUU4ni6M8nebs5kISaTAh
+FvCK2xU+3KP4eXIT+QzUJ82Kpjk+is+5wt5tE/fmRTIZfoJ/thc9uVEd5jA5wN/d8FDK4m18
+d1DJbBs9KUbYTyeTeMRv5sTdQ7ApUZEKj/DLL8/YL+zV7HVpw7k9iZhtbWYcyiyfn+ZFUsz5
+UJszMJAgYgHvaVzcpNklO52ko0smPcwGHwoMDwwOyGDwlGkFm6dggcRTObe/LBoJtuH+ZXwn
+zC08tMHMEGw/v2+5HoMuOaw6H24ST8+LiyHbBYsUjS6YZIuv4mwSJdMivhUs/+vDETdRHO0R
+H5APwfi0Oa/SLPDR8jgXJhhIwzLDo45lOeJZ3jJKr2bCiJ5l6ZW0fVNoqJ6GBhhrCvb6jI8V
+C8d1vHma3gJeufZHM2Ep5TzOkmk0mdxxfU2E6oNyxhCYFGBEc7BxV1KOSc7HGsOwQ/ZrLFDA
+m4UOSFhHo4Ll0RXXOy61hLs17hC43wDXJanNc36vnKXkDLSGP7XwaCWnw1dbs9fwlLLsN+DV
+xnGenE+lnhylec52uW/MuYE5mCRsL7mIriS5d1GWs7fT+TgHkUDPiI8GdmWW5tBdooEbckF4
+d3wdTUfQfjBdzO+4gGGibNzCDXfeoLdg6WBqM3YOyl6ALIGvLIZ1H/HJivkggJbrLxf6P/MY
+iPLJn8JKgD0rgQkqIefAWePe9gqsgFihK6AsF2UcAxdjsTLzGVzDWo5L+bKzKC/ivFhOQbpe
+4FWaWmFYBVsNbofS9Cmk53m58BWwwLnX5kuIKWIXWXy28/yiKGYvt7Zubm6GSTKcJ6fDabr1
+kObXyeXW89e/RudsNwO0fuANr7ai1+DCLhJQIYCqVFSYe/JfDvdyoT4CF8n8CqZ4lUyENwX+
+R6AyaabC5ig+A5Zg+vnL5o10wn9yn/VqkrymOB1NhqPoahiNhvPLrYfse2Q6W3kZPl4UV5Pn
+FQZest1yqH1YLWn994Sx2X8UvKLXr7aAF8HeluSP//6fKhr7+Si+TvivlyJu/Rlubj2bSa8w
+mkSgBRUowdRwVLC9KI9LHv732TNgUESyU0g7poW0cddRlnBPlJd3n9CdwICzLLnm0gDrx26N
+DXZrwv9gPW9t+N/ZRs/kHFYjaYxAKhlH8fvdPw7YDnteiv35kh6cxK8Hb3Y/vTv58+3B5z+P
+D//Nu5redq8ue+8+7L/t2+now6f3vx7Dg7YlOQLfBCoCGpdFwpXBc7MIHFlpz87TyRisj9C4
+Dbae/ycr1t3BC3OwZQ35Gi6j9fH3QyBk3Iax7fvhabggyL8AHW93TyDoHhU8MhfOIB6d/nl9
+OXhZ3j/cCasnDz7vGEZgPOZTdt0/2XHdwN9z9/b3woMDd9cK9natvd39fceEAV3LKZ9sn8vp
+XRF/+crZ5cvDdsTz4sNjiGGR7sED+RuYgVz79eeP5fX5oH3VGtT3T/oQ75ouJ1at/Ai8fWkK
+ZbBZrfsozSDuL6Zglxi3xBvgk0dV/BePW9Z+L00nMXgVET1tI7XN5nyh1/PBD9FWgWLghUfs
+/42zdDPKzudXwsnVxBdMS7tTWpz1ARgYKdF8Dr5lvYoch8cHRx8P3oPYDz/+fnC0QSjchqa3
+ciH/Wkxd2LarGLK98Y+xUzDgobCKsDo/mI6IbSfR9Hy4DwleLLIAHhxmZzzdUlxs54DlKnw4
+/Q44AycAIzaWIouLecYD4Jt6nbBoD4Wfki7ieJasxonKTRW0y1j6GBx3rjPViPuHPCKcxJBU
+rnNWD4GHc4CQjpTBYJiUY6OJqHQhCm6hKsZfDLG4Cx9uaxNuabfrNl4lmc9ESkJG/iIvGNbP
+l5yDoak4gAEbNODTnKDpDTZQg+UoDbY1qHv/JW2B/JRTPi1txUWUvwenj6dUTzthrxYsDWWe
+0pjmX/q4JaCm1JiQwa8v6Kk3a5oVvS/Jixdft9FDf1E8TueTyXKmrtNkDE9fQYypMVVcZOmN
+kN2naS7XLB5/qKLcRQJawgaz8ZcOpXL+V9FlDPnreuk+Lk83BE4WuB5Iujkjct0Fg4Ci9ylE
+4eBZRjw1AEMay8oWKJ2oQ4B55WmWTApEoHhwXOYo0WRYDyOicHAxYiROokw+pEzGfGXGMSjt
+GATBg2GI9KvefNEuT8u1Z//gMQ5bW2OoCfJLtQkA2BR0LWViwuvP4arMgnmiy+siprcBw27w
+uqFtCS+cP18sQSX/0jbx3jx/3WkaLC79wQL4IIPfucxu+Pi8Bvl8lsWb0On5Yp7TAhbqphyE
+Xzm/rMt4DeKtBQ6Ftm+w79U1j9DXhfpDI3wthLDpbAvtCbhovrPX3EAwQDQSy82X5Ct0AgF/
++c7YV7YG8drZ2YC9esVlei9vvDDRDZD/vao55YMWejBgixHsxY0Gir+zzR3mqDIFSX2MxkKe
+sPSvFrWKJh4SvsIBNROTGO6kqgaUGfzNn8lmwIbDofhlqoIMpNwglNbExYVfwCNAbDP4yr6J
+H271w65+mPwHD3+/wYibQXPOJZuFEKQJ8inY69evmdXKNy9O85w8GGoLXq5v66rC14vg61KB
+lJHfIu4DqWt0SnncVOb3CaSSPE4iNee7Z4XcSMgh6CyTd1GnksrE1m/AzZ2CSRlUBflRKqo6
+cT1Gsz61Dv8MqhnnMJ69fvOFMeMr5PHwbZbfVvltf12sJZfUpQE/diA/3JaXprw0y0tLXlrl
+pS0v7e0GOUuQc8rh3fLbK799hZyDybmYnIfJ+QQ5U5ALYHgmCITiV7UOzDTqa35pKvQDTD/E
+9E0D0Ye11OgbnL5pSSr8p40JOvjSVeibFha3jek7mL6r0/cFfa+m72OCAb4MVfoepu9j+gGm
+H+r0PU7fMhb0LRMRtCx8qcLNMhB9y8RwsxB9y9bpu4K+U9N3MUEPX6r4sxxM38X0PUzf1+k7
+gn5Q0w8RQRvjz1bxZwWYfojo2xh/NoE/od12jT8b48/G+LNV/NkYfzbGn43xZxP4E+pu1/iz
+Mf5sjD9bxZ+N8Wdj/NkYfzaBP6H/To0/B+PPwfhzVPw5GH8Oxp+D8ecQ+BP679T4czD+HIw/
+R7N/GH8Oxp+D8ecQ+BP679T4czD+XIw/V8Wfg/HnYPy5GH8ugT+h/26NPxfjz8X4c1X8uRh/
+Lsafi/HnEvgT+u/W+HMx/lyMP1fFn4vx52L8uRh/LoE/of9ejT8P48/D+PNU/HkYfx7Gn4fx
+5xH4E/rv1fjzMP48jD9PxZ+H8edh/HkYfx6BP6H/Xo0/D+PPx/jzVfx5GH8exp+P8ecT+BP6
+79f48zH+fIw/X8Wfj/HnY/z5GH8+gT+h/36NPx/jz8f481X8+Rh/Psafj/HnE/gT+h/U+Asw
+/gKMv0DFX4DxF2D8BRh/AYE/of9Bjb8A4y/A+AtU/AUYfwHGX4DxFxD4E/of1PgLMP5CjL9Q
+i/8w/gKMvxDjLyTwJ/Q/rPEXYvyFGH+hir8Q4y/E+Asx/kICf0L/wxp/IcZfiPEXqvgLMf5C
+jL8Q4y8k8Mf13zQqKfPfCICmYeFLFYDQFwWghokDcAsFoIZNGgDTcBoMuJiihy9VBEJfzICL
+GfAwAz5pAUwjaDCAIGjiFMTUUhDoixkIEQOmgVMQkzQBZpWCCBI2pujgSy0HMS3EgGljBhzM
+gEvaALPKQQQJH1MM8KWWhJgeZsDHDASYgZA0AqbVACHOQkychZhaFgJ9EQMWBqGFQWjpIHQE
+Aw0Q4jTExGmIqaUh0BczgEFoYRBaOghtwUADhDgPMRt5CL/SMGhhDFoYgzbGoF1hENfz4aZe
+vOV1Yn4Zy132qnqbTDca+6rJRrUpmM6L5o10o6r+vi2rvXldp9FKlet1y4C9rSa4tdW24y3v
+3/LlXE+mXxJG1gv5nRdsecGwfAgXC1lQd9erhbdWRfYFc1rJun3Ieq1kfZ2sWZMNWsmGPciC
+XWsha5o6WWNB1rTayJp2H7JOK1m3Qbam+21HwtZoiKBqMxurUbVZDWBUbTZug1G3AUFCR1hj
+2DWuFvIWf8pimKTsZrB7+RhiEbos+jXu2dVA/J97TM9S+m027jnVwxVpW+VF9LPFY4Z6zyZ5
+EciBf/nS2AMudrjghU0zHDQIfxOWo6lcso+NkQ//8kY5jiULpNo4liIkq3Gfj+EIZuQYjhjD
+NgdKHxtjEP6FPr7sY0i67gDz66iyatx+9WqH+eq6KmuiXtuUDN2mCC1/QInHspryMY0BgWEH
+y0xmqgSuPSwXmVE05fnAJ1qtmCaBCiyOqgoC0muoTzXrBbYbpO+lJ6mQpiyWKYC3hpbaLOku
+IKnwZtVAVnEsp/PQ7OMsuLYVOk0RYBCrdBtAqjTBaNEEAyPL+PuaYK6gCaqwGzD0EQzbNUFd
+SVUTDEVmFnlNytBFyvhYTajRHBCaEBKaYJKuwFRXCrHKMY4setn4TTHJwlp/E+ZVbzSwMeXI
+1iwsZwl1l9Emb7QYWnTse5YOR06GpGEoNBxlhnWjjbs/oJbGypkI2U0NUZEso0ysIQ102010
+W9o4qmFykBwqx9VEe1NDbEJb1wXIKw2xNQ0x2FLEG4qGqBqgWhXVYDRk6CLj4A8o8VQa4mga
+0kC+YkbKeJ7QG1MRp2x01bVSQX6v4ULCSofqGoVKjPxWrHHTTSnjPSJEgrpWRrNDwWvtsTv4
+rJWP7E6aAntlXVZoPDois4iIrIF2G6FdG0d12KSmdkRkWOO7IjJreURmdURkumKr7rQ7ImuI
+p9Iye0lEZnpYaLLRxyzIxgCLRjaGGBoOYcEfUAuJ9HYHpavYWovhtyno6l4Mo5LU0A5T4PTh
+W5gXUptI7SH5JC2J8uRDi09XdLYCO/JLTc2zNL8k5Io0rwE/pMGWNo6JoaJodOVsm47iSXKh
+ZqCJNUeNAFX/pWqiGoQ2ZOgi1+4PKPFUmmdqmlcrmaVkXrJRSWZko5JaykbMnNQB3cn1Uke9
+2xrlNHp4J9IfLFP5tkC1K6hcpqOkZ+5SnWUOvIeC9goiVZdirxhEqvmN6meaOV9TYZ4kzWov
+IKhKptoC1burXvoHBJGWkhTKRhezIBs9LBrZiIoOHDEqLkkPQaphV+5UAhCrDulglun7fYt3
+JD0w2b0rRSQ1jxyzVcnW9JhSzd1W0ieT0Kc+4aIeHrbXUNr0SQf3Aqg+0mMXe4wl+mSS+tSe
+O6qloD761CtcbOgTFQRaIWZBlqENLBrZaOK5d0U4Naz6GPS2qKkt1uwPfxKt/flUiyEq2DtC
+vqUq1RGsdjlX0rU3QGEipdErIlhJSj17lDPTk6THV0T0UvYC+T5CfntFRFUetSKi5mJqhEmV
+UEsZusjuPNaZNVSKqojYVEXEVsQpG5VKu9w6MTQvtrZT7uIsNnuUJa93Y1BA1tg1UnaU0O6P
+sjPkKP02Ua1D2Rmid6ksdZdq8TDBS686BJW1qHWIVQI11WL3cSwq8PpU+yzsWPSdH6oO0VXt
+e1wdohe2GzCmtnxsn8J2gEUjG8OmTB/kpomFNbySQgUYfeer2mdRQ1Rrsc/S1O9qp0ctDVeW
+pNprapqy+51qF4raKHFqMKtYltN5YNo2oy3urKmwWoiASsdJMLVbejU8sla09E+XtpBQbE1b
+FG1QV1LVBnpHTcfED7T0joGFJhsVFmQj5RMcba2IqKIrpCcDHTJL7qgpkzUDtYhG1hC6Ktxk
+zEhGbWQe1RoJPmghW2f9TN/X2dHqZw18o51YPRpalhP0jYbIvLo1GlJ20vWjEVT9rP3Iw5KC
+e2v9rCGeSkeMJfUzRzEkstHFLMhGD4tGNvrqWqkgv9dw0VbuWqNQ2T/rIJXxUamIng+0FfDI
+Ehq519uVJJBViEfqskLj0XGZQ8Rlfc4p6G6wda+nIy5TjuZ1xGXO8rjM6YjLdMVuTZWe7MQO
+lfA71EkFV/GwstHE0DB67cZrSG93UGRFmTT8ZBLeVZQjNbTDFJB1Ad2xtlXqVtpdrflUnmwr
+cis6++gTQjKmevz+kO5YWstmrTuzK2dE7SeE1BhQ9V96tbzVYLSeEOq1P1QrmavUFmSjwoJs
+pM4/uMr5h94HFgh1XKn41oHorhp5R6DaFVQu09G2jailqtNRNuxS0F5BpOpSrBWDSDXD0c8Z
+1FlfU2GeJNFqLyOoSqbaAtW7LzlH+1RBpOthoclGxQ7IxgCLRjaisoOytWrRsdBaixp25U71
+uaGubdBl+t62vUR6YLJ7V4pIah45ZquS9Ti9uJI+mYQ+9QkX9fCwvYrSpk86uLsPNZjL9Und
+H9J9NHVN+tpWfeoVLtb65FFBoEe9uuBRhxo8HEx0RjithxxIg94WNbXFmv3hT6K1P59dJ4o6
+Qr6lKtURrHY519UPO+hl0R12az3emelJ0uMrInpBu3tzVqmIqMpDH3ZojzCpImrX5mwvZ9ZQ
+Kaoi4lEVEY869edp5R22eMVC3R8q38j5tqOAZdFNlrFRQNbYO1L2ldAekLI/ZCj9NlGtQ9kf
+oveqHHWvCr1VpPXrUYegsha1DrFKoKafqOl2LCrw+lT7HOxY9P0fqg7RVe17XB2iF7YbMKZ2
+fbyQwLZPnavz0RsTD3LbxMEaXr+H4yh7MPUukKXsD1Uzp2oz1V4PvcFtLnabmqbsfqfah6K2
+SowazCqW5XQemLbZaC3eUjJIEVDpOAmmdkuvb42vZumfLm0hodiatijaoL/7sPxYG522kDJ8
+KkvvUy9++sp5d9lI+QTfVdeKiCp6vojQts+ipzNtNeVeh2vIGkJXhZuMGcmoreNQmxIJ4nOA
+vepn+r7OjlY/63NUrWurvn80RObVrdGQspeuH5Cg6mddR9UeVz/rdVStgXzqQKdPvdngUy/j
++aG6VirI7zVctJW7ehwJ7X/SjTyq1pGK6PlAWwGv6wWg/q8stJ/l7q/LCo1Hx2UGEZf1Oamg
+u8HWvZ6OuGyFM2ntcZl6Jk1/vZa6JlOlpzq3E1AJf0CdVAgsLBrZiK3fLXUsWd+N15De7qC6
+DlSSerfMi5GboG3vJHVtFS9zrD0OgvffXSXPoi4rcis6++gzQjKmevz+UNer2X12ZlfOiNrP
+CKkxoP5mHnVNGozWM0K99ocaSka92hC4mAXZSJ1/CJTzD70PLBDquFLxrQPRXTXyjkC1K6j8
+geewu06SkAraK4hUXYqzYhCp/6WP1tpU60t6Kyday/5OyvI/06B69yWnaZ8qiAwCLDTZSL3v
+EFJ/qCHEf6jhQcflSi+bL8Npj9dOl+l72/YS6YHJ7l0pYsefalj6kl7/04sr6ZNJ6FOfcLHr
+xZw++qSDu/tQg7lcn9T9oa7XnPT92G596hUu1voUUkFgSL3CEFKHGkIXz73/2zZ9DHpb1NQW
+a/aHf68/kdLOZ9eJoqd577XLFHW8yvh3T8xShx1WqYjoR3f+r73r/W0bR9P93L+CGCyCdNqm
+oiTbMYp8SHszs8HMtkWb3qI44A6OrTS6OFYg2Umz6OZvP5KSTPLlQ4l2PDtz2BjodGrzpSjy
+4cv3N/stIlvXevBHzOJgh/BaDyHO2aDDzNhSyCIyRhaRMYr6GxNre+1AcaMc9o4aX87a5UOW
+XPtkLIHM8B0Rv5LlAyL+oYTQvbRsHcQ/hH1VEfVVWblFDl2AHQJpLdQOsY2g1pEx7T1YKPBC
+rH2RfbC4/h9kh+iz9m1mh9i0jkmE3D484gDdPEKhdTyy5vW+dp2QLEGdjRMRP4z2BKXER6Rr
+z7n2mdbfg53cfO1xMtlZW5XOlV5a/1VEqt9p71GbGUQlF6WzUWitpwCp5BBQ4fVFoi25/e5U
+FwhHr+pCdoSb/9Ad2oZVFziHu+L2PEJJoDwa2INovkVHA49GdL2AdBGYkODzt8DaVH1le/xB
+NuHVdfpkRyi99QS39ZZa2TirGtnRQkLW+lz24VIR1K+9UhHxqbuBEsiO1heytpkdLShkzcQ+
+iuzkEazGaJRjNIpgcU7XiwL9u4MNn+krIDw0POoNhq31qCV95TrCk4HC0xf8cd1bVcvaSkZD
+1X9Dohbc49Dr9+mR0baIT/PLaLj6b3h82u8Qw8M50v45J7pb8y2qFcz5wIYHClN2vfMO2v0H
+VV+AJdx7XacZdIr6cpT6XMddB2xAYHi4txXGpnYZvcm+3ThmCNVTDfEX9SVrh3hqt9aQ/DFD
+uJ6qP/UdhYf0xQwF+YvMfYZyHTgnLKL5FoVEcE5iIoKDGMCW3Mog14PqwCKtAfFAPcFNO4/N
+7osu2b5MD6pltY1AubvS3lsoXl0VVLqLN+DS3puV6dlUoIyJMNB8i7IgeExmtPnWXpt7F5tb
+JaF3YTUgHbVrz/vcTvAkhuR9KmNPCYfO5L3wqMat9hQHeypEdOxL2AnZUy7A+4MdePeeon6j
+vvQn10/bv6eCREdzT0FxMEbJDTxG8Q48HtnvH56Js1V51I2rhG9UEDx8nH3RRrvJie1jRz1p
+jtbr6BWDinkMFfMExaFxWW+w+bpYLf+rYPLWJAE8eYPTM43LdA051UrdoOS04kPaKgat2CFt
+lRitDKbR/JpafcSe8QxAK3c8Q9DKHc/IGk9Mfj20+uCe8YxBK2c88tIlp5UzHs6t8XDyqz3H
+ER4PT0ArdzwpaOWOZ2CNp4aVc00Ym2XOHWHgdrDHe8Ee7wXb5b1gO2KJzbdNOJYrd/h9QTQz
+Ste646SmXisktB4squvi57a+rcSpaNf6tnwZS2uXsiO2uLoLlisiKFdwKFekXrlizTTXKrmE
+gSXUHK1Pi7V4JEFENA7Hs+evVoKzxWh5I1eulENYWzjkEAaugKZYaSugSWG2o1A/LgxIx6Jf
+X0vYco466zzZ/zYnOjHmGVmGWkOyQbzXYAnUT7pnzb1eyLeK6jPqx9A3bdHd7ieEZtdT/v0I
+j8C1MCF900Rrn75pYti1BZgYjimGTXAMDHBQd6WjePfdyUVTLtw71zbBsAkTbsCkyyZR17hH
+GHZ1OxPDEcVwX3KGOdGJMc+2F68FZMLA7HDA9cxc1e9kBfYaPOL0lgTcTWfyd3rTXbsj3Mil
+PQvddBvTsaKb70xTZJ/Z0jRQonBdTi6pWZtzYwM2tsdCw2Zgcheiv3ZUyA3L1PHfN2KCY2SC
+Y4APEm4w0q6oUhSI5CsxaaKbU3T3ZUiZE52Y23NM5lBHzNDZ0Xg0T4+9Bo8+/5UrO+hN5Br/
+bBnF5VbuyqTrEbjlVCi67Ugd/8UXm7jITLRD2YUPdo92eLuO/+IPHM3UXz3NQHtE0W7uCG7s
+iC5bGHbpura7XrT3FfcIQXui0U4PAhuvmrdzIofrSDJ/9BlOEEYSupbD6WZO1ycFrpQddu/o
+GpG9ARYmpmEYH8fnvhfTW8gnrpyK5BOXR/nkkxAOviv5xJWVguWTh3FwU9gAw0TaX0zwSLUW
+zcFd0an9hXJwFHWZrutv0LrpujfXkG3z9q4zUuMY3j4ZoTuGzDA7MyRvtBm6H+WTf6F8kgAJ
+N15LuFhr0ehGNWRcL2h7kwDOKsVyUPscGtEbEZquGFR8CwLi4Bj5UMMMCa5+1DD/LBqmNu2R
+2dR3VUDdzNAw6S/pa41CuoddWwiVadzyn+7smNovkjSpzttVd6RF6BipmWMUHDOGd3ePISa8
+VsAQfJNyqn1WQHy9Rn9N/i58h/Pw7tI27vkTgO++2K4QK2Bj+3N3oXs3i9YSbbmEaqOU1yLr
+iGk3oc/VFr49sD6olhi16eA8ETBZNOfSgHuC4I4yBsYDiAadgkCQbcJqYMKKhK513nPcfdtE
+n10pRDoJt2/31Y/1nxrclCy6b9Sx/21OtGkjR3dcN8MyifeOTF3Qsr3fm5ZvZAmhUrl+DH1T
+M6vIh2R/xhPOXoI1LVDpv8OxTUlz8A38YobxIM4M6yf2FTLwVwfx1QbdjXTdXS8CJWZtzJld
+aIT4Z6w6jEjqxdYHJF3ztcUCxyki/6DJ11HGnpY8XHnCJ5MgSwmsy0hLuBh1kgYAxIcoP+tw
+BBHjlalDPI8k3NJNZA0Jt3T1cwSMkQmMAT5AuMFAuxImUFSrr3xkp+exL8w1RKaObNsHsiqn
+RNZNiUbpzytF3NyfPUotiH6bn9ZpXV2fIvv7unfUEiIdKZCHSH88RNLK4YbaYwjSSaaaG3sZ
+kqnmv3w3xKYdrj12JwS61RYDkN6XIRiCdBJBQn3s2JJhy92t7Nal/23jr8RW9qjTDo55OpJJ
+RkhbHI0AnkfI+E2KS+7EGgKr2PozL3FWd38+WBfn3pVM4spHwTLJwzi3KWCAYfr94H4bHbJN
+m/aLvSOXc+uzA9eTrjVVtze3ErHN0/35RgaIkflulCBk95QWfpRJ/mwySQokWr6WaLGWopGN
+K5jT92l93n1xeq7n0GfL1jRdpasQT0ecu6+QvAHlnkLyj9qky7n/MG3SDN2z3j5Z801cHx95
+IrX+h22qyOZB5RjXr+DOjqnpIumS6rf0aRzhG+mUQ1T0Y4ickcMRxITX2heCb5hu1Femzm/t
+89XX78J3OP/urgaICjv14huLlZtZ+7jti6R2bKwV2vII1T6xzxDdf46fqy156E6MGEgd1H7j
+4t2jU9bQRLU3hhzBHSVVDhOIBq+X3YTVwIQV9UD6vU/4jiB/zEyXp9snmYTbsbuvYury8HNT
+qnDt2P609hAvuxlSRIj3jkz9z7Kx35sWbmT5oNK4P6LP9ED6kOxmWX4/wiPwexgHKH1gQOTW
++sueuwZ3xpljxJn7bnVw7aR+OOxSsu72MHbFFAZzZhcaIX6YFowkzyAxEIekUyRZJ2srhRvL
+qLHoi8lLic5IvYOuPOGTSZB1BMZR1dBEQatbXVUbJFOHeBhhBUN/fQ4MBFcvR8AYmcDYKmK1
+ryyeK3f3ehgxfDaTqSPb5hESARITbRLzUipjtBsI21iR1dBv59P6LM6KCr9tCyE9RdpjirTH
+AZJWBhtqjyFIh1Ei5hx216HFQUQ4Eslnxw7XHrvL/boxtgFIx+rBg6JEqC8dWzFsuduMcPLp
+f9v4JrFlPeq0fWOejmSSFGmLKcp+TJHFO90w93ELmcSVS0NuavfLJCGce1cyCSpyFSiTPIxz
+mwIGGKbf5+23zyGbtGm/2DtyObc+O8z17I4r1D5QcwfZPL0rs3UNTWS9SzlCNkoMTrHn41Em
+8c37v1ImiYFEm6wlWqylaGQjCzfO3UKSM43Fc22fPju2pvGHpVPZ3q9NJkibTJA2mSBtMnnU
+Jrs49x+mTZohetbb9+WzIA+k1v+wTRXZPKgcgzIscX0BZA2hBiF66vhzDhKkUyYoDzJBfshk
+wyzI4HwDvw0e5xv0ZMhZ3Kgf3+H8uzvfwD17AvCNxcoHZUFSOzbWCm15hGqf2F9Ivef/7X2u
+tuTtgfXhQOqg9htUJwLqlAqaMbpcA5ZwgRVcEg7R4PWwh2SLkdvv3DMPZYv5vX5dXm6fZBJu
+xyYFbJxrNfynhjdbDLPHTWs1tLAk8aytvQPZ+3XyDT2TtGTiQ7+btWvzdIRkunL6NgkoSUMP
+Y5wCqMYo3zFGOmO8YbZjsIfRb8MIuwjLtVX9PpJ1t4exK44wmDO70Ajxw7RgJPkEZvYtkk6R
+ZK0zyLfJR8c5wyiOSdeD6Kt5ZHr7QfxUDU0UpRpzBGJkHIyxqOeVqUM8jOT+GbqwfXWmMV/5
+vXIcu8t5d2XpeD2MGD6bydRGHq/PiuzmotvaJOal/ippWAp2rYZ+O5/WZ3H2E425Qtk2MLCm
+zseFpcyQ9siRtMI31B5DkA6jRMw5REh397dvJ4TYscO1R1tqp0jvqgXhRTpWDx4UJUJ96diK
+YcvdZoSTT//bxjeJLetRp+0b83Qkk+CyOSjHEd8rsWGO4xYyiSuXdmfvYrcG9o34OPeuZBJX
+PgqWSR7GuU0BAwzT7/P22+eQTdq0X+wduZwb1STpiyvUPlBzB9k8vSuDtYUmMt6h+4d5hHDt
+FuV+lEj+LBIJB/Ksri6GdRRU10/jDWdqIbm5rwpP7LViaxp/QDqV7P26JFIlkSYJ020gZh71
+SBMVf4AeaQbnWW/fl8GCfI9a88PWVGTtoBIMyqXEFQSQHYSaguh54880gDVzAN6R+zGx69Y/
+fx5Sth41cqqgo0ZOEfTnXTXrn4eUrEeNesbiKVj/vKte/fOQcvWoUc9YPMXqn3fVqn8eUqoe
+NeoZCy5Ub91k0ALWqlN/VhTzbLJgVTY/P82q5b4uO5+fs/2byTyfsaMjtljN5/on8WkJy6xa
+zZfiKdXqOisPdD+v2atXbFaw6u7qKluWd2wpvq50B7L7mtjqV3w+3VXL7OpAvMHBdZkvlvPF
+/g/Xk6rKZnZnP6xftv6shyJ//HWy3P/1+PR/fv3pywsm/+ftqdn8n/p/m3dki+yWvanfqh1Y
+S9C2LrPlqlzUFAfNDPznZL7K9p8ZUyve+/3tgomBXhSz6qD56uWuPu0z3uTLl+fz/JpdTWaL
+rKraB9Y/N41OLzJ2XsznxW2++Mo+vXxTfGPnq8V0mReLit1mZcZm2U02L67F7J7dsf+YfGXH
+5SJj76ub/PIFmyxmbFJmTW+zrJqW+Zlomi/YRV6x64lY9Bfsh0/XWTaTT1hdt9cV/HAgH34n
+qVlxvcyv8n8IumXRdCXozovyihULthRj/CAo8tUVm17k19ULdrZastuivBQjnM/ZhRzmsigO
+nFdrXpmdiTe4VY96W1zflfnXiyXbf/uMxVEUkXc6qOfvxx+b2YgO2I+qS4G1m8lSTFe+mMzV
+BQ7y2+qs+Bbty5sVyqi+mqHkzd9x83di7Bn5b3kAloKdixYtgErFtcs1ty953WZP/WL+oI7g
+Ul7tJfsVP61PjVKdP2VC+tTPUFJBKW9pKrlDesTuy1T9ZIxB9We3VCpLaQp07cvYwS5yNOZ3
+8uGlLcWUJr/RE877J5wHT7iar3s9Xr0AkTUv98Y8KVnAmIeYrI2SCDrmmTvt5b/Nyf5+BOYZ
+rVP0TEIgJV3ZAllp25Hk8NWYDbp69m31okZXrNFF1yHuX4d4C+DbUDZGa09A/R23wa9kXwlB
+0ZdCMDcmlS4CWSNCGXmXO7WXD84xwXWNf3vKk3pLwalN+qc2eeDUIoiakNs7ovu/3rGxzQNi
+h6colrCnoNiBzLbHtqG9MPvtjNUQt36P7CfWOkfJNcOzVZaSd4Icz3/aP/9pOIsh+9fg8da0
+3VsIR6zay/5jAs6EzFZqdKy2zl6zmn6U0ycqraw5Acg0R/Y0r7n7fv2gxNY77/et4ym2wzaa
+odMFGfQvyGATnk/RvvEC1Rsk8i4Yd87W70fdZ3G7bwhL0zvPlgjgrBO2E60BQtjOfsPXn6lV
+SuvVgBM/7J/44RacyObl95agYzEQuu9tJDenIOXY9MCMyIEaO7yIHshEhorBciRgE3SzHnsR
+9C6894B+1D/3o20kS4fVfpfb0D5i6XFJp8w+L/dsxNqk7tmyfqp71K4nPn1GjwW6/EDSUVzn
+vhWNeo5k54yyhU6xGk8eP/+2n6pYldPs1dfF6pW6hK94Nc2vhSL5St+dd/C/k5vJQ54R8Sga
+ptEToWTy0UD9HfF0qP4WnzSN4yfRaJAMkygZJSPRfjRK+BMW7eoluz6rajkpGXtSVrO86GjX
+9/v/08/1ZHo5+ZoxAYCDGgAHNQBeP326S2uMNMiI/v5yMvuL+Fv+r2OBENz85zLL2KfifHkr
+bRQ/F6vFbCJNMC/YyWJ60BCeKotKWXwtJ1dM/O+5JKoaotfsrlixqbK4zfJqWeZnK3Gk5Etp
+onlVlOyqmOXnd+IL2ZXoPyuVYWWZlVcVK87VP35595n9ki2yUhxDH2oD4G/5NFtUGZtUtUmw
+uqgNQbK5HLXsDQz8Ncty0aRkN1lZiX+zuH1G26EY0v5kKUddKvtPsXgmhnon+5uLw3BN6Xt7
+/ZLK2iS7viiuxQtdiF7Fa9/m8zk7y9iqys5X89pk9PeT07++/3wquzt+94X9/fjjx+N3p19e
+i8bLi0I0yG6yuqv86nqei57Fa5WTxfJOjv5vP318+1fR/vjNyW8np1/EG8iOfj45fffTp0/s
+5/cf2TH7cPzx9OTt59+OP7IPnz9+eP/ppwN5QWfWN73ndWdXhTK4LSf5vGpf/ItY10qMbj5j
+F5ObTKzvNMtvxNgmbCqgFLJ282LxVb2j7G9pTORrVjVjO8/nGXv7/sOXk3e/iCGfnLNFsXzB
+bst8KW1rsk0zHvHxwVWh9UXTaDBmp5mYxox9mE+mGXvJPq1kZ0kStU3eFNVSgvxvxyyKOecv
+eRKNmt8+fzpuHnhciVetrrNpLl4t+zbNruutkZ8rzM/zxWX9UvP8rJyUd+pNWaHgJ1+rkuMX
+LzxbTRVcxR7JvmXT1XJyNs9e2KSzQjQXby4hni+ltVrsKQEhNUe11TdffJW96C5k9wJo00Ig
+Vm8O/3qI6VVgXr/KU2UJbx58UdwKFJYC08qMLOVCsS2a1ymzSaUMsxf1Q4xBqAW8knxFdrfR
+eHbO8J4KIfcp+7F+zel8UlVyx4q3u5A2YAVysU0XYlnP82/Z7GWV/0OOdz7PlOFZQlrIs9lX
+wQEOZD8nS8l9yutCLESulnOiLtA9k8irXk4vsuml7Pn2Qk7CUuzYShqPxVeS/NXTxplRj8S4
+LlcJz82P+mvp42iEdSlVXwrp+1JI3peCT18m4k8q/gzEn6H4MxJ/DsWfsWyjGvIXjbh5ySUB
+lxRcknBJwyURl1RcknFJF0u6WD1BUsTJuodY0sWSLpZ0saSLJV0s6RJJl0i6RA1NPimRFMlg
+3UMi6RJJl0i6RNKlki6VdKmkS9U7SbpUPimVFOlo3UMq6VJJN5B0A0k3kHQDSTdQkyHpBpJu
+IJ80kBSD8bqHoaQbSrqhpBtKuqGkG6pZlHRDSTeUdEP5pJGkGOmZHEm6kaQbSbqRpBup6Zd0
+I0k3knSHku5QPulQUhzqmTyUdIeS7lDSHap1k3SHkm4s6caSbizpxvJJY0kx1jM5lnRjSTdW
+C16vuFryiKv/quWO1HpHasEjteKRWvJIzyiP1NJHqocGNKqHGjA1YmrI1JipQVOjpoYNHxso
+Uz0o/HAFIB6rHhR4uEIPV/DhCj9cAYgrBHEFIXWd7z8ftaHHz+Pn8fNv8vk/wXFRBAAYAQA=
+--------------050602010307090203030100--
+
+
+
+
+From dtaylo11@bigpond.net.au  Mon Sep  9 11:55:07 2002
+From: dtaylo11@bigpond.net.au (David Taylor)
+Date: Mon, 9 Sep 2002 20:55:07 +1000
+Subject: [Classpathx-crypto] (no subject)
+Message-ID: <001301c257ef$5c3e9240$ba0e33cb@athlon>
+
+
+
+
+
+From raif@fl.net.au  Sun Sep 29 04:10:51 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Sun, 29 Sep 2002 13:10:51 +1000
+Subject: [Classpathx-crypto] GNU Crypto project
+Message-ID: <200209291311.10812.raif@fl.net.au>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: RIPEMD160
+
+hello List members,
+
+i'm happy to announce that, since the public release of version 1.0.0,=20
+GNU Crypto has now been dubbed a GNU Project.  as such it now enjoys=20
+the privilege of living in its own project place at:
+
+   http://savannah.gnu.org/projects/gnu-crypto/
+
+i'd like to take this opportunity to re-iterate my thanks to Nic Ferrier=20
+and the Classpathx team for incubating GNU Crypto since its inception.
+
+this move brings implies the followings:
+
+1. the new home is as mentioned above.
+2. the home page, is now at:
+
+  http://www.gnu.org/software/gnu-crypto/
+
+3. this mailing list is now replaced by gnu-crypto-discuss@gnu.org. =20
+unfortunately current members have to subscribe to the new list. =20
+information on how to do that can be found at:
+
+   http://mail.gnu.org/mailman/listinfo/gnu-crypto-discuss
+
+tomorrow (the end-of-month) i'll download the archives of this list and=20
+make them available from the project's (new) homepage, so we can have=20
+(historic) continuity.  when i'll do that i'll also update the homepage=20
+accordingly.  so please, starting from tomorrow, refrain my using this=20
+list.
+
+4. a new public list for announcements regarding the project has also=20
+been created.  for subscription see:
+
+   http://mail.gnu.org/mailman/listinfo/gnu-crypto-announce
+
+5. the sources of the project, are now accessible from CVS, to the=20
+developers, through the following URL:
+
+   :ext:your-username@subversions.gnu.org:/cvsroot/gnu-crypto
+
+6. finally, i'd like to welcome Keith Burdis to the developers team. =20
+Keith will be looking after the Simple Authentication and Security=20
+Layer (SASL) part of the library and the related javax.security=20
+packages.  bienvenue Keith :-)
+
+
+cheers;
+rsn
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.0 (GNU/Linux)
+Comment: Que du magnifique
+
+iD8DBQE9lm9D+e1AKnsTRiERAzL9AJ0YfrrYKK5KlJSW+LzBvtIrFW/9EgCg2oEP
+lguqohq2L85hd9y/y5mFZro=3D
+=3DDqtM
+-----END PGP SIGNATURE-----
+
+
+
+

@@ -1,0 +1,145 @@
+From winandy@informatik.uni-bonn.de  Wed Apr 17 14:00:45 2002
+From: winandy@informatik.uni-bonn.de (Marcel Winandy)
+Date: Wed, 17 Apr 2002 15:00:45 +0200
+Subject: [Classpathx-crypto] Primes and BigInteger
+Message-ID: <3CBD71FD.95C8D91E@informatik.uni-bonn.de>
+
+Hello!
+
+I've just read that you were wondering about some large primes for which
+java.math.BigInteger.isProbablePrime() returns 'false'. Well, BigInteger
+has indeed a bug in its primality test. BigInteger runs Miller-Rabin
+first. If Miller-Rabin returns 'probable prime' for some number, a
+second test will be made, using Lucas this time. And there is a bug in
+that Lucas algorithm of BigInteger. I don't know exactly what is is,
+because a friend of mine examined several primality test algorithms. He
+found that bug in BigInteger and told me. However, it was a very silly
+mistake as far as I remeber - something like +1 instead of -1. But the
+consequences are enormous - as you have seen.
+
+I hope it will help you.
+
+Bye,
+ Marcel
+-- 
+Marcel Winandy
+EMail: winandy@informatik.uni-bonn.de
+http://www-student.informatik.uni-bonn.de/~winandy/
+
+
+From raif@fl.net.au  Thu Apr 18 19:16:04 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Fri, 19 Apr 2002 04:16:04 +1000
+Subject: [Classpathx-crypto] Primes and BigInteger
+References: <3CBD71FD.95C8D91E@informatik.uni-bonn.de>
+Message-ID: <009901c1e705$9f5253b0$7201b5ca@solomon>
+
+well, i guessed it may be the case and that's why i asked for somebody who
+can inspect the sources (of the JDK) to tell me/us more.  thanx for that.
+
+the GNU crypto lib solves this problem by implementing a more reliable and i
+think faster primality test based on Colin Plumb's tests (as the info page
+states).
+
+by the way, is there a bug number in the bug parade of Sun that points to
+this problem?
+
+
+cheers;
+rsn
+----- Original Message -----
+From: "Marcel Winandy" <winandy@informatik.uni-bonn.de>
+To: <classpathx-crypto@gnu.org>
+Sent: Wednesday, April 17, 2002 11:00 PM
+Subject: [Classpathx-crypto] Primes and BigInteger
+
+
+> Hello!
+>
+> I've just read that you were wondering about some large primes for which
+> java.math.BigInteger.isProbablePrime() returns 'false'. Well, BigInteger
+> has indeed a bug in its primality test. BigInteger runs Miller-Rabin
+> first. If Miller-Rabin returns 'probable prime' for some number, a
+> second test will be made, using Lucas this time. And there is a bug in
+> that Lucas algorithm of BigInteger. I don't know exactly what is is,
+> because a friend of mine examined several primality test algorithms. He
+> found that bug in BigInteger and told me. However, it was a very silly
+> mistake as far as I remeber - something like +1 instead of -1. But the
+> consequences are enormous - as you have seen.
+>
+> I hope it will help you.
+>
+> Bye,
+>  Marcel
+> --
+> Marcel Winandy
+> EMail: winandy@informatik.uni-bonn.de
+> http://www-student.informatik.uni-bonn.de/~winandy/
+>
+> _______________________________________________
+> Classpathx-crypto mailing list
+> Classpathx-crypto@gnu.org
+> http://mail.gnu.org/mailman/listinfo/classpathx-crypto
+>
+
+
+
+From nferrier@tapsellferrier.co.uk  Wed Apr 24 17:49:04 2002
+From: nferrier@tapsellferrier.co.uk (Nic Ferrier)
+Date: 24 Apr 2002 17:49:04 +0100
+Subject: [Classpathx-crypto] Build system.
+Message-ID: <87it6h6nzz.fsf@pooh-sticks-bridge.tapsellferrier.co.uk>
+
+I've seen no comment on the build system that I put up on the FTP
+site.
+
+If no one has objected by next week I'll commit my changes to CVS.
+
+
+Thanks.
+
+
+Nic
+
+
+
+From raif@fl.net.au  Wed Apr 24 20:49:37 2002
+From: raif@fl.net.au (Raif S. Naffah)
+Date: Thu, 25 Apr 2002 05:49:37 +1000
+Subject: [Classpathx-crypto] Build system.
+References: <87it6h6nzz.fsf@pooh-sticks-bridge.tapsellferrier.co.uk>
+Message-ID: <004701c1ebc9$2b36a580$6f02b5ca@solomon>
+
+i'll try it this weekend and will let you know how it fairs on my
+W2k+cygwin.
+
+
+cheers;
+rsn
+----- Original Message -----
+From: "Nic Ferrier" <nferrier@tapsellferrier.co.uk>
+To: <classpathx-crypto@gnu.org>
+Sent: Thursday, April 25, 2002 2:49 AM
+Subject: [Classpathx-crypto] Build system.
+
+
+> I've seen no comment on the build system that I put up on the FTP
+> site.
+>
+> If no one has objected by next week I'll commit my changes to CVS.
+>
+>
+> Thanks.
+>
+>
+> Nic
+>
+>
+> _______________________________________________
+> Classpathx-crypto mailing list
+> Classpathx-crypto@gnu.org
+> http://mail.gnu.org/mailman/listinfo/classpathx-crypto
+>
+
+
+
