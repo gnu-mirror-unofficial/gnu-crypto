@@ -392,6 +392,28 @@ in terms of cryptographic algorithms:</p>
 		</td>
 	</tr>
 	<tr>
+		<td width="36%" valign="top">
+			<p><a href="http://www.ietf.org/rfc/rfc2144.txt">CAST-128</a></p>
+		</td>
+		<td width="64%">
+			<p>In the words of one of its designers, <i>Carlisle Adams</i> (the CA in CAST,
+			ST stands for <i>Stafford Tavares</i>) this algorithm is described as:</p>
+			<blockquote>
+			"...a DES-like Substitution-Permutation Network (SPN) cryptosystem which
+			appears to have good resistance to differential cryptanalysis, linear
+			cryptanalysis, and related-key cryptanalysis. This cipher also possesses
+			a number of other desirable cryptographic properties, including avalanche,
+			Strict Avalanche Criterion (SAC), Bit Independence Criterion (BIC), no
+			complementation property, and an absence of weak and semi-weak keys."
+			</blockquote>
+
+			<p><code>CAST-128</code> (a.k.a. <code>CAST5</code>) is a symmetric
+			block cipher with a block-size of 8 bytes and a variable key-size of up
+			to 128 bits. It accepts a key size that can vary from <code>40</code> bits
+			to <code>128</code> bits, in 8-bit increments.</p>
+		</td>
+	</tr>
+	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
 			<p><b><i>Mode of operation</i></b></p>
 		</td>
@@ -585,6 +607,34 @@ in terms of cryptographic algorithms:</p>
 			secure hash algorithm is required for US federal applications. For a message of
 			length less than 2<sup>64</sup> bits, the SHA-1 produces a 160-bit condensed
 			representation of the message called a message digest.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="36%" valign="top">
+			<p><a href="http://www.cs.technion.ac.il/~biham/Reports/Tiger/tiger/tiger.html">Tiger</a></p>
+		</td>
+		<td width="64%">
+			<p><i>Tiger</i> was designed by <i>Ross Anderson</i> and <i>Eli Biham</i>,
+			with the goal of producing a secure, fast hash function that performs especially
+			well on next-generation 64-bit architectures, but is still efficient on 32- and
+			16-bit architectures.</p>
+
+			<p>Tiger processes data in 512-bit blocks and produces a 192-bit digest.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="36%" valign="top">
+			<p><a href="http://www.calyptix.com/files/haval-paper.pdf">HAVAL</a></p>
+		</td>
+		<td width="64%">
+			<p>The <i>HAVAL</i> message-digest algorithm is a variable output length, with
+			variable number of rounds. The output length can vary from <code>128</code> to
+			<code>256</code> bits in increments of 32 bits. The number of rounds can vary
+			from <code>3</code> to <code>5</code>.
+
+			<p>By default, this implementation allows <i>HAVAL</i> to be used as a drop-in
+			replacement for <i>MD5</i> --output size of <code>128</code> bits, and
+			<code>3</code> rounds.</p>
 		</td>
 	</tr>
 	<tr>
@@ -860,6 +910,8 @@ analysis of API differences.</p>
 <a href="api/index.html">with</a> and <a href="api/overview-summary.html">without</a>
 frames.</p>
 
+<p>A PDF version of the Programmer's Manual is available <a href="gnu-crypto.pdf">here</a>.</p>
+
 <p>Reference documents describing the details of the cryptographic algorithms implemented
 in this library are available for viewing/downloading. Here is the list:</p>
 
@@ -909,6 +961,12 @@ in this library are available for viewing/downloading. Here is the list:</p>
 	<li>A Stream Cipher Encryption Algorithm
 		<a href="http://www.mozilla.org/projects/security/pki/nss/draft-kaukonen-cipher-arcfour-03.txt">
 		ArcFour</a>.</li>
+	<li><a href="http://www.calyptix.com/files/haval-paper.pdf">HAVAL</a>: A One-Way
+		Hashing Algorithm with Variable Length of Output (Extended Abstract).</li>
+	<li><a href="http://www.cs.technion.ac.il/~biham/Reports/Tiger/">Tiger</a>: A Fast New
+		Cryptographic Hash Function.</li>
+	<li><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2144.txt">RFC-2144</a>: The CAST-128
+		Encryption Algorithm.</li>
 </ul>
 
 <p>Test vectors, when not included in the reference documents, are made available by the
@@ -1264,8 +1322,8 @@ some of them.</p>
 <p>A tool to measure the performance of the symmetric key block cipher
 implementations. The following is the result of processing 1,000,000 blocks
 with the algorithms of this library as of January 2003. The first row of figures,
-for each algorithm, was obtained with Sun's JDK 1.4.1_01, while the second one was
-with gcj (GCC) 3.4 20030102 (experimental):</p>
+for each algorithm, was obtained with Sun's JDK 1.4.2-beta-b19, while the second one
+was with gcj (GCC) 3.4 20030613 (experimental):</p>
 
 <table width="80%" align="center" border="1" cellpadding="4" cellspacing="0">
 	<tr>
@@ -1286,160 +1344,176 @@ with gcj (GCC) 3.4 20030102 (experimental):</p>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Null cipher</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">0.258</p></td>
-		<td width="15%"><p align="right">60,562</p></td>
-		<td width="15%"><p align="right">0.249</p></td>
-		<td width="16%"><p align="right">62,751</p></td>
+		<td width="15%"><p align="right">0.192</p></td>
+		<td width="15%"><p align="right">81,380</p></td>
+		<td width="15%"><p align="right">0.196</p></td>
+		<td width="16%"><p align="right">79,719</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">0.195</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">80,128</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">0.203</p></td>
-		<td width="16%" bgcolor="#e2ffe200"><p align="right">76,970</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">0.209</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">74,761</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">0.204</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">76,593</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Rijndael</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">1.098</p></td>
+		<td width="15%"><p align="right">14,230</p></td>
 		<td width="15%"><p align="right">1.108</p></td>
-		<td width="15%"><p align="right">14,102</p></td>
-		<td width="15%"><p align="right">1.096</p></td>
-		<td width="16%"><p align="right">14,256</p></td>
+		<td width="16%"><p align="right">14,102</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.090</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">14,335</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.159</p></td>
-		<td width="16%" bgcolor="#e2ffe200"><p align="right">13,481</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.139</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">13,718</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.057</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">14,782</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Square</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">0.893</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">17,497</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">0.877</p></td>
-		<td width="16%" bgcolor="#ffffcc"><p align="right">17,816</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.875</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">17,857</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.859</p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right">18,190</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">1.061</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">14,727</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">1.058</p></td>
-		<td width="16%" bgcolor="#ffffcc"><p align="right">14,768</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">1.041</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">15,010</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">1.053</p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right">14,839</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Anubis</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">1.255</p></td>
-		<td width="15%"><p align="right">12,450</p></td>
-		<td width="15%"><p align="right">1.253</p></td>
-		<td width="16%"><p align="right">12,470</p></td>
+		<td width="15%"><p align="right">1.262</p></td>
+		<td width="15%"><p align="right">12,381</p></td>
+		<td width="15%"><p align="right">1.252</p></td>
+		<td width="16%"><p align="right">12,480</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.453</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">10,754</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.471</p></td>
-		<td width="16%" bgcolor="#e2ffe200"><p align="right">10,622</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.426</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">10,957</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.418</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">11,019</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Serpent</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">2.732</p></td>
-		<td width="15%"><p align="right">5,719</p></td>
-		<td width="15%"><p align="right">2.570</p></td>
-		<td width="16%"><p align="right">6,080</p></td>
+		<td width="15%"><p align="right">2.636</p></td>
+		<td width="15%"><p align="right">5,928</p></td>
+		<td width="15%"><p align="right">2.437</p></td>
+		<td width="16%"><p align="right">6,412</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.493</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">10,466</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.337</p></td>
-		<td width="16%" bgcolor="#e2ffe200"><p align="right">11,687</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.398</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">11,177</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.369</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">11,413</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Twofish</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">3.248</p></td>
-		<td width="15%"><p align="right">4,811</p></td>
-		<td width="15%"><p align="right">3.252</p></td>
-		<td width="16%"><p align="right">4,805</p></td>
+		<td width="15%"><p align="right">2.868</p></td>
+		<td width="15%"><p align="right">5,448</p></td>
+		<td width="15%"><p align="right">2.877</p></td>
+		<td width="16%"><p align="right">5,431</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.128</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">4,995</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.022</p></td>
-		<td width="16%" bgcolor="#e2ffe200"><p align="right">5,170</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.348</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">4,667</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">4.573</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">3,417</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Khazad</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="15%"><p align="right">0.740</p></td>
-		<td width="15%"><p align="right">10,557</p></td>
-		<td width="15%"><p align="right">0.742</p></td>
-		<td width="16%"><p align="right">10,529</p></td>
+		<td width="15%"><p align="right">0.755</p></td>
+		<td width="15%"><p align="right">10,348</p></td>
+		<td width="15%"><p align="right">0.753</p></td>
+		<td width="16%"><p align="right">10,375</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.049</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">7,448</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.044</p></td>
-		<td width="16%" bgcolor="#e2ffe200"><p align="right">7,483</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.018</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">7,674</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.016</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">7,689</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Cast5</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">40</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.457</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">17,095</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.450</p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right">17,361</p></td>
+	</tr>
+	<tr>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">0.665</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">11,748</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">0.675</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">11,574</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Blowfish</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">0.534</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">14,630</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">0.526</p></td>
-		<td width="16%" bgcolor="#ffffcc"><p align="right">14,853</p></td>
+		<td width="15%"><p align="right">0.467</p></td>
+		<td width="15%"><p align="right">16,729</p></td>
+		<td width="15%"><p align="right">0.472</p></td>
+		<td width="16%"><p align="right">16,552</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">0.647</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">12,075</p></td>
-		<td width="15%" bgcolor="#ffffcc"><p align="right">0.633</p></td>
-		<td width="16%" bgcolor="#ffffcc"><p align="right">12,342</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.627</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">12,460</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right">0.621</p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right">12,581</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>DES</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
-		<td width="15%"><p align="right">0.909</p></td>
-		<td width="15%"><p align="right">8,595</p></td>
+		<td width="15%"><p align="right">0.921</p></td>
+		<td width="15%"><p align="right">8,483</p></td>
 		<td width="15%"><p align="right">0.908</p></td>
 		<td width="16%"><p align="right">8,604</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.083</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">7,214</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.085</p></td>
-		<td width="16%" bgcolor="#e2ffe200"><p align="right">7,200</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.100</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">7,102</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">1.044</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">7,483</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>TripleDES</b></i></p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
 		<td rowspan="2" width="13%" bgcolor="#c0c0c0"><p align="center">192</p></td>
-		<td width="15%"><p align="right">2.675</p></td>
-		<td width="15%"><p align="right">2,921</p></td>
-		<td width="15%"><p align="right">2.644</p></td>
-		<td width="16%"><p align="right">2,955</p></td>
+		<td width="15%"><p align="right">2.666</p></td>
+		<td width="15%"><p align="right">2,930</p></td>
+		<td width="15%"><p align="right">2.645</p></td>
+		<td width="16%"><p align="right">2,954</p></td>
 	</tr>
 	<tr>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.390</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">2,305</p></td>
-		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.407</p></td>
-		<td width="16%" bgcolor="#e2ffe200"><p align="right">2,293</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.315</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">2,357</p></td>
+		<td width="15%" bgcolor="#e2ffe200"><p align="right">3.328</p></td>
+		<td width="16%" bgcolor="#e2ffe200"><p align="right">2,348</p></td>
 	</tr>
 
 </table>
@@ -1448,9 +1522,9 @@ with gcj (GCC) 3.4 20030102 (experimental):</p>
 <h4><b>HashSpeed<a href="#testenv">*</a></b></h4>
 
 <p>A tool to measure the performance of the message digest algorithm
-implementations. The following is the result of processing 100,000 blocks
-of 500 bytes each. Again, the first row is for figures obtained with Sun's JDK
-1.4.1_01, while the second is with GCJ 3.4 20030102 (experimental):</p>
+implementations. The following is the result of processing 100,000 blocks of
+500 bytes each. Again, the first row is for figures obtained with Sun's JDK
+1.4.2-beta-b19, while the second is with gcj (GCC) 3.4 20030613 (experimental):</p>
 
 <table width="60%" align="center" border="1" cellpadding="4" cellspacing="0">
 	<tr>
@@ -1465,84 +1539,108 @@ of 500 bytes each. Again, the first row is for figures obtained with Sun's JDK
 		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="20%" bgcolor="#ffffcc"><p align="right">0.602</p></td>
-		<td width="20%" bgcolor="#ffffcc"><p align="right">81,110</p></td>
+		<td width="20%" bgcolor="#ffffcc"><p align="right">0.584</p></td>
+		<td width="20%" bgcolor="#ffffcc"><p align="right">83,610</p></td>
 	</tr>
 	<tr>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.387</p></td>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">126,171</p></td>
+		<td width="20%" bgcolor="#ffffcc"><p align="right">0.415</p></td>
+		<td width="20%" bgcolor="#ffffcc"><p align="right">117,658</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="20%"><p align="right">0.817</p></td>
-		<td width="20%"><p align="right">59,765</p></td>
+		<td width="20%"><p align="right">0.788</p></td>
+		<td width="20%"><p align="right">61,965</p></td>
 	</tr>
 	<tr>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.674</p></td>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">72,445</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.657</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">74,320</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Haval</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">1,024</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%"><p align="right">1.573</p></td>
+		<td width="20%"><p align="right">31,041</p></td>
+	</tr>
+	<tr>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">1.613</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">30,272</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">160</p></td>
-		<td width="20%"><p align="right">2.282</p></td>
-		<td width="20%"><p align="right">21,397</p></td>
+		<td width="20%"><p align="right">2.186</p></td>
+		<td width="20%"><p align="right">22,337</p></td>
 	</tr>
 	<tr>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">1.225</p></td>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">39,860</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">1.217</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">40,122</p></td>
+	</tr>
+
+	<tr>
+		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Tiger</b></i></p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">192</p></td>
+		<td width="20%"><p align="right">2.250</p></td>
+		<td width="20%"><p align="right">21,701</p></td>
+	</tr>
+	<tr>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">2.121</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">23,021</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD128</b></i></p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="20%"><p align="right">2.375</p></td>
-		<td width="20%"><p align="right">20,560</p></td>
+		<td width="20%"><p align="right">2.299</p></td>
+		<td width="20%"><p align="right">21,239</p></td>
 	</tr>
 	<tr>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.562</p></td>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">86,883</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.654</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">74,661</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">160</p></td>
-		<td width="20%"><p align="right">3.167</p></td>
-		<td width="20%"><p align="right">15,418</p></td>
+		<td width="20%"><p align="right">3.119</p></td>
+		<td width="20%"><p align="right">15,655</p></td>
 	</tr>
 	<tr>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.858</p></td>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">56,909</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">0.900</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">54,253</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
-		<td width="20%"><p align="right">10.824</p></td>
-		<td width="20%"><p align="right">4,511</p></td>
+		<td width="20%"><p align="right">10.585</p></td>
+		<td width="20%"><p align="right">4,613</p></td>
 	</tr>
 	<tr>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">9.515</p></td>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">5,132</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">9.738</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">5,014</p></td>
 	</tr>
 
 	<tr>
 		<td rowspan="2" width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
 		<td rowspan="2" width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
-		<td width="20%"><p align="right">28.753</p></td>
-		<td width="20%"><p align="right">1,698</p></td>
+		<td width="20%"><p align="right">29.149</p></td>
+		<td width="20%"><p align="right">1,675</p></td>
 	</tr>
 	<tr>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">45.952</p></td>
-		<td width="20%" bgcolor="#e2ffe200"><p align="right">1,063</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">43.518</p></td>
+		<td width="20%" bgcolor="#e2ffe200"><p align="right">1,122</p></td>
 	</tr>
 
 </table>
@@ -1595,7 +1693,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 	</tr>
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
-		<td width="11%"><p align="right">862</p></td>
+		<td width="11%"><p align="right">889</p></td>
 		<td width="11%"><p align="right">0.500287</p></td>
 		<td width="11%"><p align="right">0.057387</p></td>
 		<td width="11%"><p align="right">2.762627</p></td>
@@ -1607,7 +1705,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
-		<td width="11%"><p align="right">3,466</p></td>
+		<td width="11%"><p align="right">3,502</p></td>
 		<td width="11%"><p align="right">0.499731</p></td>
 		<td width="11%"><p align="right">0.053787</p></td>
 		<td width="11%"><p align="right">2.426879</p></td>
@@ -1619,7 +1717,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
-		<td width="11%"><p align="right">657</p></td>
+		<td width="11%"><p align="right">648</p></td>
 		<td width="11%"><p align="right">0.499954</p></td>
 		<td width="11%"><p align="right">0.009155</p></td>
 		<td width="11%"><p align="right">0.070313</p></td>
@@ -1631,7 +1729,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
-		<td width="11%"><p align="right">694</p></td>
+		<td width="11%"><p align="right">707</p></td>
 		<td width="11%"><p align="right">0.500023</p></td>
 		<td width="11%"><p align="right">0.004578</p></td>
 		<td width="11%"><p align="right">0.017578</p></td>
@@ -1643,7 +1741,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
-		<td width="11%"><p align="right">654</p></td>
+		<td width="11%"><p align="right">658</p></td>
 		<td width="11%"><p align="right">0.499949</p></td>
 		<td width="11%"><p align="right">0.010252</p></td>
 		<td width="11%"><p align="right">0.088167</p></td>
@@ -1655,7 +1753,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>UMAC-KDF</b></i></p></td>
-		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>476</b></p></td>
+		<td width="11%"><p align="right">489</p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.500000</b></p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.000024</b></p></td>
 		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.000000</b></p></td>
@@ -1667,7 +1765,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>ICM</b></i></p></td>
-		<td width="11%"><p align="right">1,067</p></td>
+		<td width="11%"><p align="right">1,069</p></td>
 		<td width="11%"><p align="right">0.499945</p></td>
 		<td width="11%"><p align="right">0.010967</p></td>
 		<td width="11%"><p align="right">0.100900</p></td>
@@ -1679,7 +1777,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
-		<td width="11%"><p align="right">742</p></td>
+		<td width="11%"><p align="right">692</p></td>
 		<td width="11%"><p align="right">0.499861</p></td>
 		<td width="11%"><p align="right">0.027847</p></td>
 		<td width="11%"><p align="right">0.650513</p></td>
@@ -1691,7 +1789,7 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 
 	<tr valign="bottom">
 		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>ARCFour</b></i></p></td>
-		<td width="11%"><p align="right">435</p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>385</b></p></td>
 		<td width="11%"><p align="right">0.499868</p></td>
 		<td width="11%"><p align="right">0.026417</p></td>
 		<td width="11%"><p align="right">0.585396</p></td>
@@ -1699,6 +1797,30 @@ algorithms, as of version 1.0.0 of this library, for a total input size of
 		<td width="11%"><p align="right">3.142903</p></td>
 		<td width="11%"><p align="right">0.04</p></td>
 		<td width="11%"><p align="right">0.000552</p></td>
+	</tr>
+
+	<tr valign="bottom">
+		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>Tiger</b></i></p></td>
+		<td width="11%"><p align="right">745</p></td>
+		<td width="11%"><p align="right">0.499932</p></td>
+		<td width="11%"><p align="right">0.013494</p></td>
+		<td width="11%"><p align="right">0.152758</p></td>
+		<td width="11%"><p align="right">50</p></td>
+		<td width="11%"><p align="right">3.136952</p></td>
+		<td width="11%"><p align="right">0.15</p></td>
+		<td width="11%"><p align="right">0.000406</p></td>
+	</tr>
+
+	<tr valign="bottom">
+		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>Haval</b></i></p></td>
+		<td width="11%"><p align="right">1,050</p></td>
+		<td width="11%"><p align="right">0.499990</p></td>
+		<td width="11%"><p align="right">0.001931</p></td>
+		<td width="11%"><p align="right">0.003129</p></td>
+		<td width="11%"><p align="right">75</p></td>
+		<td width="11%"><p align="right">3.142193</p></td>
+		<td width="11%"><p align="right">0.02</p></td>
+		<td width="11%"><p align="right">0.000057</p></td>
 	</tr>
 </table>
 
@@ -1924,7 +2046,7 @@ any medium, provided this notice is preserved.</p>
 
 <hr>
 
-<p>Last Modified: <i>$Date: 2003/02/26 09:19:22 $</i></p>
+<p>Last Modified: <i>$Date: 2003/06/21 11:21:48 $</i></p>
 
 <p>
 <a href="http://validator.w3.org/check/referer">
