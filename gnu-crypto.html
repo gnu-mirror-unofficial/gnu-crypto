@@ -113,9 +113,9 @@ general discussion mailing list if you're interested in helping.</p>
 </ol>
 
 <p>In the short term, if you download and use this library, we would appreciate it
-if you can email us the performance figures.  The ANT task "speed" exercises
-the algorithm using self-generated data.  Please use the following template
-when communicating the results:</p>
+if you can email us the performance figures.  The ANT task <code>speed</code> (and
+the GNU make target with the same name) exercises the algorithm using self-generated
+data.  Please use the following template when communicating the results:</p>
 
 
 <table width="80%" align="center" border="0" cellpadding="5" cellspacing="0">
@@ -155,14 +155,15 @@ when communicating the results:</p>
 		<td width="36%" valign="top">os.arch=</td>
 		<td width="64%" valign="top" bgcolor="#F0F0F0">(e.g. i386)</td>
 	</tr>
+	<tr>
 		<td width="36%" valign="top">os.version=</td>
 		<td width="64%" valign="top" bgcolor="#F0F0F0">(e.g. 2.4.18-10)</td>
 	</tr>
-	</tr>
+	<tr>
 		<td width="36%" valign="top">output of CipherSpeed follows: ...</td>
 		<td width="64%" valign="top" bgcolor="#F0F0F0"></td>
 	</tr>
-	</tr>
+	<tr>
 		<td width="36%" valign="top">output of HashSpeed follows: ...</td>
 		<td width="64%" valign="top" bgcolor="#F0F0F0"></td>
 	</tr>
@@ -602,7 +603,7 @@ in terms of cryptographic algorithms:</p>
 	<tr valign="top">
 		<td width="36%">
 			<p><a href="https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/umac.zip">
-			UMAC</a>key-stream generator</p>
+			UMAC</a> key-stream generator</p>
 		</td>
 		<td width="64%">
 			<p>From the UMAC draft:</p>
@@ -825,68 +826,49 @@ the certificates PRIMO emits for review and to help debug the code in
 
 <table width="90%" align="center" border="1" cellpadding="10" cellspacing="0">
 	<tr>
-		<td width="64%" bgcolor="#ccccff">
-			<p><i><b>N (hexadecimal representation)</b></i></p>
-		</td>
-		<td width="36%" valign="top" bgcolor="#ccccff">
-			<p><i><b>Primality Certificate</b></i></p>
-		</td>
+		<td width="64%" bgcolor="#ccccff"><p><i><b>N (hexadecimal representation)</b></i></p></td>
+		<td width="36%" valign="top" bgcolor="#ccccff"><p><i><b>Primality Certificate</b></i></p></td>
 	</tr>
+
 	<tr>
 		<td width="64%">
 			<p><code>888f a43a 2162 ca5c cdcf 7692 bcf5 f7a5 8f74 ff17</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD022D8AB3-S.out">Primo-B26DD022D8AB3</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD022D8AB3-S.out">Primo-B26DD022D8AB3</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
 			<p><code>9637 bddd 6b61 7916 4abe 971f 5051 6e4c 21de d7fb</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD022A073E-S.out">Primo-B26DD022A073E</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD022A073E-S.out">Primo-B26DD022A073E</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
 			<p><code>9f78 298f 3a49 3f5a 12fa 74b7 8881 61d6 5f01 9943</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26F102996AB4-S.out">Primo-B26F102996AB4</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26F102996AB4-S.out">Primo-B26F102996AB4</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
 			<p><code>a2e0 44da ff1c f529 f536 66ab 1861 d9c8 4d20 f4af</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD022BF582-S.out">Primo-B26DD022BF582</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD022BF582-S.out">Primo-B26DD022BF582</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
 			<p><code>a862 42e7 489d 79f3 153c 561b 5e53 00ab 736b 383f</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD022F8215-S.out">Primo-B26DD022F8215</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD022F8215-S.out">Primo-B26DD022F8215</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
 			<p><code>de09 f190 2cf4 84f2 32fe e5d2 7262 372d 1c60 72d7</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DC04CD92D1-S.out">Primo-B26DC04CD92D1</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DC04CD92D1-S.out">Primo-B26DC04CD92D1</a></p></td>
 	</tr>
 	<tr>
-		<td width="64%">
-			<p><code>e844 990a 2f38 a72e 6301 97ca 3846 d75d e56e 2e53</code></p>
-		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD0228AF78-S.out">Primo-B26DD0228AF78</a></p>
-		</td>
+		<td width="64%"><p><code>e844 990a 2f38 a72e 6301 97ca 3846 d75d e56e 2e53</code></p></td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD0228AF78-S.out">Primo-B26DD0228AF78</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -894,9 +876,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			15c8 2e48 64ff 8cf6 ef83 1924 90b0 c881 3f57 caa8 c4d9 7bb7
 			0ec5 56bf 7e86 9a59 4715 a1c6 507a d04f</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26E900ADFBBA-S.out">Primo-B26E900ADFBBA</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26E900ADFBBA-S.out">Primo-B26E900ADFBBA</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -904,9 +884,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			62c1 52b5 9ec2 04f3 3c22 bf11 2f05 3669 cdde ebc1 68d3 54f3
 			eb6d 3130 52b7 2b05 3ad2 a6ee 9ee8 9847</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26F102965B00-S.out">Primo-B26F102965B00</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26F102965B00-S.out">Primo-B26F102965B00</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -914,9 +892,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			5d44 8f3d 0566 99e9 1bdf 0e72 cea7 3922 af25 3cb0 a6db de6f
 			a1ce 2d89 425b 2161 c757 8ebe d952 8c8b</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD023184EC-S.out">Primo-B26DD023184EC</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD023184EC-S.out">Primo-B26DD023184EC</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -924,9 +900,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			3e3a 6994 aad8 7a7d 810f 175f bc6b 9cce 645d 2ee0 cce5 b772
 			5968 b371 ad7b a997 f8b2 b25f 332b e307</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD02335DF2-S.out">Primo-B26DD02335DF2</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD02335DF2-S.out">Primo-B26DD02335DF2</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -934,9 +908,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			70d7 14a4 5f8f 144e addf b15c c330 8cdc fdc0 42ad f922 8ac2
 			14bc bed1 d33c 4731 fc92 32c0 d775 099f</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD02344176-S.out">Primo-B26DD02344176</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD02344176-S.out">Primo-B26DD02344176</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -944,9 +916,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			0b10 f72c 0da9 7e0c d161 269b 8693 c988 1d07 9997 5f96 fbb8
 			8e61 98f9 90c1 fff6 add4 8817 e2ef d03f</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26F1028E6A9F-S.out">Primo-B26F1028E6A9F</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26F1028E6A9F-S.out">Primo-B26F1028E6A9F</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -954,9 +924,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			c1ef 29d5 133b e476 4f88 c79a 87d0 8a4f 2234 8e84 3fa3 ee33
 			636f 97e7 5265 da69 dad6 9563 74ef 534b</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26F10293C5EE-S.out">Primo-B26F10293C5EE</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26F10293C5EE-S.out">Primo-B26F10293C5EE</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -964,9 +932,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			9a95 eba6 abcd e3ab c165 6b6f f873 bde6 d7de 4856 2c7c 6a18
 			aba7 e222 a853 69a6 72de 52ea ea71 34f3</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26E900B6F8B1-S.out">Primo-B26E900B6F8B1</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26E900B6F8B1-S.out">Primo-B26E900B6F8B1</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -974,9 +940,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			0f01 526b e88d db79 b9dc 4bd2 23f4 6585 cbe0 25b4 87a3 1416
 			3f75 5c39 27f8 5592 8819 d03c df76 5643</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD023281FB-S.out">Primo-B26DD023281FB</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD023281FB-S.out">Primo-B26DD023281FB</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -984,9 +948,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			c3f0 6131 25f3 101c 625e 8003 1aef e6c8 7aef d3d6 3f92 3e6c
 			4d37 54dd a810 587d 0d71 fe5d 18fb baa7</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD02306259-S.out">Primo-B26DD02306259</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD02306259-S.out">Primo-B26DD02306259</a></p></td>
 	</tr>
 	<tr>
 		<td width="64%">
@@ -994,9 +956,7 @@ the certificates PRIMO emits for review and to help debug the code in
 			5fe8 354d 4d2a 4ed0 2964 7ef0 57e0 93e6 64ca 0fef 0d91 5f3b
 			6815 ee8f 77d7 0ef4 dab9 ddc0 b795 ff0b</code></p>
 		</td>
-		<td width="36%" valign="top">
-			<p><a href="primes/Primo-B26DD02359EFD-S.out">Primo-B26DD02359EFD</a></p>
-		</td>
+		<td width="36%" valign="top"><p><a href="primes/Primo-B26DD02359EFD-S.out">Primo-B26DD02359EFD</a></p></td>
 	</tr>
 </table>
 
@@ -1086,200 +1046,106 @@ some of them.</p>
 
 <p>A tool to measure the performance of the symmetric key block cipher
 implementations. The following is the result of processing 1,000,000 blocks
-with the algorithms of this library as of version 1.0.0.:</p>
+with the algorithms of this library as of November 2002:</p>
 
 <table width="80%" align="center" border="1" cellpadding="4" cellspacing="0">
 	<tr>
-		<td rowspan="2" width="13%" bgcolor="#ccccff">
-			<p align="center"><br></p>
-		</td>
-		<td rowspan="2" width="13%" bgcolor="#ccccff">
-			<p align="center"><i><b>Block size (bits)</b></i></p>
-		</td>
-		<td rowspan="2" width="13%" bgcolor="#ccccff">
-			<p align="center"><i><b>Key size (bits)</b></i></p>
-		</td>
-		<td colspan="2" width="31%" bgcolor="#ccccff">
-			<p align="center"><i><b>Encryption</b></i></p>
-		</td>
-		<td colspan="2" width="31%" bgcolor="#ccccff">
-			<p align="center"><i><b>Decryption</b></i></p>
-		</td>
+		<td rowspan="2" width="13%" bgcolor="#ccccff"><p align="center"><i><b>Algorithm</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#ccccff"><p align="center"><i><b>Block size (bits)</b></i></p></td>
+		<td rowspan="2" width="13%" bgcolor="#ccccff"><p align="center"><i><b>Key size (bits)</b></i></p></td>
+		<td colspan="2" width="31%" bgcolor="#ccccff"><p align="center"><i><b>Encryption</b></i></p></td>
+		<td colspan="2" width="31%" bgcolor="#ccccff"><p align="center"><i><b>Decryption</b></i></p></td>
 	</tr>
 	<tr>
-		<td width="15%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Time (ms)</b></i></p>
-		</td>
-		<td width="15%" bgcolor="#ccccff">
-			<p align="center"><i><b>Speed (KB/s)</b></i></p>
-		</td>
-		<td width="15%" bgcolor="#ccccff">
-			<p align="center"><i><b>Time (ms)</b></i></p>
-		</td>
-		<td width="16%" bgcolor="#ccccff">
-			<p align="center"><i><b>Speed (KB/s)</b></i></p>
-		</td>
+		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Time (ms)</b></i></p></td>
+		<td width="15%" bgcolor="#ccccff"><p align="center"><i><b>Speed (KB/s)</b></i></p></td>
+		<td width="15%" bgcolor="#ccccff"><p align="center"><i><b>Time (ms)</b></i></p></td>
+		<td width="16%" bgcolor="#ccccff"><p align="center"><i><b>Speed (KB/s)</b></i></p></td>
+	</tr>
+
+	<tr>
+		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Null cipher</b></i></p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">0.257</p></td>
+		<td width="15%"><p align="right">60,797.664</p></td>
+		<td width="15%"><p align="right">0.246</p></td>
+		<td width="16%"><p align="right">63,516.258</p></td>
 	</tr>
 	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Null cipher</b></i></p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="15%">
-			<p align="right">0.130</p>
-		</td>
-		<td width="15%">
-			<p align="right">120,192.310</p>
-		</td>
-		<td width="15%">
-			<p align="right">0.120</p>
-		</td>
-		<td width="16%">
-			<p align="right">130,208.336</p>
-		</td>
+		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Rijndael</b></i></p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right"><b>0.973</b></p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right"><b>16,058.582</b></p></td>
+		<td width="15%" bgcolor="#ffffcc"><p align="right"><b>1.007</b></p></td>
+		<td width="16%" bgcolor="#ffffcc"><p align="right"><b>15,516.386</b></p></td>
 	</tr>
 	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Rijndael</b></i></p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="15%" bgcolor="#ffffcc">
-			<p align="right"><b>0.931</b></p>
-		</td>
-		<td width="15%" bgcolor="#ffffcc">
-			<p align="right"><b>16,783.030</b></p>
-		</td>
-		<td width="15%" bgcolor="#ffffcc">
-			<p align="right"><b>0.981</b></p>
-		</td>
-		<td width="16%" bgcolor="#ffffcc">
-			<p align="right"><b>15,927.625</b></p>
-		</td>
+		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Square</b></i></p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">1.028</p></td>
+		<td width="15%"><p align="right">15,199.416</p></td>
+		<td width="15%"><p align="right">1.016</p></td>
+		<td width="16%"><p align="right">15,378.937</p></td>
+	</tr>
+	<tr>
+		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Anubis</b></i></p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">1.154</p></td>
+		<td width="15%"><p align="right">13,539.860</p></td>
+		<td width="15%"><p align="right">1.144</p></td>
+		<td width="16%"><p align="right">13,658.216</p></td>
+	</tr>
+	<tr>
+		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Serpent</b></i></p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">2.552</p></td>
+		<td width="15%"><p align="right">6,122.649</p></td>
+		<td width="15%"><p align="right">2.382</p></td>
+		<td width="16%"><p align="right">6,559.614</p></td>
 	</tr>
 	<tr>
 		<td width="13%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Square</b></i></p>
+			<p align="center"><i><b>Serpent (bit-slice)<sup>**</sup></b></i></p>
 		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="15%">
-			<p align="right">0.982</p>
-		</td>
-		<td width="15%">
-			<p align="right">15,911.405</p>
-		</td>
-		<td width="15%">
-			<p align="right">0.981</p>
-		</td>
-		<td width="16%">
-			<p align="right">15,927.625</p>
-		</td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">57.018</p></td>
+		<td width="15%"><p align="right">274.037</p></td>
+		<td width="15%"><p align="right">58.293</p></td>
+		<td width="16%"><p align="right">268.043</p></td>
 	</tr>
 	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Anubis</b></i></p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="15%">
-			<p align="right">1.092</p>
-		</td>
-		<td width="15%">
-			<p align="right">14,308.608</p>
-		</td>
-		<td width="15%">
-			<p align="right">1.102</p>
-		</td>
-		<td width="16%">
-			<p align="right">14,178.766</p>
-		</td>
+		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Twofish</b></i></p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">6.216</p></td>
+		<td width="15%"><p align="right">2,513.675</p></td>
+		<td width="15%"><p align="right">6.220</p></td>
+		<td width="16%"><p align="right">2,512.058</p></td>
+	</tr>
+
+	<tr>
+		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Khazad</b></i></p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="15%"><p align="right">0.692</p></td>
+		<td width="15%"><p align="right">11,289.740</p></td>
+		<td width="15%"><p align="right">0.687</p></td>
+		<td width="16%"><p align="right">11,371.907</p></td>
 	</tr>
 	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Khazad</b></i></p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">64</p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="15%">
-			<p align="right">0.661</p>
-		</td>
-		<td width="15%">
-			<p align="right">11,819.213</p>
-		</td>
-		<td width="15%">
-			<p align="right">0.660</p>
-		</td>
-		<td width="16%">
-			<p align="right">11,837.121</p>
-		</td>
-	</tr>
-	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Serpent</b></i></p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">256</p>
-		</td>
-		<td width="15%">
-			<p align="right">2.995</p>
-		</td>
-		<td width="15%">
-			<p align="right">5,217.029</p>
-		</td>
-		<td width="15%">
-			<p align="right">3.475</p>
-		</td>
-		<td width="16%">
-			<p align="right">4,496.403</p>
-		</td>
-	</tr>
-	<tr>
-		<td width="13%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Twofish</b></i></p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="13%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="15%">
-			<p align="right">6.470</p>
-		</td>
-		<td width="15%">
-			<p align="right">2,414.992</p>
-		</td>
-		<td width="15%">
-			<p align="right">6.449</p>
-		</td>
-		<td width="16%">
-			<p align="right">2,422.856</p>
-		</td>
+		<td width="13%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Blowfish</b></i></p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td width="13%" bgcolor="#c0c0c0"><p align="center">64</p></td>
+		<td width="15%"><p align="right">0.517</p></td>
+		<td width="15%"><p align="right">15,111.218</p></td>
+		<td width="15%"><p align="right">0.491</p></td>
+		<td width="16%"><p align="right">15,911.405</p></td>
 	</tr>
 </table>
 
@@ -1291,133 +1157,179 @@ of 500 bytes each:</p>
 
 <table width="60%" align="center" border="1" cellpadding="4" cellspacing="0">
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Algorithm</b></i></p>
-		</td>
-		<td width="19%" bgcolor="#ccccff">
-			<p align="center"><i><b>Block size (bits)</b></i></p>
-		</td>
-		<td width="19%" bgcolor="#ccccff">
-			<p align="center"><i><b>Output size (bits)</b></i></p>
-		</td>
-		<td width="20%" bgcolor="#ccccff">
-			<p align="center"><i><b>Time (sec)</b></i></p>
-		</td>
-		<td width="20%" bgcolor="#ccccff">
-			<p align="center"><i><b>Speed (KB/s)</b></i></p>
-		</td>
+		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Algorithm</b></i></p></td>
+		<td width="19%" bgcolor="#ccccff"><p align="center"><i><b>Block size (bits)</b></i></p></td>
+		<td width="19%" bgcolor="#ccccff"><p align="center"><i><b>Output size (bits)</b></i></p></td>
+		<td width="20%" bgcolor="#ccccff"><p align="center"><i><b>Time (sec)</b></i></p></td>
+		<td width="20%" bgcolor="#ccccff"><p align="center"><i><b>Speed (KB/s)</b></i></p></td>
+	</tr>
+
+	<tr>
+		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%" bgcolor="#ffffcc"><p align="right"><b>0.982</b></p></td>
+		<td width="20%" bgcolor="#ffffcc"><p align="right"><b>49,723.140</b></p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>MD4</b></i></p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">512</p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="20%" bgcolor="#ffffcc">
-			<p align="right"><b>0.932</b></p>
-		</td>
-		<td width="20%" bgcolor="#ffffcc">
-			<p align="right"><b>52,390.690</b></p>
-		</td>
+		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%"><p align="right">1.452</p></td>
+		<td width="20%"><p align="right">32,628.184</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>MD5</b></i></p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">512</p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="20%">
-			<p align="right">1.392</p>
-		</td>
-		<td width="20%">
-			<p align="right">35,077.676</p>
-		</td>
+		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">160</p></td>
+		<td width="20%"><p align="right">2.018</p></td>
+		<td width="20%"><p align="right">24,196.297</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>SHA-160</b></i></p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">512</p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">160</p>
-		</td>
-		<td width="20%">
-			<p align="right">1.933</p>
-		</td>
-		<td width="20%">
-			<p align="right">25,260.283</p>
-		</td>
+		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD128</b></i></p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%"><p align="right">2.265</p></td>
+		<td width="20%"><p align="right">21,557.670</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>RipeMD128</b></i></p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">512</p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">128</p>
-		</td>
-		<td width="20%">
-			<p align="right">2.203</p>
-		</td>
-		<td width="20%">
-			<p align="right">22,164.377</p>
-		</td>
+		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">160</p></td>
+		<td width="20%"><p align="right">2.929</p></td>
+		<td width="20%"><p align="right">16,670.580</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>RipeMD160</b></i></p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">512</p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">160</p>
-		</td>
-		<td width="20%">
-			<p align="right">2.924</p>
-		</td>
-		<td width="20%">
-			<p align="right">16,699.086</p>
-		</td>
+		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">512</p></td>
+		<td width="20%"><p align="right">10.786</p></td>
+		<td width="20%"><p align="right">4,526.991</p></td>
 	</tr>
 	<tr>
-		<td width="22%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Whirlpool</b></i></p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">512</p>
-		</td>
-		<td width="19%" bgcolor="#c0c0c0">
-			<p align="center">512</p>
-		</td>
-		<td width="20%">
-			<p align="right">10.775</p>
-		</td>
-		<td width="20%">
-			<p align="right">4,531.613</p>
-		</td>
+		<td width="22%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="19%" bgcolor="#c0c0c0"><p align="center">128</p></td>
+		<td width="20%"><p align="right">35.898</p></td>
+		<td width="20%"><p align="right">1,360.191</p></td>
+	</tr>
+</table>
+<br>
+
+<p><i><a name="testenv">*</a> The above results were obtained using a Java 2
+bytecode compiler and interpreter (build 1.3.1_06-b01), on an AMD Athlon<sup><font size="-2">
+<small>TM</small></font></sup> XP1700+ processor with 261,600KB physical RAM.</i></p>
+
+<p><i>** This library can be built as a shared reloadable library using GCJ (version 3.1
+or later) and the GNU make tools --see the <code>INSTALL</code> file in the <code>gcj</code>
+folder in the distribution for detailed instructions</i>.  Using these tools with:
+
+<ul>
+	<li>gcj (GCC) 3.3 20021101 (experimental),</li>
+	<li>same hardware as described above,</li>
+	<li>configuration generated with:
+		<p><code>GCJFLAGS="-march=athlon-xp -O3" ; .../configure</code>
+	</li>
+</ul>
+
+the following performance figures were obtained:
+</p>
+
+<p>&nbsp;</p>
+
+<table width="60%" align="center" border="1" cellpadding="4" cellspacing="0">
+	<tr>
+		<td width="32%" bgcolor="#ccccff"><p align="center"><i><b>Algorithm</b></i></p></td>
+		<td width="34%" bgcolor="#ccccff"><p align="center"><i><b>Encryption (KB/s)</b></i></p></td>
+		<td width="34%" bgcolor="#ccccff"><p align="center"><i><b>Decryption (KB/s)</b></i></p></td>
+	</tr>
+
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Null cipher</b></i></p></td>
+		<td width="34%"><p align="right">81,806.280</p></td>
+		<td width="34%"><p align="right">81,806.280</p></td>
+	</tr>
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Rijndael</b></i></p></td>
+		<td width="34%"><p align="right">11,446.887</p></td>
+		<td width="34%"><p align="right">11,539.882</p></td>
+	</tr>
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Square</b></i></p></td>
+		<td width="34%"><p align="right">8,249.735</p></td>
+		<td width="34%"><p align="right">8,267.196</p></td>
+	</tr>
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Anubis</b></i></p></td>
+		<td width="34%"><p align="right">10,843.165</p></td>
+		<td width="34%"><p align="right">10,941.877</p></td>
+	</tr>
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Serpent</b></i></p></td>
+		<td width="34%"><p align="right">8,680.556</p></td>
+		<td width="34%"><p align="right">7,197.144</p></td>
+	</tr>
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Serpent (bit-slice)</b></i></p></td>
+		<td width="34%"><p align="right">13,042.571</p></td>
+		<td width="34%"><p align="right">10,003.201</p></td>
+	</tr>
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Twofish</b></i></p></td>
+		<td width="34%"><p align="right">5,276.934</p></td>
+		<td width="34%"><p align="right">5,273.372</p></td>
+	</tr>
+
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Khazad</b></i></p></td>
+		<td width="34%"><p align="right">6,398.445</p></td>
+		<td width="34%"><p align="right">6,419.474</p></td>
+	</tr>
+	<tr>
+		<td width="32%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Blowfish</b></i></p></td>
+		<td width="34%"><p align="right">8,037.552</p></td>
+		<td width="34%"><p align="right">8,029.291</p></td>
 	</tr>
 </table>
 
-<br>
+<p>and</p>
 
-<small><i><a name="testenv">*</a> The above results were obtained using a
-Java<sup><font size="-2"><small>TM</small></font></sup> 2 Runtime Environment,
-Standard Edition (build 1.3.1-b24), on an AMD Athlon<sup><font size="-2">
-<small>TM</small></font></sup> XP1700+ processor with 261,600KB physical
-RAM.</i></small><br>
+<table width="60%" align="center" border="1" cellpadding="4" cellspacing="0">
+	<tr>
+		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Algorithm</b></i></p></td>
+		<td width="50%" bgcolor="#ccccff"><p align="center"><i><b>Speed (KB/s)</b></i></p></td>
+	</tr>
+
+	<tr>
+		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
+		<td width="50%"><p align="right">87,037.660</p></td>
+	</tr>
+	<tr>
+		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
+		<td width="50%"><p align="right">32,400.880</p></td>
+	</tr>
+	<tr>
+		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
+		<td width="50%"><p align="right">25,143.215</p></td>
+	</tr>
+	<tr>
+		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD128</b></i></p></td>
+		<td width="50%"><p align="right">19,664.970</p></td>
+	</tr>
+	<tr>
+		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
+		<td width="50%"><p align="right">14,774.017</p></td>
+	</tr>
+	<tr>
+		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
+		<td width="50%"><p align="right">4,945.622</p></td>
+	</tr>
+	<tr>
+		<td width="50%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
+		<td width="50%"><p align="right">1,707.576</p></td>
+	</tr>
+</table>
+
 
 <h4><b>Ent</b></h4>
 
@@ -1434,267 +1346,117 @@ and other applications where the various computed indices are of interest.</p>
 algorithms, as of version 1.0.0 of this library, for a total input size of
 <code>8,388,608</code> bits:</p>
 
-<table width="90%" align="center" border="1" cellpadding="4" cellspacing="0">
+<table width="95%" align="center" border="1" cellpadding="4" cellspacing="0">
 	<tr>
-		<td width="15%" height="14" bgcolor="#ccccff">
-			<p align="center"><i><b>Algorithm</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ccccff">
-			<p align="center"><i><b>Duration (ms)</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ccccff">
-			<p align="center"><i><b>Mean</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ccccff">
-			<p align="center"><i><b>Mean % deviation</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ccccff">
-			<p align="center"><i><b>Chi-Square</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ccccff">
-			<p align="center"><i><b>Chi-Square excess %</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ccccff">
-			<p align="center"><i><b>PI</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ccccff">
-			<p align="center"><i><b>PI % deviation</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ccccff">
-			<p align="center"><i><b>SCC</b></i></p>
-		</td>
+		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>Algorithm</b></i></p></td>
+		<td width="11%" bgcolor="#ccccff"><p align="center"><i><b>Duration (ms)</b></i></p></td>
+		<td width="11%" bgcolor="#ccccff"><p align="center"><i><b>Mean</b></i></p></td>
+		<td width="11%" bgcolor="#ccccff"><p align="center"><i><b>Mean % deviation</b></i></p></td>
+		<td width="11%" bgcolor="#ccccff"><p align="center"><i><b>Chi-Square</b></i></p></td>
+		<td width="11%" bgcolor="#ccccff"><p align="center"><i><b>Chi-Square excess %</b></i></p></td>
+		<td width="11%" bgcolor="#ccccff"><p align="center"><i><b>PI</b></i></p></td>
+		<td width="11%" bgcolor="#ccccff"><p align="center"><i><b>PI % deviation</b></i></p></td>
+		<td width="11%" bgcolor="#ccccff"><p align="center"><i><b>SCC</b></i></p></td>
+	</tr>
+
+	<tr valign="bottom">
+		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD128</b></i></p></td>
+		<td width="11%"><p align="right">771</p></td>
+		<td width="11%"><p align="right">0.500051</p></td>
+		<td width="11%"><p align="right">0.010133</p></td>
+		<td width="11%"><p align="right">0.086130</p></td>
+		<td width="11%"><p align="right">50</p></td>
+		<td width="11%"><p align="right">3.138669</p></td>
+		<td width="11%"><p align="right">0.09</p></td>
+		<td width="11%"><p align="right">0.000730</p></td>
 	</tr>
 	<tr valign="bottom">
-		<td width="15%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>RipeMD128</b></i></p>
-		</td>
-		<td width="11%">
-			<p align="right">771</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.500051</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.010133</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.086130</p>
-		</td>
-		<td width="11%">
-			<p align="right">50</p>
-		</td>
-		<td width="11%">
-			<p align="right">3.138669</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.09</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.000730</p>
-		</td>
+		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>Whirlpool</b></i></p></td>
+		<td width="11%"><p align="right">961</p></td>
+		<td width="11%"><p align="right">0.500287</p></td>
+		<td width="11%"><p align="right">0.057387</p></td>
+		<td width="11%"><p align="right">2.762627</p></td>
+		<td width="11%"><p align="right">10</p></td>
+		<td width="11%"><p align="right">3.138669</p></td>
+		<td width="11%"><p align="right">0.09</p></td>
+		<td width="11%"><p align="right">0.000057</p></td>
 	</tr>
 	<tr valign="bottom">
-		<td width="15%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>Whirlpool</b></i></p>
-		</td>
-		<td width="11%">
-			<p align="right">961</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.500287</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.057387</p>
-		</td>
-		<td width="11%">
-			<p align="right">2.762627</p>
-		</td>
-		<td width="11%">
-			<p align="right">10</p>
-		</td>
-		<td width="11%">
-			<p align="right">3.138669</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.09</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.000057</p>
-		</td>
+		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>MD2</b></i></p></td>
+		<td width="11%"><p align="right">2,957</p></td>
+		<td width="11%"><p align="right">0.499731</p></td>
+		<td width="11%"><p align="right">0.053787</p></td>
+		<td width="11%"><p align="right">2.426880</p></td>
+		<td width="11%"><p align="right">25</p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>3.141392</b></p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.01</b></p></td>
+		<td width="11%"><p align="right">-0.000196</p></td>
 	</tr>
 	<tr valign="bottom">
-		<td width="15%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>MD4</b></i></p>
-		</td>
-		<td width="11%">
-			<p align="right">631</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.499954</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.009155</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.070314</p>
-		</td>
-		<td width="11%">
-			<p align="right">50</p>
-		</td>
-		<td width="11%">
-			<p align="right">3.143475</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.06</p>
-		</td>
-		<td width="11%" bgcolor="#ffffcc">
-			<p align="right"><b>-0.000017</b></p>
-		</td>
+		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD4</b></i></p></td>
+		<td width="11%"><p align="right">631</p></td>
+		<td width="11%"><p align="right">0.499954</p></td>
+		<td width="11%"><p align="right">0.009155</p></td>
+		<td width="11%"><p align="right">0.070314</p></td>
+		<td width="11%"><p align="right">50</p></td>
+		<td width="11%"><p align="right">3.143475</p></td>
+		<td width="11%"><p align="right">0.06</p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>-0.000017</b></p></td>
 	</tr>
 	<tr valign="bottom">
-		<td width="15%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>MD5</b></i></p>
-		</td>
-		<td width="11%">
-			<p align="right">701</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.500023</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.004578</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.017578</p>
-		</td>
-		<td width="11%">
-			<p align="right">75</p>
-		</td>
-		<td width="11%">
-			<p align="right">3.135808</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.18</p>
-		</td>
-		<td width="11%">
-			<p align="right">-0.000059</p>
-		</td>
+		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>MD5</b></i></p></td>
+		<td width="11%"><p align="right">701</p></td>
+		<td width="11%"><p align="right">0.500023</p></td>
+		<td width="11%"><p align="right">0.004578</p></td>
+		<td width="11%"><p align="right">0.017578</p></td>
+		<td width="11%"><p align="right">75</p></td>
+		<td width="11%"><p align="right">3.135808</p></td>
+		<td width="11%"><p align="right">0.18</p></td>
+		<td width="11%"><p align="right">-0.000059</p></td>
 	</tr>
 	<tr valign="bottom">
-		<td width="15%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>RipeMD160</b></i></p>
-		</td>
-		<td width="11%">
-			<p align="right">781</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.499949</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.010252</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.088167</p>
-		</td>
-		<td width="11%">
-			<p align="right">50</p>
-		</td>
-		<td width="11%" bgcolor="#ffffcc">
-			<p align="right"><b>3.143315</b></p>
-		</td>
-		<td width="11%" bgcolor="#ffffcc">
-			<p align="right"><b>0.05</b></p>
-		</td>
-		<td width="11%">
-			<p align="right">-0.000085</p>
-		</td>
+		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>RipeMD160</b></i></p></td>
+		<td width="11%"><p align="right">781</p></td>
+		<td width="11%"><p align="right">0.499949</p></td>
+		<td width="11%"><p align="right">0.010252</p></td>
+		<td width="11%"><p align="right">0.088167</p></td>
+		<td width="11%"><p align="right">50</p></td>
+		<td width="11%"><p align="right">3.143315</p></td>
+		<td width="11%"><p align="right">0.05</p></td>
+		<td width="11%"><p align="right">-0.000085</p></td>
 	</tr>
 	<tr valign="bottom">
-		<td width="15%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>UMAC-KDF</b></i></p>
-		</td>
-		<td width="11%" bgcolor="#ffffcc">
-			<p align="right"><b>411</b></p>
-		</td>
-		<td width="11%" bgcolor="#ffffcc">
-			<p align="right"><b>0.500000</b></p>
-		</td>
-		<td width="11%" bgcolor="#ffffcc">
-			<p align="right"><b>0.000024</b></p>
-		</td>
-		<td width="11%" bgcolor="#ffffcc">
-			<p align="right"><b>0.000001</b></p>
-		</td>
-		<td width="11%" bgcolor="#ffffcc">
-			<p align="right"><b>75</b></p>
-		</td>
-		<td width="11%">
-			<p align="right">3.136586</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.16</p>
-		</td>
-		<td width="11%">
-			<p align="right">-0.000141</p>
-		</td>
+		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>UMAC-KDF</b></i></p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>411</b></p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.500000</b></p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.000024</b></p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>0.000001</b></p></td>
+		<td width="11%" bgcolor="#ffffcc"><p align="right"><b>75</b></p></td>
+		<td width="11%"><p align="right">3.136586</p></td>
+		<td width="11%"><p align="right">0.16</p></td>
+		<td width="11%"><p align="right">-0.000141</p></td>
 	</tr>
 	<tr valign="bottom">
-		<td width="15%" height="13" bgcolor="#ccccff">
-			<p align="center"><i><b>ICM</b></i></p>
-		</td>
-		<td width="11%">
-			<p align="right">1102</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.499945</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.010967</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.100900</p>
-		</td>
-		<td width="11%">
-			<p align="right">50</p>
-		</td>
-		<td width="11%">
-			<p align="right">3.143773</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.07</p>
-		</td>
-		<td width="11%">
-			<p align="right">-0.000349</p>
-		</td>
+		<td width="15%" height="13" bgcolor="#ccccff"><p align="center"><i><b>ICM</b></i></p></td>
+		<td width="11%"><p align="right">1,102</p></td>
+		<td width="11%"><p align="right">0.499945</p></td>
+		<td width="11%"><p align="right">0.010967</p></td>
+		<td width="11%"><p align="right">0.100900</p></td>
+		<td width="11%"><p align="right">50</p></td>
+		<td width="11%"><p align="right">3.143773</p></td>
+		<td width="11%"><p align="right">0.07</p></td>
+		<td width="11%"><p align="right">-0.000349</p></td>
 	</tr>
 	<tr valign="bottom">
-		<td width="15%" height="14" bgcolor="#ccccff">
-			<p align="center"><i><b>SHA-160</b></i></p>
-		</td>
-		<td width="11%">
-			<p align="right">731</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.499861</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.027847</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.650514</p>
-		</td>
-		<td width="11%">
-			<p align="right">50</p>
-		</td>
-		<td width="11%">
-			<p align="right">3.139264</p>
-		</td>
-		<td width="11%">
-			<p align="right">0.07</p>
-		</td>
-		<td width="11%">
-			<p align="right">-0.000449</p>
-		</td>
+		<td width="15%" height="14" bgcolor="#ccccff"><p align="center"><i><b>SHA-160</b></i></p></td>
+		<td width="11%"><p align="right">731</p></td>
+		<td width="11%"><p align="right">0.499861</p></td>
+		<td width="11%"><p align="right">0.027847</p></td>
+		<td width="11%"><p align="right">0.650514</p></td>
+		<td width="11%"><p align="right">50</p></td>
+		<td width="11%"><p align="right">3.139264</p></td>
+		<td width="11%"><p align="right">0.07</p></td>
+		<td width="11%"><p align="right">-0.000449</p></td>
 	</tr>
 </table>
 
@@ -1759,86 +1521,66 @@ href="http://savannah.gnu.org/mail/?group_id=2998">project page</a>.</p>
 The archives of the discussion mailing list during that period are still
 available:
 
-<table width="60%" align="center" border="1" cellpadding="4" cellspacing="0">
+<table width="50%" align="center" border="1" cellpadding="4" cellspacing="0">
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2001-November.txt">November 2001</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">27.4 KB</p>
-		</td>
+		<td width="25%"><p align="right">27.4 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2001-December.txt">December 2001</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">43.4 KB</p>
-		</td>
+		<td width="25%"><p align="right">43.4 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2002-January.txt">January 2002</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">19.1 KB</p>
-		</td>
+		<td width="25%"><p align="right">19.1 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2002-February.txt">February 2002</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">4.1 KB</p>
-		</td>
+		<td width="25%"><p align="right">4.1 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2002-April.txt">April 2002</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">4.3 KB</p>
-		</td>
+		<td width="25%"><p align="right">4.3 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2002-June.txt">June 2002</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">209.5 KB</p>
-		</td>
+		<td width="25%"><p align="right">209.5 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2002-July.txt">July 2002</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">34.2 KB</p>
-		</td>
+		<td width="25%"><p align="right">34.2 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2002-September.txt">September 2002</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">112.9 KB</p>
-		</td>
+		<td width="25%"><p align="right">112.9 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
 			<p align="left"><a href="mail/2002-August.txt">August 2002</a></p>
 		</td>
-		<td width="25%">
-			<p align="right">35.7 KB</p>
-		</td>
+		<td width="25%"><p align="right">35.7 KB</p></td>
 	</tr>
 	<tr>
 		<td width="75%" height="14" bgcolor="#ccccff">
-			<p align="left"><a href="mail/classpathx-crypto.mbox">All</a></p>
+			<p align="left"><a href="mail/classpathx-crypto.mbox"><b>All</b></a></p>
 		</td>
-		<td width="25%">
-			<p align="right">657.9 KB</p>
-		</td>
+		<td width="25%"><p align="right"><b>657.9 KB</b></p></td>
 	</tr>
 </table>
 
@@ -1934,7 +1676,7 @@ any medium, provided this notice is preserved.</p>
 
 <hr>
 
-<p>Last Modified: <i>$Date: 2002/10/31 14:41:05 $</i></p>
+<p>Last Modified: <i>$Date: 2002/11/02 07:32:09 $</i></p>
 
 <p><br></p>
 
