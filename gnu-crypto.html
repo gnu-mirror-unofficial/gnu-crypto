@@ -33,13 +33,15 @@
 
 <p align="center">
 <a href="#introduction">Introduction</a> | <a href="#downloading">Downloads</a> |
-<a href="#helpwanted">Help wanted</a> |
-<a href="#status">Project status</a> | <a href="#documentation">Documentation</a> |<br>
-<a href="#primality">Note on primality testing</a> | 
-<a href="#configuration">Configuration parameters</a> |<br>
-<a href="#gcj-friendly">Building a GCJ-friendly version of GNU Crypto</a> |<br>
-<a href="#Tools%7Coutline">Tools</a> |
-<a href="#lists">Mailing lists</a> | <a href="#bug">Report a bug</a> | 
+<a href="#helpwanted">Help wanted</a> | <a href="#status">Project status</a> |<br/>
+<a href="#keyring">GNU Keyring file format</a> |
+<a href="#documentation">Documentation</a> |
+<a href="#primality">Note on primality testing</a> |<br/>
+<a href="#configuration">Configuration parameters</a> |
+<a href="#build">Building GNU Crypto</a> |
+<a href="#Tools%7Coutline">Tools</a> |<br/>
+<a href="#lists">Mailing lists</a> |
+<a href="#bug">Report a bug</a> |
 <a href="#coding">Coding styles</a> | <a href="#logos">Logos</a>
 </p>
 
@@ -138,10 +140,6 @@ general discussion mailing list if you're interested in helping.</p>
 <ol>
 	<li>Algorithms:
 		<ul>
-			<li>CAST,</li>
-			<li>HAVAL,</li>
-			<li>TIGER,</li>
-			<li>SHA-2 (256, 384, 512),</li>
 			<li>NESSIE (phase-2) algorithms,</li>
 			<li>IEEE P1363 algorithms.</li>
 		</ul><br>
@@ -245,23 +243,23 @@ in terms of cryptographic algorithms:</p>
 <table width="90%" align="center" border="1" cellpadding="10" cellspacing="0">
 	<tr>
 		<td width="36%" valign="top" bgcolor="#808080">
-			<p><b>Family / Algorithm</b></p>
+			<b>Family / Algorithm</b>
 		</td>
 		<td width="64%" bgcolor="#808080">
-			<p><b>Abstract</b></p>
+			<b>Abstract</b>
 		</td>
 	</tr>
 
 	<!-- Symmetric-key block cipher algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
-			<p><b><i>Symmetric key block cipher</i></b></p>
+			<b><i>Symmetric key block cipher</i></b>
 		</td>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://planeta.terra.com.br/informatica/paulobarreto/AnubisPage.html">
-			Anubis</a></p>
+			<a href="http://planeta.terra.com.br/informatica/paulobarreto/AnubisPage.html">
+			Anubis</a>
 		</td>
 		<td width="64%">
 			<p>A 128-bit block cipher that accepts a variable length key. The cipher is a
@@ -273,8 +271,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://planeta.terra.com.br/informatica/paulobarreto/KhazadPage.html">
-			Khazad</a></p>
+			<a href="http://planeta.terra.com.br/informatica/paulobarreto/KhazadPage.html">
+			Khazad</a>
 		</td>
 		<td width="64%">
 			<p>A 64-bit (legacy) block cipher that accepts a 128-bit key. The cipher is a
@@ -286,7 +284,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.esat.kuleuven.ac.be/%7Erijmen/rijndael/">Rijndael</a></p>
+			<a href="http://www.esat.kuleuven.ac.be/%7Erijmen/rijndael/">Rijndael</a>
 		</td>
 		<td width="64%">
 			<p>Rijndael is an iterated block cipher with a variable block length and a
@@ -298,7 +296,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-     <p><a href="http://www.cl.cam.ac.uk/%7Erja14/serpent.html">Serpent</a></p>
+			<a href="http://www.cl.cam.ac.uk/%7Erja14/serpent.html">Serpent</a>
 		</td>
 		<td width="64%">
 			<p>Serpent is a 32-round substitution-permutation network block cipher, operating
@@ -320,7 +318,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.esat.kuleuven.ac.be/%7Erijmen/square/">Square</a></p>
+			<a href="http://www.esat.kuleuven.ac.be/%7Erijmen/square/">Square</a>
 		</td>
 		<td width="64%">
 			<p>A 128-bit block, 128-bit key cipher. The original design of Square concentrates
@@ -329,7 +327,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.counterpane.com/twofish-paper.html">Twofish</a></p>
+			<a href="http://www.counterpane.com/twofish-paper.html">Twofish</a>
 		</td>
 		<td width="64%">
 			<p>Twofish is a 128-bit block cipher, designed by Bruce Schneier, John Kelsey, Doug
@@ -350,7 +348,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.counterpane.com/bfsverlag.html">Blowfish</a></p>
+			<a href="http://www.counterpane.com/bfsverlag.html">Blowfish</a>
 		</td>
 		<td width="64%">
 			<p>Blowfish, a symmetric secret-key block cipher. It is a Feistel network, iterating
@@ -364,7 +362,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf">DES</a></p>
+			<a href="http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf">DES</a>
 		</td>
 		<td width="64%">
 			<p>The Data Encryption Standard. DES is a 64-bit block cipher with a 56-bit key,
@@ -376,7 +374,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf">TripleDES</a></p>
+			<a href="http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf">TripleDES</a>
 		</td>
 		<td width="64%">
 			<p>Triple-DES, 3DES, or DESede is a <i>combined cipher</i> that uses three iterations
@@ -395,7 +393,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.ietf.org/rfc/rfc2144.txt">CAST-128</a></p>
+			<a href="http://www.ietf.org/rfc/rfc2144.txt">CAST-128</a>
 		</td>
 		<td width="64%">
 			<p>In the words of one of its designers, <i>Carlisle Adams</i> (the CA in CAST,
@@ -419,13 +417,13 @@ in terms of cryptographic algorithms:</p>
 	<!-- Modes of Operations algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
-			<p><b><i>Mode of operation</i></b></p>
+			<b><i>Mode of operation</i></b>
 		</td>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">
-			Counter mode (CTR)</a></p>
+			<a href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">
+			Counter mode (CTR)</a>
 		</td>
 		<td width="64%">
 			<p>The Counter (CTR) mode is a confidentiality mode that requires a sequence of
@@ -437,8 +435,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">
-			Electronic Codebook (ECB)</a></p>
+			<a href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">
+			Electronic Codebook (ECB)</a>
 		</td>
 		<td width="64%">
 			<p>The Electronic Codebook (ECB) mode is a confidentiality mode that is defined as
@@ -460,8 +458,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.ietf.org/internet-drafts/draft-mcgrew-saag-icm-00.txt">
-			Integer Counter Mode (ICM)</a></p>
+			<a href="http://www.ietf.org/internet-drafts/draft-mcgrew-saag-icm-00.txt">
+			Integer Counter Mode (ICM)</a>
 		</td>
 		<td width="64%">
 			<p>Counter Mode is a way to define a pseudorandom key-stream generator using a block
@@ -474,8 +472,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">
-			Output Feedback Mode (OFB)</a></p>
+			<a href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">
+			Output Feedback Mode (OFB)</a>
 		</td>
 		<td width="64%">
 			<p>The Output Feedback (OFB) mode is a confidentiality mode that features the
@@ -487,8 +485,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://csrc.nist.gov/encryption/modes/Recommendation/Modes01.pdf">
-			CFB</a></p>
+			<a href="http://csrc.nist.gov/encryption/modes/Recommendation/Modes01.pdf">CFB</a>
 		</td>
 		<td width="64%">
 			<p>The Cipher Feedback Mode (CFB) is a stream mode that operates on <i>s</i> bit
@@ -516,8 +513,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://csrc.nist.gov/encryption/modes/Recommendation/Modes01.pdf">
-			CBC</a></p>
+			<a href="http://csrc.nist.gov/encryption/modes/Recommendation/Modes01.pdf">CBC</a>
 		</td>
 		<td width="64%">
 			<p>The Cipher Block Chaining (CBC) mode introduces feedback into the cipher by XORing
@@ -537,12 +533,12 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
-			<p><b><i>Padding scheme</i></b></p>
+			<b><i>Padding scheme</i></b>
 		</td>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.rsasecurity.com/rsalabs/pkcs/pkcs-7/">PKCS-7</a></p>
+			<a href="http://www.rsasecurity.com/rsalabs/pkcs/pkcs-7/">PKCS-7</a>
 		</td>
 		<td width="64%">
 			<p>Let <i>B</i> be the number of octets in the data blocks (or segments) and let
@@ -553,8 +549,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://csrc.nist.gov/encryption/modes/Recommendation/Modes01.pdf">
-			Trailing Bit Complement (TBC)</a></p>
+			<a href="http://csrc.nist.gov/encryption/modes/Recommendation/Modes01.pdf">
+			Trailing Bit Complement (TBC)</a>
 		</td>
 		<td width="64%">
 			<p>With TBC, the data string is padded at the trailing end with the complement of
@@ -567,13 +563,13 @@ in terms of cryptographic algorithms:</p>
 	<!-- Hash algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
-			<p><b><i>Message digest (hash)</i></b></p>
+			<b><i>Message digest (hash)</i></b>
 		</td>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://planeta.terra.com.br/informatica/paulobarreto/WhirlpoolPage.html">
-			Whirlpool</a></p>
+			<a href="http://planeta.terra.com.br/informatica/paulobarreto/WhirlpoolPage.html">
+			Whirlpool</a>
 		</td>
 		<td width="64%">
 			<p>A new 512-bit hashing function operating on messages less than 2<sup>256</sup>
@@ -583,8 +579,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.esat.kuleuven.ac.be/%7Ebosselae/ripemd160.html">RIPEMD-128</a>
-			</p>
+			<a href="http://www.esat.kuleuven.ac.be/%7Ebosselae/ripemd160.html">RIPEMD-128</a>
 		</td>
 		<td width="64%">
 			<p>The main difference with RIPEMD-160 is that we keep a hash result and chaining
@@ -593,8 +588,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.esat.kuleuven.ac.be/%7Ebosselae/ripemd160.html">RIPEMD-160</a>
-			</p>
+			<a href="http://www.esat.kuleuven.ac.be/%7Ebosselae/ripemd160.html">RIPEMD-160</a>
 		</td>
 		<td width="64%">
 			<p>The bit-size of the hash result and chaining variable are increased to 160 bits
@@ -605,19 +599,65 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.itl.nist.gov/fipspubs/fip180-1.htm">SHA-1</a></p>
+			<a href="http://www.itl.nist.gov/fipspubs/fip180-2.htm">SHA-160, SHA-256,
+			SHA-384, and SHA-512</a>
 		</td>
 		<td width="64%">
 			<p>The Secure Hash Algorithm (SHA-1) is required for use with the Digital Signature
 			Algorithm (DSA) as specified in the Digital Signature Standard (DSS) and whenever a
-			secure hash algorithm is required for US federal applications. For a message of
-			length less than 2<sup>64</sup> bits, the SHA-1 produces a 160-bit condensed
-			representation of the message called a message digest.</p>
+			secure hash algorithm is required for US federal applications.</p>
+
+			 <p>The properties of the four message digest algorithms specified in FIPS (Federal
+			 Information Processing Standards) 180-2, dated August 1<sup>st</sup>, 2002 and
+			 implemented in this library, are given in the following table:</p>
+
+			<table align="center" border="1" cellpadding="10" cellspacing="0">
+				<tr align="center">
+				<td valign="center" bgcolor="#ccccff"><i><b>Algorithm</b></i></td>
+				<td valign="center" bgcolor="#ccccff"><i><b>Message Size<br/>(bits)</b></i></td>
+				<td valign="center" bgcolor="#ccccff"><i><b>Block Size<br/>(bits)</b></i></td>
+				<td valign="center" bgcolor="#ccccff"><i><b>Word Size<br/>(bits)</b></i></td>
+				<td valign="center" bgcolor="#ccccff"><i><b>Output Size<br/>(bits)</b></i></td>
+				<td valign="center" bgcolor="#ccccff"><i><b>Security<br/>(bits)</b></i></td>
+				</tr>
+				<tr align="center">
+				<td valign="top" bgcolor="#ccccff"><i><b>SHA-1</b></i></td>
+				<td valign="top">&lt; 2 <sup>64</sup></td>
+				<td valign="top">512</td>
+				<td valign="top">32</td>
+				<td valign="top">160</td>
+				<td valign="top">80</td>
+				</tr>
+				<tr align="center">
+				<td valign="top" bgcolor="#ccccff"><i><b>SHA-256</b></i></td>
+				<td valign="top">&lt; 2 <sup>64</sup></td>
+				<td valign="top">512</td>
+				<td valign="top">32</td>
+				<td valign="top">256</td>
+				<td valign="top">128</td>
+				</tr>
+				<tr align="center">
+				<td valign="top" bgcolor="#ccccff"><i><b>SHA-384</b></i></td>
+				<td valign="top">&lt; 2 <sup>128</sup></td>
+				<td valign="top">1024</td>
+				<td valign="top">64</td>
+				<td valign="top">384</td>
+				<td valign="top">192</td>
+				</tr>
+				<tr align="center">
+				<td valign="top" bgcolor="#ccccff"><i><b>SHA-512</b></i></td>
+				<td valign="top">&lt; 2 <sup>128</sup></td>
+				<td valign="top">1024</td>
+				<td valign="top">64</td>
+				<td valign="top">512</td>
+				<td valign="top">256</td>
+				</tr>
+				</table>
 		</td>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.cs.technion.ac.il/~biham/Reports/Tiger/tiger/tiger.html">Tiger</a></p>
+			<a href="http://www.cs.technion.ac.il/~biham/Reports/Tiger/tiger/tiger.html">Tiger</a>
 		</td>
 		<td width="64%">
 			<p><i>Tiger</i> was designed by <i>Ross Anderson</i> and <i>Eli Biham</i>,
@@ -630,7 +670,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.calyptix.com/files/haval-paper.pdf">HAVAL</a></p>
+			<a href="http://www.calyptix.com/files/haval-paper.pdf">HAVAL</a>
 		</td>
 		<td width="64%">
 			<p>The <i>HAVAL</i> message-digest algorithm is a variable output length, with
@@ -645,7 +685,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.ietf.org/rfc/rfc1321.txt">MD5</a></p>
+			<a href="http://www.ietf.org/rfc/rfc1321.txt">MD5</a>
 		</td>
 		<td width="64%">
 			<p>The MD5 message-digest algorithm takes as input a message of arbitrary length and
@@ -654,7 +694,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://www.ietf.org/rfc/rfc1320.txt">MD4</a></p>
+			<a href="http://www.ietf.org/rfc/rfc1320.txt">MD4</a>
 		</td>
 		<td width="64%">
 			<p>MD4 (a 128-bit output size hash algorithm) was the precursor to the stronger MD5
@@ -669,7 +709,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://www.ietf.org/rfc/rfc1319.txt">MD2</a></p>
+			<a href="http://www.ietf.org/rfc/rfc1319.txt">MD2</a>
 		</td>
 		<td width="64%">
 			<p>MD2 takes as input a message of arbitrary length and produces as output a 128-bit
@@ -686,12 +726,12 @@ in terms of cryptographic algorithms:</p>
 	<!-- MAC algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
-			<p><i><b>Message authentication code (MAC)</b></i></p>
+			<i><b>Message authentication code (MAC)</b></i>
 		</td>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://www.ietf.org/rfc/rfc2104.txt">HMAC</a></p>
+			<a href="http://www.ietf.org/rfc/rfc2104.txt">HMAC</a>
 		</td>
 		<td width="64%">
 			<p>HMAC is a mechanism for message authentication using cryptographic hash functions.
@@ -702,8 +742,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/umac.zip">
-			UHash32</a></p>
+			<a href="https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/umac.zip">
+			UHash32</a>
 		</td>
 		<td width="64%">
 			<p>UHASH is a keyed hash function, which takes as input a string of arbitrary length,
@@ -731,8 +771,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/umac.zip">
-			UMac32</a></p>
+			<a href="https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/umac.zip">
+			UMac32</a>
 		</td>
 		<td width="64%">
 			<p>The UMAC algorithms are parameterized. This means that various low-level choices,
@@ -763,8 +803,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://www.ietf.org/internet-drafts/draft-mcgrew-saag-tmmh-01.txt">
-			TMMH/16(v1)</a></p>
+			<a href="http://www.ietf.org/internet-drafts/draft-mcgrew-saag-tmmh-01.txt">
+			TMMH/16(v1)</a>
 		</td>
 		<td width="64%">
 			<p>The Truncated Multi-Modular Hash Function (TMMH) is a <i>universal</i> hash function
@@ -785,13 +825,13 @@ in terms of cryptographic algorithms:</p>
 	<!-- PRNG algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
-			<p><i><b>Pseudo-random number generator (PRNG)</b></i></p>
+			<i><b>Pseudo-random number generator (PRNG)</b></i>
 		</td>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.ietf.org/internet-drafts/draft-mcgrew-saag-icm-00.txt">Integer
-			Counter Mode (ICM) key-stream generator</a></p>
+			<a href="http://www.ietf.org/internet-drafts/draft-mcgrew-saag-icm-00.txt">Integer
+			Counter Mode (ICM) key-stream generator</a>
 		</td>
 		<td width="64%">
 			<p>Counter Mode is a way to define a pseudorandom key-stream generator using a block
@@ -801,7 +841,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p>Generic hash-based generator</p>
+			Generic hash-based generator
 		</td>
 		<td width="64%">
 			<p>A PRNG configurable with a hash function and a seed. The generator continuously
@@ -810,8 +850,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/umac.zip">
-			UMAC</a> key-stream generator</p>
+			<a href="https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/umac.zip">
+			UMAC</a> key-stream generator
 		</td>
 		<td width="64%">
 			<p>From the UMAC draft:</p>
@@ -824,8 +864,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://www.mozilla.org/projects/security/pki/nss/draft-kaukonen-cipher-arcfour-03.txt">
-			ARCFour</a></p>
+			<a href="http://www.mozilla.org/projects/security/pki/nss/draft-kaukonen-cipher-arcfour-03.txt">
+			ARCFour</a>
 		</td>
 		<td width="64%">
 			<p>RC4 is a stream cipher developed by <i>Ron Rivest</i>. Until 1994, RC4 was a trade
@@ -840,15 +880,32 @@ in terms of cryptographic algorithms:</p>
 			<pre>    out = in ^ arcfour.nextByte();</pre>
 		</td>
 	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<a href="http://www.ietf.org/rfc/rfc2898.txt">PKCS#5 KDF2 generator</a>
+		</td>
+		<td width="64%">
+			<p>PBKDF2 applies a pseudorandom function to derive keys.  The length of the derived
+			key is essentially unbounded;  however, the maximum effective search space for the
+			derived key may be limited by the structure of the underlying pseudorandom function
+			(which in this implementation is an HMAC algorithm).</p>
+
+			<p>A key derivation function produces a derived key from a base key and other
+			parameters.  In a password-based key derivation function, the base key is a user-
+			supplied password and the other parameters are a salt value and an iteration count.</p>
+		</td>
+	</tr>
+
+	<!-- Signature schemes with appendix -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
-			<p><i><b>Digital signature scheme</b></i></p>
+			<i><b>Digital signature scheme</b></i>
 		</td>
 	</tr>
 	<tr>
 		<td width="36%" valign="top">
-			<p><a href="http://www.itl.nist.gov/fipspubs/fip186.htm">Digital Signature Standard</a>
-			(DSS)</p>
+			<a href="http://www.itl.nist.gov/fipspubs/fip186.htm">Digital Signature Standard</a>
+			(DSS)
 		</td>
 		<td width="64%">
 			<p>This Standard specifies a Digital Signature Algorithm (DSA) appropriate for
@@ -868,8 +925,8 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/rsa-pss.zip">
-			RSA-PSS</a></p>
+			<a href="http://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/rsa-pss.zip">
+			RSA EMSA-PSS</a>
 		</td>
 		<td width="64%">
 			<p>RSA-PSS is a public-key encryption scheme combining the RSA algorithm with the
@@ -881,16 +938,32 @@ in terms of cryptographic algorithms:</p>
 			IEEE P1363a) to facilitate implementation and integration into existing protocols.</p>
 		</td>
 	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<a href="http://www.ietf.org/rfc/rfc3447.txt">RSA PKCS#1 v1.5</a>
+		</td>
+		<td width="64%">
+			<p>This algorithm combines the RSA signature (and verification) primitives with the
+			the EMSA-PKCS1-v1_5 encoding method.</p>
+
+			<p>The length of messages on which this algorithm can operate is either unrestricted
+			or constrained by a very large number, depending on the hash function underlying the
+			EMSA-PKCS1-v1_5 method.</p>
+
+			<p>Five hash functions are supported in this library: MD2, MD4, SHA-160, SHA-256,
+			SHA-384, and SHA-512.</p>
+		</td>
+	</tr>
 
 	<!-- SASL algorithms -->
 	<tr>
 		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
-			<p><i><b>Simple Authentication and Security Layer (SASL)</b></i></p>
+			<i><b>Simple Authentication and Security Layer (SASL)</b></i>
 		</td>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2595.txt">PLAIN</a></p>
+			<a href="ftp://ftp.rfc-editor.org/in-notes/rfc2595.txt">PLAIN</a>
 		</td>
 		<td width="64%">
 			<p>Clear-text passwords are simple, interoperate with almost all existing
@@ -902,7 +975,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2245.txt">ANONYMOUS</a></p>
+			<a href="ftp://ftp.rfc-editor.org/in-notes/rfc2245.txt">ANONYMOUS</a>
 		</td>
 		<td width="64%">
 			<p>The mechanism consists of a single message from the client to the server.
@@ -915,7 +988,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2195.txt">CRAM-MD5</a></p>
+			<a href="ftp://ftp.rfc-editor.org/in-notes/rfc2195.txt">CRAM-MD5</a>
 		</td>
 		<td width="64%">
 			<p>This mechanism has the advantage over some possible alternatives of not
@@ -928,7 +1001,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://www.ietf.org/internet-drafts/draft-burdis-cat-srp-sasl-08.txt">SRP</a></p>
+			<a href="http://www.ietf.org/internet-drafts/draft-burdis-cat-srp-sasl-08.txt">SRP</a>
 		</td>
 		<td width="64%">
 			<p>The Secure Remote Password (SRP) is a password-based, zero-knowledge,
@@ -936,6 +1009,79 @@ in terms of cryptographic algorithms:</p>
 			has good performance, is not plaintext-equivalent and maintains perfect
 			forward secrecy. It provides authentication (optionally mutual authentication)
 			and the negotiation of a shared context key.</p>
+		</td>
+	</tr>
+
+	<!-- Key agreement protocols -->
+	<tr>
+		<td colspan="2" width="100%" valign="top" bgcolor="#ccccff">
+			<p><i><b>Key agreement protocols</b></i></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<a href="http://www.ietf.org/rfc/rfc2631.txt">Diffie-Hellman</a> (basic version)
+		</td>
+		<td width="64%">
+			<p>The basic version of the Diffie-Hellman key agreement is described as follows:</p>
+			<ul>
+				<li>An appropriate prime <code>p</code> and generator <code>g</code> of
+				<code>Z<sub>p</sub><sup>*</sup></code>, <code>2 &lt;= g &lt;= p-2</code>
+				are selected and published.</li>
+				<li><code>A</code> and <code>B</code> each send the other one message over an
+				open channel; as a result, they both can then compute a shared secret key <code>K</code>
+				which they can use to protect their future communication.</li>
+				<li><code>A</code> chooses a random secret <code>x</code>, <code>1 &lt;= x &lt;=
+				p-2</code>, and sends <code>B</code> message 	(1) which is <code>g<sup>x</sup> mod p
+				</code>.</li>
+				<li><code>B</code> chooses a random secret <code>y</code>, <code>1 &lt;= y &lt;=
+				p-2</code>, and sends <code>A</code> message (2) which is <code>g<sup>y</sup> mod p
+				</code>.</li>
+				<li><code>B</code> receives message (1) and computes the shared key as <code>K =
+				(g<sup>x</sup>)<sup>y</sup> mod p</code>.</li>
+				<li><code>A</code> receives message (2) and computes the shared key as <code>K =
+				(g<sup>y</sup>)<sup>x</sup> mod p</code>.</li>
+			</ul>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<a href="http://www.cacr.math.uwaterloo.ca/hac">ElGamal</a> (half-certified
+			Diffie-Hellman)
+		</td>
+		<td width="64%">
+			<p>The ElGamal key agreement is described as follows:</p>
+			<ul>
+				<li><code>A</code> sends to <code>B</code> a single message allowing one-pass
+				key agreement.</li>
+				<li><code>A</code> obtains an authentic copy of <code>B</code>'s public key
+				<code>(p, g, yb)</code>, where <code>yb = g<sup>xb</sup></code>.</li>
+				<li><code>A</code> chooses a random integer <code>x</code>, <code>1 &lt;= x
+				&lt;= p-2</code>, and sends <code>B</code> the message <code>g<sup>x</sup></code>.
+				<code>A</code> computes the shared secret key <code>K</code> as
+				<code>yb<sup>x</sup></code>.</li>
+				<li><code>B</code> computes the same key <code>K</code> on receipt of the
+				previous message as <code>(g<sup>x</sup>)<sup>xb</sup></code>.</li>
+			</ul>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<a href="http://srp.stanford.edu/design.html">SRP-6</a>
+		</td>
+		<td width="64%">
+			<p>The Secure Remote Password (SRP) key agreement, also known as SRP-6, is a
+			zero-knowledge protocol, designed by Thomas J. Wu.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="36%">
+			<a href="http://www.ietf.org/internet-drafts/draft-burdis-cat-srp-sasl-08.txt">SASL-SRP</a>
+		</td>
+		<td width="64%">
+			<p>The version of SRP-6 as used in the proposed SASL-SRP mechanism.  The difference
+			with the basic version is that the <code>N</code> and <code>g</code> parameters
+			are part of the exchange.</p>
 		</td>
 	</tr>
 
@@ -947,8 +1093,7 @@ in terms of cryptographic algorithms:</p>
 	</tr>
 	<tr valign="top">
 		<td width="36%">
-			<p><a href="http://www.ietf.org/internet-drafts/draft-mcgrew-saag-ust-00.txt">
-			UST</a></p>
+			<a href="http://www.ietf.org/internet-drafts/draft-mcgrew-saag-ust-00.txt">UST</a>
 		</td>
 		<td width="64%">
 			<p>The Universal Security Transform (UST) is a cryptographic transform which uses a
@@ -971,6 +1116,16 @@ href="http://japi.sab39.org/htmlout/h-jdk14-libgcj.html">page</a> shows the curr
 of the combined efforts of GCJ and GNU Crypto with regard to Java API compatibility with the
 JDK 1.4. It is updated nightly, and is run against the CVS trunk.  This is the most up-to-date
 analysis of API differences.</p>
+
+
+<h3><a name="keyring">GNU Keyring file format</a></h3>
+
+<p>There is currently a proposal for a new keyring format to be used by various GNU Java
+projects; e.g. GNU Classpath, GCJ, GNU Crypto, as the official "keystore" format for those
+platforms.  One of the objectives of such format is to provide free Java projects with
+similar functionalities to those offered by the Java Keystore (JKS) format.</p>
+
+<p>The current draft is available <a href="draft-keyring.html">here</a>.</p>
 
 
 <h3><a name="documentation">Documentation</a></h3>
@@ -1005,7 +1160,7 @@ in this library are available for viewing/downloading. Here is the list:</p>
 		WHIRLPOOL</a> Hashing Function.</li>
 	<li><a href="http://www.counterpane.com/twofish-paper.html">Twofish</a>: A 128-bit Block
 		Cipher.</li>
-	<li><a href="http://www.itl.nist.gov/fipspubs/fip180-1.htm">SECURE HASH STANDARD</a>.</li>
+	<li><a href="http://www.itl.nist.gov/fipspubs/fip180-2.htm">SECURE HASH STANDARD</a>.</li>
 	<li><a href="http://www.ietf.org/rfc/rfc1321.txt">RFC 1321</a>: The MD5 Message-Digest
 		Algorithm.</li>
 	<li><a href="http://www.itl.nist.gov/fipspubs/fip186.htm">DIGITAL SIGNATURE STANDARD</a>.</li>
@@ -1046,6 +1201,14 @@ in this library are available for viewing/downloading. Here is the list:</p>
 		IMAP/POP AUTHorize Extension for Simple Challenge/Response.</li>
 	<li><a href="http://www.ietf.org/internet-drafts/draft-burdis-cat-srp-sasl-08.txt">
 		SRP Authentication Mechanism</a></li>
+
+	<li><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2898.txt">RFC-2898</a>:
+		PKCS #5: Password-Based Cryptography Specification Version 2.0.</li>
+	<li><a href="ftp://ftp.rfc-editor.org/in-notes/rfc3447.txt">RFC-3447</a>:
+		Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications
+		Version 2.1.</li>
+	<li><a href="ftp://ftp.rfc-editor.org/in-notes/rfc2631.txt">RFC-2631</a>:
+		Diffie-Hellman Key Agreement Method.</li>
 </ul>
 
 <p>Test vectors, when not included in the reference documents, are made available by the
@@ -1281,104 +1444,182 @@ the certificates PRIMO emits for review and to help debug the code in
 
 <h3><a name="configuration">Configuration parameters</a></h3>
 
-<p>There are two parameters that would impact the behaviour of the binaries.
-These are:</p>
+<p>There are three parameters that would impact the behaviour of the binaries, all
+defined, and accessible, from the class <code>gnu.crypto.Properties</code>:</p>
 
-<ul>
-	<li>
-		<p><b><code>DO_MILLER_RABIN</code></b>: in <code>gnu.crypto.util.Prime</code>,
-		and</p>
-	</li>
-	<li>
-		<p><b><code>REPRODUCIBLE</code></b>: in <code>gnu.crypto.util.PRNG</code>.</p>
-	</li>
-</ul>
+<table width="90%" align="center" border="1" cellpadding="10" cellspacing="0">
+    <tr>
+      <td bgcolor="#ccccff"><i><b>Key</b></i></td>
+      <td bgcolor="#ccccff"><i><b>Type</b></i></td>
+      <td bgcolor="#ccccff"><i><b>Description</b></i></td>
+    </tr>
+
+    <tr>
+      <td valign="top"><code>gnu.crypto.with.reproducible.prng</code></td>
+      <td valign="top">boolean</td>
+      <td valign="top">
+	  <p>For the sake of convenience, all invocations in this library to generate
+	  cryptographically strong pseudo-random data (bytes) are done through a classloader
+	  Singleton, inside the <code>gnu.crypto.util.PRNG</code> class.  This Singleton
+	  generator is an instance of the pseudo-random number generator based on a generic
+	  hash function --the class <code>gnu.crypto.prng.MDGenerator</code>-- using, in
+	  this case, the Secure Hash Standard (SHS, also known as the Secure Hash Algorithm
+	  SHA with 160-bit output block size).  This is appropriate for two reasons:</p>
+
+	  <ol>
+	  	<li>
+			<p>this method of generating random data is the one prescribed in the
+			Digital Signature Standard (DSS),</p>
+		</li>
+
+		<li>
+			<p>other digital signature schemes, implemented so far in this library,
+			do not mandate any prescribed way for generating random data.</p>
+		</li>
+	  </ol>
+
+	  <p>However, this type of generator works by hashing the output of a previous
+	  digest operation; i.e. the input to the hash function at time <code>N</code>
+	  is its output at time <code>N-1</code>, with the starting input being a 0-long
+	  octet string.  The sequence of generated bytes from such a generator is then
+	  <b>reproducible</b>.  This is useful for test and debugging purposes only and
+	  obviously should not be the case in any security-conscious application.</p>
+
+	  <p>Default value: <code>false</code></p>
+
+	  <p><code>true</code>: Indicates that the default PRNG used, when one is
+	  needed but none has been specified, will produce the same bit stream with
+	  every VM instance.</p>
+
+	  <p><code>false</code>: Indicates that the default PRNG used will be
+	  initialised (seeded) with the current time of day, thus yielding a different
+	  bit stream output with every VM instance.</p>
+	  </td>
+    </tr>
+
+    <tr>
+      <td valign="top"><code>gnu.crypto.with.miller.rabin.test</code></td>
+      <td valign="top">boolean</td>
+      <td valign="top">
+	  <p>In various places throughout this library, large positive prime numbers
+	  are generated and used; e.g. keypair generation, digital signature scheme
+	  signing process.  When needing to test the probable primality of such numbers,
+	  the code in this library invokes the method <code>Prime.isProbablePrime(x)</code>,
+	  which is then translated into <code>Prime.isProbablePrime(x, Properties.doMillerRabin())</code>.
+	  </p>
+
+	  <p>Default value: <code>false</code></p>
+
+	  <p><code>true</code>: Indicates that even if the number passes Euler Criterion
+	  (a Java port of Colin Plumb implementation in C, included in his bnlib version 1.1)
+	  an additional invocation to a Miller-Rabin primality test (<code>Prime.passMillerRabin()</code>)
+	  will be carried out.</p>
+
+	  <p><code>false</code>: Indicates that if the designated number passes Euler
+	  Criterion it is then declared a probable prime and no further tests are carried
+	  out. This is in agreement to Colin's comment in the code that <i>"... everything
+	  else is just gravy..."</i></p>
+	  </td>
+    </tr>
+
+    <tr>
+      <td valign="top"><code>gnu.crypto.with.check.for.weak.keys</code></td>
+      <td valign="top">boolean</td>
+      <td valign="top">
+	  <p>Some symmetric-key block ciphers exhibit certain vulnerabilities, when specific
+	  key values are used.  DES for example has 64 initial key values that are classified
+	  into: weak, semi-weak, and possibly weak keys.</p>
+
+	  <p>Default value: <code>true</code></p>
+
+	  <p><code>true</code>: Indicates that an additional check for so-called weak keys
+	  will be carried out when generating the cipher sub-keys from user-defined initial
+	  key material. Such checks may cause a <code>gnu.crypto.cipher.WeakKeyException</code>
+	  (a subclass of <code>java.security.InvalidKeyException</code>) to be thrown.</p>
+
+	  <p><code>false</code>: Indicates that user-defined key material will be used as
+	  is when generating a cipher's internal sub-keys.</p>
+	  </td>
+    </tr>
+</table>
 
 
-<h4>DO_MILLER_RABIN</h4>
+<h3><a name="build">Building GNU Crypto</a></h3>
 
-<p>In various places throughout this library, large positive prime numbers are
-generated and used; e.g. keypair generation, digital signature scheme signing
-process. When needing to test the probable primality of such numbers, the code
-in this library invokes the method <code>Prime.isProbablePrime(x)</code>, which
-is then translated into <code>Prime.isProbablePrime(x, DO_MILLER_RABIN)</code>.
-By default, this constant --<code>DO_MILLER_RABIN</code>-- is set to <code>false</code>,
-implying that if the designated number passes Euler Criterion (a Java port of
-Colin Plumb implementation in C, included in his bnlib version 1.1) the number
-is then declared a probable prime and no further tests are carried out. This is
-in agreement to Colin's comment in the code that <i>"...everything else is just
-gravy..."</i> However, if you wish to change this behaviour to conduct a Miller-Rabin
-strong probabilistic primality test as described in the literature, then you should
-change the value of this constant --<code>DO_MILLER_RABIN</code>-- to <code>true</code>
-<b>and</b> regenerate the binaries (jars) --if using ANT, by invoking:</p>
-
-<p>   <code>   ant jar</code></p>
-
-<p>Doing so, causes an (additional) invocation to the <code>Prime.passMillerRabin(x)</code>
-method, if the designated number passes all other tests. The final result becomes
-then that of the <code>Prime.passMillerRabin()</code> method.</p>
-
-<h4>REPRODUCIBLE</h4>
-
-<p>For the sake of convenience, all invocations in this library to generate
-cryptographically strong pseudo-random data (bytes) are done through a classloader
-Singleton, inside the <code>gnu.crypto.util.PRNG</code> class. This Singleton
-generator is an instance of the pseudo-random number generator based on a generic
-hash function --the class <code>gnu.crypto.prng.MDGenerator</code>-- using, in this
-case, the Secure Hash Standard (SHS, also known as the Secure Hash Algorithm SHA
-with 160-bit output block size). This is appropriate for two reasons:</p>
+<p>GNU Crypto can be built in three different ways, yielding two different types of
+binaries:</p>
 
 <ol>
 	<li>
-		<p>this method of generating random data is the one prescribed in the
-		Digital Signature Standard (DSS),</p>
+	<b>GCJ-friendly build</b><br/>
+	<p>This is an all-GNU process that results in dynamic shared libraries
+	(javax-crypto.so, javax-security.so, gnu-crypto.so).  Building the library
+	this way is the best (and in some cases, the only) way when compiling and
+	linking native applications. Especially optimised implementations of some
+	algorithms are automagically included in this build.</p>
+
+	<p>This method relies on the GNU toolchain and on GCJ (GNU Compiler for
+	Java), part of <a href="http://gcc.gnu.org">GCC (GNU Compiler Collection)</a>.
+	Note however that you need version 3.1 or later of the GCJ.</p>
 	</li>
+
 	<li>
-		<p>other digital signature schemes, implemented so far in this library, do
-		not mandate any prescribed way for generating random data.</p>
+	<b>Non-GCJ-friendly build</b><br/>
+	<p>No shared libraries are produced in these builds; only .class files in Jars
+	are generated.  This is achieved, either</p>
+	<ul>
+		<li>
+		<p>With Apache ANT tool, or</p>
+		</li>
+
+		<li>
+		<p>With the GNU toolchain (configure, make, etc.)</p>
+
+		<p>The only requirements for building the library this way is to define
+		which java bytecode compiler, as well as which java bytecode interpreter
+		to use.  This is done by setting the environment variables <code>JAVA</code>,
+		<code>JAVAC</code>, and <code>CLASSPATH</code> appropriately during the
+		<code>configure</code> phase.  Optionally the environment variable
+		<code>JAVAFLAGS</code> may need to be set.</p>
+
+		<p>The following configurations are known to be working.  If you succeed
+		in configuring, building and or testing the library with other tools, please
+		let us know so we can list these here:</p>
+
+		<ul>
+			<li>Sun's JDK 1.4.2_01:
+			<pre>
+./configure JAVAC=javac JAVA=java JAVAFLAGS="-Xbootclasspath/p:../jce/javax-crypto.jar"
+make
+make check
+			</pre>
+			</li>
+
+			<li>Jikes compiler, and Jikes RVM:
+			<pre>
+./configure JAVAC=jikes JAVA=rvm CLASSPATH=$JAVA_HOME/jre/lib/rt.jar
+make
+make check
+			</pre>
+			</li>
+
+			<li>Jikes compiler, and kissme VM:
+			<pre>
+./configure JAVAC=jikes JAVA=kissme CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar
+make
+make check
+			</pre>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	<p>This type of build is best suited for applications running with
+	free VMs, or with JIT-like runtime interpreters.</p>
 	</li>
 </ol>
 
-<p>However, this type of generator works by hashing the output of a previous
-digest operation; i.e. the input to the hash function at time <code>N</code> is
-its output at time <code>N-1</code>, with the starting input being a 0-long octet
-string. The sequence of generated bytes from such a generator is then
-<b>reproducible</b>. This is useful for test and debugging purposes only and
-obviously should not be the case in any security-conscious application.</p>
-
-<p>To change this behaviour, change the value of the constant <code>REPRODUCIBLE</code>
-in the class <code>gnu.crypto.util.PRNG</code> to <code>false</code> <b>and</b>
-regenerate the binaries (jars) --if using ANT, by invoking:</p>
-
-<p>   <code>   ant jar</code></p>
-
-<p>Doing so, causes a <code>SEED</code> value, based on the system current time
-in milliseconds, to be injected into the initial input.</p>
-
-
-
-<h3><a name="gcj-friendly">Building a GCJ-friendly version of GNU Crypto</a></h3>
-
-<p>This library can be built using one of three different methods:</p>
-<ul>
-	<li>With Apache ANT, yielding a <code>gnu-crypto.jar</code> with optionally a
-	<code>javax-crypto.jar</code> (which includes an implementation of the 
-	<code>javax.crypto</code> extension).  Implementations of the Algorithms in
-	this build are best suited for a JIT-like runtime interpreter.</li>
-
-	<li>Similar to the above, but using the GNU toolchain.  This version/process
-	is referred to as <i>non-GCJ-friendly</i> build, and finally</li>
-
-	<li>With the GNU toolchain, but yielding, in addition to standard jar files,
-	the <code>lib-gnu-crypto.so</code> and optionally a <code>lib-javax-crypto.so</code>
-	shared reloadable native libraries.  Implementations of the Algorithms that
-	get included and/or generated in this build, are optimised for the gcj (GNU
-	Compiler for Java), part of <a href="http://gcc.gnu.org">GCC (GNU Compiler
-	Collection)</a>.  If you decide to build with GCJ, you will version 3.1 or later.</li>
-</ul>
-
-<p>The details of how to build the desired deliverable(s) are part of the
-<code>INSTALL</code> document included in the distribution.</p>
+<p>The INSTALL document in the distribution contains a step-by-step description
+of each of the above processes.</p>
 
 <p>In the next section, we include performance figures showing the added advantage
 (in term of speed) gained by using the latter build process.  The figures should be
@@ -1388,7 +1629,6 @@ task, depends on the target platform architecture as well as the version of the 
 installed/used at the time.  Nevertheless, it should be obvious how much gain can be
 achieved by using <i>standard</i> algorithms (such as the RIPEMD, SHA-1 and MD5 message
 digests) generated by the <i>GCJ-friendly</i> build.</p>
-
 
 
 <h3><a name="Tools|outline">Tools</a></h3>
@@ -2041,10 +2281,9 @@ href="mailto:gnu-crypto-discuss@gnu.org">&lt;gnu-crypto-discuss@gnu.org&gt;</a>.
 
 <h3><a name="coding">Coding styles</a></h3>
 
-<p>The source files in this project follow a strict coding style, for
-both <a href="guide/JavaStyle.html">Java</a> and <a
-href="guide/AntStyle.html">ANT</a> (build.xml) files. Contributors are
-urged to abide by these guidelines.<br></p>
+<p>The source files in this project follow a strict coding style, for both
+<a href="guide/JavaStyle.html">Java</a> and <a href="guide/AntStyle.html">ANT</a>
+(build.xml) files. Contributors are urged to abide by these guidelines.<br></p>
 
 
 
@@ -2125,7 +2364,7 @@ any medium, provided this notice is preserved.</p>
 
 <hr>
 
-<p>Last Modified: <i>$Date: 2003/06/22 02:41:23 $</i></p>
+<p>Last Modified: <i>$Date: 2003/10/06 01:54:47 $</i></p>
 
 <p>
 <a href="http://validator.w3.org/check/referer">
