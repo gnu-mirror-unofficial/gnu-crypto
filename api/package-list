@@ -1,4 +1,5 @@
 gnu.crypto
+gnu.crypto.assembly
 gnu.crypto.cipher
 gnu.crypto.exp.ust
 gnu.crypto.hash
@@ -14,6 +15,11 @@ gnu.crypto.mac
 gnu.crypto.mode
 gnu.crypto.pad
 gnu.crypto.prng
+gnu.crypto.sasl
+gnu.crypto.sasl.anonymous
+gnu.crypto.sasl.crammd5
+gnu.crypto.sasl.plain
+gnu.crypto.sasl.srp
 gnu.crypto.sig
 gnu.crypto.sig.dss
 gnu.crypto.sig.rsa
