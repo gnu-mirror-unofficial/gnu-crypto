@@ -1,0 +1,132 @@
+<html>
+
+<head>
+<title>GNU Crypto - GNU Project - Free Software Foundation (FSF)</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#1F00FF" alink="#FF0000" vlink="#9900DD">
+
+<img align="right" src="../../classpathx-logo-small.jpg"
+	  alt=" [ gnu -classpath ext:ens:ions ] " width="252" height="24"/>
+
+<h2>Apache ANT Coding Style</h2>
+
+ANT xml source files in the repository must be written in conformance to the
+following Code Conventions:
+
+<ol>
+<LI><B>Source files</B>
+	<P>ANT source files should begin with the xml directive &lt;?xml version="1.0"?&gt;,
+	followed by the project standard copyright notice:</P>
+
+	<pre>
+	&lt;!--
+		$Id: AntStyle.html,v 1.1 2002/09/24 20:47:12 raif Exp $
+
+		Copyright (C) 2001 Free Software Foundation, Inc.
+
+		This program is free software; you can redistribute it and/or modify it
+		under the terms of the GNU General Public License as published by the Free
+		Software Foundation; either version 2 of the License or (at your option) any
+		later version.
+
+		This program is distributed in the hope that it will be useful, but WITHOUT
+		ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+		FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+		more details.
+
+		You should have received a copy of the GNU General Public License along with
+		this program; see the file COPYING.  If not, write to the
+
+			Free Software Foundation Inc.,
+			59 Temple Place - Suite 330,
+			Boston, MA 02111-1307
+			USA
+
+		As a special exception, if you link this library with other files to produce
+		an executable, this library does not by itself cause the resulting
+		executable to be covered by the GNU General Public License.  This exception
+		does not however invalidate any other reasons why the executable file might
+		be covered by the GNU General Public License.
+	-->
+	</pre>
+</LI>
+
+<LI><B>Names</B>
+	<P>Always use lowercase names.</P>
+
+	<P>Use hyphens to compose target names, dots to compose property names and
+	finally underscores to compose idref names. For example:</P>
+
+	<pre>
+	&lt;target name="amoun-ra">...</target>
+	&lt;target ... if="install.dir">...</target>
+	&lt;patternset id="toplevel_files">...</patternset>
+	</pre>
+</LI>
+
+<LI><B>Indentation</B>
+	<P>Do not use tabs.  Always use spaces.  Three spaces should be used as the
+	unit of indentation.</P>
+
+	<OL>
+		<LI><B>Line length</B>
+			<P>Avoid lines longer than 80 characters, since they're not handled
+			well by many terminals and tools.</P>
+		</LI>
+
+		<LI><B>Wrapping lines</B>
+			<P>When an ANT xml element will not fit on a single line, break it on
+			an attribute basis and align all attribute names.  For example:</P>
+
+			<pre>
+		<javac destdir="classes"
+				 debug="${debug}"
+				 optimize="${optimize}"
+				 srcdir="src"
+				 includes="gnu/crypto/**/*.java"/>
+			</pre>
+		</LI>
+	</OL>
+</LI>
+
+<LI><B>Comments</B>
+	<P>Target group comments help separate visually blocks of related targets.
+	Use the following before each group:</P>
+
+	<pre>
+	&lt;!--
+	Minimal tests to pass before release .......................................
+	-->
+	&lt;target ... />
+	</pre>
+</LI>
+
+<LI><B>Example</B>
+	<P>Refer to the project's build.xml as an example of these recommendations.</P>
+</LI>
+
+</ol>
+
+<hr/>
+<p>Return to <a href="/home.html">GNU's home page</a>.</p>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to
+<a href="mailto:gnu@gnu.org"><em>gnu@gnu.org</em></a>. There are also
+<a href="/home.html#ContactInfo">other ways to contact</a> the FSF.</p>
+
+<p> Please send comments on these web pages to
+<a href="mailto:webmasters@gnu.org"><em>webmasters@gnu.org</em></a>,
+send other questions to <a href="mailto:gnu@gnu.org"><em>gnu@gnu.org</em></a>.</p>
+
+<p>Copyright (C) 2001 Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111,  USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is permitted in any
+medium, provided this notice is preserved.</p>
+
+<hr/>
+<p>Last Modified: <i>$Date: 2002/09/24 20:47:12 $</i></p>
+
+</body>
+</html>
