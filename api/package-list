@@ -7,7 +7,6 @@ gnu.crypto.jce
 gnu.crypto.jce.cipher
 gnu.crypto.jce.hash
 gnu.crypto.jce.keyring
-gnu.crypto.jce.keystore
 gnu.crypto.jce.mac
 gnu.crypto.jce.params
 gnu.crypto.jce.prng
